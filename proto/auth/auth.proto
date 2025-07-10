@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package auth.v1;
+
+option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/auth";
+
+service AuthService {
+  rpc NewAuth(NewAuthRequest) returns (NewAuthResponse) {}
+}
+
+message NewAuthRequest {
+  int64 app_id = 1;
+  string refresh_token = 2;
+}
+
+message NewAuthResponse {
+  string private_key = 1;
+  string refresh_token = 2;
+}

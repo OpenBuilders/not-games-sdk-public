@@ -1,0 +1,107 @@
+name: Sync Files from Source Repo
+
+on:
+  repository_dispatch:
+    types: [webhook_trigger]
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+      - master
+    paths:
+      - 'proto/**'
+      - 'docs/**'
+      - '.github/**'
+  pull_request:
+    paths:
+      - 'proto/**'
+      - 'docs/**'
+      - '.github/**'
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Сode
+        uses: actions/checkout@v4
+
+      - name: Clone Source Repo
+        run: git clone --branch dev https://${{ secrets.SOURCE_REPO_TOKEN }}@github.com/OpenBuilders/not-platform-v2.git source-repo
+
+      - name: Copy Changed Files
+        run: |
+          cp -r source-repo/docs/external docs
+          rm -rf source-repo
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.23'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Buf
+        run: |
+          sudo curl -sSL \
+          "https://github.com/bufbuild/buf/releases/download/v1.50.0/buf-$(uname -s)-$(uname -m)" \
+          -o "/usr/local/bin/buf" && \
+          sudo chmod +x "/usr/local/bin/buf"
+
+      - name: Install plugins
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y protobuf-compiler
+          go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+          go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+          sudo npm install -g protoc protoc-gen-grpc-web protoc-gen-js grpc-tools
+          sudo rm -rf node_modules
+
+      - name: Install OpenAPI Generator
+        run: npm install -g @openapitools/openapi-generator-cli
+
+      - name: Generate proto-SDK
+        run: |
+          buf generate
+
+      - name: Generate http-Go client
+        run: |
+          openapi-generator-cli generate \
+            -i docs/swagger.yaml \
+            -g go \
+            -o ./gen/http/go \
+            --additional-properties=packageName=not-games-sdk-public
+
+      - name: Generate http-Node.js client
+        run: |
+          openapi-generator-cli generate \
+            -i docs/swagger.yaml \
+            -g typescript-axios \
+            -o ./gen/http/nodejs \
+            --additional-properties=supportsES6=true,npmName=not-games-sdk-public
+
+      - name: Commit and push generated SDK
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add ./gen/grpc ./gen/http
+            git commit -m "Auto-generated SDK"
+            BRANCH=""
+            if [[ "${GITHUB_HEAD_REF}" != "" ]]; then
+              BRANCH="${GITHUB_HEAD_REF}"
+            else
+              BRANCH="${GITHUB_REF#refs/heads/}"
+            fi
+            echo "Pushing to branch: $BRANCH"
+            git push --force origin HEAD:$BRANCH
+          else
+            echo "No changes to commit"
+          fi

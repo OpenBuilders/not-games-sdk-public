@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package common.v1;
+
+option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/common";
+
+message Pagination {
+  int64 total = 1;
+  int64 count = 2;
+  int64 offset = 3;
+}

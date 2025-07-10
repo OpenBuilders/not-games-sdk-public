@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package common.v1;
+
+option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/common";
+
+enum Rarity {
+  Unknown = 0;
+  Common = 1;
+  Rare = 2;
+  Epic = 3;
+  Legendary = 4;
+}

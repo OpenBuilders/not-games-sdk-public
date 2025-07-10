@@ -1,0 +1,113 @@
+syntax = "proto3";
+
+package registry.v1;
+
+option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/registry";
+
+import "common/rarity.proto";
+
+service RegistryService {
+  rpc GetItemDef(GetItemDefRequest) returns (ItemDef) {}
+  rpc CreateItemDef(CreateItemDefRequest) returns (CreateItemDefResponse) {}
+  rpc UpdateItemDef(UpdateItemDefRequest) returns (UpdateItemDefResponse) {}
+  rpc GetAchievementDef(GetAchievementDefRequest) returns (AchievementDef) {}
+  rpc CreateAchievementDef(CreateAchievementDefRequest) returns (CreateAchievementDefResponse) {}
+  rpc UpdateAchievementDef(UpdateAchievementDefRequest) returns (UpdateAchievementDefResponse) {}
+}
+
+message ItemDef {
+  string item_def_id = 1;
+  int64 app_id = 2;
+  string name = 3;
+  string description = 4;
+  string type = 5;
+  string display_type = 6;
+  string bundle = 7;
+  string price = 8;
+  string icon_url = 9;
+  bool  marketable = 10;
+  string tags = 11;
+  string store_tags = 12;
+  string store_images = 13;
+  string app_files = 14;
+  string collection = 15;
+  bool hidden = 16;
+  bool store_hidden = 17;
+  bool game_only = 18;
+  string promo = 19;
+  bool tradable = 20;
+  common.v1.Rarity rarity = 21;
+  string exchange = 22;
+  int64 supply = 23;
+  optional int64 max_supply = 24;
+}
+
+message UpdateItemDefRequest {
+  string item_def_id = 1;
+  int64 app_id = 2;
+  string name = 3;
+  string description = 4;
+  string display_type = 5;
+  string bundle = 6;
+  string price = 7;
+  string icon_url = 8;
+  bool  marketable = 9;
+  string store_tags = 10;
+  string store_images = 11;
+  string app_files = 12;
+  string collection = 13;
+  bool hidden = 14;
+  bool store_hidden = 15;
+  bool game_only = 16;
+  string promo = 17;
+  bool tradable = 18;
+  string exchange = 19;
+  optional int64 max_supply = 20;
+}
+
+message AchievementDef {
+  string achievement_def_id = 1;
+  int64 app_id = 2;
+  string name = 3;
+  string description = 4;
+  string icon_url = 5;
+  string tags = 6;
+  bool hidden = 7;
+  string display_type = 8;
+}
+
+message GetItemDefRequest {
+  string item_def_id = 1;
+}
+
+message CreateItemDefRequest {
+  ItemDef item_def = 1;
+}
+
+message CreateItemDefResponse {
+  string status = 1;
+}
+
+message UpdateItemDefResponse {
+  string status = 1;
+}
+
+message GetAchievementDefRequest {
+  string achievement_def_id = 1;
+}
+
+message CreateAchievementDefRequest {
+  AchievementDef achievement_def = 1;
+}
+
+message CreateAchievementDefResponse {
+  string status = 1;
+}
+
+message UpdateAchievementDefRequest {
+  AchievementDef achievement_def = 1;
+}
+
+message UpdateAchievementDefResponse {
+  string status = 1;
+}

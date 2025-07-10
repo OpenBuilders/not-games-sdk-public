@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+package inventory.v1;
+
+option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/inventory";
+
+import "common/pagination.proto";
+import "common/rarity.proto";
+
+service InventoryService {
+  rpc ListItems(ListItemsRequest) returns (ListItemsResponse) {}
+  rpc GetItem(GetItemRequest) returns (Item) {}
+  rpc ConsumeItem(ConsumeItemRequest) returns (ConsumeItemResponse) {}
+  rpc Unpack(UnpackRequest) returns (UnpackResponse) {}
+  rpc Generate(GenerateRequest) returns (GenerateResponse) {}
+  rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse) {}
+  rpc TransferItem(TransferItemRequest) returns (TransferItemResponse) {}
+  rpc StreamItemTransfer(StreamItemTransfersRequest) returns (stream StreamItemTransfersResponse) {}
+  rpc AddGroup(AddGroupRequest) returns (AddGroupResponse) {}
+  rpc StreamAckMessages(StreamItemTransfersAckRequest) returns (StreamItemTransfersAckResponse) {}
+}
+
+message Item {
+  string item_def_id = 1;
+  int64 account_id = 2;
+  string item_id = 3;
+  int64 app_id = 4;
+  string name = 5;
+  string description = 6;
+  string icon_url = 7;
+  string tags = 8;
+  bool tradable = 9;
+  int32 quantity = 10;
+  string type = 11;
+  string display_type = 12;
+  bool marketable = 13;
+  string app_files = 14;
+  string collection = 15;
+  bool hidden = 16;
+  bool game_only = 17;
+  string created_at = 18;
+  string updated_at = 19;
+  string app_meta = 20;
+  int64 serial = 21;
+  int64 supply = 22;
+  string default_tags = 23;
+  common.v1.Rarity rarity = 24;
+}
+
+message GetItemRequest {
+  string item_id = 1;
+  int64 app_id = 2;
+}
+
+message ListItemsRequest {
+  int64 account_id = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+  optional string item_def_id = 4;
+  optional string collection = 5;
+  optional string name = 6;
+  optional common.v1.Rarity rarity = 7;
+  optional string type = 8;
+  optional string display_type = 9;
+  optional bool hidden = 10;
+  optional bool gameOnly = 11;
+  optional bool store_hidden = 12;
+  optional bool tradable = 13;
+  repeated string sort_fields = 14;
+  repeated string directions = 15;
+}
+
+message ListItemsResponse {
+  repeated Item items = 1;
+  common.v1.Pagination pagination = 2;
+}
+
+message ConsumeItemRequest {
+  string item_id = 1;
+  int32 quantity = 2;
+}
+
+message ConsumeItemResponse {
+  string status = 1;
+}
+
+message UnpackRequest {
+  string item_id = 1;
+  int64 account_id = 2;
+  int64 app_id = 3;
+  string tags = 4;
+}
+
+message UnpackResponse {
+  repeated string item_ids = 1;
+}
+
+message GenerateRequest {
+  string item_def_id = 1;
+  int64 account_id = 2;
+  int64 app_id = 3;
+  string tags = 4;
+}
+
+message GenerateResponse {
+  string item_id = 1;
+}
+
+message UpdateItemRequest {
+  string item_id = 1;
+  optional string tags = 2;
+  optional string app_meta = 3;
+  common.v1.Rarity rarity = 4;
+}
+
+message UpdateItemResponse {
+  string status = 1;
+}
+
+message TransferItemRequest {
+  string item_id = 1;
+  int64 account_to = 2;
+  string comment = 3;
+}
+
+message TransferItemResponse {
+  string status = 1;
+}
+
+message StreamItemTransfersRequest {
+  string consumer = 1;
+  int64 limit = 2;
+  bool ack_by_request = 3;
+}
+
+message StreamItemTransfersResponse {
+  string item_id = 1;
+  int64 account_from = 2;
+  int64 account_to = 3;
+  int64 timestamp = 4;
+  string tags = 5;
+  string display_type = 6;
+  string item_def_id = 7;
+  string default_tags = 8;
+  string message_id = 9;
+}
+
+message AddGroupRequest {
+}
+
+message AddGroupResponse {
+  string status = 1;
+}
+
+message StreamItemTransfersAckRequest {
+  repeated string messages = 1;
+}
+
+message StreamItemTransfersAckResponse {
+  bool status = 1;
+}

@@ -1,0 +1,1460 @@
+basePath: /api/v1
+definitions:
+  github_com_not-platform_internal_module_auth_presentation_authorization_http_model.AuthGenerateRequest:
+    properties:
+      app_id:
+        type: integer
+      refresh_token:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_auth_presentation_authorization_http_model.AuthGenerateResponse:
+    properties:
+      private:
+        type: string
+      refresh_token:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ConsumeItemRequest:
+    properties:
+      item_id:
+        type: string
+      quantity:
+        type: integer
+    type: object
+  github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.GenerateItemRequest:
+    properties:
+      app_id:
+        type: integer
+      item_def_id:
+        type: string
+      tags:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.InventoryItemResponse:
+    properties:
+      account_id:
+        type: integer
+      app_files:
+        type: string
+      app_id:
+        type: integer
+      app_meta:
+        type: string
+      collection:
+        type: string
+      created_at:
+        type: string
+      default_tags:
+        type: string
+      description:
+        type: string
+      display_type:
+        type: string
+      game_only:
+        type: boolean
+      hidden:
+        type: boolean
+      icon_url:
+        type: string
+      item_def_id:
+        type: string
+      item_id:
+        type: string
+      marketable:
+        type: boolean
+      name:
+        type: string
+      quantity:
+        type: integer
+      rarity:
+        type: integer
+      serial:
+        type: integer
+      supply:
+        type: integer
+      tags:
+        type: string
+      tradable:
+        type: boolean
+      type:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ListItemsResponse:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.InventoryItemResponse'
+        type: array
+      pagination:
+        $ref: '#/definitions/github_com_not-platform_internal_module_shared_valueobject.PaginationResponse'
+    type: object
+  github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.TransferItemPreflightResponse:
+    properties:
+      account:
+        $ref: '#/definitions/github_com_not-platform_internal_module_profile_domain_entity.Account'
+      is_possible:
+        type: boolean
+    type: object
+  github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.TransferItemRequest:
+    properties:
+      account_to:
+        type: integer
+      comment:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.UnpackItemRequest:
+    properties:
+      app_id:
+        type: integer
+      item_id:
+        type: string
+      tags:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.UpdateItemRequest:
+    properties:
+      app_meta:
+        type: string
+      rarity:
+        type: integer
+      tags:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_profile_domain_entity.Account:
+    properties:
+      account_id:
+        description: telegram id
+        type: integer
+      allow_pm:
+        type: boolean
+      avatar:
+        type: string
+      created_at:
+        type: string
+      first_name:
+        type: string
+      last_login:
+        type: string
+      last_name:
+        type: string
+      locale:
+        type: string
+      squad_id:
+        description: telegram group id
+        type: integer
+      user_name:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_profile_presentation_http_model.AccountBackgroundResponse:
+    properties:
+      image:
+        type: string
+      is_default:
+        type: boolean
+      item_id:
+        type: string
+      name:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_profile_presentation_http_model.AccountResponse:
+    properties:
+      avatar:
+        type: string
+      background:
+        $ref: '#/definitions/github_com_not-platform_internal_module_profile_presentation_http_model.AccountBackgroundResponse'
+      created_at:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: integer
+      last_login:
+        type: string
+      last_name:
+        type: string
+      locale:
+        type: string
+      squad_id:
+        description: telegram group id
+        type: integer
+      username:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_registry_presentation_item_http_model.ItemDefResponse:
+    properties:
+      app_files:
+        type: string
+      app_id:
+        type: integer
+      bundle:
+        type: string
+      collection:
+        type: string
+      description:
+        type: string
+      display_type:
+        type: string
+      exchange:
+        type: string
+      game_only:
+        type: boolean
+      hidden:
+        type: boolean
+      icon_url:
+        type: string
+      item_def_id:
+        type: string
+      marketable:
+        type: boolean
+      max_supply:
+        type: integer
+      name:
+        type: string
+      price:
+        type: string
+      promo:
+        type: string
+      rarity:
+        type: integer
+      store_hidden:
+        type: boolean
+      store_images:
+        type: string
+      store_tags:
+        type: string
+      supply:
+        type: integer
+      tags:
+        type: string
+      tradable:
+        type: boolean
+      type:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_registry_presentation_item_http_model.ListItemDefResponse:
+    properties:
+      item_defs:
+        items:
+          $ref: '#/definitions/github_com_not-platform_internal_module_registry_presentation_item_http_model.ItemDefResponse'
+        type: array
+      pagination:
+        $ref: '#/definitions/github_com_not-platform_internal_module_shared_valueobject.PaginationResponse'
+    type: object
+  github_com_not-platform_internal_module_shared_valueobject.PaginationResponse:
+    properties:
+      count:
+        type: integer
+      offset:
+        type: integer
+      total:
+        type: integer
+    type: object
+  github_com_not-platform_internal_server_templates_response.Template:
+    properties:
+      data: {}
+      error_code:
+        type: string
+      ok:
+        type: boolean
+    type: object
+  http.ListAppResponse:
+    properties:
+      results:
+        items:
+          $ref: '#/definitions/http.appOneResponse'
+        type: array
+    type: object
+  http.appOneResponse:
+    properties:
+      avatar:
+        type: string
+      background:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      slug:
+        type: string
+      socials:
+        items:
+          $ref: '#/definitions/http.appSocial'
+        type: array
+      updated_at:
+        type: string
+      verified:
+        type: boolean
+    type: object
+  http.appSocial:
+    properties:
+      title:
+        type: string
+      type:
+        type: string
+      url:
+        type: string
+    type: object
+  internal_module_achievement_presentation_http.CreateAchievementOneResponse:
+    properties:
+      account_id:
+        type: integer
+      achievement_def_id:
+        type: string
+      achievement_id:
+        type: string
+      app_id:
+        type: integer
+      default_tags:
+        type: string
+      description:
+        type: string
+      display_type:
+        type: string
+      hidden:
+        type: boolean
+      icon_url:
+        type: string
+      name:
+        type: string
+      tags:
+        type: string
+    type: object
+  internal_module_achievement_presentation_http.CreateAchievementsRequest:
+    properties:
+      achievement_def_ids:
+        items:
+          type: string
+        type: array
+      tags:
+        type: string
+    type: object
+  internal_module_achievement_presentation_http.CreateAchievementsResponse:
+    properties:
+      achievements:
+        items:
+          $ref: '#/definitions/internal_module_achievement_presentation_http.CreateAchievementOneResponse'
+        type: array
+    type: object
+  internal_module_achievement_presentation_http.GetAchievementOneResponse:
+    properties:
+      account_id:
+        type: integer
+      achievement_def_id:
+        type: string
+      achievement_id:
+        type: string
+      app_id:
+        type: integer
+      default_tags:
+        type: string
+      description:
+        type: string
+      display_type:
+        type: string
+      hidden:
+        type: boolean
+      icon_url:
+        type: string
+      name:
+        type: string
+      tags:
+        type: string
+    type: object
+  internal_module_achievement_presentation_http.ListAchievementsResponse:
+    properties:
+      achievements:
+        items:
+          $ref: '#/definitions/internal_module_achievement_presentation_http.GetAchievementOneResponse'
+        type: array
+      pagination:
+        $ref: '#/definitions/github_com_not-platform_internal_module_shared_valueobject.PaginationResponse'
+    type: object
+  internal_module_drops_presentation_drops_http.CreateDropRequest:
+    properties:
+      app_id:
+        type: integer
+      available_at:
+        type: string
+      description:
+        type: string
+      finished_at:
+        type: string
+      item_def_ids:
+        type: string
+      random_pick:
+        type: boolean
+      whitelist:
+        type: boolean
+      whitelist_user_ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  internal_module_drops_presentation_drops_http.CreateDropResponse:
+    properties:
+      drop_id:
+        type: string
+    type: object
+  internal_module_drops_presentation_drops_http.WhitelistDropUserRequest:
+    properties:
+      user_ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  internal_module_registry_presentation_achievement_http.ListAchievementDefResponse:
+    properties:
+      pagination:
+        $ref: '#/definitions/github_com_not-platform_internal_module_shared_valueobject.PaginationResponse'
+      results:
+        items:
+          $ref: '#/definitions/internal_module_registry_presentation_achievement_http.achievementDefOneResponse'
+        type: array
+    type: object
+  internal_module_registry_presentation_achievement_http.achievementDefOneResponse:
+    properties:
+      achievement_def_id:
+        type: string
+      app_id:
+        type: integer
+      description:
+        type: string
+      display_type:
+        type: string
+      hidden:
+        type: boolean
+      icon_url:
+        type: string
+      name:
+        type: string
+      tags:
+        type: string
+    type: object
+  internal_module_registry_presentation_achievement_http.createRequest:
+    properties:
+      achievement_def_id:
+        type: string
+      app_id:
+        type: integer
+      description:
+        type: string
+      display_type:
+        type: string
+      hidden:
+        type: boolean
+      icon_url:
+        type: string
+      name:
+        type: string
+      tags:
+        type: string
+    type: object
+  internal_module_registry_presentation_achievement_http.updateRequest:
+    properties:
+      app_id:
+        type: integer
+      description:
+        type: string
+      display_type:
+        type: string
+      hidden:
+        type: boolean
+      icon_url:
+        type: string
+      name:
+        type: string
+      tags:
+        type: string
+    type: object
+  internal_module_registry_presentation_item_http.createRequest:
+    properties:
+      app_files:
+        type: string
+      app_id:
+        type: integer
+      bundle:
+        type: string
+      collection:
+        type: string
+      description:
+        type: string
+      display_type:
+        type: string
+      exchange:
+        type: string
+      game_only:
+        type: boolean
+      hidden:
+        type: boolean
+      icon_url:
+        type: string
+      item_def_id:
+        type: string
+      marketable:
+        type: boolean
+      max_supply:
+        type: integer
+      name:
+        type: string
+      price:
+        type: string
+      promo:
+        type: string
+      rarity:
+        type: integer
+      store_hidden:
+        type: boolean
+      store_images:
+        type: string
+      store_tags:
+        type: string
+      tags:
+        type: string
+      tradable:
+        type: boolean
+      type:
+        type: string
+    type: object
+  internal_module_registry_presentation_item_http.updateRequest:
+    properties:
+      app_files:
+        type: string
+      app_id:
+        type: integer
+      bundle:
+        type: string
+      collection:
+        type: string
+      description:
+        type: string
+      display_type:
+        type: string
+      exchange:
+        type: string
+      game_only:
+        type: boolean
+      hidden:
+        type: boolean
+      icon_url:
+        type: string
+      marketable:
+        type: boolean
+      max_supply:
+        type: integer
+      name:
+        type: string
+      price:
+        type: string
+      promo:
+        type: string
+      store_hidden:
+        type: boolean
+      store_images:
+        type: string
+      store_tags:
+        type: string
+      tradable:
+        type: boolean
+    type: object
+  internal_module_squads_presentation_squads_http.GetSquadOneResponse:
+    properties:
+      avatar:
+        type: string
+      chat_id:
+        type: integer
+      id:
+        type: integer
+      members_amount:
+        type: integer
+      name:
+        type: string
+      slug:
+        type: string
+    type: object
+  internal_module_squads_presentation_squads_http.ListSquadsResponse:
+    properties:
+      squads:
+        items:
+          $ref: '#/definitions/internal_module_squads_presentation_squads_http.GetSquadOneResponse'
+        type: array
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Swagger for Not Platform
+  version: "3.0"
+paths:
+  /achievements:
+    get:
+      parameters:
+      - description: app id
+        in: query
+        name: app_id
+        required: true
+        type: string
+      - description: limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/internal_module_achievement_presentation_http.ListAchievementsResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List achievements
+      tags:
+      - Achievements
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_module_achievement_presentation_http.CreateAchievementsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/internal_module_achievement_presentation_http.CreateAchievementsResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Create achievement
+      tags:
+      - Achievements
+  /achievements/{id}:
+    get:
+      parameters:
+      - description: achievement id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/internal_module_achievement_presentation_http.GetAchievementOneResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Get achievement
+      tags:
+      - Achievements
+  /auth/generate:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_not-platform_internal_module_auth_presentation_authorization_http_model.AuthGenerateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_auth_presentation_authorization_http_model.AuthGenerateResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      security: []
+      summary: Generate new auth
+      tags:
+      - Auth
+  /drops:
+    post:
+      consumes:
+      - application/json
+      description: Create a new drop. App ID must be provided in authorization token
+      parameters:
+      - description: Create Drop Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_module_drops_presentation_drops_http.CreateDropRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/internal_module_drops_presentation_drops_http.CreateDropResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Create a new drop
+      tags:
+      - Drops
+  /drops/{id}:
+    get:
+      description: Check user eligibility for a drop. Account ID must be provided
+        in authorization token. This only used for game to know if user can claim
+        drop.
+      parameters:
+      - description: Drop ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Check user eligibility for a drop
+      tags:
+      - Drops
+  /drops/{id}/whitelist:
+    post:
+      parameters:
+      - description: Drop ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Whitelist Drop User Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_module_drops_presentation_drops_http.WhitelistDropUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Whitelist users for a drop
+      tags:
+      - Drops
+  /inventory/items:
+    get:
+      parameters:
+      - description: limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ListItemsResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List items
+      tags:
+      - Inventory
+  /inventory/items/{item_id}:
+    get:
+      parameters:
+      - description: item id (uuid)
+        in: path
+        name: item_id
+        required: true
+        type: string
+      - description: app id
+        in: query
+        name: app_id
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.InventoryItemResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Get item
+      tags:
+      - Inventory
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: item id (uuid)
+        in: path
+        name: item_id
+        required: true
+        type: string
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.UpdateItemRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Update item
+      tags:
+      - Inventory
+  /inventory/items/{item_id}/consume:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: item id (uuid)
+        in: path
+        name: item_id
+        required: true
+        type: string
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ConsumeItemRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Consume item
+      tags:
+      - Inventory
+  /inventory/items/{item_id}/transfer:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: item id (uuid)
+        in: path
+        name: item_id
+        required: true
+        type: string
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.TransferItemRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Transfer item to another account
+      tags:
+      - Inventory
+  /inventory/items/{item_id}/transfer-preflight:
+    post:
+      parameters:
+      - description: item id (uuid)
+        in: path
+        name: item_id
+        required: true
+        type: string
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.TransferItemRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.TransferItemPreflightResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Check transfer item possibility to another account
+      tags:
+      - Inventory
+  /inventory/items/generate:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.GenerateItemRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Generate item
+      tags:
+      - Inventory
+  /inventory/items/unpack:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.UnpackItemRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  items:
+                    type: string
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Unpack item
+      tags:
+      - Inventory
+  /profile/{account_id}:
+    get:
+      parameters:
+      - description: account id
+        in: path
+        name: account_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_profile_presentation_http_model.AccountResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Get account
+      tags:
+      - Profile
+  /registry/achievements:
+    get:
+      parameters:
+      - description: limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/internal_module_registry_presentation_achievement_http.ListAchievementDefResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List achievement-def
+      tags:
+      - Registry
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_module_registry_presentation_achievement_http.createRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Create achievement-def
+      tags:
+      - Registry
+  /registry/achievements/{achievement_def_id}:
+    delete:
+      parameters:
+      - description: achievement_def_id
+        in: path
+        name: achievement_def_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Delete achievement-def
+      tags:
+      - Registry
+    get:
+      parameters:
+      - description: achievement_def_id
+        in: path
+        name: achievement_def_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/internal_module_registry_presentation_achievement_http.achievementDefOneResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Get achievement-def
+      tags:
+      - Registry
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: achievement_def_id
+        in: path
+        name: achievement_def_id
+        required: true
+        type: string
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_module_registry_presentation_achievement_http.updateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Update achievement-def
+      tags:
+      - Registry
+  /registry/apps:
+    get:
+      parameters:
+      - description: limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/http.ListAppResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List apps
+      tags:
+      - Registry
+  /registry/items:
+    get:
+      parameters:
+      - description: limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_registry_presentation_item_http_model.ListItemDefResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List item-def
+      tags:
+      - Registry
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_module_registry_presentation_item_http.createRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Create item-def
+      tags:
+      - Registry
+  /registry/items/{item_def_id}:
+    delete:
+      parameters:
+      - description: item_def_id
+        in: path
+        name: item_def_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Delete item-def
+      tags:
+      - Registry
+    get:
+      parameters:
+      - description: item_def_id
+        in: path
+        name: item_def_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_registry_presentation_item_http_model.ItemDefResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Get item-def
+      tags:
+      - Registry
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: item_def_id
+        in: path
+        name: item_def_id
+        required: true
+        type: string
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_module_registry_presentation_item_http.updateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Update item-def
+      tags:
+      - Registry
+  /squads:
+    get:
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      - description: Slug
+        in: query
+        name: slug
+        type: string
+      - description: Sort
+        in: query
+        name: sort
+        type: string
+      - description: Min members amount
+        in: query
+        name: min_members_amount
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/internal_module_squads_presentation_squads_http.ListSquadsResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List squads
+      tags:
+      - Squads
+  /squads/{id}:
+    get:
+      parameters:
+      - description: Squad ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/internal_module_squads_presentation_squads_http.GetSquadOneResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Get squad by id
+      tags:
+      - Squads
+schemes:
+- http
+security:
+- JWT: []
+securityDefinitions:
+  JWT:
+    description: Bearer token
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

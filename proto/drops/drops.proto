@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package drops.v1;
+
+option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/drops";
+
+service DropsService {
+    rpc CreateDrop(CreateDropRequest) returns (CreateDropResponse) {}
+    rpc CheckEligibility(CheckEligibilityRequest) returns (CheckEligibilityResponse) {}
+    rpc WhitelistDropUser(WhitelistDropUserRequest) returns (WhitelistDropUserResponse) {}
+}
+
+message CreateDropRequest {
+    string description = 1;
+    string item_def_ids = 2;
+    bool whitelist = 3;
+    bool random_pick = 4;
+    google.protobuf.Timestamp available_at = 5;
+    google.protobuf.Timestamp finished_at = 6;
+    repeated int64 whitelist_user_ids = 7;
+}
+
+message CreateDropResponse {
+    string drop_id = 1;
+}
+
+message CheckEligibilityRequest {
+    string drop_id = 1;
+}
+
+message CheckEligibilityResponse {
+    string status = 1;
+}
+
+message WhitelistDropUserRequest {
+    string drop_id = 1;
+    repeated int64 user_ids = 2;
+}
+
+message WhitelistDropUserResponse {
+    string status = 1;
+}
