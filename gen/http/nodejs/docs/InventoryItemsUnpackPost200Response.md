@@ -1,0 +1,24 @@
+# InventoryItemsUnpackPost200Response
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**data** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
+**error_code** | **string** |  | [optional] [default to undefined]
+**ok** | **boolean** |  | [optional] [default to undefined]
+
+## Example
+
+```typescript
+import { InventoryItemsUnpackPost200Response } from 'not-games-sdk-public';
+
+const instance: InventoryItemsUnpackPost200Response = {
+    data,
+    error_code,
+    ok,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
