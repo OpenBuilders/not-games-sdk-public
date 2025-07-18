@@ -6070,16 +6070,18 @@ proto.inventory.v1.AckStreamMessagesResponse.prototype.setStatus = function(valu
  * @enum {number}
  */
 proto.inventory.v1.StreamItemOpType = {
-  STREAM_ITEM_OP_TYPE_CREATED: 0,
-  STREAM_ITEM_OP_TYPE_BURNED: 1
+  STREAM_ITEM_OP_TYPE_UNKNOWN: 0,
+  STREAM_ITEM_OP_TYPE_CREATED: 1,
+  STREAM_ITEM_OP_TYPE_BURNED: 2
 };
 
 /**
  * @enum {number}
  */
 proto.inventory.v1.StreamType = {
-  STREAM_TYPE_TRANSFER_ITEM: 0,
-  STREAM_TYPE_ITEM: 1
+  STREAM_TYPE_UNKNOWN: 0,
+  STREAM_TYPE_ITEM: 1,
+  STREAM_TYPE_TRANSFER_ITEM: 2
 };
 
 goog.object.extend(exports, proto.inventory.v1);

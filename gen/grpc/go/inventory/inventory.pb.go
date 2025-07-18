@@ -25,19 +25,22 @@ const (
 type StreamItemOpType int32
 
 const (
-	StreamItemOpType_STREAM_ITEM_OP_TYPE_CREATED StreamItemOpType = 0
-	StreamItemOpType_STREAM_ITEM_OP_TYPE_BURNED  StreamItemOpType = 1
+	StreamItemOpType_STREAM_ITEM_OP_TYPE_UNKNOWN StreamItemOpType = 0
+	StreamItemOpType_STREAM_ITEM_OP_TYPE_CREATED StreamItemOpType = 1
+	StreamItemOpType_STREAM_ITEM_OP_TYPE_BURNED  StreamItemOpType = 2
 )
 
 // Enum value maps for StreamItemOpType.
 var (
 	StreamItemOpType_name = map[int32]string{
-		0: "STREAM_ITEM_OP_TYPE_CREATED",
-		1: "STREAM_ITEM_OP_TYPE_BURNED",
+		0: "STREAM_ITEM_OP_TYPE_UNKNOWN",
+		1: "STREAM_ITEM_OP_TYPE_CREATED",
+		2: "STREAM_ITEM_OP_TYPE_BURNED",
 	}
 	StreamItemOpType_value = map[string]int32{
-		"STREAM_ITEM_OP_TYPE_CREATED": 0,
-		"STREAM_ITEM_OP_TYPE_BURNED":  1,
+		"STREAM_ITEM_OP_TYPE_UNKNOWN": 0,
+		"STREAM_ITEM_OP_TYPE_CREATED": 1,
+		"STREAM_ITEM_OP_TYPE_BURNED":  2,
 	}
 )
 
@@ -71,19 +74,22 @@ func (StreamItemOpType) EnumDescriptor() ([]byte, []int) {
 type StreamType int32
 
 const (
-	StreamType_STREAM_TYPE_TRANSFER_ITEM StreamType = 0
+	StreamType_STREAM_TYPE_UNKNOWN       StreamType = 0
 	StreamType_STREAM_TYPE_ITEM          StreamType = 1
+	StreamType_STREAM_TYPE_TRANSFER_ITEM StreamType = 2
 )
 
 // Enum value maps for StreamType.
 var (
 	StreamType_name = map[int32]string{
-		0: "STREAM_TYPE_TRANSFER_ITEM",
+		0: "STREAM_TYPE_UNKNOWN",
 		1: "STREAM_TYPE_ITEM",
+		2: "STREAM_TYPE_TRANSFER_ITEM",
 	}
 	StreamType_value = map[string]int32{
-		"STREAM_TYPE_TRANSFER_ITEM": 0,
+		"STREAM_TYPE_UNKNOWN":       0,
 		"STREAM_TYPE_ITEM":          1,
+		"STREAM_TYPE_TRANSFER_ITEM": 2,
 	}
 )
 
@@ -1423,7 +1429,7 @@ func (x *StreamItemResponse) GetType() StreamItemOpType {
 	if x != nil {
 		return x.Type
 	}
-	return StreamItemOpType_STREAM_ITEM_OP_TYPE_CREATED
+	return StreamItemOpType_STREAM_ITEM_OP_TYPE_UNKNOWN
 }
 
 type AddGroupRequest struct {
@@ -1467,7 +1473,7 @@ func (x *AddGroupRequest) GetType() StreamType {
 	if x != nil {
 		return x.Type
 	}
-	return StreamType_STREAM_TYPE_TRANSFER_ITEM
+	return StreamType_STREAM_TYPE_UNKNOWN
 }
 
 type AddGroupResponse struct {
@@ -1653,7 +1659,7 @@ func (x *AckStreamMessagesRequest) GetType() StreamType {
 	if x != nil {
 		return x.Type
 	}
-	return StreamType_STREAM_TYPE_TRANSFER_ITEM
+	return StreamType_STREAM_TYPE_UNKNOWN
 }
 
 type AckStreamMessagesResponse struct {
@@ -1852,14 +1858,16 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\bmessages\x18\x01 \x03(\tR\bmessages\x12,\n" +
 	"\x04type\x18\x02 \x01(\x0e2\x18.inventory.v1.StreamTypeR\x04type\"3\n" +
 	"\x19AckStreamMessagesResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\bR\x06status*S\n" +
+	"\x06status\x18\x01 \x01(\bR\x06status*t\n" +
 	"\x10StreamItemOpType\x12\x1f\n" +
-	"\x1bSTREAM_ITEM_OP_TYPE_CREATED\x10\x00\x12\x1e\n" +
-	"\x1aSTREAM_ITEM_OP_TYPE_BURNED\x10\x01*A\n" +
+	"\x1bSTREAM_ITEM_OP_TYPE_UNKNOWN\x10\x00\x12\x1f\n" +
+	"\x1bSTREAM_ITEM_OP_TYPE_CREATED\x10\x01\x12\x1e\n" +
+	"\x1aSTREAM_ITEM_OP_TYPE_BURNED\x10\x02*Z\n" +
 	"\n" +
-	"StreamType\x12\x1d\n" +
-	"\x19STREAM_TYPE_TRANSFER_ITEM\x10\x00\x12\x14\n" +
-	"\x10STREAM_TYPE_ITEM\x10\x012\xa2\b\n" +
+	"StreamType\x12\x17\n" +
+	"\x13STREAM_TYPE_UNKNOWN\x10\x00\x12\x14\n" +
+	"\x10STREAM_TYPE_ITEM\x10\x01\x12\x1d\n" +
+	"\x19STREAM_TYPE_TRANSFER_ITEM\x10\x022\xa2\b\n" +
 	"\x10InventoryService\x12N\n" +
 	"\tListItems\x12\x1e.inventory.v1.ListItemsRequest\x1a\x1f.inventory.v1.ListItemsResponse\"\x00\x12=\n" +
 	"\aGetItem\x12\x1c.inventory.v1.GetItemRequest\x1a\x12.inventory.v1.Item\"\x00\x12T\n" +
