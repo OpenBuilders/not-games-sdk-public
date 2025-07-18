@@ -16,8 +16,10 @@ service InventoryService {
   rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse) {}
   rpc TransferItem(TransferItemRequest) returns (TransferItemResponse) {}
   rpc StreamItemTransfer(StreamItemTransfersRequest) returns (stream StreamItemTransfersResponse) {}
+  rpc StreamItem(StreamItemRequest) returns (stream StreamItemResponse) {}
   rpc AddGroup(AddGroupRequest) returns (AddGroupResponse) {}
-  rpc StreamAckMessages(StreamItemTransfersAckRequest) returns (StreamItemTransfersAckResponse) {}
+  rpc StreamAckMessages(StreamItemTransfersAckRequest) returns (StreamItemTransfersAckResponse) {} // deprecated
+  rpc AckStreamMessages(AckStreamMessagesRequest) returns (AckStreamMessagesResponse) {}
 }
 
 message Item {
@@ -45,6 +47,7 @@ message Item {
   int64 supply = 22;
   string default_tags = 23;
   common.v1.Rarity rarity = 24;
+  int64 issued = 25;
 }
 
 message GetItemRequest {
@@ -145,17 +148,50 @@ message StreamItemTransfersResponse {
   string message_id = 9;
 }
 
+enum StreamItemOpType {
+  STREAM_ITEM_OP_TYPE_CREATED = 0;
+  STREAM_ITEM_OP_TYPE_BURNED = 1;
+}
+
+message StreamItemRequest {
+  string consumer = 1;
+  int64 limit = 2;
+  bool ack_by_request = 3;
+}
+
+message StreamItemResponse {
+  Item item = 1;
+  StreamItemOpType type = 2;
+}
+
+enum StreamType {
+  STREAM_TYPE_TRANSFER_ITEM = 0;
+  STREAM_TYPE_ITEM = 1;
+}
+
 message AddGroupRequest {
+  StreamType type = 1;
 }
 
 message AddGroupResponse {
   string status = 1;
 }
 
+// deprecated
 message StreamItemTransfersAckRequest {
   repeated string messages = 1;
 }
 
+// deprecated
 message StreamItemTransfersAckResponse {
+  bool status = 1;
+}
+
+message AckStreamMessagesRequest {
+  repeated string messages = 1;
+  StreamType type = 2;
+}
+
+message AckStreamMessagesResponse {
   bool status = 1;
 }
