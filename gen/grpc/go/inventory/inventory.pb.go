@@ -22,6 +22,104 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type StreamItemOpType int32
+
+const (
+	StreamItemOpType_STREAM_ITEM_OP_TYPE_UNKNOWN StreamItemOpType = 0
+	StreamItemOpType_STREAM_ITEM_OP_TYPE_CREATED StreamItemOpType = 1
+	StreamItemOpType_STREAM_ITEM_OP_TYPE_BURNED  StreamItemOpType = 2
+)
+
+// Enum value maps for StreamItemOpType.
+var (
+	StreamItemOpType_name = map[int32]string{
+		0: "STREAM_ITEM_OP_TYPE_UNKNOWN",
+		1: "STREAM_ITEM_OP_TYPE_CREATED",
+		2: "STREAM_ITEM_OP_TYPE_BURNED",
+	}
+	StreamItemOpType_value = map[string]int32{
+		"STREAM_ITEM_OP_TYPE_UNKNOWN": 0,
+		"STREAM_ITEM_OP_TYPE_CREATED": 1,
+		"STREAM_ITEM_OP_TYPE_BURNED":  2,
+	}
+)
+
+func (x StreamItemOpType) Enum() *StreamItemOpType {
+	p := new(StreamItemOpType)
+	*p = x
+	return p
+}
+
+func (x StreamItemOpType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (StreamItemOpType) Descriptor() protoreflect.EnumDescriptor {
+	return file_inventory_inventory_proto_enumTypes[0].Descriptor()
+}
+
+func (StreamItemOpType) Type() protoreflect.EnumType {
+	return &file_inventory_inventory_proto_enumTypes[0]
+}
+
+func (x StreamItemOpType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use StreamItemOpType.Descriptor instead.
+func (StreamItemOpType) EnumDescriptor() ([]byte, []int) {
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{0}
+}
+
+type StreamType int32
+
+const (
+	StreamType_STREAM_TYPE_UNKNOWN       StreamType = 0
+	StreamType_STREAM_TYPE_ITEM          StreamType = 1
+	StreamType_STREAM_TYPE_TRANSFER_ITEM StreamType = 2
+)
+
+// Enum value maps for StreamType.
+var (
+	StreamType_name = map[int32]string{
+		0: "STREAM_TYPE_UNKNOWN",
+		1: "STREAM_TYPE_ITEM",
+		2: "STREAM_TYPE_TRANSFER_ITEM",
+	}
+	StreamType_value = map[string]int32{
+		"STREAM_TYPE_UNKNOWN":       0,
+		"STREAM_TYPE_ITEM":          1,
+		"STREAM_TYPE_TRANSFER_ITEM": 2,
+	}
+)
+
+func (x StreamType) Enum() *StreamType {
+	p := new(StreamType)
+	*p = x
+	return p
+}
+
+func (x StreamType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (StreamType) Descriptor() protoreflect.EnumDescriptor {
+	return file_inventory_inventory_proto_enumTypes[1].Descriptor()
+}
+
+func (StreamType) Type() protoreflect.EnumType {
+	return &file_inventory_inventory_proto_enumTypes[1]
+}
+
+func (x StreamType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use StreamType.Descriptor instead.
+func (StreamType) EnumDescriptor() ([]byte, []int) {
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{1}
+}
+
 type Item struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ItemDefId     string                 `protobuf:"bytes,1,opt,name=item_def_id,json=itemDefId,proto3" json:"item_def_id,omitempty"`
@@ -48,6 +146,7 @@ type Item struct {
 	Supply        int64                  `protobuf:"varint,22,opt,name=supply,proto3" json:"supply,omitempty"`
 	DefaultTags   string                 `protobuf:"bytes,23,opt,name=default_tags,json=defaultTags,proto3" json:"default_tags,omitempty"`
 	Rarity        common.Rarity          `protobuf:"varint,24,opt,name=rarity,proto3,enum=common.v1.Rarity" json:"rarity,omitempty"`
+	Issued        int64                  `protobuf:"varint,25,opt,name=issued,proto3" json:"issued,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -248,6 +347,13 @@ func (x *Item) GetRarity() common.Rarity {
 		return x.Rarity
 	}
 	return common.Rarity(0)
+}
+
+func (x *Item) GetIssued() int64 {
+	if x != nil {
+		return x.Issued
+	}
+	return 0
 }
 
 type GetItemRequest struct {
@@ -1214,15 +1320,128 @@ func (x *StreamItemTransfersResponse) GetMessageId() string {
 	return ""
 }
 
+type StreamItemRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Consumer      string                 `protobuf:"bytes,1,opt,name=consumer,proto3" json:"consumer,omitempty"`
+	Limit         int64                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
+	AckByRequest  bool                   `protobuf:"varint,3,opt,name=ack_by_request,json=ackByRequest,proto3" json:"ack_by_request,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StreamItemRequest) Reset() {
+	*x = StreamItemRequest{}
+	mi := &file_inventory_inventory_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StreamItemRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StreamItemRequest) ProtoMessage() {}
+
+func (x *StreamItemRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_inventory_inventory_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StreamItemRequest.ProtoReflect.Descriptor instead.
+func (*StreamItemRequest) Descriptor() ([]byte, []int) {
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *StreamItemRequest) GetConsumer() string {
+	if x != nil {
+		return x.Consumer
+	}
+	return ""
+}
+
+func (x *StreamItemRequest) GetLimit() int64 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *StreamItemRequest) GetAckByRequest() bool {
+	if x != nil {
+		return x.AckByRequest
+	}
+	return false
+}
+
+type StreamItemResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Item          *Item                  `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
+	Type          StreamItemOpType       `protobuf:"varint,2,opt,name=type,proto3,enum=inventory.v1.StreamItemOpType" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StreamItemResponse) Reset() {
+	*x = StreamItemResponse{}
+	mi := &file_inventory_inventory_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StreamItemResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StreamItemResponse) ProtoMessage() {}
+
+func (x *StreamItemResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_inventory_inventory_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StreamItemResponse.ProtoReflect.Descriptor instead.
+func (*StreamItemResponse) Descriptor() ([]byte, []int) {
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *StreamItemResponse) GetItem() *Item {
+	if x != nil {
+		return x.Item
+	}
+	return nil
+}
+
+func (x *StreamItemResponse) GetType() StreamItemOpType {
+	if x != nil {
+		return x.Type
+	}
+	return StreamItemOpType_STREAM_ITEM_OP_TYPE_UNKNOWN
+}
+
 type AddGroupRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Type          StreamType             `protobuf:"varint,1,opt,name=type,proto3,enum=inventory.v1.StreamType" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *AddGroupRequest) Reset() {
 	*x = AddGroupRequest{}
-	mi := &file_inventory_inventory_proto_msgTypes[16]
+	mi := &file_inventory_inventory_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1234,7 +1453,7 @@ func (x *AddGroupRequest) String() string {
 func (*AddGroupRequest) ProtoMessage() {}
 
 func (x *AddGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[16]
+	mi := &file_inventory_inventory_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1247,7 +1466,14 @@ func (x *AddGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddGroupRequest.ProtoReflect.Descriptor instead.
 func (*AddGroupRequest) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{16}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *AddGroupRequest) GetType() StreamType {
+	if x != nil {
+		return x.Type
+	}
+	return StreamType_STREAM_TYPE_UNKNOWN
 }
 
 type AddGroupResponse struct {
@@ -1259,7 +1485,7 @@ type AddGroupResponse struct {
 
 func (x *AddGroupResponse) Reset() {
 	*x = AddGroupResponse{}
-	mi := &file_inventory_inventory_proto_msgTypes[17]
+	mi := &file_inventory_inventory_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1271,7 +1497,7 @@ func (x *AddGroupResponse) String() string {
 func (*AddGroupResponse) ProtoMessage() {}
 
 func (x *AddGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[17]
+	mi := &file_inventory_inventory_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1284,7 +1510,7 @@ func (x *AddGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddGroupResponse.ProtoReflect.Descriptor instead.
 func (*AddGroupResponse) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{17}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *AddGroupResponse) GetStatus() string {
@@ -1294,6 +1520,7 @@ func (x *AddGroupResponse) GetStatus() string {
 	return ""
 }
 
+// deprecated
 type StreamItemTransfersAckRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Messages      []string               `protobuf:"bytes,1,rep,name=messages,proto3" json:"messages,omitempty"`
@@ -1303,7 +1530,7 @@ type StreamItemTransfersAckRequest struct {
 
 func (x *StreamItemTransfersAckRequest) Reset() {
 	*x = StreamItemTransfersAckRequest{}
-	mi := &file_inventory_inventory_proto_msgTypes[18]
+	mi := &file_inventory_inventory_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1315,7 +1542,7 @@ func (x *StreamItemTransfersAckRequest) String() string {
 func (*StreamItemTransfersAckRequest) ProtoMessage() {}
 
 func (x *StreamItemTransfersAckRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[18]
+	mi := &file_inventory_inventory_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1328,7 +1555,7 @@ func (x *StreamItemTransfersAckRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StreamItemTransfersAckRequest.ProtoReflect.Descriptor instead.
 func (*StreamItemTransfersAckRequest) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{18}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *StreamItemTransfersAckRequest) GetMessages() []string {
@@ -1338,6 +1565,7 @@ func (x *StreamItemTransfersAckRequest) GetMessages() []string {
 	return nil
 }
 
+// deprecated
 type StreamItemTransfersAckResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Status        bool                   `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
@@ -1347,7 +1575,7 @@ type StreamItemTransfersAckResponse struct {
 
 func (x *StreamItemTransfersAckResponse) Reset() {
 	*x = StreamItemTransfersAckResponse{}
-	mi := &file_inventory_inventory_proto_msgTypes[19]
+	mi := &file_inventory_inventory_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1359,7 +1587,7 @@ func (x *StreamItemTransfersAckResponse) String() string {
 func (*StreamItemTransfersAckResponse) ProtoMessage() {}
 
 func (x *StreamItemTransfersAckResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[19]
+	mi := &file_inventory_inventory_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1372,10 +1600,106 @@ func (x *StreamItemTransfersAckResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StreamItemTransfersAckResponse.ProtoReflect.Descriptor instead.
 func (*StreamItemTransfersAckResponse) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{19}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *StreamItemTransfersAckResponse) GetStatus() bool {
+	if x != nil {
+		return x.Status
+	}
+	return false
+}
+
+type AckStreamMessagesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Messages      []string               `protobuf:"bytes,1,rep,name=messages,proto3" json:"messages,omitempty"`
+	Type          StreamType             `protobuf:"varint,2,opt,name=type,proto3,enum=inventory.v1.StreamType" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AckStreamMessagesRequest) Reset() {
+	*x = AckStreamMessagesRequest{}
+	mi := &file_inventory_inventory_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AckStreamMessagesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AckStreamMessagesRequest) ProtoMessage() {}
+
+func (x *AckStreamMessagesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_inventory_inventory_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AckStreamMessagesRequest.ProtoReflect.Descriptor instead.
+func (*AckStreamMessagesRequest) Descriptor() ([]byte, []int) {
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *AckStreamMessagesRequest) GetMessages() []string {
+	if x != nil {
+		return x.Messages
+	}
+	return nil
+}
+
+func (x *AckStreamMessagesRequest) GetType() StreamType {
+	if x != nil {
+		return x.Type
+	}
+	return StreamType_STREAM_TYPE_UNKNOWN
+}
+
+type AckStreamMessagesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        bool                   `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AckStreamMessagesResponse) Reset() {
+	*x = AckStreamMessagesResponse{}
+	mi := &file_inventory_inventory_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AckStreamMessagesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AckStreamMessagesResponse) ProtoMessage() {}
+
+func (x *AckStreamMessagesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_inventory_inventory_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AckStreamMessagesResponse.ProtoReflect.Descriptor instead.
+func (*AckStreamMessagesResponse) Descriptor() ([]byte, []int) {
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *AckStreamMessagesResponse) GetStatus() bool {
 	if x != nil {
 		return x.Status
 	}
@@ -1386,7 +1710,7 @@ var File_inventory_inventory_proto protoreflect.FileDescriptor
 
 const file_inventory_inventory_proto_rawDesc = "" +
 	"\n" +
-	"\x19inventory/inventory.proto\x12\finventory.v1\x1a\x17common/pagination.proto\x1a\x13common/rarity.proto\"\xb2\x05\n" +
+	"\x19inventory/inventory.proto\x12\finventory.v1\x1a\x17common/pagination.proto\x1a\x13common/rarity.proto\"\xca\x05\n" +
 	"\x04Item\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\x12\x1d\n" +
 	"\n" +
@@ -1419,7 +1743,8 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\x06serial\x18\x15 \x01(\x03R\x06serial\x12\x16\n" +
 	"\x06supply\x18\x16 \x01(\x03R\x06supply\x12!\n" +
 	"\fdefault_tags\x18\x17 \x01(\tR\vdefaultTags\x12)\n" +
-	"\x06rarity\x18\x18 \x01(\x0e2\x11.common.v1.RarityR\x06rarity\"@\n" +
+	"\x06rarity\x18\x18 \x01(\x0e2\x11.common.v1.RarityR\x06rarity\x12\x16\n" +
+	"\x06issued\x18\x19 \x01(\x03R\x06issued\"@\n" +
 	"\x0eGetItemRequest\x12\x17\n" +
 	"\aitem_id\x18\x01 \x01(\tR\x06itemId\x12\x15\n" +
 	"\x06app_id\x18\x02 \x01(\x03R\x05appId\"\xfe\x04\n" +
@@ -1513,14 +1838,36 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\vitem_def_id\x18\a \x01(\tR\titemDefId\x12!\n" +
 	"\fdefault_tags\x18\b \x01(\tR\vdefaultTags\x12\x1d\n" +
 	"\n" +
-	"message_id\x18\t \x01(\tR\tmessageId\"\x11\n" +
-	"\x0fAddGroupRequest\"*\n" +
+	"message_id\x18\t \x01(\tR\tmessageId\"k\n" +
+	"\x11StreamItemRequest\x12\x1a\n" +
+	"\bconsumer\x18\x01 \x01(\tR\bconsumer\x12\x14\n" +
+	"\x05limit\x18\x02 \x01(\x03R\x05limit\x12$\n" +
+	"\x0eack_by_request\x18\x03 \x01(\bR\fackByRequest\"p\n" +
+	"\x12StreamItemResponse\x12&\n" +
+	"\x04item\x18\x01 \x01(\v2\x12.inventory.v1.ItemR\x04item\x122\n" +
+	"\x04type\x18\x02 \x01(\x0e2\x1e.inventory.v1.StreamItemOpTypeR\x04type\"?\n" +
+	"\x0fAddGroupRequest\x12,\n" +
+	"\x04type\x18\x01 \x01(\x0e2\x18.inventory.v1.StreamTypeR\x04type\"*\n" +
 	"\x10AddGroupResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\";\n" +
 	"\x1dStreamItemTransfersAckRequest\x12\x1a\n" +
 	"\bmessages\x18\x01 \x03(\tR\bmessages\"8\n" +
 	"\x1eStreamItemTransfersAckResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\bR\x06status2\xe5\x06\n" +
+	"\x06status\x18\x01 \x01(\bR\x06status\"d\n" +
+	"\x18AckStreamMessagesRequest\x12\x1a\n" +
+	"\bmessages\x18\x01 \x03(\tR\bmessages\x12,\n" +
+	"\x04type\x18\x02 \x01(\x0e2\x18.inventory.v1.StreamTypeR\x04type\"3\n" +
+	"\x19AckStreamMessagesResponse\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\bR\x06status*t\n" +
+	"\x10StreamItemOpType\x12\x1f\n" +
+	"\x1bSTREAM_ITEM_OP_TYPE_UNKNOWN\x10\x00\x12\x1f\n" +
+	"\x1bSTREAM_ITEM_OP_TYPE_CREATED\x10\x01\x12\x1e\n" +
+	"\x1aSTREAM_ITEM_OP_TYPE_BURNED\x10\x02*Z\n" +
+	"\n" +
+	"StreamType\x12\x17\n" +
+	"\x13STREAM_TYPE_UNKNOWN\x10\x00\x12\x14\n" +
+	"\x10STREAM_TYPE_ITEM\x10\x01\x12\x1d\n" +
+	"\x19STREAM_TYPE_TRANSFER_ITEM\x10\x022\xa2\b\n" +
 	"\x10InventoryService\x12N\n" +
 	"\tListItems\x12\x1e.inventory.v1.ListItemsRequest\x1a\x1f.inventory.v1.ListItemsResponse\"\x00\x12=\n" +
 	"\aGetItem\x12\x1c.inventory.v1.GetItemRequest\x1a\x12.inventory.v1.Item\"\x00\x12T\n" +
@@ -1530,9 +1877,12 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\n" +
 	"UpdateItem\x12\x1f.inventory.v1.UpdateItemRequest\x1a .inventory.v1.UpdateItemResponse\"\x00\x12W\n" +
 	"\fTransferItem\x12!.inventory.v1.TransferItemRequest\x1a\".inventory.v1.TransferItemResponse\"\x00\x12m\n" +
-	"\x12StreamItemTransfer\x12(.inventory.v1.StreamItemTransfersRequest\x1a).inventory.v1.StreamItemTransfersResponse\"\x000\x01\x12K\n" +
+	"\x12StreamItemTransfer\x12(.inventory.v1.StreamItemTransfersRequest\x1a).inventory.v1.StreamItemTransfersResponse\"\x000\x01\x12S\n" +
+	"\n" +
+	"StreamItem\x12\x1f.inventory.v1.StreamItemRequest\x1a .inventory.v1.StreamItemResponse\"\x000\x01\x12K\n" +
 	"\bAddGroup\x12\x1d.inventory.v1.AddGroupRequest\x1a\x1e.inventory.v1.AddGroupResponse\"\x00\x12p\n" +
-	"\x11StreamAckMessages\x12+.inventory.v1.StreamItemTransfersAckRequest\x1a,.inventory.v1.StreamItemTransfersAckResponse\"\x00BDZBgithub.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/inventoryb\x06proto3"
+	"\x11StreamAckMessages\x12+.inventory.v1.StreamItemTransfersAckRequest\x1a,.inventory.v1.StreamItemTransfersAckResponse\"\x00\x12f\n" +
+	"\x11AckStreamMessages\x12&.inventory.v1.AckStreamMessagesRequest\x1a'.inventory.v1.AckStreamMessagesResponse\"\x00BDZBgithub.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/inventoryb\x06proto3"
 
 var (
 	file_inventory_inventory_proto_rawDescOnce sync.Once
@@ -1546,62 +1896,77 @@ func file_inventory_inventory_proto_rawDescGZIP() []byte {
 	return file_inventory_inventory_proto_rawDescData
 }
 
-var file_inventory_inventory_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_inventory_inventory_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_inventory_inventory_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_inventory_inventory_proto_goTypes = []any{
-	(*Item)(nil),                           // 0: inventory.v1.Item
-	(*GetItemRequest)(nil),                 // 1: inventory.v1.GetItemRequest
-	(*ListItemsRequest)(nil),               // 2: inventory.v1.ListItemsRequest
-	(*ListItemsResponse)(nil),              // 3: inventory.v1.ListItemsResponse
-	(*ConsumeItemRequest)(nil),             // 4: inventory.v1.ConsumeItemRequest
-	(*ConsumeItemResponse)(nil),            // 5: inventory.v1.ConsumeItemResponse
-	(*UnpackRequest)(nil),                  // 6: inventory.v1.UnpackRequest
-	(*UnpackResponse)(nil),                 // 7: inventory.v1.UnpackResponse
-	(*GenerateRequest)(nil),                // 8: inventory.v1.GenerateRequest
-	(*GenerateResponse)(nil),               // 9: inventory.v1.GenerateResponse
-	(*UpdateItemRequest)(nil),              // 10: inventory.v1.UpdateItemRequest
-	(*UpdateItemResponse)(nil),             // 11: inventory.v1.UpdateItemResponse
-	(*TransferItemRequest)(nil),            // 12: inventory.v1.TransferItemRequest
-	(*TransferItemResponse)(nil),           // 13: inventory.v1.TransferItemResponse
-	(*StreamItemTransfersRequest)(nil),     // 14: inventory.v1.StreamItemTransfersRequest
-	(*StreamItemTransfersResponse)(nil),    // 15: inventory.v1.StreamItemTransfersResponse
-	(*AddGroupRequest)(nil),                // 16: inventory.v1.AddGroupRequest
-	(*AddGroupResponse)(nil),               // 17: inventory.v1.AddGroupResponse
-	(*StreamItemTransfersAckRequest)(nil),  // 18: inventory.v1.StreamItemTransfersAckRequest
-	(*StreamItemTransfersAckResponse)(nil), // 19: inventory.v1.StreamItemTransfersAckResponse
-	(common.Rarity)(0),                     // 20: common.v1.Rarity
-	(*common.Pagination)(nil),              // 21: common.v1.Pagination
+	(StreamItemOpType)(0),                  // 0: inventory.v1.StreamItemOpType
+	(StreamType)(0),                        // 1: inventory.v1.StreamType
+	(*Item)(nil),                           // 2: inventory.v1.Item
+	(*GetItemRequest)(nil),                 // 3: inventory.v1.GetItemRequest
+	(*ListItemsRequest)(nil),               // 4: inventory.v1.ListItemsRequest
+	(*ListItemsResponse)(nil),              // 5: inventory.v1.ListItemsResponse
+	(*ConsumeItemRequest)(nil),             // 6: inventory.v1.ConsumeItemRequest
+	(*ConsumeItemResponse)(nil),            // 7: inventory.v1.ConsumeItemResponse
+	(*UnpackRequest)(nil),                  // 8: inventory.v1.UnpackRequest
+	(*UnpackResponse)(nil),                 // 9: inventory.v1.UnpackResponse
+	(*GenerateRequest)(nil),                // 10: inventory.v1.GenerateRequest
+	(*GenerateResponse)(nil),               // 11: inventory.v1.GenerateResponse
+	(*UpdateItemRequest)(nil),              // 12: inventory.v1.UpdateItemRequest
+	(*UpdateItemResponse)(nil),             // 13: inventory.v1.UpdateItemResponse
+	(*TransferItemRequest)(nil),            // 14: inventory.v1.TransferItemRequest
+	(*TransferItemResponse)(nil),           // 15: inventory.v1.TransferItemResponse
+	(*StreamItemTransfersRequest)(nil),     // 16: inventory.v1.StreamItemTransfersRequest
+	(*StreamItemTransfersResponse)(nil),    // 17: inventory.v1.StreamItemTransfersResponse
+	(*StreamItemRequest)(nil),              // 18: inventory.v1.StreamItemRequest
+	(*StreamItemResponse)(nil),             // 19: inventory.v1.StreamItemResponse
+	(*AddGroupRequest)(nil),                // 20: inventory.v1.AddGroupRequest
+	(*AddGroupResponse)(nil),               // 21: inventory.v1.AddGroupResponse
+	(*StreamItemTransfersAckRequest)(nil),  // 22: inventory.v1.StreamItemTransfersAckRequest
+	(*StreamItemTransfersAckResponse)(nil), // 23: inventory.v1.StreamItemTransfersAckResponse
+	(*AckStreamMessagesRequest)(nil),       // 24: inventory.v1.AckStreamMessagesRequest
+	(*AckStreamMessagesResponse)(nil),      // 25: inventory.v1.AckStreamMessagesResponse
+	(common.Rarity)(0),                     // 26: common.v1.Rarity
+	(*common.Pagination)(nil),              // 27: common.v1.Pagination
 }
 var file_inventory_inventory_proto_depIdxs = []int32{
-	20, // 0: inventory.v1.Item.rarity:type_name -> common.v1.Rarity
-	20, // 1: inventory.v1.ListItemsRequest.rarity:type_name -> common.v1.Rarity
-	0,  // 2: inventory.v1.ListItemsResponse.items:type_name -> inventory.v1.Item
-	21, // 3: inventory.v1.ListItemsResponse.pagination:type_name -> common.v1.Pagination
-	20, // 4: inventory.v1.UpdateItemRequest.rarity:type_name -> common.v1.Rarity
-	2,  // 5: inventory.v1.InventoryService.ListItems:input_type -> inventory.v1.ListItemsRequest
-	1,  // 6: inventory.v1.InventoryService.GetItem:input_type -> inventory.v1.GetItemRequest
-	4,  // 7: inventory.v1.InventoryService.ConsumeItem:input_type -> inventory.v1.ConsumeItemRequest
-	6,  // 8: inventory.v1.InventoryService.Unpack:input_type -> inventory.v1.UnpackRequest
-	8,  // 9: inventory.v1.InventoryService.Generate:input_type -> inventory.v1.GenerateRequest
-	10, // 10: inventory.v1.InventoryService.UpdateItem:input_type -> inventory.v1.UpdateItemRequest
-	12, // 11: inventory.v1.InventoryService.TransferItem:input_type -> inventory.v1.TransferItemRequest
-	14, // 12: inventory.v1.InventoryService.StreamItemTransfer:input_type -> inventory.v1.StreamItemTransfersRequest
-	16, // 13: inventory.v1.InventoryService.AddGroup:input_type -> inventory.v1.AddGroupRequest
-	18, // 14: inventory.v1.InventoryService.StreamAckMessages:input_type -> inventory.v1.StreamItemTransfersAckRequest
-	3,  // 15: inventory.v1.InventoryService.ListItems:output_type -> inventory.v1.ListItemsResponse
-	0,  // 16: inventory.v1.InventoryService.GetItem:output_type -> inventory.v1.Item
-	5,  // 17: inventory.v1.InventoryService.ConsumeItem:output_type -> inventory.v1.ConsumeItemResponse
-	7,  // 18: inventory.v1.InventoryService.Unpack:output_type -> inventory.v1.UnpackResponse
-	9,  // 19: inventory.v1.InventoryService.Generate:output_type -> inventory.v1.GenerateResponse
-	11, // 20: inventory.v1.InventoryService.UpdateItem:output_type -> inventory.v1.UpdateItemResponse
-	13, // 21: inventory.v1.InventoryService.TransferItem:output_type -> inventory.v1.TransferItemResponse
-	15, // 22: inventory.v1.InventoryService.StreamItemTransfer:output_type -> inventory.v1.StreamItemTransfersResponse
-	17, // 23: inventory.v1.InventoryService.AddGroup:output_type -> inventory.v1.AddGroupResponse
-	19, // 24: inventory.v1.InventoryService.StreamAckMessages:output_type -> inventory.v1.StreamItemTransfersAckResponse
-	15, // [15:25] is the sub-list for method output_type
-	5,  // [5:15] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	26, // 0: inventory.v1.Item.rarity:type_name -> common.v1.Rarity
+	26, // 1: inventory.v1.ListItemsRequest.rarity:type_name -> common.v1.Rarity
+	2,  // 2: inventory.v1.ListItemsResponse.items:type_name -> inventory.v1.Item
+	27, // 3: inventory.v1.ListItemsResponse.pagination:type_name -> common.v1.Pagination
+	26, // 4: inventory.v1.UpdateItemRequest.rarity:type_name -> common.v1.Rarity
+	2,  // 5: inventory.v1.StreamItemResponse.item:type_name -> inventory.v1.Item
+	0,  // 6: inventory.v1.StreamItemResponse.type:type_name -> inventory.v1.StreamItemOpType
+	1,  // 7: inventory.v1.AddGroupRequest.type:type_name -> inventory.v1.StreamType
+	1,  // 8: inventory.v1.AckStreamMessagesRequest.type:type_name -> inventory.v1.StreamType
+	4,  // 9: inventory.v1.InventoryService.ListItems:input_type -> inventory.v1.ListItemsRequest
+	3,  // 10: inventory.v1.InventoryService.GetItem:input_type -> inventory.v1.GetItemRequest
+	6,  // 11: inventory.v1.InventoryService.ConsumeItem:input_type -> inventory.v1.ConsumeItemRequest
+	8,  // 12: inventory.v1.InventoryService.Unpack:input_type -> inventory.v1.UnpackRequest
+	10, // 13: inventory.v1.InventoryService.Generate:input_type -> inventory.v1.GenerateRequest
+	12, // 14: inventory.v1.InventoryService.UpdateItem:input_type -> inventory.v1.UpdateItemRequest
+	14, // 15: inventory.v1.InventoryService.TransferItem:input_type -> inventory.v1.TransferItemRequest
+	16, // 16: inventory.v1.InventoryService.StreamItemTransfer:input_type -> inventory.v1.StreamItemTransfersRequest
+	18, // 17: inventory.v1.InventoryService.StreamItem:input_type -> inventory.v1.StreamItemRequest
+	20, // 18: inventory.v1.InventoryService.AddGroup:input_type -> inventory.v1.AddGroupRequest
+	22, // 19: inventory.v1.InventoryService.StreamAckMessages:input_type -> inventory.v1.StreamItemTransfersAckRequest
+	24, // 20: inventory.v1.InventoryService.AckStreamMessages:input_type -> inventory.v1.AckStreamMessagesRequest
+	5,  // 21: inventory.v1.InventoryService.ListItems:output_type -> inventory.v1.ListItemsResponse
+	2,  // 22: inventory.v1.InventoryService.GetItem:output_type -> inventory.v1.Item
+	7,  // 23: inventory.v1.InventoryService.ConsumeItem:output_type -> inventory.v1.ConsumeItemResponse
+	9,  // 24: inventory.v1.InventoryService.Unpack:output_type -> inventory.v1.UnpackResponse
+	11, // 25: inventory.v1.InventoryService.Generate:output_type -> inventory.v1.GenerateResponse
+	13, // 26: inventory.v1.InventoryService.UpdateItem:output_type -> inventory.v1.UpdateItemResponse
+	15, // 27: inventory.v1.InventoryService.TransferItem:output_type -> inventory.v1.TransferItemResponse
+	17, // 28: inventory.v1.InventoryService.StreamItemTransfer:output_type -> inventory.v1.StreamItemTransfersResponse
+	19, // 29: inventory.v1.InventoryService.StreamItem:output_type -> inventory.v1.StreamItemResponse
+	21, // 30: inventory.v1.InventoryService.AddGroup:output_type -> inventory.v1.AddGroupResponse
+	23, // 31: inventory.v1.InventoryService.StreamAckMessages:output_type -> inventory.v1.StreamItemTransfersAckResponse
+	25, // 32: inventory.v1.InventoryService.AckStreamMessages:output_type -> inventory.v1.AckStreamMessagesResponse
+	21, // [21:33] is the sub-list for method output_type
+	9,  // [9:21] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_inventory_inventory_proto_init() }
@@ -1616,13 +1981,14 @@ func file_inventory_inventory_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_inventory_inventory_proto_rawDesc), len(file_inventory_inventory_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   20,
+			NumEnums:      2,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_inventory_inventory_proto_goTypes,
 		DependencyIndexes: file_inventory_inventory_proto_depIdxs,
+		EnumInfos:         file_inventory_inventory_proto_enumTypes,
 		MessageInfos:      file_inventory_inventory_proto_msgTypes,
 	}.Build()
 	File_inventory_inventory_proto = out.File
