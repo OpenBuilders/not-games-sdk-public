@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -131,11 +130,4 @@ model_internal_module_registry_presentation_item_http_update_request.go
 model_internal_module_squads_presentation_squads_http_get_squad_one_response.go
 model_internal_module_squads_presentation_squads_http_list_squads_response.go
 response.go
-test/api_achievements_test.go
-test/api_auth_test.go
-test/api_drops_test.go
-test/api_inventory_test.go
-test/api_profile_test.go
-test/api_registry_test.go
-test/api_squads_test.go
 utils.go
