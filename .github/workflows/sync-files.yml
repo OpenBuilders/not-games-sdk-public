@@ -61,7 +61,7 @@ jobs:
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
           go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
-          sudo npm install -g protoc protoc-gen-grpc-web protoc-gen-js grpc-tools
+          sudo npm install -g protoc protoc-gen-grpc-web protoc-gen-js grpc-tools @protobuf-ts/plugin
           sudo rm -rf node_modules
 
       - name: Install OpenAPI Generator
