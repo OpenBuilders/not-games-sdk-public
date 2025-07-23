@@ -13,6 +13,10 @@ plugins:
   - local: protoc-gen-go-grpc
     out: gen/grpc/go
     opt: paths=source_relative
+  - local: protoc-gen-ts
+    out: gen/grpc/ts
+    opt:
+      - add_pb_suffix
 
 inputs:
   - directory: proto
