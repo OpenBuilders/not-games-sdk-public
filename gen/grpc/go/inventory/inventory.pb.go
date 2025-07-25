@@ -830,6 +830,7 @@ type GenerateRequest struct {
 	AccountId     int64                  `protobuf:"varint,2,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	AppId         int64                  `protobuf:"varint,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
 	Tags          string                 `protobuf:"bytes,4,opt,name=tags,proto3" json:"tags,omitempty"`
+	HoldTill      int64                  `protobuf:"varint,5,opt,name=hold_till,json=holdTill,proto3" json:"hold_till,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -892,6 +893,13 @@ func (x *GenerateRequest) GetTags() string {
 	return ""
 }
 
+func (x *GenerateRequest) GetHoldTill() int64 {
+	if x != nil {
+		return x.HoldTill
+	}
+	return 0
+}
+
 type GenerateResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ItemId        string                 `protobuf:"bytes,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
@@ -942,6 +950,7 @@ type UpdateItemRequest struct {
 	Tags          *string                `protobuf:"bytes,2,opt,name=tags,proto3,oneof" json:"tags,omitempty"`
 	AppMeta       *string                `protobuf:"bytes,3,opt,name=app_meta,json=appMeta,proto3,oneof" json:"app_meta,omitempty"`
 	Rarity        common.Rarity          `protobuf:"varint,4,opt,name=rarity,proto3,enum=common.v1.Rarity" json:"rarity,omitempty"`
+	HoldTill      *int64                 `protobuf:"varint,5,opt,name=hold_till,json=holdTill,proto3,oneof" json:"hold_till,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1002,6 +1011,13 @@ func (x *UpdateItemRequest) GetRarity() common.Rarity {
 		return x.Rarity
 	}
 	return common.Rarity(0)
+}
+
+func (x *UpdateItemRequest) GetHoldTill() int64 {
+	if x != nil && x.HoldTill != nil {
+		return *x.HoldTill
+	}
+	return 0
 }
 
 type UpdateItemResponse struct {
@@ -1798,22 +1814,26 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\x06app_id\x18\x03 \x01(\x03R\x05appId\x12\x12\n" +
 	"\x04tags\x18\x04 \x01(\tR\x04tags\"+\n" +
 	"\x0eUnpackResponse\x12\x19\n" +
-	"\bitem_ids\x18\x01 \x03(\tR\aitemIds\"{\n" +
+	"\bitem_ids\x18\x01 \x03(\tR\aitemIds\"\x98\x01\n" +
 	"\x0fGenerateRequest\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\x12\x1d\n" +
 	"\n" +
 	"account_id\x18\x02 \x01(\x03R\taccountId\x12\x15\n" +
 	"\x06app_id\x18\x03 \x01(\x03R\x05appId\x12\x12\n" +
-	"\x04tags\x18\x04 \x01(\tR\x04tags\"+\n" +
+	"\x04tags\x18\x04 \x01(\tR\x04tags\x12\x1b\n" +
+	"\thold_till\x18\x05 \x01(\x03R\bholdTill\"+\n" +
 	"\x10GenerateResponse\x12\x17\n" +
-	"\aitem_id\x18\x01 \x01(\tR\x06itemId\"\xa6\x01\n" +
+	"\aitem_id\x18\x01 \x01(\tR\x06itemId\"\xd6\x01\n" +
 	"\x11UpdateItemRequest\x12\x17\n" +
 	"\aitem_id\x18\x01 \x01(\tR\x06itemId\x12\x17\n" +
 	"\x04tags\x18\x02 \x01(\tH\x00R\x04tags\x88\x01\x01\x12\x1e\n" +
 	"\bapp_meta\x18\x03 \x01(\tH\x01R\aappMeta\x88\x01\x01\x12)\n" +
-	"\x06rarity\x18\x04 \x01(\x0e2\x11.common.v1.RarityR\x06rarityB\a\n" +
+	"\x06rarity\x18\x04 \x01(\x0e2\x11.common.v1.RarityR\x06rarity\x12 \n" +
+	"\thold_till\x18\x05 \x01(\x03H\x02R\bholdTill\x88\x01\x01B\a\n" +
 	"\x05_tagsB\v\n" +
-	"\t_app_meta\",\n" +
+	"\t_app_metaB\f\n" +
+	"\n" +
+	"_hold_till\",\n" +
 	"\x12UpdateItemResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"g\n" +
 	"\x13TransferItemRequest\x12\x17\n" +

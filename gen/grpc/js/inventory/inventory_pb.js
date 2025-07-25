@@ -3252,7 +3252,8 @@ proto.inventory.v1.GenerateRequest.toObject = function(includeInstance, msg) {
 itemDefId: jspb.Message.getFieldWithDefault(msg, 1, ""),
 accountId: jspb.Message.getFieldWithDefault(msg, 2, 0),
 appId: jspb.Message.getFieldWithDefault(msg, 3, 0),
-tags: jspb.Message.getFieldWithDefault(msg, 4, "")
+tags: jspb.Message.getFieldWithDefault(msg, 4, ""),
+holdTill: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -3304,6 +3305,10 @@ proto.inventory.v1.GenerateRequest.deserializeBinaryFromReader = function(msg, r
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setTags(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setHoldTill(value);
       break;
     default:
       reader.skipField();
@@ -3359,6 +3364,13 @@ proto.inventory.v1.GenerateRequest.serializeBinaryToWriter = function(message, w
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getHoldTill();
+  if (f !== 0) {
+    writer.writeInt64(
+      5,
       f
     );
   }
@@ -3434,6 +3446,24 @@ proto.inventory.v1.GenerateRequest.prototype.getTags = function() {
  */
 proto.inventory.v1.GenerateRequest.prototype.setTags = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional int64 hold_till = 5;
+ * @return {number}
+ */
+proto.inventory.v1.GenerateRequest.prototype.getHoldTill = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.setHoldTill = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
 };
 
 
@@ -3602,7 +3632,8 @@ proto.inventory.v1.UpdateItemRequest.toObject = function(includeInstance, msg) {
 itemId: jspb.Message.getFieldWithDefault(msg, 1, ""),
 tags: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f,
 appMeta: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
-rarity: jspb.Message.getFieldWithDefault(msg, 4, 0)
+rarity: jspb.Message.getFieldWithDefault(msg, 4, 0),
+holdTill: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -3654,6 +3685,10 @@ proto.inventory.v1.UpdateItemRequest.deserializeBinaryFromReader = function(msg,
     case 4:
       var value = /** @type {!proto.common.v1.Rarity} */ (reader.readEnum());
       msg.setRarity(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setHoldTill(value);
       break;
     default:
       reader.skipField();
@@ -3709,6 +3744,13 @@ proto.inventory.v1.UpdateItemRequest.serializeBinaryToWriter = function(message,
   if (f !== 0.0) {
     writer.writeEnum(
       4,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeInt64(
+      5,
       f
     );
   }
@@ -3820,6 +3862,42 @@ proto.inventory.v1.UpdateItemRequest.prototype.getRarity = function() {
  */
 proto.inventory.v1.UpdateItemRequest.prototype.setRarity = function(value) {
   return jspb.Message.setProto3EnumField(this, 4, value);
+};
+
+
+/**
+ * optional int64 hold_till = 5;
+ * @return {number}
+ */
+proto.inventory.v1.UpdateItemRequest.prototype.getHoldTill = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.inventory.v1.UpdateItemRequest} returns this
+ */
+proto.inventory.v1.UpdateItemRequest.prototype.setHoldTill = function(value) {
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.inventory.v1.UpdateItemRequest} returns this
+ */
+proto.inventory.v1.UpdateItemRequest.prototype.clearHoldTill = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.inventory.v1.UpdateItemRequest.prototype.hasHoldTill = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
