@@ -4,10 +4,14 @@
 import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
 import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
 import { InventoryService } from "./inventory_pb";
+import type { AckStreamMessagesResponse } from "./inventory_pb";
+import type { AckStreamMessagesRequest } from "./inventory_pb";
 import type { StreamItemTransfersAckResponse } from "./inventory_pb";
 import type { StreamItemTransfersAckRequest } from "./inventory_pb";
 import type { AddGroupResponse } from "./inventory_pb";
 import type { AddGroupRequest } from "./inventory_pb";
+import type { StreamItemResponse } from "./inventory_pb";
+import type { StreamItemRequest } from "./inventory_pb";
 import type { StreamItemTransfersResponse } from "./inventory_pb";
 import type { StreamItemTransfersRequest } from "./inventory_pb";
 import type { ServerStreamingCall } from "@protobuf-ts/runtime-rpc";
@@ -65,6 +69,10 @@ export interface IInventoryServiceClient {
      */
     streamItemTransfer(input: StreamItemTransfersRequest, options?: RpcOptions): ServerStreamingCall<StreamItemTransfersRequest, StreamItemTransfersResponse>;
     /**
+     * @generated from protobuf rpc: StreamItem
+     */
+    streamItem(input: StreamItemRequest, options?: RpcOptions): ServerStreamingCall<StreamItemRequest, StreamItemResponse>;
+    /**
      * @generated from protobuf rpc: AddGroup
      */
     addGroup(input: AddGroupRequest, options?: RpcOptions): UnaryCall<AddGroupRequest, AddGroupResponse>;
@@ -72,6 +80,10 @@ export interface IInventoryServiceClient {
      * @generated from protobuf rpc: StreamAckMessages
      */
     streamAckMessages(input: StreamItemTransfersAckRequest, options?: RpcOptions): UnaryCall<StreamItemTransfersAckRequest, StreamItemTransfersAckResponse>;
+    /**
+     * @generated from protobuf rpc: AckStreamMessages
+     */
+    ackStreamMessages(input: AckStreamMessagesRequest, options?: RpcOptions): UnaryCall<AckStreamMessagesRequest, AckStreamMessagesResponse>;
 }
 /**
  * @generated from protobuf service inventory.v1.InventoryService
@@ -139,17 +151,31 @@ export class InventoryServiceClient implements IInventoryServiceClient, ServiceI
         return stackIntercept<StreamItemTransfersRequest, StreamItemTransfersResponse>("serverStreaming", this._transport, method, opt, input);
     }
     /**
+     * @generated from protobuf rpc: StreamItem
+     */
+    streamItem(input: StreamItemRequest, options?: RpcOptions): ServerStreamingCall<StreamItemRequest, StreamItemResponse> {
+        const method = this.methods[8], opt = this._transport.mergeOptions(options);
+        return stackIntercept<StreamItemRequest, StreamItemResponse>("serverStreaming", this._transport, method, opt, input);
+    }
+    /**
      * @generated from protobuf rpc: AddGroup
      */
     addGroup(input: AddGroupRequest, options?: RpcOptions): UnaryCall<AddGroupRequest, AddGroupResponse> {
-        const method = this.methods[8], opt = this._transport.mergeOptions(options);
+        const method = this.methods[9], opt = this._transport.mergeOptions(options);
         return stackIntercept<AddGroupRequest, AddGroupResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: StreamAckMessages
      */
     streamAckMessages(input: StreamItemTransfersAckRequest, options?: RpcOptions): UnaryCall<StreamItemTransfersAckRequest, StreamItemTransfersAckResponse> {
-        const method = this.methods[9], opt = this._transport.mergeOptions(options);
+        const method = this.methods[10], opt = this._transport.mergeOptions(options);
         return stackIntercept<StreamItemTransfersAckRequest, StreamItemTransfersAckResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
+     * @generated from protobuf rpc: AckStreamMessages
+     */
+    ackStreamMessages(input: AckStreamMessagesRequest, options?: RpcOptions): UnaryCall<AckStreamMessagesRequest, AckStreamMessagesResponse> {
+        const method = this.methods[11], opt = this._transport.mergeOptions(options);
+        return stackIntercept<AckStreamMessagesRequest, AckStreamMessagesResponse>("unary", this._transport, method, opt, input);
     }
 }
