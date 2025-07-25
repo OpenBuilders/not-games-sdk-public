@@ -27,8 +27,10 @@ const (
 	InventoryService_UpdateItem_FullMethodName         = "/inventory.v1.InventoryService/UpdateItem"
 	InventoryService_TransferItem_FullMethodName       = "/inventory.v1.InventoryService/TransferItem"
 	InventoryService_StreamItemTransfer_FullMethodName = "/inventory.v1.InventoryService/StreamItemTransfer"
+	InventoryService_StreamItem_FullMethodName         = "/inventory.v1.InventoryService/StreamItem"
 	InventoryService_AddGroup_FullMethodName           = "/inventory.v1.InventoryService/AddGroup"
 	InventoryService_StreamAckMessages_FullMethodName  = "/inventory.v1.InventoryService/StreamAckMessages"
+	InventoryService_AckStreamMessages_FullMethodName  = "/inventory.v1.InventoryService/AckStreamMessages"
 )
 
 // InventoryServiceClient is the client API for InventoryService service.
@@ -43,8 +45,10 @@ type InventoryServiceClient interface {
 	UpdateItem(ctx context.Context, in *UpdateItemRequest, opts ...grpc.CallOption) (*UpdateItemResponse, error)
 	TransferItem(ctx context.Context, in *TransferItemRequest, opts ...grpc.CallOption) (*TransferItemResponse, error)
 	StreamItemTransfer(ctx context.Context, in *StreamItemTransfersRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[StreamItemTransfersResponse], error)
+	StreamItem(ctx context.Context, in *StreamItemRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[StreamItemResponse], error)
 	AddGroup(ctx context.Context, in *AddGroupRequest, opts ...grpc.CallOption) (*AddGroupResponse, error)
 	StreamAckMessages(ctx context.Context, in *StreamItemTransfersAckRequest, opts ...grpc.CallOption) (*StreamItemTransfersAckResponse, error)
+	AckStreamMessages(ctx context.Context, in *AckStreamMessagesRequest, opts ...grpc.CallOption) (*AckStreamMessagesResponse, error)
 }
 
 type inventoryServiceClient struct {
@@ -144,6 +148,25 @@ func (c *inventoryServiceClient) StreamItemTransfer(ctx context.Context, in *Str
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type InventoryService_StreamItemTransferClient = grpc.ServerStreamingClient[StreamItemTransfersResponse]
 
+func (c *inventoryServiceClient) StreamItem(ctx context.Context, in *StreamItemRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[StreamItemResponse], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &InventoryService_ServiceDesc.Streams[1], InventoryService_StreamItem_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[StreamItemRequest, StreamItemResponse]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type InventoryService_StreamItemClient = grpc.ServerStreamingClient[StreamItemResponse]
+
 func (c *inventoryServiceClient) AddGroup(ctx context.Context, in *AddGroupRequest, opts ...grpc.CallOption) (*AddGroupResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(AddGroupResponse)
@@ -164,6 +187,16 @@ func (c *inventoryServiceClient) StreamAckMessages(ctx context.Context, in *Stre
 	return out, nil
 }
 
+func (c *inventoryServiceClient) AckStreamMessages(ctx context.Context, in *AckStreamMessagesRequest, opts ...grpc.CallOption) (*AckStreamMessagesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AckStreamMessagesResponse)
+	err := c.cc.Invoke(ctx, InventoryService_AckStreamMessages_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // InventoryServiceServer is the server API for InventoryService service.
 // All implementations must embed UnimplementedInventoryServiceServer
 // for forward compatibility.
@@ -176,8 +209,10 @@ type InventoryServiceServer interface {
 	UpdateItem(context.Context, *UpdateItemRequest) (*UpdateItemResponse, error)
 	TransferItem(context.Context, *TransferItemRequest) (*TransferItemResponse, error)
 	StreamItemTransfer(*StreamItemTransfersRequest, grpc.ServerStreamingServer[StreamItemTransfersResponse]) error
+	StreamItem(*StreamItemRequest, grpc.ServerStreamingServer[StreamItemResponse]) error
 	AddGroup(context.Context, *AddGroupRequest) (*AddGroupResponse, error)
 	StreamAckMessages(context.Context, *StreamItemTransfersAckRequest) (*StreamItemTransfersAckResponse, error)
+	AckStreamMessages(context.Context, *AckStreamMessagesRequest) (*AckStreamMessagesResponse, error)
 	mustEmbedUnimplementedInventoryServiceServer()
 }
 
@@ -212,11 +247,17 @@ func (UnimplementedInventoryServiceServer) TransferItem(context.Context, *Transf
 func (UnimplementedInventoryServiceServer) StreamItemTransfer(*StreamItemTransfersRequest, grpc.ServerStreamingServer[StreamItemTransfersResponse]) error {
 	return status.Errorf(codes.Unimplemented, "method StreamItemTransfer not implemented")
 }
+func (UnimplementedInventoryServiceServer) StreamItem(*StreamItemRequest, grpc.ServerStreamingServer[StreamItemResponse]) error {
+	return status.Errorf(codes.Unimplemented, "method StreamItem not implemented")
+}
 func (UnimplementedInventoryServiceServer) AddGroup(context.Context, *AddGroupRequest) (*AddGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddGroup not implemented")
 }
 func (UnimplementedInventoryServiceServer) StreamAckMessages(context.Context, *StreamItemTransfersAckRequest) (*StreamItemTransfersAckResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StreamAckMessages not implemented")
+}
+func (UnimplementedInventoryServiceServer) AckStreamMessages(context.Context, *AckStreamMessagesRequest) (*AckStreamMessagesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AckStreamMessages not implemented")
 }
 func (UnimplementedInventoryServiceServer) mustEmbedUnimplementedInventoryServiceServer() {}
 func (UnimplementedInventoryServiceServer) testEmbeddedByValue()                          {}
@@ -376,6 +417,17 @@ func _InventoryService_StreamItemTransfer_Handler(srv interface{}, stream grpc.S
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type InventoryService_StreamItemTransferServer = grpc.ServerStreamingServer[StreamItemTransfersResponse]
 
+func _InventoryService_StreamItem_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(StreamItemRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(InventoryServiceServer).StreamItem(m, &grpc.GenericServerStream[StreamItemRequest, StreamItemResponse]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type InventoryService_StreamItemServer = grpc.ServerStreamingServer[StreamItemResponse]
+
 func _InventoryService_AddGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AddGroupRequest)
 	if err := dec(in); err != nil {
@@ -408,6 +460,24 @@ func _InventoryService_StreamAckMessages_Handler(srv interface{}, ctx context.Co
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(InventoryServiceServer).StreamAckMessages(ctx, req.(*StreamItemTransfersAckRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _InventoryService_AckStreamMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AckStreamMessagesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServiceServer).AckStreamMessages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InventoryService_AckStreamMessages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServiceServer).AckStreamMessages(ctx, req.(*AckStreamMessagesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -455,11 +525,20 @@ var InventoryService_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "StreamAckMessages",
 			Handler:    _InventoryService_StreamAckMessages_Handler,
 		},
+		{
+			MethodName: "AckStreamMessages",
+			Handler:    _InventoryService_AckStreamMessages_Handler,
+		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "StreamItemTransfer",
 			Handler:       _InventoryService_StreamItemTransfer_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "StreamItem",
+			Handler:       _InventoryService_StreamItem_Handler,
 			ServerStreams: true,
 		},
 	},
