@@ -48,6 +48,7 @@ message Item {
   string default_tags = 23;
   common.v1.Rarity rarity = 24;
   int64 issued = 25;
+  int64 hold_till = 26;
 }
 
 message GetItemRequest {
@@ -115,6 +116,7 @@ message UpdateItemRequest {
   optional string tags = 2;
   optional string app_meta = 3;
   common.v1.Rarity rarity = 4;
+  optional int64 hold_till = 5;
 }
 
 message UpdateItemResponse {
