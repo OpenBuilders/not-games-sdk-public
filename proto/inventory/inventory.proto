@@ -115,6 +115,7 @@ message UpdateItemRequest {
   optional string tags = 2;
   optional string app_meta = 3;
   common.v1.Rarity rarity = 4;
+  optional int64 hold_till = 5;
 }
 
 message UpdateItemResponse {
