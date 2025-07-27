@@ -113,6 +113,14 @@ export interface Item {
      * @generated from protobuf field: common.v1.Rarity rarity = 24
      */
     rarity: Rarity;
+    /**
+     * @generated from protobuf field: int64 issued = 25
+     */
+    issued: bigint;
+    /**
+     * @generated from protobuf field: int64 hold_till = 26
+     */
+    holdTill: bigint;
 }
 /**
  * @generated from protobuf message inventory.v1.GetItemRequest
@@ -277,6 +285,10 @@ export interface GenerateRequest {
      * @generated from protobuf field: string tags = 4
      */
     tags: string;
+    /**
+     * @generated from protobuf field: int64 hold_till = 5
+     */
+    holdTill: bigint;
 }
 /**
  * @generated from protobuf message inventory.v1.GenerateResponse
@@ -307,6 +319,10 @@ export interface UpdateItemRequest {
      * @generated from protobuf field: common.v1.Rarity rarity = 4
      */
     rarity: Rarity;
+    /**
+     * @generated from protobuf field: optional int64 hold_till = 5
+     */
+    holdTill?: bigint;
 }
 /**
  * @generated from protobuf message inventory.v1.UpdateItemResponse
@@ -402,9 +418,43 @@ export interface StreamItemTransfersResponse {
     messageId: string;
 }
 /**
+ * @generated from protobuf message inventory.v1.StreamItemRequest
+ */
+export interface StreamItemRequest {
+    /**
+     * @generated from protobuf field: string consumer = 1
+     */
+    consumer: string;
+    /**
+     * @generated from protobuf field: int64 limit = 2
+     */
+    limit: bigint;
+    /**
+     * @generated from protobuf field: bool ack_by_request = 3
+     */
+    ackByRequest: boolean;
+}
+/**
+ * @generated from protobuf message inventory.v1.StreamItemResponse
+ */
+export interface StreamItemResponse {
+    /**
+     * @generated from protobuf field: inventory.v1.Item item = 1
+     */
+    item?: Item;
+    /**
+     * @generated from protobuf field: inventory.v1.StreamItemOpType type = 2
+     */
+    type: StreamItemOpType;
+}
+/**
  * @generated from protobuf message inventory.v1.AddGroupRequest
  */
 export interface AddGroupRequest {
+    /**
+     * @generated from protobuf field: inventory.v1.StreamType type = 1
+     */
+    type: StreamType;
 }
 /**
  * @generated from protobuf message inventory.v1.AddGroupResponse
@@ -416,6 +466,8 @@ export interface AddGroupResponse {
     status: string;
 }
 /**
+ * deprecated
+ *
  * @generated from protobuf message inventory.v1.StreamItemTransfersAckRequest
  */
 export interface StreamItemTransfersAckRequest {
@@ -425,6 +477,8 @@ export interface StreamItemTransfersAckRequest {
     messages: string[];
 }
 /**
+ * deprecated
+ *
  * @generated from protobuf message inventory.v1.StreamItemTransfersAckResponse
  */
 export interface StreamItemTransfersAckResponse {
@@ -432,6 +486,62 @@ export interface StreamItemTransfersAckResponse {
      * @generated from protobuf field: bool status = 1
      */
     status: boolean;
+}
+/**
+ * @generated from protobuf message inventory.v1.AckStreamMessagesRequest
+ */
+export interface AckStreamMessagesRequest {
+    /**
+     * @generated from protobuf field: repeated string messages = 1
+     */
+    messages: string[];
+    /**
+     * @generated from protobuf field: inventory.v1.StreamType type = 2
+     */
+    type: StreamType;
+}
+/**
+ * @generated from protobuf message inventory.v1.AckStreamMessagesResponse
+ */
+export interface AckStreamMessagesResponse {
+    /**
+     * @generated from protobuf field: bool status = 1
+     */
+    status: boolean;
+}
+/**
+ * @generated from protobuf enum inventory.v1.StreamItemOpType
+ */
+export enum StreamItemOpType {
+    /**
+     * @generated from protobuf enum value: STREAM_ITEM_OP_TYPE_UNKNOWN = 0;
+     */
+    UNKNOWN = 0,
+    /**
+     * @generated from protobuf enum value: STREAM_ITEM_OP_TYPE_CREATED = 1;
+     */
+    CREATED = 1,
+    /**
+     * @generated from protobuf enum value: STREAM_ITEM_OP_TYPE_BURNED = 2;
+     */
+    BURNED = 2
+}
+/**
+ * @generated from protobuf enum inventory.v1.StreamType
+ */
+export enum StreamType {
+    /**
+     * @generated from protobuf enum value: STREAM_TYPE_UNKNOWN = 0;
+     */
+    UNKNOWN = 0,
+    /**
+     * @generated from protobuf enum value: STREAM_TYPE_ITEM = 1;
+     */
+    ITEM = 1,
+    /**
+     * @generated from protobuf enum value: STREAM_TYPE_TRANSFER_ITEM = 2;
+     */
+    TRANSFER_ITEM = 2
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class Item$Type extends MessageType<Item> {
@@ -460,7 +570,9 @@ class Item$Type extends MessageType<Item> {
             { no: 21, name: "serial", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 22, name: "supply", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 23, name: "default_tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 24, name: "rarity", kind: "enum", T: () => ["common.v1.Rarity", Rarity] }
+            { no: 24, name: "rarity", kind: "enum", T: () => ["common.v1.Rarity", Rarity] },
+            { no: 25, name: "issued", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 26, name: "hold_till", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<Item>): Item {
@@ -489,6 +601,8 @@ class Item$Type extends MessageType<Item> {
         message.supply = 0n;
         message.defaultTags = "";
         message.rarity = 0;
+        message.issued = 0n;
+        message.holdTill = 0n;
         if (value !== undefined)
             reflectionMergePartial<Item>(this, message, value);
         return message;
@@ -569,6 +683,12 @@ class Item$Type extends MessageType<Item> {
                     break;
                 case /* common.v1.Rarity rarity */ 24:
                     message.rarity = reader.int32();
+                    break;
+                case /* int64 issued */ 25:
+                    message.issued = reader.int64().toBigInt();
+                    break;
+                case /* int64 hold_till */ 26:
+                    message.holdTill = reader.int64().toBigInt();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -654,6 +774,12 @@ class Item$Type extends MessageType<Item> {
         /* common.v1.Rarity rarity = 24; */
         if (message.rarity !== 0)
             writer.tag(24, WireType.Varint).int32(message.rarity);
+        /* int64 issued = 25; */
+        if (message.issued !== 0n)
+            writer.tag(25, WireType.Varint).int64(message.issued);
+        /* int64 hold_till = 26; */
+        if (message.holdTill !== 0n)
+            writer.tag(26, WireType.Varint).int64(message.holdTill);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1149,7 +1275,8 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
             { no: 1, name: "item_def_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 3, name: "app_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 4, name: "tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 4, name: "tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "hold_till", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<GenerateRequest>): GenerateRequest {
@@ -1158,6 +1285,7 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
         message.accountId = 0n;
         message.appId = 0n;
         message.tags = "";
+        message.holdTill = 0n;
         if (value !== undefined)
             reflectionMergePartial<GenerateRequest>(this, message, value);
         return message;
@@ -1178,6 +1306,9 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
                     break;
                 case /* string tags */ 4:
                     message.tags = reader.string();
+                    break;
+                case /* int64 hold_till */ 5:
+                    message.holdTill = reader.int64().toBigInt();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1203,6 +1334,9 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
         /* string tags = 4; */
         if (message.tags !== "")
             writer.tag(4, WireType.LengthDelimited).string(message.tags);
+        /* int64 hold_till = 5; */
+        if (message.holdTill !== 0n)
+            writer.tag(5, WireType.Varint).int64(message.holdTill);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1267,7 +1401,8 @@ class UpdateItemRequest$Type extends MessageType<UpdateItemRequest> {
             { no: 1, name: "item_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "tags", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "app_meta", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 4, name: "rarity", kind: "enum", T: () => ["common.v1.Rarity", Rarity] }
+            { no: 4, name: "rarity", kind: "enum", T: () => ["common.v1.Rarity", Rarity] },
+            { no: 5, name: "hold_till", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<UpdateItemRequest>): UpdateItemRequest {
@@ -1295,6 +1430,9 @@ class UpdateItemRequest$Type extends MessageType<UpdateItemRequest> {
                 case /* common.v1.Rarity rarity */ 4:
                     message.rarity = reader.int32();
                     break;
+                case /* optional int64 hold_till */ 5:
+                    message.holdTill = reader.int64().toBigInt();
+                    break;
                 default:
                     let u = options.readUnknownField;
                     if (u === "throw")
@@ -1319,6 +1457,9 @@ class UpdateItemRequest$Type extends MessageType<UpdateItemRequest> {
         /* common.v1.Rarity rarity = 4; */
         if (message.rarity !== 0)
             writer.tag(4, WireType.Varint).int32(message.rarity);
+        /* optional int64 hold_till = 5; */
+        if (message.holdTill !== undefined)
+            writer.tag(5, WireType.Varint).int64(message.holdTill);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1661,12 +1802,132 @@ class StreamItemTransfersResponse$Type extends MessageType<StreamItemTransfersRe
  */
 export const StreamItemTransfersResponse = new StreamItemTransfersResponse$Type();
 // @generated message type with reflection information, may provide speed optimized methods
+class StreamItemRequest$Type extends MessageType<StreamItemRequest> {
+    constructor() {
+        super("inventory.v1.StreamItemRequest", [
+            { no: 1, name: "consumer", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "limit", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 3, name: "ack_by_request", kind: "scalar", T: 8 /*ScalarType.BOOL*/ }
+        ]);
+    }
+    create(value?: PartialMessage<StreamItemRequest>): StreamItemRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.consumer = "";
+        message.limit = 0n;
+        message.ackByRequest = false;
+        if (value !== undefined)
+            reflectionMergePartial<StreamItemRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: StreamItemRequest): StreamItemRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string consumer */ 1:
+                    message.consumer = reader.string();
+                    break;
+                case /* int64 limit */ 2:
+                    message.limit = reader.int64().toBigInt();
+                    break;
+                case /* bool ack_by_request */ 3:
+                    message.ackByRequest = reader.bool();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: StreamItemRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string consumer = 1; */
+        if (message.consumer !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.consumer);
+        /* int64 limit = 2; */
+        if (message.limit !== 0n)
+            writer.tag(2, WireType.Varint).int64(message.limit);
+        /* bool ack_by_request = 3; */
+        if (message.ackByRequest !== false)
+            writer.tag(3, WireType.Varint).bool(message.ackByRequest);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.StreamItemRequest
+ */
+export const StreamItemRequest = new StreamItemRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class StreamItemResponse$Type extends MessageType<StreamItemResponse> {
+    constructor() {
+        super("inventory.v1.StreamItemResponse", [
+            { no: 1, name: "item", kind: "message", T: () => Item },
+            { no: 2, name: "type", kind: "enum", T: () => ["inventory.v1.StreamItemOpType", StreamItemOpType, "STREAM_ITEM_OP_TYPE_"] }
+        ]);
+    }
+    create(value?: PartialMessage<StreamItemResponse>): StreamItemResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.type = 0;
+        if (value !== undefined)
+            reflectionMergePartial<StreamItemResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: StreamItemResponse): StreamItemResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* inventory.v1.Item item */ 1:
+                    message.item = Item.internalBinaryRead(reader, reader.uint32(), options, message.item);
+                    break;
+                case /* inventory.v1.StreamItemOpType type */ 2:
+                    message.type = reader.int32();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: StreamItemResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* inventory.v1.Item item = 1; */
+        if (message.item)
+            Item.internalBinaryWrite(message.item, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* inventory.v1.StreamItemOpType type = 2; */
+        if (message.type !== 0)
+            writer.tag(2, WireType.Varint).int32(message.type);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.StreamItemResponse
+ */
+export const StreamItemResponse = new StreamItemResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
 class AddGroupRequest$Type extends MessageType<AddGroupRequest> {
     constructor() {
-        super("inventory.v1.AddGroupRequest", []);
+        super("inventory.v1.AddGroupRequest", [
+            { no: 1, name: "type", kind: "enum", T: () => ["inventory.v1.StreamType", StreamType, "STREAM_TYPE_"] }
+        ]);
     }
     create(value?: PartialMessage<AddGroupRequest>): AddGroupRequest {
         const message = globalThis.Object.create((this.messagePrototype!));
+        message.type = 0;
         if (value !== undefined)
             reflectionMergePartial<AddGroupRequest>(this, message, value);
         return message;
@@ -1676,6 +1937,9 @@ class AddGroupRequest$Type extends MessageType<AddGroupRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
+                case /* inventory.v1.StreamType type */ 1:
+                    message.type = reader.int32();
+                    break;
                 default:
                     let u = options.readUnknownField;
                     if (u === "throw")
@@ -1688,6 +1952,9 @@ class AddGroupRequest$Type extends MessageType<AddGroupRequest> {
         return message;
     }
     internalBinaryWrite(message: AddGroupRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* inventory.v1.StreamType type = 1; */
+        if (message.type !== 0)
+            writer.tag(1, WireType.Varint).int32(message.type);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1839,6 +2106,108 @@ class StreamItemTransfersAckResponse$Type extends MessageType<StreamItemTransfer
  * @generated MessageType for protobuf message inventory.v1.StreamItemTransfersAckResponse
  */
 export const StreamItemTransfersAckResponse = new StreamItemTransfersAckResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class AckStreamMessagesRequest$Type extends MessageType<AckStreamMessagesRequest> {
+    constructor() {
+        super("inventory.v1.AckStreamMessagesRequest", [
+            { no: 1, name: "messages", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "type", kind: "enum", T: () => ["inventory.v1.StreamType", StreamType, "STREAM_TYPE_"] }
+        ]);
+    }
+    create(value?: PartialMessage<AckStreamMessagesRequest>): AckStreamMessagesRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.messages = [];
+        message.type = 0;
+        if (value !== undefined)
+            reflectionMergePartial<AckStreamMessagesRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: AckStreamMessagesRequest): AckStreamMessagesRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* repeated string messages */ 1:
+                    message.messages.push(reader.string());
+                    break;
+                case /* inventory.v1.StreamType type */ 2:
+                    message.type = reader.int32();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: AckStreamMessagesRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* repeated string messages = 1; */
+        for (let i = 0; i < message.messages.length; i++)
+            writer.tag(1, WireType.LengthDelimited).string(message.messages[i]);
+        /* inventory.v1.StreamType type = 2; */
+        if (message.type !== 0)
+            writer.tag(2, WireType.Varint).int32(message.type);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.AckStreamMessagesRequest
+ */
+export const AckStreamMessagesRequest = new AckStreamMessagesRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class AckStreamMessagesResponse$Type extends MessageType<AckStreamMessagesResponse> {
+    constructor() {
+        super("inventory.v1.AckStreamMessagesResponse", [
+            { no: 1, name: "status", kind: "scalar", T: 8 /*ScalarType.BOOL*/ }
+        ]);
+    }
+    create(value?: PartialMessage<AckStreamMessagesResponse>): AckStreamMessagesResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.status = false;
+        if (value !== undefined)
+            reflectionMergePartial<AckStreamMessagesResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: AckStreamMessagesResponse): AckStreamMessagesResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* bool status */ 1:
+                    message.status = reader.bool();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: AckStreamMessagesResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* bool status = 1; */
+        if (message.status !== false)
+            writer.tag(1, WireType.Varint).bool(message.status);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.AckStreamMessagesResponse
+ */
+export const AckStreamMessagesResponse = new AckStreamMessagesResponse$Type();
 /**
  * @generated ServiceType for protobuf service inventory.v1.InventoryService
  */
@@ -1851,6 +2220,8 @@ export const InventoryService = new ServiceType("inventory.v1.InventoryService",
     { name: "UpdateItem", options: {}, I: UpdateItemRequest, O: UpdateItemResponse },
     { name: "TransferItem", options: {}, I: TransferItemRequest, O: TransferItemResponse },
     { name: "StreamItemTransfer", serverStreaming: true, options: {}, I: StreamItemTransfersRequest, O: StreamItemTransfersResponse },
+    { name: "StreamItem", serverStreaming: true, options: {}, I: StreamItemRequest, O: StreamItemResponse },
     { name: "AddGroup", options: {}, I: AddGroupRequest, O: AddGroupResponse },
-    { name: "StreamAckMessages", options: {}, I: StreamItemTransfersAckRequest, O: StreamItemTransfersAckResponse }
+    { name: "StreamAckMessages", options: {}, I: StreamItemTransfersAckRequest, O: StreamItemTransfersAckResponse },
+    { name: "AckStreamMessages", options: {}, I: AckStreamMessagesRequest, O: AckStreamMessagesResponse }
 ]);
