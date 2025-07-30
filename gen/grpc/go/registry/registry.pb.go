@@ -942,11 +942,219 @@ func (x *UpdateAchievementDefResponse) GetStatus() string {
 	return ""
 }
 
+type ListItemsDefsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccountId     int64                  `protobuf:"varint,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
+	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
+	Offset        int32                  `protobuf:"varint,3,opt,name=offset,proto3" json:"offset,omitempty"`
+	ItemDefId     *string                `protobuf:"bytes,4,opt,name=item_def_id,json=itemDefId,proto3,oneof" json:"item_def_id,omitempty"`
+	Collection    *string                `protobuf:"bytes,5,opt,name=collection,proto3,oneof" json:"collection,omitempty"`
+	Name          *string                `protobuf:"bytes,6,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	Rarity        *common.Rarity         `protobuf:"varint,7,opt,name=rarity,proto3,enum=common.v1.Rarity,oneof" json:"rarity,omitempty"`
+	Type          *string                `protobuf:"bytes,8,opt,name=type,proto3,oneof" json:"type,omitempty"`
+	DisplayType   *string                `protobuf:"bytes,9,opt,name=display_type,json=displayType,proto3,oneof" json:"display_type,omitempty"`
+	Hidden        *bool                  `protobuf:"varint,10,opt,name=hidden,proto3,oneof" json:"hidden,omitempty"`
+	GameOnly      *bool                  `protobuf:"varint,11,opt,name=gameOnly,proto3,oneof" json:"gameOnly,omitempty"`
+	StoreHidden   *bool                  `protobuf:"varint,12,opt,name=store_hidden,json=storeHidden,proto3,oneof" json:"store_hidden,omitempty"`
+	Tradable      *bool                  `protobuf:"varint,13,opt,name=tradable,proto3,oneof" json:"tradable,omitempty"`
+	SortFields    []string               `protobuf:"bytes,14,rep,name=sort_fields,json=sortFields,proto3" json:"sort_fields,omitempty"`
+	Directions    []string               `protobuf:"bytes,15,rep,name=directions,proto3" json:"directions,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListItemsDefsRequest) Reset() {
+	*x = ListItemsDefsRequest{}
+	mi := &file_registry_registry_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListItemsDefsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListItemsDefsRequest) ProtoMessage() {}
+
+func (x *ListItemsDefsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_registry_registry_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListItemsDefsRequest.ProtoReflect.Descriptor instead.
+func (*ListItemsDefsRequest) Descriptor() ([]byte, []int) {
+	return file_registry_registry_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ListItemsDefsRequest) GetAccountId() int64 {
+	if x != nil {
+		return x.AccountId
+	}
+	return 0
+}
+
+func (x *ListItemsDefsRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *ListItemsDefsRequest) GetOffset() int32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+func (x *ListItemsDefsRequest) GetItemDefId() string {
+	if x != nil && x.ItemDefId != nil {
+		return *x.ItemDefId
+	}
+	return ""
+}
+
+func (x *ListItemsDefsRequest) GetCollection() string {
+	if x != nil && x.Collection != nil {
+		return *x.Collection
+	}
+	return ""
+}
+
+func (x *ListItemsDefsRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListItemsDefsRequest) GetRarity() common.Rarity {
+	if x != nil && x.Rarity != nil {
+		return *x.Rarity
+	}
+	return common.Rarity(0)
+}
+
+func (x *ListItemsDefsRequest) GetType() string {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return ""
+}
+
+func (x *ListItemsDefsRequest) GetDisplayType() string {
+	if x != nil && x.DisplayType != nil {
+		return *x.DisplayType
+	}
+	return ""
+}
+
+func (x *ListItemsDefsRequest) GetHidden() bool {
+	if x != nil && x.Hidden != nil {
+		return *x.Hidden
+	}
+	return false
+}
+
+func (x *ListItemsDefsRequest) GetGameOnly() bool {
+	if x != nil && x.GameOnly != nil {
+		return *x.GameOnly
+	}
+	return false
+}
+
+func (x *ListItemsDefsRequest) GetStoreHidden() bool {
+	if x != nil && x.StoreHidden != nil {
+		return *x.StoreHidden
+	}
+	return false
+}
+
+func (x *ListItemsDefsRequest) GetTradable() bool {
+	if x != nil && x.Tradable != nil {
+		return *x.Tradable
+	}
+	return false
+}
+
+func (x *ListItemsDefsRequest) GetSortFields() []string {
+	if x != nil {
+		return x.SortFields
+	}
+	return nil
+}
+
+func (x *ListItemsDefsRequest) GetDirections() []string {
+	if x != nil {
+		return x.Directions
+	}
+	return nil
+}
+
+type ListItemsDefsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Items         []*ItemDef             `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	Pagination    *common.Pagination     `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListItemsDefsResponse) Reset() {
+	*x = ListItemsDefsResponse{}
+	mi := &file_registry_registry_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListItemsDefsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListItemsDefsResponse) ProtoMessage() {}
+
+func (x *ListItemsDefsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_registry_registry_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListItemsDefsResponse.ProtoReflect.Descriptor instead.
+func (*ListItemsDefsResponse) Descriptor() ([]byte, []int) {
+	return file_registry_registry_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *ListItemsDefsResponse) GetItems() []*ItemDef {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListItemsDefsResponse) GetPagination() *common.Pagination {
+	if x != nil {
+		return x.Pagination
+	}
+	return nil
+}
+
 var File_registry_registry_proto protoreflect.FileDescriptor
 
 const file_registry_registry_proto_rawDesc = "" +
 	"\n" +
-	"\x17registry/registry.proto\x12\vregistry.v1\x1a\x13common/rarity.proto\"\xc5\x05\n" +
+	"\x17registry/registry.proto\x12\vregistry.v1\x1a\x17common/pagination.proto\x1a\x13common/rarity.proto\"\xc5\x05\n" +
 	"\aItemDef\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\x12\x15\n" +
 	"\x06app_id\x18\x02 \x01(\x03R\x05appId\x12\x12\n" +
@@ -1035,8 +1243,47 @@ const file_registry_registry_proto_rawDesc = "" +
 	"\x1bUpdateAchievementDefRequest\x12D\n" +
 	"\x0fachievement_def\x18\x01 \x01(\v2\x1b.registry.v1.AchievementDefR\x0eachievementDef\"6\n" +
 	"\x1cUpdateAchievementDefResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status2\xc4\x04\n" +
-	"\x0fRegistryService\x12D\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"\x82\x05\n" +
+	"\x14ListItemsDefsRequest\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x01 \x01(\x03R\taccountId\x12\x14\n" +
+	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12\x16\n" +
+	"\x06offset\x18\x03 \x01(\x05R\x06offset\x12#\n" +
+	"\vitem_def_id\x18\x04 \x01(\tH\x00R\titemDefId\x88\x01\x01\x12#\n" +
+	"\n" +
+	"collection\x18\x05 \x01(\tH\x01R\n" +
+	"collection\x88\x01\x01\x12\x17\n" +
+	"\x04name\x18\x06 \x01(\tH\x02R\x04name\x88\x01\x01\x12.\n" +
+	"\x06rarity\x18\a \x01(\x0e2\x11.common.v1.RarityH\x03R\x06rarity\x88\x01\x01\x12\x17\n" +
+	"\x04type\x18\b \x01(\tH\x04R\x04type\x88\x01\x01\x12&\n" +
+	"\fdisplay_type\x18\t \x01(\tH\x05R\vdisplayType\x88\x01\x01\x12\x1b\n" +
+	"\x06hidden\x18\n" +
+	" \x01(\bH\x06R\x06hidden\x88\x01\x01\x12\x1f\n" +
+	"\bgameOnly\x18\v \x01(\bH\aR\bgameOnly\x88\x01\x01\x12&\n" +
+	"\fstore_hidden\x18\f \x01(\bH\bR\vstoreHidden\x88\x01\x01\x12\x1f\n" +
+	"\btradable\x18\r \x01(\bH\tR\btradable\x88\x01\x01\x12\x1f\n" +
+	"\vsort_fields\x18\x0e \x03(\tR\n" +
+	"sortFields\x12\x1e\n" +
+	"\n" +
+	"directions\x18\x0f \x03(\tR\n" +
+	"directionsB\x0e\n" +
+	"\f_item_def_idB\r\n" +
+	"\v_collectionB\a\n" +
+	"\x05_nameB\t\n" +
+	"\a_rarityB\a\n" +
+	"\x05_typeB\x0f\n" +
+	"\r_display_typeB\t\n" +
+	"\a_hiddenB\v\n" +
+	"\t_gameOnlyB\x0f\n" +
+	"\r_store_hiddenB\v\n" +
+	"\t_tradable\"z\n" +
+	"\x15ListItemsDefsResponse\x12*\n" +
+	"\x05items\x18\x01 \x03(\v2\x14.registry.v1.ItemDefR\x05items\x125\n" +
+	"\n" +
+	"pagination\x18\x02 \x01(\v2\x15.common.v1.PaginationR\n" +
+	"pagination2\x9e\x05\n" +
+	"\x0fRegistryService\x12X\n" +
+	"\rListItemsDefs\x12!.registry.v1.ListItemsDefsRequest\x1a\".registry.v1.ListItemsDefsResponse\"\x00\x12D\n" +
 	"\n" +
 	"GetItemDef\x12\x1e.registry.v1.GetItemDefRequest\x1a\x14.registry.v1.ItemDef\"\x00\x12X\n" +
 	"\rCreateItemDef\x12!.registry.v1.CreateItemDefRequest\x1a\".registry.v1.CreateItemDefResponse\"\x00\x12X\n" +
@@ -1057,7 +1304,7 @@ func file_registry_registry_proto_rawDescGZIP() []byte {
 	return file_registry_registry_proto_rawDescData
 }
 
-var file_registry_registry_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_registry_registry_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_registry_registry_proto_goTypes = []any{
 	(*ItemDef)(nil),                      // 0: registry.v1.ItemDef
 	(*UpdateItemDefRequest)(nil),         // 1: registry.v1.UpdateItemDefRequest
@@ -1071,30 +1318,38 @@ var file_registry_registry_proto_goTypes = []any{
 	(*CreateAchievementDefResponse)(nil), // 9: registry.v1.CreateAchievementDefResponse
 	(*UpdateAchievementDefRequest)(nil),  // 10: registry.v1.UpdateAchievementDefRequest
 	(*UpdateAchievementDefResponse)(nil), // 11: registry.v1.UpdateAchievementDefResponse
-	(common.Rarity)(0),                   // 12: common.v1.Rarity
+	(*ListItemsDefsRequest)(nil),         // 12: registry.v1.ListItemsDefsRequest
+	(*ListItemsDefsResponse)(nil),        // 13: registry.v1.ListItemsDefsResponse
+	(common.Rarity)(0),                   // 14: common.v1.Rarity
+	(*common.Pagination)(nil),            // 15: common.v1.Pagination
 }
 var file_registry_registry_proto_depIdxs = []int32{
-	12, // 0: registry.v1.ItemDef.rarity:type_name -> common.v1.Rarity
+	14, // 0: registry.v1.ItemDef.rarity:type_name -> common.v1.Rarity
 	0,  // 1: registry.v1.CreateItemDefRequest.item_def:type_name -> registry.v1.ItemDef
 	2,  // 2: registry.v1.CreateAchievementDefRequest.achievement_def:type_name -> registry.v1.AchievementDef
 	2,  // 3: registry.v1.UpdateAchievementDefRequest.achievement_def:type_name -> registry.v1.AchievementDef
-	3,  // 4: registry.v1.RegistryService.GetItemDef:input_type -> registry.v1.GetItemDefRequest
-	4,  // 5: registry.v1.RegistryService.CreateItemDef:input_type -> registry.v1.CreateItemDefRequest
-	1,  // 6: registry.v1.RegistryService.UpdateItemDef:input_type -> registry.v1.UpdateItemDefRequest
-	7,  // 7: registry.v1.RegistryService.GetAchievementDef:input_type -> registry.v1.GetAchievementDefRequest
-	8,  // 8: registry.v1.RegistryService.CreateAchievementDef:input_type -> registry.v1.CreateAchievementDefRequest
-	10, // 9: registry.v1.RegistryService.UpdateAchievementDef:input_type -> registry.v1.UpdateAchievementDefRequest
-	0,  // 10: registry.v1.RegistryService.GetItemDef:output_type -> registry.v1.ItemDef
-	5,  // 11: registry.v1.RegistryService.CreateItemDef:output_type -> registry.v1.CreateItemDefResponse
-	6,  // 12: registry.v1.RegistryService.UpdateItemDef:output_type -> registry.v1.UpdateItemDefResponse
-	2,  // 13: registry.v1.RegistryService.GetAchievementDef:output_type -> registry.v1.AchievementDef
-	9,  // 14: registry.v1.RegistryService.CreateAchievementDef:output_type -> registry.v1.CreateAchievementDefResponse
-	11, // 15: registry.v1.RegistryService.UpdateAchievementDef:output_type -> registry.v1.UpdateAchievementDefResponse
-	10, // [10:16] is the sub-list for method output_type
-	4,  // [4:10] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	14, // 4: registry.v1.ListItemsDefsRequest.rarity:type_name -> common.v1.Rarity
+	0,  // 5: registry.v1.ListItemsDefsResponse.items:type_name -> registry.v1.ItemDef
+	15, // 6: registry.v1.ListItemsDefsResponse.pagination:type_name -> common.v1.Pagination
+	12, // 7: registry.v1.RegistryService.ListItemsDefs:input_type -> registry.v1.ListItemsDefsRequest
+	3,  // 8: registry.v1.RegistryService.GetItemDef:input_type -> registry.v1.GetItemDefRequest
+	4,  // 9: registry.v1.RegistryService.CreateItemDef:input_type -> registry.v1.CreateItemDefRequest
+	1,  // 10: registry.v1.RegistryService.UpdateItemDef:input_type -> registry.v1.UpdateItemDefRequest
+	7,  // 11: registry.v1.RegistryService.GetAchievementDef:input_type -> registry.v1.GetAchievementDefRequest
+	8,  // 12: registry.v1.RegistryService.CreateAchievementDef:input_type -> registry.v1.CreateAchievementDefRequest
+	10, // 13: registry.v1.RegistryService.UpdateAchievementDef:input_type -> registry.v1.UpdateAchievementDefRequest
+	13, // 14: registry.v1.RegistryService.ListItemsDefs:output_type -> registry.v1.ListItemsDefsResponse
+	0,  // 15: registry.v1.RegistryService.GetItemDef:output_type -> registry.v1.ItemDef
+	5,  // 16: registry.v1.RegistryService.CreateItemDef:output_type -> registry.v1.CreateItemDefResponse
+	6,  // 17: registry.v1.RegistryService.UpdateItemDef:output_type -> registry.v1.UpdateItemDefResponse
+	2,  // 18: registry.v1.RegistryService.GetAchievementDef:output_type -> registry.v1.AchievementDef
+	9,  // 19: registry.v1.RegistryService.CreateAchievementDef:output_type -> registry.v1.CreateAchievementDefResponse
+	11, // 20: registry.v1.RegistryService.UpdateAchievementDef:output_type -> registry.v1.UpdateAchievementDefResponse
+	14, // [14:21] is the sub-list for method output_type
+	7,  // [7:14] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_registry_registry_proto_init() }
@@ -1104,13 +1359,14 @@ func file_registry_registry_proto_init() {
 	}
 	file_registry_registry_proto_msgTypes[0].OneofWrappers = []any{}
 	file_registry_registry_proto_msgTypes[1].OneofWrappers = []any{}
+	file_registry_registry_proto_msgTypes[12].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_registry_registry_proto_rawDesc), len(file_registry_registry_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

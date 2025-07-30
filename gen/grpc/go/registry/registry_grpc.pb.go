@@ -19,6 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	RegistryService_ListItemsDefs_FullMethodName        = "/registry.v1.RegistryService/ListItemsDefs"
 	RegistryService_GetItemDef_FullMethodName           = "/registry.v1.RegistryService/GetItemDef"
 	RegistryService_CreateItemDef_FullMethodName        = "/registry.v1.RegistryService/CreateItemDef"
 	RegistryService_UpdateItemDef_FullMethodName        = "/registry.v1.RegistryService/UpdateItemDef"
@@ -31,6 +32,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RegistryServiceClient interface {
+	ListItemsDefs(ctx context.Context, in *ListItemsDefsRequest, opts ...grpc.CallOption) (*ListItemsDefsResponse, error)
 	GetItemDef(ctx context.Context, in *GetItemDefRequest, opts ...grpc.CallOption) (*ItemDef, error)
 	CreateItemDef(ctx context.Context, in *CreateItemDefRequest, opts ...grpc.CallOption) (*CreateItemDefResponse, error)
 	UpdateItemDef(ctx context.Context, in *UpdateItemDefRequest, opts ...grpc.CallOption) (*UpdateItemDefResponse, error)
@@ -45,6 +47,16 @@ type registryServiceClient struct {
 
 func NewRegistryServiceClient(cc grpc.ClientConnInterface) RegistryServiceClient {
 	return &registryServiceClient{cc}
+}
+
+func (c *registryServiceClient) ListItemsDefs(ctx context.Context, in *ListItemsDefsRequest, opts ...grpc.CallOption) (*ListItemsDefsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListItemsDefsResponse)
+	err := c.cc.Invoke(ctx, RegistryService_ListItemsDefs_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *registryServiceClient) GetItemDef(ctx context.Context, in *GetItemDefRequest, opts ...grpc.CallOption) (*ItemDef, error) {
@@ -111,6 +123,7 @@ func (c *registryServiceClient) UpdateAchievementDef(ctx context.Context, in *Up
 // All implementations must embed UnimplementedRegistryServiceServer
 // for forward compatibility.
 type RegistryServiceServer interface {
+	ListItemsDefs(context.Context, *ListItemsDefsRequest) (*ListItemsDefsResponse, error)
 	GetItemDef(context.Context, *GetItemDefRequest) (*ItemDef, error)
 	CreateItemDef(context.Context, *CreateItemDefRequest) (*CreateItemDefResponse, error)
 	UpdateItemDef(context.Context, *UpdateItemDefRequest) (*UpdateItemDefResponse, error)
@@ -127,6 +140,9 @@ type RegistryServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRegistryServiceServer struct{}
 
+func (UnimplementedRegistryServiceServer) ListItemsDefs(context.Context, *ListItemsDefsRequest) (*ListItemsDefsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListItemsDefs not implemented")
+}
 func (UnimplementedRegistryServiceServer) GetItemDef(context.Context, *GetItemDefRequest) (*ItemDef, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetItemDef not implemented")
 }
@@ -164,6 +180,24 @@ func RegisterRegistryServiceServer(s grpc.ServiceRegistrar, srv RegistryServiceS
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&RegistryService_ServiceDesc, srv)
+}
+
+func _RegistryService_ListItemsDefs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListItemsDefsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RegistryServiceServer).ListItemsDefs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RegistryService_ListItemsDefs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RegistryServiceServer).ListItemsDefs(ctx, req.(*ListItemsDefsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _RegistryService_GetItemDef_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -281,6 +315,10 @@ var RegistryService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "registry.v1.RegistryService",
 	HandlerType: (*RegistryServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListItemsDefs",
+			Handler:    _RegistryService_ListItemsDefs_Handler,
+		},
 		{
 			MethodName: "GetItemDef",
 			Handler:    _RegistryService_GetItemDef_Handler,
