@@ -4,9 +4,11 @@ package registry.v1;
 
 option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/registry";
 
+import "common/pagination.proto";
 import "common/rarity.proto";
 
 service RegistryService {
+  rpc ListItemsDefs(ListItemsDefsRequest) returns (ListItemsDefsResponse) {}
   rpc GetItemDef(GetItemDefRequest) returns (ItemDef) {}
   rpc CreateItemDef(CreateItemDefRequest) returns (CreateItemDefResponse) {}
   rpc UpdateItemDef(UpdateItemDefRequest) returns (UpdateItemDefResponse) {}
@@ -110,4 +112,27 @@ message UpdateAchievementDefRequest {
 
 message UpdateAchievementDefResponse {
   string status = 1;
+}
+
+message ListItemsDefsRequest {
+  int64 account_id = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+  optional string item_def_id = 4;
+  optional string collection = 5;
+  optional string name = 6;
+  optional common.v1.Rarity rarity = 7;
+  optional string type = 8;
+  optional string display_type = 9;
+  optional bool hidden = 10;
+  optional bool gameOnly = 11;
+  optional bool store_hidden = 12;
+  optional bool tradable = 13;
+  repeated string sort_fields = 14;
+  repeated string directions = 15;
+}
+
+message ListItemsDefsResponse {
+  repeated ItemDef items = 1;
+  common.v1.Pagination pagination = 2;
 }
