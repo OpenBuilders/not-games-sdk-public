@@ -801,5 +801,66 @@ proto.inventory.v1.InventoryServicePromiseClient.prototype.ackStreamMessages =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.inventory.v1.ListItemsByItemDefRequest,
+ *   !proto.inventory.v1.ListItemsResponse>}
+ */
+const methodDescriptor_InventoryService_ListItemsByItemDef = new grpc.web.MethodDescriptor(
+  '/inventory.v1.InventoryService/ListItemsByItemDef',
+  grpc.web.MethodType.UNARY,
+  proto.inventory.v1.ListItemsByItemDefRequest,
+  proto.inventory.v1.ListItemsResponse,
+  /**
+   * @param {!proto.inventory.v1.ListItemsByItemDefRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.inventory.v1.ListItemsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.inventory.v1.ListItemsByItemDefRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.inventory.v1.ListItemsResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.inventory.v1.ListItemsResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.inventory.v1.InventoryServiceClient.prototype.listItemsByItemDef =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/inventory.v1.InventoryService/ListItemsByItemDef',
+      request,
+      metadata || {},
+      methodDescriptor_InventoryService_ListItemsByItemDef,
+      callback);
+};
+
+
+/**
+ * @param {!proto.inventory.v1.ListItemsByItemDefRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.inventory.v1.ListItemsResponse>}
+ *     Promise that resolves to the response
+ */
+proto.inventory.v1.InventoryServicePromiseClient.prototype.listItemsByItemDef =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/inventory.v1.InventoryService/ListItemsByItemDef',
+      request,
+      metadata || {},
+      methodDescriptor_InventoryService_ListItemsByItemDef);
+};
+
+
 module.exports = proto.inventory.v1;
 

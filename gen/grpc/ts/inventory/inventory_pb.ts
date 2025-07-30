@@ -201,6 +201,31 @@ export interface ListItemsRequest {
     directions: string[];
 }
 /**
+ * @generated from protobuf message inventory.v1.ListItemsByItemDefRequest
+ */
+export interface ListItemsByItemDefRequest {
+    /**
+     * @generated from protobuf field: string item_def_id = 1
+     */
+    itemDefId: string;
+    /**
+     * @generated from protobuf field: int32 limit = 2
+     */
+    limit: number;
+    /**
+     * @generated from protobuf field: int32 offset = 3
+     */
+    offset: number;
+    /**
+     * @generated from protobuf field: repeated string sort_fields = 4
+     */
+    sortFields: string[];
+    /**
+     * @generated from protobuf field: repeated string directions = 5
+     */
+    directions: string[];
+}
+/**
  * @generated from protobuf message inventory.v1.ListItemsResponse
  */
 export interface ListItemsResponse {
@@ -994,6 +1019,85 @@ class ListItemsRequest$Type extends MessageType<ListItemsRequest> {
  * @generated MessageType for protobuf message inventory.v1.ListItemsRequest
  */
 export const ListItemsRequest = new ListItemsRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class ListItemsByItemDefRequest$Type extends MessageType<ListItemsByItemDefRequest> {
+    constructor() {
+        super("inventory.v1.ListItemsByItemDefRequest", [
+            { no: 1, name: "item_def_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "limit", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "offset", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 4, name: "sort_fields", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "directions", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<ListItemsByItemDefRequest>): ListItemsByItemDefRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.itemDefId = "";
+        message.limit = 0;
+        message.offset = 0;
+        message.sortFields = [];
+        message.directions = [];
+        if (value !== undefined)
+            reflectionMergePartial<ListItemsByItemDefRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ListItemsByItemDefRequest): ListItemsByItemDefRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string item_def_id */ 1:
+                    message.itemDefId = reader.string();
+                    break;
+                case /* int32 limit */ 2:
+                    message.limit = reader.int32();
+                    break;
+                case /* int32 offset */ 3:
+                    message.offset = reader.int32();
+                    break;
+                case /* repeated string sort_fields */ 4:
+                    message.sortFields.push(reader.string());
+                    break;
+                case /* repeated string directions */ 5:
+                    message.directions.push(reader.string());
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: ListItemsByItemDefRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string item_def_id = 1; */
+        if (message.itemDefId !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.itemDefId);
+        /* int32 limit = 2; */
+        if (message.limit !== 0)
+            writer.tag(2, WireType.Varint).int32(message.limit);
+        /* int32 offset = 3; */
+        if (message.offset !== 0)
+            writer.tag(3, WireType.Varint).int32(message.offset);
+        /* repeated string sort_fields = 4; */
+        for (let i = 0; i < message.sortFields.length; i++)
+            writer.tag(4, WireType.LengthDelimited).string(message.sortFields[i]);
+        /* repeated string directions = 5; */
+        for (let i = 0; i < message.directions.length; i++)
+            writer.tag(5, WireType.LengthDelimited).string(message.directions[i]);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.ListItemsByItemDefRequest
+ */
+export const ListItemsByItemDefRequest = new ListItemsByItemDefRequest$Type();
 // @generated message type with reflection information, may provide speed optimized methods
 class ListItemsResponse$Type extends MessageType<ListItemsResponse> {
     constructor() {
@@ -2223,5 +2327,6 @@ export const InventoryService = new ServiceType("inventory.v1.InventoryService",
     { name: "StreamItem", serverStreaming: true, options: {}, I: StreamItemRequest, O: StreamItemResponse },
     { name: "AddGroup", options: {}, I: AddGroupRequest, O: AddGroupResponse },
     { name: "StreamAckMessages", options: {}, I: StreamItemTransfersAckRequest, O: StreamItemTransfersAckResponse },
-    { name: "AckStreamMessages", options: {}, I: AckStreamMessagesRequest, O: AckStreamMessagesResponse }
+    { name: "AckStreamMessages", options: {}, I: AckStreamMessagesRequest, O: AckStreamMessagesResponse },
+    { name: "ListItemsByItemDef", options: {}, I: ListItemsByItemDefRequest, O: ListItemsResponse }
 ]);
