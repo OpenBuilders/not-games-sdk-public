@@ -166,6 +166,7 @@ message StreamItemRequest {
 message StreamItemResponse {
   Item item = 1;
   StreamItemOpType type = 2;
+  string message_id = 3;
 }
 
 enum StreamType {
