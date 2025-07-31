@@ -5164,7 +5164,8 @@ proto.inventory.v1.StreamItemResponse.prototype.toObject = function(opt_includeI
 proto.inventory.v1.StreamItemResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
 item: (f = msg.getItem()) && proto.inventory.v1.Item.toObject(includeInstance, f),
-type: jspb.Message.getFieldWithDefault(msg, 2, 0)
+type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+messageId: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -5210,6 +5211,10 @@ proto.inventory.v1.StreamItemResponse.deserializeBinaryFromReader = function(msg
       var value = /** @type {!proto.inventory.v1.StreamItemOpType} */ (reader.readEnum());
       msg.setType(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMessageId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -5251,6 +5256,13 @@ proto.inventory.v1.StreamItemResponse.serializeBinaryToWriter = function(message
   if (f !== 0.0) {
     writer.writeEnum(
       2,
+      f
+    );
+  }
+  f = message.getMessageId();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
       f
     );
   }
@@ -5309,6 +5321,24 @@ proto.inventory.v1.StreamItemResponse.prototype.getType = function() {
  */
 proto.inventory.v1.StreamItemResponse.prototype.setType = function(value) {
   return jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+/**
+ * optional string message_id = 3;
+ * @return {string}
+ */
+proto.inventory.v1.StreamItemResponse.prototype.getMessageId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.inventory.v1.StreamItemResponse} returns this
+ */
+proto.inventory.v1.StreamItemResponse.prototype.setMessageId = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
