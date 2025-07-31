@@ -116,6 +116,13 @@ message GenerateRequest {
   string tags = 4;
   int64 hold_till = 5;
   optional string item_id = 6;
+  optional string source_item_def_id = 7;
+  optional common.v1.Rarity rarity = 8;
+  optional string name = 9;
+  optional string description = 10;
+  optional string icon_url = 11;
+  optional string app_files = 12;
+  optional string app_meta = 13;
 }
 
 message GenerateResponse {
