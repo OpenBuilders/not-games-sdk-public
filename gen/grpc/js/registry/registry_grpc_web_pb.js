@@ -21,6 +21,8 @@ grpc.web = require('grpc-web');
 
 
 var common_rarity_pb = require('../common/rarity_pb.js')
+
+var common_pagination_pb = require('../common/pagination_pb.js')
 const proto = {};
 proto.registry = {};
 proto.registry.v1 = require('./registry_pb.js');
@@ -440,6 +442,67 @@ proto.registry.v1.RegistryServicePromiseClient.prototype.updateAchievementDef =
       request,
       metadata || {},
       methodDescriptor_RegistryService_UpdateAchievementDef);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.registry.v1.ListItemDefsRequest,
+ *   !proto.registry.v1.ListItemDefsResponse>}
+ */
+const methodDescriptor_RegistryService_ListItemDefs = new grpc.web.MethodDescriptor(
+  '/registry.v1.RegistryService/ListItemDefs',
+  grpc.web.MethodType.UNARY,
+  proto.registry.v1.ListItemDefsRequest,
+  proto.registry.v1.ListItemDefsResponse,
+  /**
+   * @param {!proto.registry.v1.ListItemDefsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.registry.v1.ListItemDefsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.registry.v1.ListItemDefsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.registry.v1.ListItemDefsResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.registry.v1.ListItemDefsResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.registry.v1.RegistryServiceClient.prototype.listItemDefs =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/registry.v1.RegistryService/ListItemDefs',
+      request,
+      metadata || {},
+      methodDescriptor_RegistryService_ListItemDefs,
+      callback);
+};
+
+
+/**
+ * @param {!proto.registry.v1.ListItemDefsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.registry.v1.ListItemDefsResponse>}
+ *     Promise that resolves to the response
+ */
+proto.registry.v1.RegistryServicePromiseClient.prototype.listItemDefs =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/registry.v1.RegistryService/ListItemDefs',
+      request,
+      metadata || {},
+      methodDescriptor_RegistryService_ListItemDefs);
 };
 
 

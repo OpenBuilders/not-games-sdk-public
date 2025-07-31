@@ -11,6 +11,7 @@ import { UnknownFieldHandler } from "@protobuf-ts/runtime";
 import type { PartialMessage } from "@protobuf-ts/runtime";
 import { reflectionMergePartial } from "@protobuf-ts/runtime";
 import { MessageType } from "@protobuf-ts/runtime";
+import { Pagination } from "../common/pagination_pb";
 import { Rarity } from "../common/rarity_pb";
 /**
  * @generated from protobuf message registry.v1.ItemDef
@@ -315,6 +316,80 @@ export interface UpdateAchievementDefResponse {
      * @generated from protobuf field: string status = 1
      */
     status: string;
+}
+/**
+ * @generated from protobuf message registry.v1.ListItemDefsRequest
+ */
+export interface ListItemDefsRequest {
+    /**
+     * @generated from protobuf field: int32 limit = 1
+     */
+    limit: number;
+    /**
+     * @generated from protobuf field: int32 offset = 2
+     */
+    offset: number;
+    /**
+     * @generated from protobuf field: optional string collection = 3
+     */
+    collection?: string;
+    /**
+     * @generated from protobuf field: optional string name = 4
+     */
+    name?: string;
+    /**
+     * @generated from protobuf field: optional common.v1.Rarity rarity = 5
+     */
+    rarity?: Rarity;
+    /**
+     * @generated from protobuf field: optional string type = 6
+     */
+    type?: string;
+    /**
+     * @generated from protobuf field: optional string display_type = 7
+     */
+    displayType?: string;
+    /**
+     * @generated from protobuf field: optional string hidden = 8
+     */
+    hidden?: string;
+    /**
+     * @generated from protobuf field: optional string game_only = 9
+     */
+    gameOnly?: string;
+    /**
+     * @generated from protobuf field: optional string store_hidden = 10
+     */
+    storeHidden?: string;
+    /**
+     * @generated from protobuf field: optional string tradable = 11
+     */
+    tradable?: string;
+    /**
+     * @generated from protobuf field: optional int64 supply = 12
+     */
+    supply?: bigint;
+    /**
+     * @generated from protobuf field: repeated string sort_fields = 13
+     */
+    sortFields: string[];
+    /**
+     * @generated from protobuf field: repeated string directions = 14
+     */
+    directions: string[];
+}
+/**
+ * @generated from protobuf message registry.v1.ListItemDefsResponse
+ */
+export interface ListItemDefsResponse {
+    /**
+     * @generated from protobuf field: repeated registry.v1.ItemDef items = 1
+     */
+    items: ItemDef[];
+    /**
+     * @generated from protobuf field: common.v1.Pagination pagination = 2
+     */
+    pagination?: Pagination;
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class ItemDef$Type extends MessageType<ItemDef> {
@@ -1267,6 +1342,201 @@ class UpdateAchievementDefResponse$Type extends MessageType<UpdateAchievementDef
  * @generated MessageType for protobuf message registry.v1.UpdateAchievementDefResponse
  */
 export const UpdateAchievementDefResponse = new UpdateAchievementDefResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class ListItemDefsRequest$Type extends MessageType<ListItemDefsRequest> {
+    constructor() {
+        super("registry.v1.ListItemDefsRequest", [
+            { no: 1, name: "limit", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "offset", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "collection", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "rarity", kind: "enum", opt: true, T: () => ["common.v1.Rarity", Rarity] },
+            { no: 6, name: "type", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 7, name: "display_type", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 8, name: "hidden", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 9, name: "game_only", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 10, name: "store_hidden", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 11, name: "tradable", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 12, name: "supply", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 13, name: "sort_fields", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
+            { no: 14, name: "directions", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<ListItemDefsRequest>): ListItemDefsRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.limit = 0;
+        message.offset = 0;
+        message.sortFields = [];
+        message.directions = [];
+        if (value !== undefined)
+            reflectionMergePartial<ListItemDefsRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ListItemDefsRequest): ListItemDefsRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* int32 limit */ 1:
+                    message.limit = reader.int32();
+                    break;
+                case /* int32 offset */ 2:
+                    message.offset = reader.int32();
+                    break;
+                case /* optional string collection */ 3:
+                    message.collection = reader.string();
+                    break;
+                case /* optional string name */ 4:
+                    message.name = reader.string();
+                    break;
+                case /* optional common.v1.Rarity rarity */ 5:
+                    message.rarity = reader.int32();
+                    break;
+                case /* optional string type */ 6:
+                    message.type = reader.string();
+                    break;
+                case /* optional string display_type */ 7:
+                    message.displayType = reader.string();
+                    break;
+                case /* optional string hidden */ 8:
+                    message.hidden = reader.string();
+                    break;
+                case /* optional string game_only */ 9:
+                    message.gameOnly = reader.string();
+                    break;
+                case /* optional string store_hidden */ 10:
+                    message.storeHidden = reader.string();
+                    break;
+                case /* optional string tradable */ 11:
+                    message.tradable = reader.string();
+                    break;
+                case /* optional int64 supply */ 12:
+                    message.supply = reader.int64().toBigInt();
+                    break;
+                case /* repeated string sort_fields */ 13:
+                    message.sortFields.push(reader.string());
+                    break;
+                case /* repeated string directions */ 14:
+                    message.directions.push(reader.string());
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: ListItemDefsRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int32 limit = 1; */
+        if (message.limit !== 0)
+            writer.tag(1, WireType.Varint).int32(message.limit);
+        /* int32 offset = 2; */
+        if (message.offset !== 0)
+            writer.tag(2, WireType.Varint).int32(message.offset);
+        /* optional string collection = 3; */
+        if (message.collection !== undefined)
+            writer.tag(3, WireType.LengthDelimited).string(message.collection);
+        /* optional string name = 4; */
+        if (message.name !== undefined)
+            writer.tag(4, WireType.LengthDelimited).string(message.name);
+        /* optional common.v1.Rarity rarity = 5; */
+        if (message.rarity !== undefined)
+            writer.tag(5, WireType.Varint).int32(message.rarity);
+        /* optional string type = 6; */
+        if (message.type !== undefined)
+            writer.tag(6, WireType.LengthDelimited).string(message.type);
+        /* optional string display_type = 7; */
+        if (message.displayType !== undefined)
+            writer.tag(7, WireType.LengthDelimited).string(message.displayType);
+        /* optional string hidden = 8; */
+        if (message.hidden !== undefined)
+            writer.tag(8, WireType.LengthDelimited).string(message.hidden);
+        /* optional string game_only = 9; */
+        if (message.gameOnly !== undefined)
+            writer.tag(9, WireType.LengthDelimited).string(message.gameOnly);
+        /* optional string store_hidden = 10; */
+        if (message.storeHidden !== undefined)
+            writer.tag(10, WireType.LengthDelimited).string(message.storeHidden);
+        /* optional string tradable = 11; */
+        if (message.tradable !== undefined)
+            writer.tag(11, WireType.LengthDelimited).string(message.tradable);
+        /* optional int64 supply = 12; */
+        if (message.supply !== undefined)
+            writer.tag(12, WireType.Varint).int64(message.supply);
+        /* repeated string sort_fields = 13; */
+        for (let i = 0; i < message.sortFields.length; i++)
+            writer.tag(13, WireType.LengthDelimited).string(message.sortFields[i]);
+        /* repeated string directions = 14; */
+        for (let i = 0; i < message.directions.length; i++)
+            writer.tag(14, WireType.LengthDelimited).string(message.directions[i]);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message registry.v1.ListItemDefsRequest
+ */
+export const ListItemDefsRequest = new ListItemDefsRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class ListItemDefsResponse$Type extends MessageType<ListItemDefsResponse> {
+    constructor() {
+        super("registry.v1.ListItemDefsResponse", [
+            { no: 1, name: "items", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ItemDef },
+            { no: 2, name: "pagination", kind: "message", T: () => Pagination }
+        ]);
+    }
+    create(value?: PartialMessage<ListItemDefsResponse>): ListItemDefsResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.items = [];
+        if (value !== undefined)
+            reflectionMergePartial<ListItemDefsResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ListItemDefsResponse): ListItemDefsResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* repeated registry.v1.ItemDef items */ 1:
+                    message.items.push(ItemDef.internalBinaryRead(reader, reader.uint32(), options));
+                    break;
+                case /* common.v1.Pagination pagination */ 2:
+                    message.pagination = Pagination.internalBinaryRead(reader, reader.uint32(), options, message.pagination);
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: ListItemDefsResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* repeated registry.v1.ItemDef items = 1; */
+        for (let i = 0; i < message.items.length; i++)
+            ItemDef.internalBinaryWrite(message.items[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* common.v1.Pagination pagination = 2; */
+        if (message.pagination)
+            Pagination.internalBinaryWrite(message.pagination, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message registry.v1.ListItemDefsResponse
+ */
+export const ListItemDefsResponse = new ListItemDefsResponse$Type();
 /**
  * @generated ServiceType for protobuf service registry.v1.RegistryService
  */
@@ -1276,5 +1546,6 @@ export const RegistryService = new ServiceType("registry.v1.RegistryService", [
     { name: "UpdateItemDef", options: {}, I: UpdateItemDefRequest, O: UpdateItemDefResponse },
     { name: "GetAchievementDef", options: {}, I: GetAchievementDefRequest, O: AchievementDef },
     { name: "CreateAchievementDef", options: {}, I: CreateAchievementDefRequest, O: CreateAchievementDefResponse },
-    { name: "UpdateAchievementDef", options: {}, I: UpdateAchievementDefRequest, O: UpdateAchievementDefResponse }
+    { name: "UpdateAchievementDef", options: {}, I: UpdateAchievementDefRequest, O: UpdateAchievementDefResponse },
+    { name: "ListItemDefs", options: {}, I: ListItemDefsRequest, O: ListItemDefsResponse }
 ]);

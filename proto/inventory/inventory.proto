@@ -20,6 +20,7 @@ service InventoryService {
   rpc AddGroup(AddGroupRequest) returns (AddGroupResponse) {}
   rpc StreamAckMessages(StreamItemTransfersAckRequest) returns (StreamItemTransfersAckResponse) {} // deprecated
   rpc AckStreamMessages(AckStreamMessagesRequest) returns (AckStreamMessagesResponse) {}
+  rpc ListItemsByItemDef(ListItemsByItemDefRequest) returns (ListItemsResponse) {}
 }
 
 message Item {
@@ -72,6 +73,14 @@ message ListItemsRequest {
   optional bool tradable = 13;
   repeated string sort_fields = 14;
   repeated string directions = 15;
+}
+
+message ListItemsByItemDefRequest {
+  string item_def_id = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+  repeated string sort_fields = 4;
+  repeated string directions = 5;
 }
 
 message ListItemsResponse {

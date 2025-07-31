@@ -4,6 +4,7 @@
 import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
 import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
 import { InventoryService } from "./inventory_pb";
+import type { ListItemsByItemDefRequest } from "./inventory_pb";
 import type { AckStreamMessagesResponse } from "./inventory_pb";
 import type { AckStreamMessagesRequest } from "./inventory_pb";
 import type { StreamItemTransfersAckResponse } from "./inventory_pb";
@@ -84,6 +85,10 @@ export interface IInventoryServiceClient {
      * @generated from protobuf rpc: AckStreamMessages
      */
     ackStreamMessages(input: AckStreamMessagesRequest, options?: RpcOptions): UnaryCall<AckStreamMessagesRequest, AckStreamMessagesResponse>;
+    /**
+     * @generated from protobuf rpc: ListItemsByItemDef
+     */
+    listItemsByItemDef(input: ListItemsByItemDefRequest, options?: RpcOptions): UnaryCall<ListItemsByItemDefRequest, ListItemsResponse>;
 }
 /**
  * @generated from protobuf service inventory.v1.InventoryService
@@ -177,5 +182,12 @@ export class InventoryServiceClient implements IInventoryServiceClient, ServiceI
     ackStreamMessages(input: AckStreamMessagesRequest, options?: RpcOptions): UnaryCall<AckStreamMessagesRequest, AckStreamMessagesResponse> {
         const method = this.methods[11], opt = this._transport.mergeOptions(options);
         return stackIntercept<AckStreamMessagesRequest, AckStreamMessagesResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
+     * @generated from protobuf rpc: ListItemsByItemDef
+     */
+    listItemsByItemDef(input: ListItemsByItemDefRequest, options?: RpcOptions): UnaryCall<ListItemsByItemDefRequest, ListItemsResponse> {
+        const method = this.methods[12], opt = this._transport.mergeOptions(options);
+        return stackIntercept<ListItemsByItemDefRequest, ListItemsResponse>("unary", this._transport, method, opt, input);
     }
 }

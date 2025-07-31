@@ -31,6 +31,7 @@ const (
 	InventoryService_AddGroup_FullMethodName           = "/inventory.v1.InventoryService/AddGroup"
 	InventoryService_StreamAckMessages_FullMethodName  = "/inventory.v1.InventoryService/StreamAckMessages"
 	InventoryService_AckStreamMessages_FullMethodName  = "/inventory.v1.InventoryService/AckStreamMessages"
+	InventoryService_ListItemsByItemDef_FullMethodName = "/inventory.v1.InventoryService/ListItemsByItemDef"
 )
 
 // InventoryServiceClient is the client API for InventoryService service.
@@ -49,6 +50,7 @@ type InventoryServiceClient interface {
 	AddGroup(ctx context.Context, in *AddGroupRequest, opts ...grpc.CallOption) (*AddGroupResponse, error)
 	StreamAckMessages(ctx context.Context, in *StreamItemTransfersAckRequest, opts ...grpc.CallOption) (*StreamItemTransfersAckResponse, error)
 	AckStreamMessages(ctx context.Context, in *AckStreamMessagesRequest, opts ...grpc.CallOption) (*AckStreamMessagesResponse, error)
+	ListItemsByItemDef(ctx context.Context, in *ListItemsByItemDefRequest, opts ...grpc.CallOption) (*ListItemsResponse, error)
 }
 
 type inventoryServiceClient struct {
@@ -197,6 +199,16 @@ func (c *inventoryServiceClient) AckStreamMessages(ctx context.Context, in *AckS
 	return out, nil
 }
 
+func (c *inventoryServiceClient) ListItemsByItemDef(ctx context.Context, in *ListItemsByItemDefRequest, opts ...grpc.CallOption) (*ListItemsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListItemsResponse)
+	err := c.cc.Invoke(ctx, InventoryService_ListItemsByItemDef_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // InventoryServiceServer is the server API for InventoryService service.
 // All implementations must embed UnimplementedInventoryServiceServer
 // for forward compatibility.
@@ -213,6 +225,7 @@ type InventoryServiceServer interface {
 	AddGroup(context.Context, *AddGroupRequest) (*AddGroupResponse, error)
 	StreamAckMessages(context.Context, *StreamItemTransfersAckRequest) (*StreamItemTransfersAckResponse, error)
 	AckStreamMessages(context.Context, *AckStreamMessagesRequest) (*AckStreamMessagesResponse, error)
+	ListItemsByItemDef(context.Context, *ListItemsByItemDefRequest) (*ListItemsResponse, error)
 	mustEmbedUnimplementedInventoryServiceServer()
 }
 
@@ -258,6 +271,9 @@ func (UnimplementedInventoryServiceServer) StreamAckMessages(context.Context, *S
 }
 func (UnimplementedInventoryServiceServer) AckStreamMessages(context.Context, *AckStreamMessagesRequest) (*AckStreamMessagesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AckStreamMessages not implemented")
+}
+func (UnimplementedInventoryServiceServer) ListItemsByItemDef(context.Context, *ListItemsByItemDefRequest) (*ListItemsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListItemsByItemDef not implemented")
 }
 func (UnimplementedInventoryServiceServer) mustEmbedUnimplementedInventoryServiceServer() {}
 func (UnimplementedInventoryServiceServer) testEmbeddedByValue()                          {}
@@ -482,6 +498,24 @@ func _InventoryService_AckStreamMessages_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _InventoryService_ListItemsByItemDef_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListItemsByItemDefRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServiceServer).ListItemsByItemDef(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InventoryService_ListItemsByItemDef_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServiceServer).ListItemsByItemDef(ctx, req.(*ListItemsByItemDefRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // InventoryService_ServiceDesc is the grpc.ServiceDesc for InventoryService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -528,6 +562,10 @@ var InventoryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AckStreamMessages",
 			Handler:    _InventoryService_AckStreamMessages_Handler,
+		},
+		{
+			MethodName: "ListItemsByItemDef",
+			Handler:    _InventoryService_ListItemsByItemDef_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
