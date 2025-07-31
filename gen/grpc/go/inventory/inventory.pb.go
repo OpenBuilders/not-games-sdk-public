@@ -909,14 +909,21 @@ func (x *UnpackResponse) GetItemIds() []string {
 }
 
 type GenerateRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ItemDefId     string                 `protobuf:"bytes,1,opt,name=item_def_id,json=itemDefId,proto3" json:"item_def_id,omitempty"`
-	AccountId     int64                  `protobuf:"varint,2,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
-	AppId         int64                  `protobuf:"varint,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
-	Tags          string                 `protobuf:"bytes,4,opt,name=tags,proto3" json:"tags,omitempty"`
-	HoldTill      int64                  `protobuf:"varint,5,opt,name=hold_till,json=holdTill,proto3" json:"hold_till,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	ItemDefId       string                 `protobuf:"bytes,1,opt,name=item_def_id,json=itemDefId,proto3" json:"item_def_id,omitempty"`
+	AccountId       int64                  `protobuf:"varint,2,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
+	AppId           int64                  `protobuf:"varint,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	Tags            string                 `protobuf:"bytes,4,opt,name=tags,proto3" json:"tags,omitempty"`
+	HoldTill        int64                  `protobuf:"varint,5,opt,name=hold_till,json=holdTill,proto3" json:"hold_till,omitempty"`
+	SourceItemDefId *string                `protobuf:"bytes,6,opt,name=source_item_def_id,json=sourceItemDefId,proto3,oneof" json:"source_item_def_id,omitempty"`
+	Rarity          *common.Rarity         `protobuf:"varint,7,opt,name=rarity,proto3,enum=common.v1.Rarity,oneof" json:"rarity,omitempty"`
+	Name            *string                `protobuf:"bytes,8,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	Description     *string                `protobuf:"bytes,9,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	IconUrl         *string                `protobuf:"bytes,10,opt,name=icon_url,json=iconUrl,proto3,oneof" json:"icon_url,omitempty"`
+	AppFiles        *string                `protobuf:"bytes,11,opt,name=app_files,json=appFiles,proto3,oneof" json:"app_files,omitempty"`
+	AppMeta         *string                `protobuf:"bytes,12,opt,name=app_meta,json=appMeta,proto3,oneof" json:"app_meta,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *GenerateRequest) Reset() {
@@ -982,6 +989,55 @@ func (x *GenerateRequest) GetHoldTill() int64 {
 		return x.HoldTill
 	}
 	return 0
+}
+
+func (x *GenerateRequest) GetSourceItemDefId() string {
+	if x != nil && x.SourceItemDefId != nil {
+		return *x.SourceItemDefId
+	}
+	return ""
+}
+
+func (x *GenerateRequest) GetRarity() common.Rarity {
+	if x != nil && x.Rarity != nil {
+		return *x.Rarity
+	}
+	return common.Rarity(0)
+}
+
+func (x *GenerateRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *GenerateRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *GenerateRequest) GetIconUrl() string {
+	if x != nil && x.IconUrl != nil {
+		return *x.IconUrl
+	}
+	return ""
+}
+
+func (x *GenerateRequest) GetAppFiles() string {
+	if x != nil && x.AppFiles != nil {
+		return *x.AppFiles
+	}
+	return ""
+}
+
+func (x *GenerateRequest) GetAppMeta() string {
+	if x != nil && x.AppMeta != nil {
+		return *x.AppMeta
+	}
+	return ""
 }
 
 type GenerateResponse struct {
@@ -1916,14 +1972,30 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\x06app_id\x18\x03 \x01(\x03R\x05appId\x12\x12\n" +
 	"\x04tags\x18\x04 \x01(\tR\x04tags\"+\n" +
 	"\x0eUnpackResponse\x12\x19\n" +
-	"\bitem_ids\x18\x01 \x03(\tR\aitemIds\"\x98\x01\n" +
+	"\bitem_ids\x18\x01 \x03(\tR\aitemIds\"\xff\x03\n" +
 	"\x0fGenerateRequest\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\x12\x1d\n" +
 	"\n" +
 	"account_id\x18\x02 \x01(\x03R\taccountId\x12\x15\n" +
 	"\x06app_id\x18\x03 \x01(\x03R\x05appId\x12\x12\n" +
 	"\x04tags\x18\x04 \x01(\tR\x04tags\x12\x1b\n" +
-	"\thold_till\x18\x05 \x01(\x03R\bholdTill\"+\n" +
+	"\thold_till\x18\x05 \x01(\x03R\bholdTill\x120\n" +
+	"\x12source_item_def_id\x18\x06 \x01(\tH\x00R\x0fsourceItemDefId\x88\x01\x01\x12.\n" +
+	"\x06rarity\x18\a \x01(\x0e2\x11.common.v1.RarityH\x01R\x06rarity\x88\x01\x01\x12\x17\n" +
+	"\x04name\x18\b \x01(\tH\x02R\x04name\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\t \x01(\tH\x03R\vdescription\x88\x01\x01\x12\x1e\n" +
+	"\bicon_url\x18\n" +
+	" \x01(\tH\x04R\aiconUrl\x88\x01\x01\x12 \n" +
+	"\tapp_files\x18\v \x01(\tH\x05R\bappFiles\x88\x01\x01\x12\x1e\n" +
+	"\bapp_meta\x18\f \x01(\tH\x06R\aappMeta\x88\x01\x01B\x15\n" +
+	"\x13_source_item_def_idB\t\n" +
+	"\a_rarityB\a\n" +
+	"\x05_nameB\x0e\n" +
+	"\f_descriptionB\v\n" +
+	"\t_icon_urlB\f\n" +
+	"\n" +
+	"_app_filesB\v\n" +
+	"\t_app_meta\"+\n" +
 	"\x10GenerateResponse\x12\x17\n" +
 	"\aitem_id\x18\x01 \x01(\tR\x06itemId\"\xd6\x01\n" +
 	"\x11UpdateItemRequest\x12\x17\n" +
@@ -2059,42 +2131,43 @@ var file_inventory_inventory_proto_depIdxs = []int32{
 	27, // 1: inventory.v1.ListItemsRequest.rarity:type_name -> common.v1.Rarity
 	2,  // 2: inventory.v1.ListItemsResponse.items:type_name -> inventory.v1.Item
 	28, // 3: inventory.v1.ListItemsResponse.pagination:type_name -> common.v1.Pagination
-	27, // 4: inventory.v1.UpdateItemRequest.rarity:type_name -> common.v1.Rarity
-	2,  // 5: inventory.v1.StreamItemResponse.item:type_name -> inventory.v1.Item
-	0,  // 6: inventory.v1.StreamItemResponse.type:type_name -> inventory.v1.StreamItemOpType
-	1,  // 7: inventory.v1.AddGroupRequest.type:type_name -> inventory.v1.StreamType
-	1,  // 8: inventory.v1.AckStreamMessagesRequest.type:type_name -> inventory.v1.StreamType
-	4,  // 9: inventory.v1.InventoryService.ListItems:input_type -> inventory.v1.ListItemsRequest
-	3,  // 10: inventory.v1.InventoryService.GetItem:input_type -> inventory.v1.GetItemRequest
-	7,  // 11: inventory.v1.InventoryService.ConsumeItem:input_type -> inventory.v1.ConsumeItemRequest
-	9,  // 12: inventory.v1.InventoryService.Unpack:input_type -> inventory.v1.UnpackRequest
-	11, // 13: inventory.v1.InventoryService.Generate:input_type -> inventory.v1.GenerateRequest
-	13, // 14: inventory.v1.InventoryService.UpdateItem:input_type -> inventory.v1.UpdateItemRequest
-	15, // 15: inventory.v1.InventoryService.TransferItem:input_type -> inventory.v1.TransferItemRequest
-	17, // 16: inventory.v1.InventoryService.StreamItemTransfer:input_type -> inventory.v1.StreamItemTransfersRequest
-	19, // 17: inventory.v1.InventoryService.StreamItem:input_type -> inventory.v1.StreamItemRequest
-	21, // 18: inventory.v1.InventoryService.AddGroup:input_type -> inventory.v1.AddGroupRequest
-	23, // 19: inventory.v1.InventoryService.StreamAckMessages:input_type -> inventory.v1.StreamItemTransfersAckRequest
-	25, // 20: inventory.v1.InventoryService.AckStreamMessages:input_type -> inventory.v1.AckStreamMessagesRequest
-	5,  // 21: inventory.v1.InventoryService.ListItemsByItemDef:input_type -> inventory.v1.ListItemsByItemDefRequest
-	6,  // 22: inventory.v1.InventoryService.ListItems:output_type -> inventory.v1.ListItemsResponse
-	2,  // 23: inventory.v1.InventoryService.GetItem:output_type -> inventory.v1.Item
-	8,  // 24: inventory.v1.InventoryService.ConsumeItem:output_type -> inventory.v1.ConsumeItemResponse
-	10, // 25: inventory.v1.InventoryService.Unpack:output_type -> inventory.v1.UnpackResponse
-	12, // 26: inventory.v1.InventoryService.Generate:output_type -> inventory.v1.GenerateResponse
-	14, // 27: inventory.v1.InventoryService.UpdateItem:output_type -> inventory.v1.UpdateItemResponse
-	16, // 28: inventory.v1.InventoryService.TransferItem:output_type -> inventory.v1.TransferItemResponse
-	18, // 29: inventory.v1.InventoryService.StreamItemTransfer:output_type -> inventory.v1.StreamItemTransfersResponse
-	20, // 30: inventory.v1.InventoryService.StreamItem:output_type -> inventory.v1.StreamItemResponse
-	22, // 31: inventory.v1.InventoryService.AddGroup:output_type -> inventory.v1.AddGroupResponse
-	24, // 32: inventory.v1.InventoryService.StreamAckMessages:output_type -> inventory.v1.StreamItemTransfersAckResponse
-	26, // 33: inventory.v1.InventoryService.AckStreamMessages:output_type -> inventory.v1.AckStreamMessagesResponse
-	6,  // 34: inventory.v1.InventoryService.ListItemsByItemDef:output_type -> inventory.v1.ListItemsResponse
-	22, // [22:35] is the sub-list for method output_type
-	9,  // [9:22] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	27, // 4: inventory.v1.GenerateRequest.rarity:type_name -> common.v1.Rarity
+	27, // 5: inventory.v1.UpdateItemRequest.rarity:type_name -> common.v1.Rarity
+	2,  // 6: inventory.v1.StreamItemResponse.item:type_name -> inventory.v1.Item
+	0,  // 7: inventory.v1.StreamItemResponse.type:type_name -> inventory.v1.StreamItemOpType
+	1,  // 8: inventory.v1.AddGroupRequest.type:type_name -> inventory.v1.StreamType
+	1,  // 9: inventory.v1.AckStreamMessagesRequest.type:type_name -> inventory.v1.StreamType
+	4,  // 10: inventory.v1.InventoryService.ListItems:input_type -> inventory.v1.ListItemsRequest
+	3,  // 11: inventory.v1.InventoryService.GetItem:input_type -> inventory.v1.GetItemRequest
+	7,  // 12: inventory.v1.InventoryService.ConsumeItem:input_type -> inventory.v1.ConsumeItemRequest
+	9,  // 13: inventory.v1.InventoryService.Unpack:input_type -> inventory.v1.UnpackRequest
+	11, // 14: inventory.v1.InventoryService.Generate:input_type -> inventory.v1.GenerateRequest
+	13, // 15: inventory.v1.InventoryService.UpdateItem:input_type -> inventory.v1.UpdateItemRequest
+	15, // 16: inventory.v1.InventoryService.TransferItem:input_type -> inventory.v1.TransferItemRequest
+	17, // 17: inventory.v1.InventoryService.StreamItemTransfer:input_type -> inventory.v1.StreamItemTransfersRequest
+	19, // 18: inventory.v1.InventoryService.StreamItem:input_type -> inventory.v1.StreamItemRequest
+	21, // 19: inventory.v1.InventoryService.AddGroup:input_type -> inventory.v1.AddGroupRequest
+	23, // 20: inventory.v1.InventoryService.StreamAckMessages:input_type -> inventory.v1.StreamItemTransfersAckRequest
+	25, // 21: inventory.v1.InventoryService.AckStreamMessages:input_type -> inventory.v1.AckStreamMessagesRequest
+	5,  // 22: inventory.v1.InventoryService.ListItemsByItemDef:input_type -> inventory.v1.ListItemsByItemDefRequest
+	6,  // 23: inventory.v1.InventoryService.ListItems:output_type -> inventory.v1.ListItemsResponse
+	2,  // 24: inventory.v1.InventoryService.GetItem:output_type -> inventory.v1.Item
+	8,  // 25: inventory.v1.InventoryService.ConsumeItem:output_type -> inventory.v1.ConsumeItemResponse
+	10, // 26: inventory.v1.InventoryService.Unpack:output_type -> inventory.v1.UnpackResponse
+	12, // 27: inventory.v1.InventoryService.Generate:output_type -> inventory.v1.GenerateResponse
+	14, // 28: inventory.v1.InventoryService.UpdateItem:output_type -> inventory.v1.UpdateItemResponse
+	16, // 29: inventory.v1.InventoryService.TransferItem:output_type -> inventory.v1.TransferItemResponse
+	18, // 30: inventory.v1.InventoryService.StreamItemTransfer:output_type -> inventory.v1.StreamItemTransfersResponse
+	20, // 31: inventory.v1.InventoryService.StreamItem:output_type -> inventory.v1.StreamItemResponse
+	22, // 32: inventory.v1.InventoryService.AddGroup:output_type -> inventory.v1.AddGroupResponse
+	24, // 33: inventory.v1.InventoryService.StreamAckMessages:output_type -> inventory.v1.StreamItemTransfersAckResponse
+	26, // 34: inventory.v1.InventoryService.AckStreamMessages:output_type -> inventory.v1.AckStreamMessagesResponse
+	6,  // 35: inventory.v1.InventoryService.ListItemsByItemDef:output_type -> inventory.v1.ListItemsResponse
+	23, // [23:36] is the sub-list for method output_type
+	10, // [10:23] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_inventory_inventory_proto_init() }
@@ -2103,6 +2176,7 @@ func file_inventory_inventory_proto_init() {
 		return
 	}
 	file_inventory_inventory_proto_msgTypes[2].OneofWrappers = []any{}
+	file_inventory_inventory_proto_msgTypes[9].OneofWrappers = []any{}
 	file_inventory_inventory_proto_msgTypes[11].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
