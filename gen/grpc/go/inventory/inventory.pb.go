@@ -1484,6 +1484,7 @@ type StreamItemResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Item          *Item                  `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
 	Type          StreamItemOpType       `protobuf:"varint,2,opt,name=type,proto3,enum=inventory.v1.StreamItemOpType" json:"type,omitempty"`
+	MessageId     string                 `protobuf:"bytes,3,opt,name=message_id,json=messageId,proto3" json:"message_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1530,6 +1531,13 @@ func (x *StreamItemResponse) GetType() StreamItemOpType {
 		return x.Type
 	}
 	return StreamItemOpType_STREAM_ITEM_OP_TYPE_UNKNOWN
+}
+
+func (x *StreamItemResponse) GetMessageId() string {
+	if x != nil {
+		return x.MessageId
+	}
+	return ""
 }
 
 type AddGroupRequest struct {
@@ -1956,10 +1964,12 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\x11StreamItemRequest\x12\x1a\n" +
 	"\bconsumer\x18\x01 \x01(\tR\bconsumer\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x03R\x05limit\x12$\n" +
-	"\x0eack_by_request\x18\x03 \x01(\bR\fackByRequest\"p\n" +
+	"\x0eack_by_request\x18\x03 \x01(\bR\fackByRequest\"\x8f\x01\n" +
 	"\x12StreamItemResponse\x12&\n" +
 	"\x04item\x18\x01 \x01(\v2\x12.inventory.v1.ItemR\x04item\x122\n" +
-	"\x04type\x18\x02 \x01(\x0e2\x1e.inventory.v1.StreamItemOpTypeR\x04type\"?\n" +
+	"\x04type\x18\x02 \x01(\x0e2\x1e.inventory.v1.StreamItemOpTypeR\x04type\x12\x1d\n" +
+	"\n" +
+	"message_id\x18\x03 \x01(\tR\tmessageId\"?\n" +
 	"\x0fAddGroupRequest\x12,\n" +
 	"\x04type\x18\x01 \x01(\x0e2\x18.inventory.v1.StreamTypeR\x04type\"*\n" +
 	"\x10AddGroupResponse\x12\x16\n" +

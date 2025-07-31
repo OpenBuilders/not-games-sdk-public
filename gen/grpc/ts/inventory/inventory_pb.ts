@@ -471,6 +471,10 @@ export interface StreamItemResponse {
      * @generated from protobuf field: inventory.v1.StreamItemOpType type = 2
      */
     type: StreamItemOpType;
+    /**
+     * @generated from protobuf field: string message_id = 3
+     */
+    messageId: string;
 }
 /**
  * @generated from protobuf message inventory.v1.AddGroupRequest
@@ -1973,12 +1977,14 @@ class StreamItemResponse$Type extends MessageType<StreamItemResponse> {
     constructor() {
         super("inventory.v1.StreamItemResponse", [
             { no: 1, name: "item", kind: "message", T: () => Item },
-            { no: 2, name: "type", kind: "enum", T: () => ["inventory.v1.StreamItemOpType", StreamItemOpType, "STREAM_ITEM_OP_TYPE_"] }
+            { no: 2, name: "type", kind: "enum", T: () => ["inventory.v1.StreamItemOpType", StreamItemOpType, "STREAM_ITEM_OP_TYPE_"] },
+            { no: 3, name: "message_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<StreamItemResponse>): StreamItemResponse {
         const message = globalThis.Object.create((this.messagePrototype!));
         message.type = 0;
+        message.messageId = "";
         if (value !== undefined)
             reflectionMergePartial<StreamItemResponse>(this, message, value);
         return message;
@@ -1993,6 +1999,9 @@ class StreamItemResponse$Type extends MessageType<StreamItemResponse> {
                     break;
                 case /* inventory.v1.StreamItemOpType type */ 2:
                     message.type = reader.int32();
+                    break;
+                case /* string message_id */ 3:
+                    message.messageId = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2012,6 +2021,9 @@ class StreamItemResponse$Type extends MessageType<StreamItemResponse> {
         /* inventory.v1.StreamItemOpType type = 2; */
         if (message.type !== 0)
             writer.tag(2, WireType.Varint).int32(message.type);
+        /* string message_id = 3; */
+        if (message.messageId !== "")
+            writer.tag(3, WireType.LengthDelimited).string(message.messageId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
