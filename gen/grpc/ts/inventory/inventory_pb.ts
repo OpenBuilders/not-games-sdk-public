@@ -539,6 +539,69 @@ export interface AckStreamMessagesResponse {
     status: boolean;
 }
 /**
+ * @generated from protobuf message inventory.v1.TransferLogRequest
+ */
+export interface TransferLogRequest {
+    /**
+     * @generated from protobuf field: string item_id = 1
+     */
+    itemId: string;
+    /**
+     * @generated from protobuf field: int32 limit = 2
+     */
+    limit: number;
+    /**
+     * @generated from protobuf field: int32 offset = 3
+     */
+    offset: number;
+}
+/**
+ * @generated from protobuf message inventory.v1.TransferLogResponse
+ */
+export interface TransferLogResponse {
+    /**
+     * @generated from protobuf field: repeated inventory.v1.TransferLogResponse.Transfer transfers = 1
+     */
+    transfers: TransferLogResponse_Transfer[];
+    /**
+     * @generated from protobuf field: common.v1.Pagination pagination = 2
+     */
+    pagination?: Pagination;
+}
+/**
+ * @generated from protobuf message inventory.v1.TransferLogResponse.Transfer
+ */
+export interface TransferLogResponse_Transfer {
+    /**
+     * @generated from protobuf field: string id = 1
+     */
+    id: string;
+    /**
+     * @generated from protobuf field: string created_at = 2
+     */
+    createdAt: string;
+    /**
+     * @generated from protobuf field: int64 account_id = 3
+     */
+    accountId: bigint;
+    /**
+     * @generated from protobuf field: optional string account_username = 4
+     */
+    accountUsername?: string;
+    /**
+     * @generated from protobuf field: optional string account_avatar = 5
+     */
+    accountAvatar?: string;
+    /**
+     * @generated from protobuf field: optional string account_firstname = 6
+     */
+    accountFirstname?: string;
+    /**
+     * @generated from protobuf field: optional string account_lastname = 7
+     */
+    accountLastname?: string;
+}
+/**
  * @generated from protobuf enum inventory.v1.StreamItemOpType
  */
 export enum StreamItemOpType {
@@ -2324,6 +2387,214 @@ class AckStreamMessagesResponse$Type extends MessageType<AckStreamMessagesRespon
  * @generated MessageType for protobuf message inventory.v1.AckStreamMessagesResponse
  */
 export const AckStreamMessagesResponse = new AckStreamMessagesResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class TransferLogRequest$Type extends MessageType<TransferLogRequest> {
+    constructor() {
+        super("inventory.v1.TransferLogRequest", [
+            { no: 1, name: "item_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "limit", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "offset", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+        ]);
+    }
+    create(value?: PartialMessage<TransferLogRequest>): TransferLogRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.itemId = "";
+        message.limit = 0;
+        message.offset = 0;
+        if (value !== undefined)
+            reflectionMergePartial<TransferLogRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: TransferLogRequest): TransferLogRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string item_id */ 1:
+                    message.itemId = reader.string();
+                    break;
+                case /* int32 limit */ 2:
+                    message.limit = reader.int32();
+                    break;
+                case /* int32 offset */ 3:
+                    message.offset = reader.int32();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: TransferLogRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string item_id = 1; */
+        if (message.itemId !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.itemId);
+        /* int32 limit = 2; */
+        if (message.limit !== 0)
+            writer.tag(2, WireType.Varint).int32(message.limit);
+        /* int32 offset = 3; */
+        if (message.offset !== 0)
+            writer.tag(3, WireType.Varint).int32(message.offset);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.TransferLogRequest
+ */
+export const TransferLogRequest = new TransferLogRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class TransferLogResponse$Type extends MessageType<TransferLogResponse> {
+    constructor() {
+        super("inventory.v1.TransferLogResponse", [
+            { no: 1, name: "transfers", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TransferLogResponse_Transfer },
+            { no: 2, name: "pagination", kind: "message", T: () => Pagination }
+        ]);
+    }
+    create(value?: PartialMessage<TransferLogResponse>): TransferLogResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.transfers = [];
+        if (value !== undefined)
+            reflectionMergePartial<TransferLogResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: TransferLogResponse): TransferLogResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* repeated inventory.v1.TransferLogResponse.Transfer transfers */ 1:
+                    message.transfers.push(TransferLogResponse_Transfer.internalBinaryRead(reader, reader.uint32(), options));
+                    break;
+                case /* common.v1.Pagination pagination */ 2:
+                    message.pagination = Pagination.internalBinaryRead(reader, reader.uint32(), options, message.pagination);
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: TransferLogResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* repeated inventory.v1.TransferLogResponse.Transfer transfers = 1; */
+        for (let i = 0; i < message.transfers.length; i++)
+            TransferLogResponse_Transfer.internalBinaryWrite(message.transfers[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* common.v1.Pagination pagination = 2; */
+        if (message.pagination)
+            Pagination.internalBinaryWrite(message.pagination, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.TransferLogResponse
+ */
+export const TransferLogResponse = new TransferLogResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class TransferLogResponse_Transfer$Type extends MessageType<TransferLogResponse_Transfer> {
+    constructor() {
+        super("inventory.v1.TransferLogResponse.Transfer", [
+            { no: 1, name: "id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "created_at", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 3, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 4, name: "account_username", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "account_avatar", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 6, name: "account_firstname", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 7, name: "account_lastname", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<TransferLogResponse_Transfer>): TransferLogResponse_Transfer {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.id = "";
+        message.createdAt = "";
+        message.accountId = 0n;
+        if (value !== undefined)
+            reflectionMergePartial<TransferLogResponse_Transfer>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: TransferLogResponse_Transfer): TransferLogResponse_Transfer {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string id */ 1:
+                    message.id = reader.string();
+                    break;
+                case /* string created_at */ 2:
+                    message.createdAt = reader.string();
+                    break;
+                case /* int64 account_id */ 3:
+                    message.accountId = reader.int64().toBigInt();
+                    break;
+                case /* optional string account_username */ 4:
+                    message.accountUsername = reader.string();
+                    break;
+                case /* optional string account_avatar */ 5:
+                    message.accountAvatar = reader.string();
+                    break;
+                case /* optional string account_firstname */ 6:
+                    message.accountFirstname = reader.string();
+                    break;
+                case /* optional string account_lastname */ 7:
+                    message.accountLastname = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: TransferLogResponse_Transfer, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string id = 1; */
+        if (message.id !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.id);
+        /* string created_at = 2; */
+        if (message.createdAt !== "")
+            writer.tag(2, WireType.LengthDelimited).string(message.createdAt);
+        /* int64 account_id = 3; */
+        if (message.accountId !== 0n)
+            writer.tag(3, WireType.Varint).int64(message.accountId);
+        /* optional string account_username = 4; */
+        if (message.accountUsername !== undefined)
+            writer.tag(4, WireType.LengthDelimited).string(message.accountUsername);
+        /* optional string account_avatar = 5; */
+        if (message.accountAvatar !== undefined)
+            writer.tag(5, WireType.LengthDelimited).string(message.accountAvatar);
+        /* optional string account_firstname = 6; */
+        if (message.accountFirstname !== undefined)
+            writer.tag(6, WireType.LengthDelimited).string(message.accountFirstname);
+        /* optional string account_lastname = 7; */
+        if (message.accountLastname !== undefined)
+            writer.tag(7, WireType.LengthDelimited).string(message.accountLastname);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.TransferLogResponse.Transfer
+ */
+export const TransferLogResponse_Transfer = new TransferLogResponse_Transfer$Type();
 /**
  * @generated ServiceType for protobuf service inventory.v1.InventoryService
  */
@@ -2340,5 +2611,6 @@ export const InventoryService = new ServiceType("inventory.v1.InventoryService",
     { name: "AddGroup", options: {}, I: AddGroupRequest, O: AddGroupResponse },
     { name: "StreamAckMessages", options: {}, I: StreamItemTransfersAckRequest, O: StreamItemTransfersAckResponse },
     { name: "AckStreamMessages", options: {}, I: AckStreamMessagesRequest, O: AckStreamMessagesResponse },
-    { name: "ListItemsByItemDef", options: {}, I: ListItemsByItemDefRequest, O: ListItemsResponse }
+    { name: "ListItemsByItemDef", options: {}, I: ListItemsByItemDefRequest, O: ListItemsResponse },
+    { name: "TransferLog", options: {}, I: TransferLogRequest, O: TransferLogResponse }
 ]);

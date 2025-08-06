@@ -1814,6 +1814,210 @@ func (x *AckStreamMessagesResponse) GetStatus() bool {
 	return false
 }
 
+type TransferLogRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ItemId        string                 `protobuf:"bytes,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
+	Offset        int32                  `protobuf:"varint,3,opt,name=offset,proto3" json:"offset,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TransferLogRequest) Reset() {
+	*x = TransferLogRequest{}
+	mi := &file_inventory_inventory_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TransferLogRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TransferLogRequest) ProtoMessage() {}
+
+func (x *TransferLogRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_inventory_inventory_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TransferLogRequest.ProtoReflect.Descriptor instead.
+func (*TransferLogRequest) Descriptor() ([]byte, []int) {
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *TransferLogRequest) GetItemId() string {
+	if x != nil {
+		return x.ItemId
+	}
+	return ""
+}
+
+func (x *TransferLogRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *TransferLogRequest) GetOffset() int32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+type TransferLogResponse struct {
+	state         protoimpl.MessageState          `protogen:"open.v1"`
+	Transfers     []*TransferLogResponse_Transfer `protobuf:"bytes,1,rep,name=transfers,proto3" json:"transfers,omitempty"`
+	Pagination    *common.Pagination              `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TransferLogResponse) Reset() {
+	*x = TransferLogResponse{}
+	mi := &file_inventory_inventory_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TransferLogResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TransferLogResponse) ProtoMessage() {}
+
+func (x *TransferLogResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_inventory_inventory_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TransferLogResponse.ProtoReflect.Descriptor instead.
+func (*TransferLogResponse) Descriptor() ([]byte, []int) {
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *TransferLogResponse) GetTransfers() []*TransferLogResponse_Transfer {
+	if x != nil {
+		return x.Transfers
+	}
+	return nil
+}
+
+func (x *TransferLogResponse) GetPagination() *common.Pagination {
+	if x != nil {
+		return x.Pagination
+	}
+	return nil
+}
+
+type TransferLogResponse_Transfer struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Id               string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	CreatedAt        string                 `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	AccountId        int64                  `protobuf:"varint,3,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
+	AccountUsername  *string                `protobuf:"bytes,4,opt,name=account_username,json=accountUsername,proto3,oneof" json:"account_username,omitempty"`
+	AccountAvatar    *string                `protobuf:"bytes,5,opt,name=account_avatar,json=accountAvatar,proto3,oneof" json:"account_avatar,omitempty"`
+	AccountFirstname *string                `protobuf:"bytes,6,opt,name=account_firstname,json=accountFirstname,proto3,oneof" json:"account_firstname,omitempty"`
+	AccountLastname  *string                `protobuf:"bytes,7,opt,name=account_lastname,json=accountLastname,proto3,oneof" json:"account_lastname,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *TransferLogResponse_Transfer) Reset() {
+	*x = TransferLogResponse_Transfer{}
+	mi := &file_inventory_inventory_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TransferLogResponse_Transfer) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TransferLogResponse_Transfer) ProtoMessage() {}
+
+func (x *TransferLogResponse_Transfer) ProtoReflect() protoreflect.Message {
+	mi := &file_inventory_inventory_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TransferLogResponse_Transfer.ProtoReflect.Descriptor instead.
+func (*TransferLogResponse_Transfer) Descriptor() ([]byte, []int) {
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{26, 0}
+}
+
+func (x *TransferLogResponse_Transfer) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *TransferLogResponse_Transfer) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *TransferLogResponse_Transfer) GetAccountId() int64 {
+	if x != nil {
+		return x.AccountId
+	}
+	return 0
+}
+
+func (x *TransferLogResponse_Transfer) GetAccountUsername() string {
+	if x != nil && x.AccountUsername != nil {
+		return *x.AccountUsername
+	}
+	return ""
+}
+
+func (x *TransferLogResponse_Transfer) GetAccountAvatar() string {
+	if x != nil && x.AccountAvatar != nil {
+		return *x.AccountAvatar
+	}
+	return ""
+}
+
+func (x *TransferLogResponse_Transfer) GetAccountFirstname() string {
+	if x != nil && x.AccountFirstname != nil {
+		return *x.AccountFirstname
+	}
+	return ""
+}
+
+func (x *TransferLogResponse_Transfer) GetAccountLastname() string {
+	if x != nil && x.AccountLastname != nil {
+		return *x.AccountLastname
+	}
+	return ""
+}
+
 var File_inventory_inventory_proto protoreflect.FileDescriptor
 
 const file_inventory_inventory_proto_rawDesc = "" +
@@ -1982,7 +2186,30 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\bmessages\x18\x01 \x03(\tR\bmessages\x12,\n" +
 	"\x04type\x18\x02 \x01(\x0e2\x18.inventory.v1.StreamTypeR\x04type\"3\n" +
 	"\x19AckStreamMessagesResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\bR\x06status*t\n" +
+	"\x06status\x18\x01 \x01(\bR\x06status\"[\n" +
+	"\x12TransferLogRequest\x12\x17\n" +
+	"\aitem_id\x18\x01 \x01(\tR\x06itemId\x12\x14\n" +
+	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12\x16\n" +
+	"\x06offset\x18\x03 \x01(\x05R\x06offset\"\x82\x04\n" +
+	"\x13TransferLogResponse\x12H\n" +
+	"\ttransfers\x18\x01 \x03(\v2*.inventory.v1.TransferLogResponse.TransferR\ttransfers\x125\n" +
+	"\n" +
+	"pagination\x18\x02 \x01(\v2\x15.common.v1.PaginationR\n" +
+	"pagination\x1a\xe9\x02\n" +
+	"\bTransfer\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\x02 \x01(\tR\tcreatedAt\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x03 \x01(\x03R\taccountId\x12.\n" +
+	"\x10account_username\x18\x04 \x01(\tH\x00R\x0faccountUsername\x88\x01\x01\x12*\n" +
+	"\x0eaccount_avatar\x18\x05 \x01(\tH\x01R\raccountAvatar\x88\x01\x01\x120\n" +
+	"\x11account_firstname\x18\x06 \x01(\tH\x02R\x10accountFirstname\x88\x01\x01\x12.\n" +
+	"\x10account_lastname\x18\a \x01(\tH\x03R\x0faccountLastname\x88\x01\x01B\x13\n" +
+	"\x11_account_usernameB\x11\n" +
+	"\x0f_account_avatarB\x14\n" +
+	"\x12_account_firstnameB\x13\n" +
+	"\x11_account_lastname*t\n" +
 	"\x10StreamItemOpType\x12\x1f\n" +
 	"\x1bSTREAM_ITEM_OP_TYPE_UNKNOWN\x10\x00\x12\x1f\n" +
 	"\x1bSTREAM_ITEM_OP_TYPE_CREATED\x10\x01\x12\x1e\n" +
@@ -1991,7 +2218,7 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"StreamType\x12\x17\n" +
 	"\x13STREAM_TYPE_UNKNOWN\x10\x00\x12\x14\n" +
 	"\x10STREAM_TYPE_ITEM\x10\x01\x12\x1d\n" +
-	"\x19STREAM_TYPE_TRANSFER_ITEM\x10\x022\x84\t\n" +
+	"\x19STREAM_TYPE_TRANSFER_ITEM\x10\x022\xda\t\n" +
 	"\x10InventoryService\x12N\n" +
 	"\tListItems\x12\x1e.inventory.v1.ListItemsRequest\x1a\x1f.inventory.v1.ListItemsResponse\"\x00\x12=\n" +
 	"\aGetItem\x12\x1c.inventory.v1.GetItemRequest\x1a\x12.inventory.v1.Item\"\x00\x12T\n" +
@@ -2007,7 +2234,8 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\bAddGroup\x12\x1d.inventory.v1.AddGroupRequest\x1a\x1e.inventory.v1.AddGroupResponse\"\x00\x12p\n" +
 	"\x11StreamAckMessages\x12+.inventory.v1.StreamItemTransfersAckRequest\x1a,.inventory.v1.StreamItemTransfersAckResponse\"\x00\x12f\n" +
 	"\x11AckStreamMessages\x12&.inventory.v1.AckStreamMessagesRequest\x1a'.inventory.v1.AckStreamMessagesResponse\"\x00\x12`\n" +
-	"\x12ListItemsByItemDef\x12'.inventory.v1.ListItemsByItemDefRequest\x1a\x1f.inventory.v1.ListItemsResponse\"\x00BDZBgithub.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/inventoryb\x06proto3"
+	"\x12ListItemsByItemDef\x12'.inventory.v1.ListItemsByItemDefRequest\x1a\x1f.inventory.v1.ListItemsResponse\"\x00\x12T\n" +
+	"\vTransferLog\x12 .inventory.v1.TransferLogRequest\x1a!.inventory.v1.TransferLogResponse\"\x00BDZBgithub.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/inventoryb\x06proto3"
 
 var (
 	file_inventory_inventory_proto_rawDescOnce sync.Once
@@ -2022,7 +2250,7 @@ func file_inventory_inventory_proto_rawDescGZIP() []byte {
 }
 
 var file_inventory_inventory_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_inventory_inventory_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_inventory_inventory_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
 var file_inventory_inventory_proto_goTypes = []any{
 	(StreamItemOpType)(0),                  // 0: inventory.v1.StreamItemOpType
 	(StreamType)(0),                        // 1: inventory.v1.StreamType
@@ -2051,50 +2279,57 @@ var file_inventory_inventory_proto_goTypes = []any{
 	(*StreamItemTransfersAckResponse)(nil), // 24: inventory.v1.StreamItemTransfersAckResponse
 	(*AckStreamMessagesRequest)(nil),       // 25: inventory.v1.AckStreamMessagesRequest
 	(*AckStreamMessagesResponse)(nil),      // 26: inventory.v1.AckStreamMessagesResponse
-	(common.Rarity)(0),                     // 27: common.v1.Rarity
-	(*common.Pagination)(nil),              // 28: common.v1.Pagination
+	(*TransferLogRequest)(nil),             // 27: inventory.v1.TransferLogRequest
+	(*TransferLogResponse)(nil),            // 28: inventory.v1.TransferLogResponse
+	(*TransferLogResponse_Transfer)(nil),   // 29: inventory.v1.TransferLogResponse.Transfer
+	(common.Rarity)(0),                     // 30: common.v1.Rarity
+	(*common.Pagination)(nil),              // 31: common.v1.Pagination
 }
 var file_inventory_inventory_proto_depIdxs = []int32{
-	27, // 0: inventory.v1.Item.rarity:type_name -> common.v1.Rarity
-	27, // 1: inventory.v1.ListItemsRequest.rarity:type_name -> common.v1.Rarity
+	30, // 0: inventory.v1.Item.rarity:type_name -> common.v1.Rarity
+	30, // 1: inventory.v1.ListItemsRequest.rarity:type_name -> common.v1.Rarity
 	2,  // 2: inventory.v1.ListItemsResponse.items:type_name -> inventory.v1.Item
-	28, // 3: inventory.v1.ListItemsResponse.pagination:type_name -> common.v1.Pagination
-	27, // 4: inventory.v1.UpdateItemRequest.rarity:type_name -> common.v1.Rarity
+	31, // 3: inventory.v1.ListItemsResponse.pagination:type_name -> common.v1.Pagination
+	30, // 4: inventory.v1.UpdateItemRequest.rarity:type_name -> common.v1.Rarity
 	2,  // 5: inventory.v1.StreamItemResponse.item:type_name -> inventory.v1.Item
 	0,  // 6: inventory.v1.StreamItemResponse.type:type_name -> inventory.v1.StreamItemOpType
 	1,  // 7: inventory.v1.AddGroupRequest.type:type_name -> inventory.v1.StreamType
 	1,  // 8: inventory.v1.AckStreamMessagesRequest.type:type_name -> inventory.v1.StreamType
-	4,  // 9: inventory.v1.InventoryService.ListItems:input_type -> inventory.v1.ListItemsRequest
-	3,  // 10: inventory.v1.InventoryService.GetItem:input_type -> inventory.v1.GetItemRequest
-	7,  // 11: inventory.v1.InventoryService.ConsumeItem:input_type -> inventory.v1.ConsumeItemRequest
-	9,  // 12: inventory.v1.InventoryService.Unpack:input_type -> inventory.v1.UnpackRequest
-	11, // 13: inventory.v1.InventoryService.Generate:input_type -> inventory.v1.GenerateRequest
-	13, // 14: inventory.v1.InventoryService.UpdateItem:input_type -> inventory.v1.UpdateItemRequest
-	15, // 15: inventory.v1.InventoryService.TransferItem:input_type -> inventory.v1.TransferItemRequest
-	17, // 16: inventory.v1.InventoryService.StreamItemTransfer:input_type -> inventory.v1.StreamItemTransfersRequest
-	19, // 17: inventory.v1.InventoryService.StreamItem:input_type -> inventory.v1.StreamItemRequest
-	21, // 18: inventory.v1.InventoryService.AddGroup:input_type -> inventory.v1.AddGroupRequest
-	23, // 19: inventory.v1.InventoryService.StreamAckMessages:input_type -> inventory.v1.StreamItemTransfersAckRequest
-	25, // 20: inventory.v1.InventoryService.AckStreamMessages:input_type -> inventory.v1.AckStreamMessagesRequest
-	5,  // 21: inventory.v1.InventoryService.ListItemsByItemDef:input_type -> inventory.v1.ListItemsByItemDefRequest
-	6,  // 22: inventory.v1.InventoryService.ListItems:output_type -> inventory.v1.ListItemsResponse
-	2,  // 23: inventory.v1.InventoryService.GetItem:output_type -> inventory.v1.Item
-	8,  // 24: inventory.v1.InventoryService.ConsumeItem:output_type -> inventory.v1.ConsumeItemResponse
-	10, // 25: inventory.v1.InventoryService.Unpack:output_type -> inventory.v1.UnpackResponse
-	12, // 26: inventory.v1.InventoryService.Generate:output_type -> inventory.v1.GenerateResponse
-	14, // 27: inventory.v1.InventoryService.UpdateItem:output_type -> inventory.v1.UpdateItemResponse
-	16, // 28: inventory.v1.InventoryService.TransferItem:output_type -> inventory.v1.TransferItemResponse
-	18, // 29: inventory.v1.InventoryService.StreamItemTransfer:output_type -> inventory.v1.StreamItemTransfersResponse
-	20, // 30: inventory.v1.InventoryService.StreamItem:output_type -> inventory.v1.StreamItemResponse
-	22, // 31: inventory.v1.InventoryService.AddGroup:output_type -> inventory.v1.AddGroupResponse
-	24, // 32: inventory.v1.InventoryService.StreamAckMessages:output_type -> inventory.v1.StreamItemTransfersAckResponse
-	26, // 33: inventory.v1.InventoryService.AckStreamMessages:output_type -> inventory.v1.AckStreamMessagesResponse
-	6,  // 34: inventory.v1.InventoryService.ListItemsByItemDef:output_type -> inventory.v1.ListItemsResponse
-	22, // [22:35] is the sub-list for method output_type
-	9,  // [9:22] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	29, // 9: inventory.v1.TransferLogResponse.transfers:type_name -> inventory.v1.TransferLogResponse.Transfer
+	31, // 10: inventory.v1.TransferLogResponse.pagination:type_name -> common.v1.Pagination
+	4,  // 11: inventory.v1.InventoryService.ListItems:input_type -> inventory.v1.ListItemsRequest
+	3,  // 12: inventory.v1.InventoryService.GetItem:input_type -> inventory.v1.GetItemRequest
+	7,  // 13: inventory.v1.InventoryService.ConsumeItem:input_type -> inventory.v1.ConsumeItemRequest
+	9,  // 14: inventory.v1.InventoryService.Unpack:input_type -> inventory.v1.UnpackRequest
+	11, // 15: inventory.v1.InventoryService.Generate:input_type -> inventory.v1.GenerateRequest
+	13, // 16: inventory.v1.InventoryService.UpdateItem:input_type -> inventory.v1.UpdateItemRequest
+	15, // 17: inventory.v1.InventoryService.TransferItem:input_type -> inventory.v1.TransferItemRequest
+	17, // 18: inventory.v1.InventoryService.StreamItemTransfer:input_type -> inventory.v1.StreamItemTransfersRequest
+	19, // 19: inventory.v1.InventoryService.StreamItem:input_type -> inventory.v1.StreamItemRequest
+	21, // 20: inventory.v1.InventoryService.AddGroup:input_type -> inventory.v1.AddGroupRequest
+	23, // 21: inventory.v1.InventoryService.StreamAckMessages:input_type -> inventory.v1.StreamItemTransfersAckRequest
+	25, // 22: inventory.v1.InventoryService.AckStreamMessages:input_type -> inventory.v1.AckStreamMessagesRequest
+	5,  // 23: inventory.v1.InventoryService.ListItemsByItemDef:input_type -> inventory.v1.ListItemsByItemDefRequest
+	27, // 24: inventory.v1.InventoryService.TransferLog:input_type -> inventory.v1.TransferLogRequest
+	6,  // 25: inventory.v1.InventoryService.ListItems:output_type -> inventory.v1.ListItemsResponse
+	2,  // 26: inventory.v1.InventoryService.GetItem:output_type -> inventory.v1.Item
+	8,  // 27: inventory.v1.InventoryService.ConsumeItem:output_type -> inventory.v1.ConsumeItemResponse
+	10, // 28: inventory.v1.InventoryService.Unpack:output_type -> inventory.v1.UnpackResponse
+	12, // 29: inventory.v1.InventoryService.Generate:output_type -> inventory.v1.GenerateResponse
+	14, // 30: inventory.v1.InventoryService.UpdateItem:output_type -> inventory.v1.UpdateItemResponse
+	16, // 31: inventory.v1.InventoryService.TransferItem:output_type -> inventory.v1.TransferItemResponse
+	18, // 32: inventory.v1.InventoryService.StreamItemTransfer:output_type -> inventory.v1.StreamItemTransfersResponse
+	20, // 33: inventory.v1.InventoryService.StreamItem:output_type -> inventory.v1.StreamItemResponse
+	22, // 34: inventory.v1.InventoryService.AddGroup:output_type -> inventory.v1.AddGroupResponse
+	24, // 35: inventory.v1.InventoryService.StreamAckMessages:output_type -> inventory.v1.StreamItemTransfersAckResponse
+	26, // 36: inventory.v1.InventoryService.AckStreamMessages:output_type -> inventory.v1.AckStreamMessagesResponse
+	6,  // 37: inventory.v1.InventoryService.ListItemsByItemDef:output_type -> inventory.v1.ListItemsResponse
+	28, // 38: inventory.v1.InventoryService.TransferLog:output_type -> inventory.v1.TransferLogResponse
+	25, // [25:39] is the sub-list for method output_type
+	11, // [11:25] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_inventory_inventory_proto_init() }
@@ -2104,13 +2339,14 @@ func file_inventory_inventory_proto_init() {
 	}
 	file_inventory_inventory_proto_msgTypes[2].OneofWrappers = []any{}
 	file_inventory_inventory_proto_msgTypes[11].OneofWrappers = []any{}
+	file_inventory_inventory_proto_msgTypes[27].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_inventory_inventory_proto_rawDesc), len(file_inventory_inventory_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   25,
+			NumMessages:   28,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
