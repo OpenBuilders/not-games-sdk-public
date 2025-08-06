@@ -21,6 +21,7 @@ service InventoryService {
   rpc StreamAckMessages(StreamItemTransfersAckRequest) returns (StreamItemTransfersAckResponse) {} // deprecated
   rpc AckStreamMessages(AckStreamMessagesRequest) returns (AckStreamMessagesResponse) {}
   rpc ListItemsByItemDef(ListItemsByItemDefRequest) returns (ListItemsResponse) {}
+  rpc TransferLog(TransferLogRequest) returns (TransferLogResponse) {}
 }
 
 message Item {
@@ -209,4 +210,24 @@ message AckStreamMessagesRequest {
 
 message AckStreamMessagesResponse {
   bool status = 1;
+}
+
+message TransferLogRequest {
+  string item_id = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+}
+
+message TransferLogResponse {
+  message Transfer {
+    string id = 1;
+    string created_at = 2;
+    int64 account_id = 3;
+    optional string account_username = 4;
+    optional string account_avatar = 5;
+    optional string account_firstname = 6;
+    optional string account_lastname = 7;
+  }
+  repeated Transfer transfers = 1;
+  common.v1.Pagination pagination = 2;
 }
