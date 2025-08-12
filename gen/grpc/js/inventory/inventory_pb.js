@@ -3666,7 +3666,8 @@ itemDefId: jspb.Message.getFieldWithDefault(msg, 1, ""),
 accountId: jspb.Message.getFieldWithDefault(msg, 2, 0),
 appId: jspb.Message.getFieldWithDefault(msg, 3, 0),
 tags: jspb.Message.getFieldWithDefault(msg, 4, ""),
-holdTill: jspb.Message.getFieldWithDefault(msg, 5, 0)
+holdTill: jspb.Message.getFieldWithDefault(msg, 5, 0),
+itemId: (f = jspb.Message.getField(msg, 6)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -3722,6 +3723,10 @@ proto.inventory.v1.GenerateRequest.deserializeBinaryFromReader = function(msg, r
     case 5:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setHoldTill(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setItemId(value);
       break;
     default:
       reader.skipField();
@@ -3784,6 +3789,13 @@ proto.inventory.v1.GenerateRequest.serializeBinaryToWriter = function(message, w
   if (f !== 0) {
     writer.writeInt64(
       5,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -3877,6 +3889,42 @@ proto.inventory.v1.GenerateRequest.prototype.getHoldTill = function() {
  */
 proto.inventory.v1.GenerateRequest.prototype.setHoldTill = function(value) {
   return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional string item_id = 6;
+ * @return {string}
+ */
+proto.inventory.v1.GenerateRequest.prototype.getItemId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.setItemId = function(value) {
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.clearItemId = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.inventory.v1.GenerateRequest.prototype.hasItemId = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 

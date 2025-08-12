@@ -314,6 +314,10 @@ export interface GenerateRequest {
      * @generated from protobuf field: int64 hold_till = 5
      */
     holdTill: bigint;
+    /**
+     * @generated from protobuf field: optional string item_id = 6
+     */
+    itemId?: string;
 }
 /**
  * @generated from protobuf message inventory.v1.GenerateResponse
@@ -1447,7 +1451,8 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
             { no: 2, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 3, name: "app_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 4, name: "tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 5, name: "hold_till", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 5, name: "hold_till", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 6, name: "item_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<GenerateRequest>): GenerateRequest {
@@ -1481,6 +1486,9 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
                 case /* int64 hold_till */ 5:
                     message.holdTill = reader.int64().toBigInt();
                     break;
+                case /* optional string item_id */ 6:
+                    message.itemId = reader.string();
+                    break;
                 default:
                     let u = options.readUnknownField;
                     if (u === "throw")
@@ -1508,6 +1516,9 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
         /* int64 hold_till = 5; */
         if (message.holdTill !== 0n)
             writer.tag(5, WireType.Varint).int64(message.holdTill);
+        /* optional string item_id = 6; */
+        if (message.itemId !== undefined)
+            writer.tag(6, WireType.LengthDelimited).string(message.itemId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
