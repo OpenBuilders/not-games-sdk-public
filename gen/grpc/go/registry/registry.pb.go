@@ -1142,6 +1142,110 @@ func (x *ListItemDefsResponse) GetPagination() *common.Pagination {
 	return nil
 }
 
+type ListAchievementsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Limit         int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Offset        int32                  `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAchievementsRequest) Reset() {
+	*x = ListAchievementsRequest{}
+	mi := &file_registry_registry_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAchievementsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAchievementsRequest) ProtoMessage() {}
+
+func (x *ListAchievementsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_registry_registry_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAchievementsRequest.ProtoReflect.Descriptor instead.
+func (*ListAchievementsRequest) Descriptor() ([]byte, []int) {
+	return file_registry_registry_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ListAchievementsRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *ListAchievementsRequest) GetOffset() int32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+type ListAchievementsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Items         []*AchievementDef      `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	Pagination    *common.Pagination     `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAchievementsResponse) Reset() {
+	*x = ListAchievementsResponse{}
+	mi := &file_registry_registry_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAchievementsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAchievementsResponse) ProtoMessage() {}
+
+func (x *ListAchievementsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_registry_registry_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAchievementsResponse.ProtoReflect.Descriptor instead.
+func (*ListAchievementsResponse) Descriptor() ([]byte, []int) {
+	return file_registry_registry_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *ListAchievementsResponse) GetItems() []*AchievementDef {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListAchievementsResponse) GetPagination() *common.Pagination {
+	if x != nil {
+		return x.Pagination
+	}
+	return nil
+}
+
 var File_registry_registry_proto protoreflect.FileDescriptor
 
 const file_registry_registry_proto_rawDesc = "" +
@@ -1272,7 +1376,15 @@ const file_registry_registry_proto_rawDesc = "" +
 	"\x05items\x18\x01 \x03(\v2\x14.registry.v1.ItemDefR\x05items\x125\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x15.common.v1.PaginationR\n" +
-	"pagination2\x9b\x05\n" +
+	"pagination\"G\n" +
+	"\x17ListAchievementsRequest\x12\x14\n" +
+	"\x05limit\x18\x01 \x01(\x05R\x05limit\x12\x16\n" +
+	"\x06offset\x18\x02 \x01(\x05R\x06offset\"\x84\x01\n" +
+	"\x18ListAchievementsResponse\x121\n" +
+	"\x05items\x18\x01 \x03(\v2\x1b.registry.v1.AchievementDefR\x05items\x125\n" +
+	"\n" +
+	"pagination\x18\x02 \x01(\v2\x15.common.v1.PaginationR\n" +
+	"pagination2\xfe\x05\n" +
 	"\x0fRegistryService\x12D\n" +
 	"\n" +
 	"GetItemDef\x12\x1e.registry.v1.GetItemDefRequest\x1a\x14.registry.v1.ItemDef\"\x00\x12X\n" +
@@ -1281,7 +1393,8 @@ const file_registry_registry_proto_rawDesc = "" +
 	"\x11GetAchievementDef\x12%.registry.v1.GetAchievementDefRequest\x1a\x1b.registry.v1.AchievementDef\"\x00\x12m\n" +
 	"\x14CreateAchievementDef\x12(.registry.v1.CreateAchievementDefRequest\x1a).registry.v1.CreateAchievementDefResponse\"\x00\x12m\n" +
 	"\x14UpdateAchievementDef\x12(.registry.v1.UpdateAchievementDefRequest\x1a).registry.v1.UpdateAchievementDefResponse\"\x00\x12U\n" +
-	"\fListItemDefs\x12 .registry.v1.ListItemDefsRequest\x1a!.registry.v1.ListItemDefsResponse\"\x00BCZAgithub.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/registryb\x06proto3"
+	"\fListItemDefs\x12 .registry.v1.ListItemDefsRequest\x1a!.registry.v1.ListItemDefsResponse\"\x00\x12a\n" +
+	"\x10ListAchievements\x12$.registry.v1.ListAchievementsRequest\x1a%.registry.v1.ListAchievementsResponse\"\x00BCZAgithub.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/registryb\x06proto3"
 
 var (
 	file_registry_registry_proto_rawDescOnce sync.Once
@@ -1295,7 +1408,7 @@ func file_registry_registry_proto_rawDescGZIP() []byte {
 	return file_registry_registry_proto_rawDescData
 }
 
-var file_registry_registry_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_registry_registry_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_registry_registry_proto_goTypes = []any{
 	(*ItemDef)(nil),                      // 0: registry.v1.ItemDef
 	(*UpdateItemDefRequest)(nil),         // 1: registry.v1.UpdateItemDefRequest
@@ -1311,36 +1424,42 @@ var file_registry_registry_proto_goTypes = []any{
 	(*UpdateAchievementDefResponse)(nil), // 11: registry.v1.UpdateAchievementDefResponse
 	(*ListItemDefsRequest)(nil),          // 12: registry.v1.ListItemDefsRequest
 	(*ListItemDefsResponse)(nil),         // 13: registry.v1.ListItemDefsResponse
-	(common.Rarity)(0),                   // 14: common.v1.Rarity
-	(*common.Pagination)(nil),            // 15: common.v1.Pagination
+	(*ListAchievementsRequest)(nil),      // 14: registry.v1.ListAchievementsRequest
+	(*ListAchievementsResponse)(nil),     // 15: registry.v1.ListAchievementsResponse
+	(common.Rarity)(0),                   // 16: common.v1.Rarity
+	(*common.Pagination)(nil),            // 17: common.v1.Pagination
 }
 var file_registry_registry_proto_depIdxs = []int32{
-	14, // 0: registry.v1.ItemDef.rarity:type_name -> common.v1.Rarity
+	16, // 0: registry.v1.ItemDef.rarity:type_name -> common.v1.Rarity
 	0,  // 1: registry.v1.CreateItemDefRequest.item_def:type_name -> registry.v1.ItemDef
 	2,  // 2: registry.v1.CreateAchievementDefRequest.achievement_def:type_name -> registry.v1.AchievementDef
 	2,  // 3: registry.v1.UpdateAchievementDefRequest.achievement_def:type_name -> registry.v1.AchievementDef
-	14, // 4: registry.v1.ListItemDefsRequest.rarity:type_name -> common.v1.Rarity
+	16, // 4: registry.v1.ListItemDefsRequest.rarity:type_name -> common.v1.Rarity
 	0,  // 5: registry.v1.ListItemDefsResponse.items:type_name -> registry.v1.ItemDef
-	15, // 6: registry.v1.ListItemDefsResponse.pagination:type_name -> common.v1.Pagination
-	3,  // 7: registry.v1.RegistryService.GetItemDef:input_type -> registry.v1.GetItemDefRequest
-	4,  // 8: registry.v1.RegistryService.CreateItemDef:input_type -> registry.v1.CreateItemDefRequest
-	1,  // 9: registry.v1.RegistryService.UpdateItemDef:input_type -> registry.v1.UpdateItemDefRequest
-	7,  // 10: registry.v1.RegistryService.GetAchievementDef:input_type -> registry.v1.GetAchievementDefRequest
-	8,  // 11: registry.v1.RegistryService.CreateAchievementDef:input_type -> registry.v1.CreateAchievementDefRequest
-	10, // 12: registry.v1.RegistryService.UpdateAchievementDef:input_type -> registry.v1.UpdateAchievementDefRequest
-	12, // 13: registry.v1.RegistryService.ListItemDefs:input_type -> registry.v1.ListItemDefsRequest
-	0,  // 14: registry.v1.RegistryService.GetItemDef:output_type -> registry.v1.ItemDef
-	5,  // 15: registry.v1.RegistryService.CreateItemDef:output_type -> registry.v1.CreateItemDefResponse
-	6,  // 16: registry.v1.RegistryService.UpdateItemDef:output_type -> registry.v1.UpdateItemDefResponse
-	2,  // 17: registry.v1.RegistryService.GetAchievementDef:output_type -> registry.v1.AchievementDef
-	9,  // 18: registry.v1.RegistryService.CreateAchievementDef:output_type -> registry.v1.CreateAchievementDefResponse
-	11, // 19: registry.v1.RegistryService.UpdateAchievementDef:output_type -> registry.v1.UpdateAchievementDefResponse
-	13, // 20: registry.v1.RegistryService.ListItemDefs:output_type -> registry.v1.ListItemDefsResponse
-	14, // [14:21] is the sub-list for method output_type
-	7,  // [7:14] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	17, // 6: registry.v1.ListItemDefsResponse.pagination:type_name -> common.v1.Pagination
+	2,  // 7: registry.v1.ListAchievementsResponse.items:type_name -> registry.v1.AchievementDef
+	17, // 8: registry.v1.ListAchievementsResponse.pagination:type_name -> common.v1.Pagination
+	3,  // 9: registry.v1.RegistryService.GetItemDef:input_type -> registry.v1.GetItemDefRequest
+	4,  // 10: registry.v1.RegistryService.CreateItemDef:input_type -> registry.v1.CreateItemDefRequest
+	1,  // 11: registry.v1.RegistryService.UpdateItemDef:input_type -> registry.v1.UpdateItemDefRequest
+	7,  // 12: registry.v1.RegistryService.GetAchievementDef:input_type -> registry.v1.GetAchievementDefRequest
+	8,  // 13: registry.v1.RegistryService.CreateAchievementDef:input_type -> registry.v1.CreateAchievementDefRequest
+	10, // 14: registry.v1.RegistryService.UpdateAchievementDef:input_type -> registry.v1.UpdateAchievementDefRequest
+	12, // 15: registry.v1.RegistryService.ListItemDefs:input_type -> registry.v1.ListItemDefsRequest
+	14, // 16: registry.v1.RegistryService.ListAchievements:input_type -> registry.v1.ListAchievementsRequest
+	0,  // 17: registry.v1.RegistryService.GetItemDef:output_type -> registry.v1.ItemDef
+	5,  // 18: registry.v1.RegistryService.CreateItemDef:output_type -> registry.v1.CreateItemDefResponse
+	6,  // 19: registry.v1.RegistryService.UpdateItemDef:output_type -> registry.v1.UpdateItemDefResponse
+	2,  // 20: registry.v1.RegistryService.GetAchievementDef:output_type -> registry.v1.AchievementDef
+	9,  // 21: registry.v1.RegistryService.CreateAchievementDef:output_type -> registry.v1.CreateAchievementDefResponse
+	11, // 22: registry.v1.RegistryService.UpdateAchievementDef:output_type -> registry.v1.UpdateAchievementDefResponse
+	13, // 23: registry.v1.RegistryService.ListItemDefs:output_type -> registry.v1.ListItemDefsResponse
+	15, // 24: registry.v1.RegistryService.ListAchievements:output_type -> registry.v1.ListAchievementsResponse
+	17, // [17:25] is the sub-list for method output_type
+	9,  // [9:17] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_registry_registry_proto_init() }
@@ -1357,7 +1476,7 @@ func file_registry_registry_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_registry_registry_proto_rawDesc), len(file_registry_registry_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   14,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

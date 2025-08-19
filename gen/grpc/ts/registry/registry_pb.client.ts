@@ -4,6 +4,8 @@
 import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
 import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
 import { RegistryService } from "./registry_pb";
+import type { ListAchievementsResponse } from "./registry_pb";
+import type { ListAchievementsRequest } from "./registry_pb";
 import type { ListItemDefsResponse } from "./registry_pb";
 import type { ListItemDefsRequest } from "./registry_pb";
 import type { UpdateAchievementDefResponse } from "./registry_pb";
@@ -53,6 +55,10 @@ export interface IRegistryServiceClient {
      * @generated from protobuf rpc: ListItemDefs
      */
     listItemDefs(input: ListItemDefsRequest, options?: RpcOptions): UnaryCall<ListItemDefsRequest, ListItemDefsResponse>;
+    /**
+     * @generated from protobuf rpc: ListAchievements
+     */
+    listAchievements(input: ListAchievementsRequest, options?: RpcOptions): UnaryCall<ListAchievementsRequest, ListAchievementsResponse>;
 }
 /**
  * @generated from protobuf service registry.v1.RegistryService
@@ -111,5 +117,12 @@ export class RegistryServiceClient implements IRegistryServiceClient, ServiceInf
     listItemDefs(input: ListItemDefsRequest, options?: RpcOptions): UnaryCall<ListItemDefsRequest, ListItemDefsResponse> {
         const method = this.methods[6], opt = this._transport.mergeOptions(options);
         return stackIntercept<ListItemDefsRequest, ListItemDefsResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
+     * @generated from protobuf rpc: ListAchievements
+     */
+    listAchievements(input: ListAchievementsRequest, options?: RpcOptions): UnaryCall<ListAchievementsRequest, ListAchievementsResponse> {
+        const method = this.methods[7], opt = this._transport.mergeOptions(options);
+        return stackIntercept<ListAchievementsRequest, ListAchievementsResponse>("unary", this._transport, method, opt, input);
     }
 }

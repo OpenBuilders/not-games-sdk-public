@@ -391,6 +391,32 @@ export interface ListItemDefsResponse {
      */
     pagination?: Pagination;
 }
+/**
+ * @generated from protobuf message registry.v1.ListAchievementsRequest
+ */
+export interface ListAchievementsRequest {
+    /**
+     * @generated from protobuf field: int32 limit = 1
+     */
+    limit: number;
+    /**
+     * @generated from protobuf field: int32 offset = 2
+     */
+    offset: number;
+}
+/**
+ * @generated from protobuf message registry.v1.ListAchievementsResponse
+ */
+export interface ListAchievementsResponse {
+    /**
+     * @generated from protobuf field: repeated registry.v1.AchievementDef items = 1
+     */
+    items: AchievementDef[];
+    /**
+     * @generated from protobuf field: common.v1.Pagination pagination = 2
+     */
+    pagination?: Pagination;
+}
 // @generated message type with reflection information, may provide speed optimized methods
 class ItemDef$Type extends MessageType<ItemDef> {
     constructor() {
@@ -1537,6 +1563,115 @@ class ListItemDefsResponse$Type extends MessageType<ListItemDefsResponse> {
  * @generated MessageType for protobuf message registry.v1.ListItemDefsResponse
  */
 export const ListItemDefsResponse = new ListItemDefsResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class ListAchievementsRequest$Type extends MessageType<ListAchievementsRequest> {
+    constructor() {
+        super("registry.v1.ListAchievementsRequest", [
+            { no: 1, name: "limit", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "offset", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+        ]);
+    }
+    create(value?: PartialMessage<ListAchievementsRequest>): ListAchievementsRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.limit = 0;
+        message.offset = 0;
+        if (value !== undefined)
+            reflectionMergePartial<ListAchievementsRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ListAchievementsRequest): ListAchievementsRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* int32 limit */ 1:
+                    message.limit = reader.int32();
+                    break;
+                case /* int32 offset */ 2:
+                    message.offset = reader.int32();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: ListAchievementsRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int32 limit = 1; */
+        if (message.limit !== 0)
+            writer.tag(1, WireType.Varint).int32(message.limit);
+        /* int32 offset = 2; */
+        if (message.offset !== 0)
+            writer.tag(2, WireType.Varint).int32(message.offset);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message registry.v1.ListAchievementsRequest
+ */
+export const ListAchievementsRequest = new ListAchievementsRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class ListAchievementsResponse$Type extends MessageType<ListAchievementsResponse> {
+    constructor() {
+        super("registry.v1.ListAchievementsResponse", [
+            { no: 1, name: "items", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => AchievementDef },
+            { no: 2, name: "pagination", kind: "message", T: () => Pagination }
+        ]);
+    }
+    create(value?: PartialMessage<ListAchievementsResponse>): ListAchievementsResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.items = [];
+        if (value !== undefined)
+            reflectionMergePartial<ListAchievementsResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ListAchievementsResponse): ListAchievementsResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* repeated registry.v1.AchievementDef items */ 1:
+                    message.items.push(AchievementDef.internalBinaryRead(reader, reader.uint32(), options));
+                    break;
+                case /* common.v1.Pagination pagination */ 2:
+                    message.pagination = Pagination.internalBinaryRead(reader, reader.uint32(), options, message.pagination);
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: ListAchievementsResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* repeated registry.v1.AchievementDef items = 1; */
+        for (let i = 0; i < message.items.length; i++)
+            AchievementDef.internalBinaryWrite(message.items[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* common.v1.Pagination pagination = 2; */
+        if (message.pagination)
+            Pagination.internalBinaryWrite(message.pagination, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message registry.v1.ListAchievementsResponse
+ */
+export const ListAchievementsResponse = new ListAchievementsResponse$Type();
 /**
  * @generated ServiceType for protobuf service registry.v1.RegistryService
  */
@@ -1547,5 +1682,6 @@ export const RegistryService = new ServiceType("registry.v1.RegistryService", [
     { name: "GetAchievementDef", options: {}, I: GetAchievementDefRequest, O: AchievementDef },
     { name: "CreateAchievementDef", options: {}, I: CreateAchievementDefRequest, O: CreateAchievementDefResponse },
     { name: "UpdateAchievementDef", options: {}, I: UpdateAchievementDefRequest, O: UpdateAchievementDefResponse },
-    { name: "ListItemDefs", options: {}, I: ListItemDefsRequest, O: ListItemDefsResponse }
+    { name: "ListItemDefs", options: {}, I: ListItemDefsRequest, O: ListItemDefsResponse },
+    { name: "ListAchievements", options: {}, I: ListAchievementsRequest, O: ListAchievementsResponse }
 ]);
