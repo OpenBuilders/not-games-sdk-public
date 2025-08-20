@@ -506,5 +506,66 @@ proto.registry.v1.RegistryServicePromiseClient.prototype.listItemDefs =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.registry.v1.ListAchievementsRequest,
+ *   !proto.registry.v1.ListAchievementsResponse>}
+ */
+const methodDescriptor_RegistryService_ListAchievements = new grpc.web.MethodDescriptor(
+  '/registry.v1.RegistryService/ListAchievements',
+  grpc.web.MethodType.UNARY,
+  proto.registry.v1.ListAchievementsRequest,
+  proto.registry.v1.ListAchievementsResponse,
+  /**
+   * @param {!proto.registry.v1.ListAchievementsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.registry.v1.ListAchievementsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.registry.v1.ListAchievementsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.registry.v1.ListAchievementsResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.registry.v1.ListAchievementsResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.registry.v1.RegistryServiceClient.prototype.listAchievements =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/registry.v1.RegistryService/ListAchievements',
+      request,
+      metadata || {},
+      methodDescriptor_RegistryService_ListAchievements,
+      callback);
+};
+
+
+/**
+ * @param {!proto.registry.v1.ListAchievementsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.registry.v1.ListAchievementsResponse>}
+ *     Promise that resolves to the response
+ */
+proto.registry.v1.RegistryServicePromiseClient.prototype.listAchievements =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/registry.v1.RegistryService/ListAchievements',
+      request,
+      metadata || {},
+      methodDescriptor_RegistryService_ListAchievements);
+};
+
+
 module.exports = proto.registry.v1;
 
