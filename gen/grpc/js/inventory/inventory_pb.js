@@ -3667,7 +3667,14 @@ accountId: jspb.Message.getFieldWithDefault(msg, 2, 0),
 appId: jspb.Message.getFieldWithDefault(msg, 3, 0),
 tags: jspb.Message.getFieldWithDefault(msg, 4, ""),
 holdTill: jspb.Message.getFieldWithDefault(msg, 5, 0),
-itemId: (f = jspb.Message.getField(msg, 6)) == null ? undefined : f
+itemId: (f = jspb.Message.getField(msg, 6)) == null ? undefined : f,
+sourceItemDefId: (f = jspb.Message.getField(msg, 7)) == null ? undefined : f,
+rarity: (f = jspb.Message.getField(msg, 8)) == null ? undefined : f,
+name: (f = jspb.Message.getField(msg, 9)) == null ? undefined : f,
+description: (f = jspb.Message.getField(msg, 10)) == null ? undefined : f,
+iconUrl: (f = jspb.Message.getField(msg, 11)) == null ? undefined : f,
+appFiles: (f = jspb.Message.getField(msg, 12)) == null ? undefined : f,
+appMeta: (f = jspb.Message.getField(msg, 13)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -3727,6 +3734,34 @@ proto.inventory.v1.GenerateRequest.deserializeBinaryFromReader = function(msg, r
     case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setItemId(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSourceItemDefId(value);
+      break;
+    case 8:
+      var value = /** @type {!proto.common.v1.Rarity} */ (reader.readEnum());
+      msg.setRarity(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIconUrl(value);
+      break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAppFiles(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAppMeta(value);
       break;
     default:
       reader.skipField();
@@ -3796,6 +3831,55 @@ proto.inventory.v1.GenerateRequest.serializeBinaryToWriter = function(message, w
   if (f != null) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 7));
+  if (f != null) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = /** @type {!proto.common.v1.Rarity} */ (jspb.Message.getField(message, 8));
+  if (f != null) {
+    writer.writeEnum(
+      8,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 9));
+  if (f != null) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 10));
+  if (f != null) {
+    writer.writeString(
+      10,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 11));
+  if (f != null) {
+    writer.writeString(
+      11,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 12));
+  if (f != null) {
+    writer.writeString(
+      12,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 13));
+  if (f != null) {
+    writer.writeString(
+      13,
       f
     );
   }
@@ -3925,6 +4009,258 @@ proto.inventory.v1.GenerateRequest.prototype.clearItemId = function() {
  */
 proto.inventory.v1.GenerateRequest.prototype.hasItemId = function() {
   return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional string source_item_def_id = 7;
+ * @return {string}
+ */
+proto.inventory.v1.GenerateRequest.prototype.getSourceItemDefId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.setSourceItemDefId = function(value) {
+  return jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.clearSourceItemDefId = function() {
+  return jspb.Message.setField(this, 7, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.inventory.v1.GenerateRequest.prototype.hasSourceItemDefId = function() {
+  return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional common.v1.Rarity rarity = 8;
+ * @return {!proto.common.v1.Rarity}
+ */
+proto.inventory.v1.GenerateRequest.prototype.getRarity = function() {
+  return /** @type {!proto.common.v1.Rarity} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {!proto.common.v1.Rarity} value
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.setRarity = function(value) {
+  return jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.clearRarity = function() {
+  return jspb.Message.setField(this, 8, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.inventory.v1.GenerateRequest.prototype.hasRarity = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional string name = 9;
+ * @return {string}
+ */
+proto.inventory.v1.GenerateRequest.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.setName = function(value) {
+  return jspb.Message.setField(this, 9, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.clearName = function() {
+  return jspb.Message.setField(this, 9, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.inventory.v1.GenerateRequest.prototype.hasName = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * optional string description = 10;
+ * @return {string}
+ */
+proto.inventory.v1.GenerateRequest.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.setDescription = function(value) {
+  return jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.clearDescription = function() {
+  return jspb.Message.setField(this, 10, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.inventory.v1.GenerateRequest.prototype.hasDescription = function() {
+  return jspb.Message.getField(this, 10) != null;
+};
+
+
+/**
+ * optional string icon_url = 11;
+ * @return {string}
+ */
+proto.inventory.v1.GenerateRequest.prototype.getIconUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.setIconUrl = function(value) {
+  return jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.clearIconUrl = function() {
+  return jspb.Message.setField(this, 11, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.inventory.v1.GenerateRequest.prototype.hasIconUrl = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional string app_files = 12;
+ * @return {string}
+ */
+proto.inventory.v1.GenerateRequest.prototype.getAppFiles = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.setAppFiles = function(value) {
+  return jspb.Message.setField(this, 12, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.clearAppFiles = function() {
+  return jspb.Message.setField(this, 12, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.inventory.v1.GenerateRequest.prototype.hasAppFiles = function() {
+  return jspb.Message.getField(this, 12) != null;
+};
+
+
+/**
+ * optional string app_meta = 13;
+ * @return {string}
+ */
+proto.inventory.v1.GenerateRequest.prototype.getAppMeta = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.setAppMeta = function(value) {
+  return jspb.Message.setField(this, 13, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.inventory.v1.GenerateRequest} returns this
+ */
+proto.inventory.v1.GenerateRequest.prototype.clearAppMeta = function() {
+  return jspb.Message.setField(this, 13, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.inventory.v1.GenerateRequest.prototype.hasAppMeta = function() {
+  return jspb.Message.getField(this, 13) != null;
 };
 
 
