@@ -15,7 +15,7 @@ service RegistryService {
   rpc CreateAchievementDef(CreateAchievementDefRequest) returns (CreateAchievementDefResponse) {}
   rpc UpdateAchievementDef(UpdateAchievementDefRequest) returns (UpdateAchievementDefResponse) {}
   rpc ListItemDefs(ListItemDefsRequest) returns (ListItemDefsResponse) {}
-  rpc ListAchievementsDeff(ListAchievementsDefsRequest) returns (ListAchievementsDefsResponse) {}
+  rpc ListAchievementsDefs(ListAchievementsDefsRequest) returns (ListAchievementsDefsResponse) {}
 }
 
 message ItemDef {
