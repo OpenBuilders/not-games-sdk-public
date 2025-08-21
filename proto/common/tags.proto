@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package common.v1;
+
+option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/common";
+
+message FilterTagList {
+  repeated FilterTag values = 1;
+}
+
+message FilterTag {
+  string tag_name = 1;
+  string operation = 2;
+  optional string value = 3;
+  optional string attribute = 4;
+  optional string data_type = 5;
+}
