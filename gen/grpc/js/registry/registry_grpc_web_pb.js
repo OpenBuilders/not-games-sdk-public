@@ -509,61 +509,61 @@ proto.registry.v1.RegistryServicePromiseClient.prototype.listItemDefs =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.registry.v1.ListAchievementsRequest,
- *   !proto.registry.v1.ListAchievementsResponse>}
+ *   !proto.registry.v1.ListAchievementsDefsRequest,
+ *   !proto.registry.v1.ListAchievementsDefsResponse>}
  */
-const methodDescriptor_RegistryService_ListAchievements = new grpc.web.MethodDescriptor(
-  '/registry.v1.RegistryService/ListAchievements',
+const methodDescriptor_RegistryService_ListAchievementsDeff = new grpc.web.MethodDescriptor(
+  '/registry.v1.RegistryService/ListAchievementsDeff',
   grpc.web.MethodType.UNARY,
-  proto.registry.v1.ListAchievementsRequest,
-  proto.registry.v1.ListAchievementsResponse,
+  proto.registry.v1.ListAchievementsDefsRequest,
+  proto.registry.v1.ListAchievementsDefsResponse,
   /**
-   * @param {!proto.registry.v1.ListAchievementsRequest} request
+   * @param {!proto.registry.v1.ListAchievementsDefsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.registry.v1.ListAchievementsResponse.deserializeBinary
+  proto.registry.v1.ListAchievementsDefsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.registry.v1.ListAchievementsRequest} request The
+ * @param {!proto.registry.v1.ListAchievementsDefsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.registry.v1.ListAchievementsResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.registry.v1.ListAchievementsDefsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.registry.v1.ListAchievementsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.registry.v1.ListAchievementsDefsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.registry.v1.RegistryServiceClient.prototype.listAchievements =
+proto.registry.v1.RegistryServiceClient.prototype.listAchievementsDeff =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/registry.v1.RegistryService/ListAchievements',
+      '/registry.v1.RegistryService/ListAchievementsDeff',
       request,
       metadata || {},
-      methodDescriptor_RegistryService_ListAchievements,
+      methodDescriptor_RegistryService_ListAchievementsDeff,
       callback);
 };
 
 
 /**
- * @param {!proto.registry.v1.ListAchievementsRequest} request The
+ * @param {!proto.registry.v1.ListAchievementsDefsRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.registry.v1.ListAchievementsResponse>}
+ * @return {!Promise<!proto.registry.v1.ListAchievementsDefsResponse>}
  *     Promise that resolves to the response
  */
-proto.registry.v1.RegistryServicePromiseClient.prototype.listAchievements =
+proto.registry.v1.RegistryServicePromiseClient.prototype.listAchievementsDeff =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/registry.v1.RegistryService/ListAchievements',
+      '/registry.v1.RegistryService/ListAchievementsDeff',
       request,
       metadata || {},
-      methodDescriptor_RegistryService_ListAchievements);
+      methodDescriptor_RegistryService_ListAchievementsDeff);
 };
 
 

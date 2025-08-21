@@ -15,7 +15,7 @@ service RegistryService {
   rpc CreateAchievementDef(CreateAchievementDefRequest) returns (CreateAchievementDefResponse) {}
   rpc UpdateAchievementDef(UpdateAchievementDefRequest) returns (UpdateAchievementDefResponse) {}
   rpc ListItemDefs(ListItemDefsRequest) returns (ListItemDefsResponse) {}
-  rpc ListAchievements(ListAchievementsRequest) returns (ListAchievementsResponse) {}
+  rpc ListAchievementsDeff(ListAchievementsDefsRequest) returns (ListAchievementsDefsResponse) {}
 }
 
 message ItemDef {
@@ -136,12 +136,12 @@ message ListItemDefsResponse {
   repeated ItemDef items = 1;
   common.v1.Pagination pagination = 2;
 }
-message ListAchievementsRequest {
+message ListAchievementsDefsRequest {
   int32 limit = 1;
   int32 offset = 2;
 }
 
-message ListAchievementsResponse {
+message ListAchievementsDefsResponse {
   repeated AchievementDef items = 1;
   common.v1.Pagination pagination = 2;
 }
