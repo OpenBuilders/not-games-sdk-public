@@ -392,9 +392,9 @@ export interface ListItemDefsResponse {
     pagination?: Pagination;
 }
 /**
- * @generated from protobuf message registry.v1.ListAchievementsRequest
+ * @generated from protobuf message registry.v1.ListAchievementsDefsRequest
  */
-export interface ListAchievementsRequest {
+export interface ListAchievementsDefsRequest {
     /**
      * @generated from protobuf field: int32 limit = 1
      */
@@ -405,9 +405,9 @@ export interface ListAchievementsRequest {
     offset: number;
 }
 /**
- * @generated from protobuf message registry.v1.ListAchievementsResponse
+ * @generated from protobuf message registry.v1.ListAchievementsDefsResponse
  */
-export interface ListAchievementsResponse {
+export interface ListAchievementsDefsResponse {
     /**
      * @generated from protobuf field: repeated registry.v1.AchievementDef items = 1
      */
@@ -1564,22 +1564,22 @@ class ListItemDefsResponse$Type extends MessageType<ListItemDefsResponse> {
  */
 export const ListItemDefsResponse = new ListItemDefsResponse$Type();
 // @generated message type with reflection information, may provide speed optimized methods
-class ListAchievementsRequest$Type extends MessageType<ListAchievementsRequest> {
+class ListAchievementsDefsRequest$Type extends MessageType<ListAchievementsDefsRequest> {
     constructor() {
-        super("registry.v1.ListAchievementsRequest", [
+        super("registry.v1.ListAchievementsDefsRequest", [
             { no: 1, name: "limit", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "offset", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
-    create(value?: PartialMessage<ListAchievementsRequest>): ListAchievementsRequest {
+    create(value?: PartialMessage<ListAchievementsDefsRequest>): ListAchievementsDefsRequest {
         const message = globalThis.Object.create((this.messagePrototype!));
         message.limit = 0;
         message.offset = 0;
         if (value !== undefined)
-            reflectionMergePartial<ListAchievementsRequest>(this, message, value);
+            reflectionMergePartial<ListAchievementsDefsRequest>(this, message, value);
         return message;
     }
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ListAchievementsRequest): ListAchievementsRequest {
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ListAchievementsDefsRequest): ListAchievementsDefsRequest {
         let message = target ?? this.create(), end = reader.pos + length;
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
@@ -1601,7 +1601,7 @@ class ListAchievementsRequest$Type extends MessageType<ListAchievementsRequest> 
         }
         return message;
     }
-    internalBinaryWrite(message: ListAchievementsRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+    internalBinaryWrite(message: ListAchievementsDefsRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* int32 limit = 1; */
         if (message.limit !== 0)
             writer.tag(1, WireType.Varint).int32(message.limit);
@@ -1615,25 +1615,25 @@ class ListAchievementsRequest$Type extends MessageType<ListAchievementsRequest> 
     }
 }
 /**
- * @generated MessageType for protobuf message registry.v1.ListAchievementsRequest
+ * @generated MessageType for protobuf message registry.v1.ListAchievementsDefsRequest
  */
-export const ListAchievementsRequest = new ListAchievementsRequest$Type();
+export const ListAchievementsDefsRequest = new ListAchievementsDefsRequest$Type();
 // @generated message type with reflection information, may provide speed optimized methods
-class ListAchievementsResponse$Type extends MessageType<ListAchievementsResponse> {
+class ListAchievementsDefsResponse$Type extends MessageType<ListAchievementsDefsResponse> {
     constructor() {
-        super("registry.v1.ListAchievementsResponse", [
+        super("registry.v1.ListAchievementsDefsResponse", [
             { no: 1, name: "items", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => AchievementDef },
             { no: 2, name: "pagination", kind: "message", T: () => Pagination }
         ]);
     }
-    create(value?: PartialMessage<ListAchievementsResponse>): ListAchievementsResponse {
+    create(value?: PartialMessage<ListAchievementsDefsResponse>): ListAchievementsDefsResponse {
         const message = globalThis.Object.create((this.messagePrototype!));
         message.items = [];
         if (value !== undefined)
-            reflectionMergePartial<ListAchievementsResponse>(this, message, value);
+            reflectionMergePartial<ListAchievementsDefsResponse>(this, message, value);
         return message;
     }
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ListAchievementsResponse): ListAchievementsResponse {
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ListAchievementsDefsResponse): ListAchievementsDefsResponse {
         let message = target ?? this.create(), end = reader.pos + length;
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
@@ -1655,7 +1655,7 @@ class ListAchievementsResponse$Type extends MessageType<ListAchievementsResponse
         }
         return message;
     }
-    internalBinaryWrite(message: ListAchievementsResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+    internalBinaryWrite(message: ListAchievementsDefsResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated registry.v1.AchievementDef items = 1; */
         for (let i = 0; i < message.items.length; i++)
             AchievementDef.internalBinaryWrite(message.items[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
@@ -1669,9 +1669,9 @@ class ListAchievementsResponse$Type extends MessageType<ListAchievementsResponse
     }
 }
 /**
- * @generated MessageType for protobuf message registry.v1.ListAchievementsResponse
+ * @generated MessageType for protobuf message registry.v1.ListAchievementsDefsResponse
  */
-export const ListAchievementsResponse = new ListAchievementsResponse$Type();
+export const ListAchievementsDefsResponse = new ListAchievementsDefsResponse$Type();
 /**
  * @generated ServiceType for protobuf service registry.v1.RegistryService
  */
@@ -1683,5 +1683,5 @@ export const RegistryService = new ServiceType("registry.v1.RegistryService", [
     { name: "CreateAchievementDef", options: {}, I: CreateAchievementDefRequest, O: CreateAchievementDefResponse },
     { name: "UpdateAchievementDef", options: {}, I: UpdateAchievementDefRequest, O: UpdateAchievementDefResponse },
     { name: "ListItemDefs", options: {}, I: ListItemDefsRequest, O: ListItemDefsResponse },
-    { name: "ListAchievements", options: {}, I: ListAchievementsRequest, O: ListAchievementsResponse }
+    { name: "ListAchievementsDeff", options: {}, I: ListAchievementsDefsRequest, O: ListAchievementsDefsResponse }
 ]);
