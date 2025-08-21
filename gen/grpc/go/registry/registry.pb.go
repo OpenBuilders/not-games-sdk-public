@@ -1394,7 +1394,7 @@ const file_registry_registry_proto_rawDesc = "" +
 	"\x14CreateAchievementDef\x12(.registry.v1.CreateAchievementDefRequest\x1a).registry.v1.CreateAchievementDefResponse\"\x00\x12m\n" +
 	"\x14UpdateAchievementDef\x12(.registry.v1.UpdateAchievementDefRequest\x1a).registry.v1.UpdateAchievementDefResponse\"\x00\x12U\n" +
 	"\fListItemDefs\x12 .registry.v1.ListItemDefsRequest\x1a!.registry.v1.ListItemDefsResponse\"\x00\x12m\n" +
-	"\x14ListAchievementsDeff\x12(.registry.v1.ListAchievementsDefsRequest\x1a).registry.v1.ListAchievementsDefsResponse\"\x00BCZAgithub.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/registryb\x06proto3"
+	"\x14ListAchievementsDefs\x12(.registry.v1.ListAchievementsDefsRequest\x1a).registry.v1.ListAchievementsDefsResponse\"\x00BCZAgithub.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/registryb\x06proto3"
 
 var (
 	file_registry_registry_proto_rawDescOnce sync.Once
@@ -1446,7 +1446,7 @@ var file_registry_registry_proto_depIdxs = []int32{
 	8,  // 13: registry.v1.RegistryService.CreateAchievementDef:input_type -> registry.v1.CreateAchievementDefRequest
 	10, // 14: registry.v1.RegistryService.UpdateAchievementDef:input_type -> registry.v1.UpdateAchievementDefRequest
 	12, // 15: registry.v1.RegistryService.ListItemDefs:input_type -> registry.v1.ListItemDefsRequest
-	14, // 16: registry.v1.RegistryService.ListAchievementsDeff:input_type -> registry.v1.ListAchievementsDefsRequest
+	14, // 16: registry.v1.RegistryService.ListAchievementsDefs:input_type -> registry.v1.ListAchievementsDefsRequest
 	0,  // 17: registry.v1.RegistryService.GetItemDef:output_type -> registry.v1.ItemDef
 	5,  // 18: registry.v1.RegistryService.CreateItemDef:output_type -> registry.v1.CreateItemDefResponse
 	6,  // 19: registry.v1.RegistryService.UpdateItemDef:output_type -> registry.v1.UpdateItemDefResponse
@@ -1454,7 +1454,7 @@ var file_registry_registry_proto_depIdxs = []int32{
 	9,  // 21: registry.v1.RegistryService.CreateAchievementDef:output_type -> registry.v1.CreateAchievementDefResponse
 	11, // 22: registry.v1.RegistryService.UpdateAchievementDef:output_type -> registry.v1.UpdateAchievementDefResponse
 	13, // 23: registry.v1.RegistryService.ListItemDefs:output_type -> registry.v1.ListItemDefsResponse
-	15, // 24: registry.v1.RegistryService.ListAchievementsDeff:output_type -> registry.v1.ListAchievementsDefsResponse
+	15, // 24: registry.v1.RegistryService.ListAchievementsDefs:output_type -> registry.v1.ListAchievementsDefsResponse
 	17, // [17:25] is the sub-list for method output_type
 	9,  // [9:17] is the sub-list for method input_type
 	9,  // [9:9] is the sub-list for extension type_name

@@ -56,9 +56,9 @@ export interface IRegistryServiceClient {
      */
     listItemDefs(input: ListItemDefsRequest, options?: RpcOptions): UnaryCall<ListItemDefsRequest, ListItemDefsResponse>;
     /**
-     * @generated from protobuf rpc: ListAchievementsDeff
+     * @generated from protobuf rpc: ListAchievementsDefs
      */
-    listAchievementsDeff(input: ListAchievementsDefsRequest, options?: RpcOptions): UnaryCall<ListAchievementsDefsRequest, ListAchievementsDefsResponse>;
+    listAchievementsDefs(input: ListAchievementsDefsRequest, options?: RpcOptions): UnaryCall<ListAchievementsDefsRequest, ListAchievementsDefsResponse>;
 }
 /**
  * @generated from protobuf service registry.v1.RegistryService
@@ -119,9 +119,9 @@ export class RegistryServiceClient implements IRegistryServiceClient, ServiceInf
         return stackIntercept<ListItemDefsRequest, ListItemDefsResponse>("unary", this._transport, method, opt, input);
     }
     /**
-     * @generated from protobuf rpc: ListAchievementsDeff
+     * @generated from protobuf rpc: ListAchievementsDefs
      */
-    listAchievementsDeff(input: ListAchievementsDefsRequest, options?: RpcOptions): UnaryCall<ListAchievementsDefsRequest, ListAchievementsDefsResponse> {
+    listAchievementsDefs(input: ListAchievementsDefsRequest, options?: RpcOptions): UnaryCall<ListAchievementsDefsRequest, ListAchievementsDefsResponse> {
         const method = this.methods[7], opt = this._transport.mergeOptions(options);
         return stackIntercept<ListAchievementsDefsRequest, ListAchievementsDefsResponse>("unary", this._transport, method, opt, input);
     }

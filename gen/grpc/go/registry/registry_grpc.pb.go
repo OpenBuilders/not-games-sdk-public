@@ -26,7 +26,7 @@ const (
 	RegistryService_CreateAchievementDef_FullMethodName = "/registry.v1.RegistryService/CreateAchievementDef"
 	RegistryService_UpdateAchievementDef_FullMethodName = "/registry.v1.RegistryService/UpdateAchievementDef"
 	RegistryService_ListItemDefs_FullMethodName         = "/registry.v1.RegistryService/ListItemDefs"
-	RegistryService_ListAchievementsDeff_FullMethodName = "/registry.v1.RegistryService/ListAchievementsDeff"
+	RegistryService_ListAchievementsDefs_FullMethodName = "/registry.v1.RegistryService/ListAchievementsDefs"
 )
 
 // RegistryServiceClient is the client API for RegistryService service.
@@ -40,7 +40,7 @@ type RegistryServiceClient interface {
 	CreateAchievementDef(ctx context.Context, in *CreateAchievementDefRequest, opts ...grpc.CallOption) (*CreateAchievementDefResponse, error)
 	UpdateAchievementDef(ctx context.Context, in *UpdateAchievementDefRequest, opts ...grpc.CallOption) (*UpdateAchievementDefResponse, error)
 	ListItemDefs(ctx context.Context, in *ListItemDefsRequest, opts ...grpc.CallOption) (*ListItemDefsResponse, error)
-	ListAchievementsDeff(ctx context.Context, in *ListAchievementsDefsRequest, opts ...grpc.CallOption) (*ListAchievementsDefsResponse, error)
+	ListAchievementsDefs(ctx context.Context, in *ListAchievementsDefsRequest, opts ...grpc.CallOption) (*ListAchievementsDefsResponse, error)
 }
 
 type registryServiceClient struct {
@@ -121,10 +121,10 @@ func (c *registryServiceClient) ListItemDefs(ctx context.Context, in *ListItemDe
 	return out, nil
 }
 
-func (c *registryServiceClient) ListAchievementsDeff(ctx context.Context, in *ListAchievementsDefsRequest, opts ...grpc.CallOption) (*ListAchievementsDefsResponse, error) {
+func (c *registryServiceClient) ListAchievementsDefs(ctx context.Context, in *ListAchievementsDefsRequest, opts ...grpc.CallOption) (*ListAchievementsDefsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListAchievementsDefsResponse)
-	err := c.cc.Invoke(ctx, RegistryService_ListAchievementsDeff_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, RegistryService_ListAchievementsDefs_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -142,7 +142,7 @@ type RegistryServiceServer interface {
 	CreateAchievementDef(context.Context, *CreateAchievementDefRequest) (*CreateAchievementDefResponse, error)
 	UpdateAchievementDef(context.Context, *UpdateAchievementDefRequest) (*UpdateAchievementDefResponse, error)
 	ListItemDefs(context.Context, *ListItemDefsRequest) (*ListItemDefsResponse, error)
-	ListAchievementsDeff(context.Context, *ListAchievementsDefsRequest) (*ListAchievementsDefsResponse, error)
+	ListAchievementsDefs(context.Context, *ListAchievementsDefsRequest) (*ListAchievementsDefsResponse, error)
 	mustEmbedUnimplementedRegistryServiceServer()
 }
 
@@ -174,8 +174,8 @@ func (UnimplementedRegistryServiceServer) UpdateAchievementDef(context.Context, 
 func (UnimplementedRegistryServiceServer) ListItemDefs(context.Context, *ListItemDefsRequest) (*ListItemDefsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListItemDefs not implemented")
 }
-func (UnimplementedRegistryServiceServer) ListAchievementsDeff(context.Context, *ListAchievementsDefsRequest) (*ListAchievementsDefsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListAchievementsDeff not implemented")
+func (UnimplementedRegistryServiceServer) ListAchievementsDefs(context.Context, *ListAchievementsDefsRequest) (*ListAchievementsDefsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAchievementsDefs not implemented")
 }
 func (UnimplementedRegistryServiceServer) mustEmbedUnimplementedRegistryServiceServer() {}
 func (UnimplementedRegistryServiceServer) testEmbeddedByValue()                         {}
@@ -324,20 +324,20 @@ func _RegistryService_ListItemDefs_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RegistryService_ListAchievementsDeff_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RegistryService_ListAchievementsDefs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListAchievementsDefsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RegistryServiceServer).ListAchievementsDeff(ctx, in)
+		return srv.(RegistryServiceServer).ListAchievementsDefs(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RegistryService_ListAchievementsDeff_FullMethodName,
+		FullMethod: RegistryService_ListAchievementsDefs_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RegistryServiceServer).ListAchievementsDeff(ctx, req.(*ListAchievementsDefsRequest))
+		return srv.(RegistryServiceServer).ListAchievementsDefs(ctx, req.(*ListAchievementsDefsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -378,8 +378,8 @@ var RegistryService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RegistryService_ListItemDefs_Handler,
 		},
 		{
-			MethodName: "ListAchievementsDeff",
-			Handler:    _RegistryService_ListAchievementsDeff_Handler,
+			MethodName: "ListAchievementsDefs",
+			Handler:    _RegistryService_ListAchievementsDefs_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
