@@ -512,8 +512,8 @@ proto.registry.v1.RegistryServicePromiseClient.prototype.listItemDefs =
  *   !proto.registry.v1.ListAchievementsDefsRequest,
  *   !proto.registry.v1.ListAchievementsDefsResponse>}
  */
-const methodDescriptor_RegistryService_ListAchievementsDeff = new grpc.web.MethodDescriptor(
-  '/registry.v1.RegistryService/ListAchievementsDeff',
+const methodDescriptor_RegistryService_ListAchievementsDefs = new grpc.web.MethodDescriptor(
+  '/registry.v1.RegistryService/ListAchievementsDefs',
   grpc.web.MethodType.UNARY,
   proto.registry.v1.ListAchievementsDefsRequest,
   proto.registry.v1.ListAchievementsDefsResponse,
@@ -538,13 +538,13 @@ const methodDescriptor_RegistryService_ListAchievementsDeff = new grpc.web.Metho
  * @return {!grpc.web.ClientReadableStream<!proto.registry.v1.ListAchievementsDefsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.registry.v1.RegistryServiceClient.prototype.listAchievementsDeff =
+proto.registry.v1.RegistryServiceClient.prototype.listAchievementsDefs =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/registry.v1.RegistryService/ListAchievementsDeff',
+      '/registry.v1.RegistryService/ListAchievementsDefs',
       request,
       metadata || {},
-      methodDescriptor_RegistryService_ListAchievementsDeff,
+      methodDescriptor_RegistryService_ListAchievementsDefs,
       callback);
 };
 
@@ -557,13 +557,13 @@ proto.registry.v1.RegistryServiceClient.prototype.listAchievementsDeff =
  * @return {!Promise<!proto.registry.v1.ListAchievementsDefsResponse>}
  *     Promise that resolves to the response
  */
-proto.registry.v1.RegistryServicePromiseClient.prototype.listAchievementsDeff =
+proto.registry.v1.RegistryServicePromiseClient.prototype.listAchievementsDefs =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/registry.v1.RegistryService/ListAchievementsDeff',
+      '/registry.v1.RegistryService/ListAchievementsDefs',
       request,
       metadata || {},
-      methodDescriptor_RegistryService_ListAchievementsDeff);
+      methodDescriptor_RegistryService_ListAchievementsDefs);
 };
 
 

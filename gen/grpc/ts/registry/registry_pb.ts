@@ -1683,5 +1683,5 @@ export const RegistryService = new ServiceType("registry.v1.RegistryService", [
     { name: "CreateAchievementDef", options: {}, I: CreateAchievementDefRequest, O: CreateAchievementDefResponse },
     { name: "UpdateAchievementDef", options: {}, I: UpdateAchievementDefRequest, O: UpdateAchievementDefResponse },
     { name: "ListItemDefs", options: {}, I: ListItemDefsRequest, O: ListItemDefsResponse },
-    { name: "ListAchievementsDeff", options: {}, I: ListAchievementsDefsRequest, O: ListAchievementsDefsResponse }
+    { name: "ListAchievementsDefs", options: {}, I: ListAchievementsDefsRequest, O: ListAchievementsDefsResponse }
 ]);
