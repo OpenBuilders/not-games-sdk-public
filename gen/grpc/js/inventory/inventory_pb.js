@@ -25,6 +25,8 @@ var common_pagination_pb = require('../common/pagination_pb.js');
 goog.object.extend(proto, common_pagination_pb);
 var common_rarity_pb = require('../common/rarity_pb.js');
 goog.object.extend(proto, common_rarity_pb);
+var common_tags_pb = require('../common/tags_pb.js');
+goog.object.extend(proto, common_tags_pb);
 goog.exportSymbol('proto.inventory.v1.AckStreamMessagesRequest', null, global);
 goog.exportSymbol('proto.inventory.v1.AckStreamMessagesResponse', null, global);
 goog.exportSymbol('proto.inventory.v1.AddGroupRequest', null, global);
@@ -1736,7 +1738,8 @@ gameonly: (f = jspb.Message.getBooleanField(msg, 11)) == null ? undefined : f,
 storeHidden: (f = jspb.Message.getBooleanField(msg, 12)) == null ? undefined : f,
 tradable: (f = jspb.Message.getBooleanField(msg, 13)) == null ? undefined : f,
 sortFieldsList: (f = jspb.Message.getRepeatedField(msg, 14)) == null ? undefined : f,
-directionsList: (f = jspb.Message.getRepeatedField(msg, 15)) == null ? undefined : f
+directionsList: (f = jspb.Message.getRepeatedField(msg, 15)) == null ? undefined : f,
+tags: (f = msg.getTags()) && common_tags_pb.FilterTagList.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1832,6 +1835,11 @@ proto.inventory.v1.ListItemsRequest.deserializeBinaryFromReader = function(msg, 
     case 15:
       var value = /** @type {string} */ (reader.readString());
       msg.addDirections(value);
+      break;
+    case 16:
+      var value = new common_tags_pb.FilterTagList;
+      reader.readMessage(value,common_tags_pb.FilterTagList.deserializeBinaryFromReader);
+      msg.setTags(value);
       break;
     default:
       reader.skipField();
@@ -1965,6 +1973,14 @@ proto.inventory.v1.ListItemsRequest.serializeBinaryToWriter = function(message, 
     writer.writeRepeatedString(
       15,
       f
+    );
+  }
+  f = message.getTags();
+  if (f != null) {
+    writer.writeMessage(
+      16,
+      f,
+      common_tags_pb.FilterTagList.serializeBinaryToWriter
     );
   }
 };
@@ -2455,6 +2471,43 @@ proto.inventory.v1.ListItemsRequest.prototype.addDirections = function(value, op
  */
 proto.inventory.v1.ListItemsRequest.prototype.clearDirectionsList = function() {
   return this.setDirectionsList([]);
+};
+
+
+/**
+ * optional common.v1.FilterTagList tags = 16;
+ * @return {?proto.common.v1.FilterTagList}
+ */
+proto.inventory.v1.ListItemsRequest.prototype.getTags = function() {
+  return /** @type{?proto.common.v1.FilterTagList} */ (
+    jspb.Message.getWrapperField(this, common_tags_pb.FilterTagList, 16));
+};
+
+
+/**
+ * @param {?proto.common.v1.FilterTagList|undefined} value
+ * @return {!proto.inventory.v1.ListItemsRequest} returns this
+*/
+proto.inventory.v1.ListItemsRequest.prototype.setTags = function(value) {
+  return jspb.Message.setWrapperField(this, 16, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.inventory.v1.ListItemsRequest} returns this
+ */
+proto.inventory.v1.ListItemsRequest.prototype.clearTags = function() {
+  return this.setTags(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.inventory.v1.ListItemsRequest.prototype.hasTags = function() {
+  return jspb.Message.getField(this, 16) != null;
 };
 
 
