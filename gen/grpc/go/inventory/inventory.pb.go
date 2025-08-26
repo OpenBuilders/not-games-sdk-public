@@ -909,22 +909,21 @@ func (x *UnpackResponse) GetItemIds() []string {
 }
 
 type GenerateRequest struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	ItemDefId       string                 `protobuf:"bytes,1,opt,name=item_def_id,json=itemDefId,proto3" json:"item_def_id,omitempty"`
-	AccountId       int64                  `protobuf:"varint,2,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
-	AppId           int64                  `protobuf:"varint,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
-	Tags            string                 `protobuf:"bytes,4,opt,name=tags,proto3" json:"tags,omitempty"`
-	HoldTill        int64                  `protobuf:"varint,5,opt,name=hold_till,json=holdTill,proto3" json:"hold_till,omitempty"`
-	ItemId          *string                `protobuf:"bytes,6,opt,name=item_id,json=itemId,proto3,oneof" json:"item_id,omitempty"`
-	SourceItemDefId *string                `protobuf:"bytes,7,opt,name=source_item_def_id,json=sourceItemDefId,proto3,oneof" json:"source_item_def_id,omitempty"`
-	Rarity          *common.Rarity         `protobuf:"varint,8,opt,name=rarity,proto3,enum=common.v1.Rarity,oneof" json:"rarity,omitempty"`
-	Name            *string                `protobuf:"bytes,9,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	Description     *string                `protobuf:"bytes,10,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	IconUrl         *string                `protobuf:"bytes,11,opt,name=icon_url,json=iconUrl,proto3,oneof" json:"icon_url,omitempty"`
-	AppFiles        *string                `protobuf:"bytes,12,opt,name=app_files,json=appFiles,proto3,oneof" json:"app_files,omitempty"`
-	AppMeta         *string                `protobuf:"bytes,13,opt,name=app_meta,json=appMeta,proto3,oneof" json:"app_meta,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ItemDefId     string                 `protobuf:"bytes,1,opt,name=item_def_id,json=itemDefId,proto3" json:"item_def_id,omitempty"`
+	AccountId     int64                  `protobuf:"varint,2,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
+	AppId         int64                  `protobuf:"varint,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	Tags          string                 `protobuf:"bytes,4,opt,name=tags,proto3" json:"tags,omitempty"`
+	HoldTill      int64                  `protobuf:"varint,5,opt,name=hold_till,json=holdTill,proto3" json:"hold_till,omitempty"`
+	ItemId        *string                `protobuf:"bytes,6,opt,name=item_id,json=itemId,proto3,oneof" json:"item_id,omitempty"`
+	Rarity        *common.Rarity         `protobuf:"varint,7,opt,name=rarity,proto3,enum=common.v1.Rarity,oneof" json:"rarity,omitempty"`
+	Name          *string                `protobuf:"bytes,8,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	Description   *string                `protobuf:"bytes,9,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	IconUrl       *string                `protobuf:"bytes,10,opt,name=icon_url,json=iconUrl,proto3,oneof" json:"icon_url,omitempty"`
+	AppFiles      *string                `protobuf:"bytes,11,opt,name=app_files,json=appFiles,proto3,oneof" json:"app_files,omitempty"`
+	AppMeta       *string                `protobuf:"bytes,12,opt,name=app_meta,json=appMeta,proto3,oneof" json:"app_meta,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GenerateRequest) Reset() {
@@ -995,13 +994,6 @@ func (x *GenerateRequest) GetHoldTill() int64 {
 func (x *GenerateRequest) GetItemId() string {
 	if x != nil && x.ItemId != nil {
 		return *x.ItemId
-	}
-	return ""
-}
-
-func (x *GenerateRequest) GetSourceItemDefId() string {
-	if x != nil && x.SourceItemDefId != nil {
-		return *x.SourceItemDefId
 	}
 	return ""
 }
@@ -2184,7 +2176,7 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\x06app_id\x18\x03 \x01(\x03R\x05appId\x12\x12\n" +
 	"\x04tags\x18\x04 \x01(\tR\x04tags\"+\n" +
 	"\x0eUnpackResponse\x12\x19\n" +
-	"\bitem_ids\x18\x01 \x03(\tR\aitemIds\"\xa9\x04\n" +
+	"\bitem_ids\x18\x01 \x03(\tR\aitemIds\"\xe0\x03\n" +
 	"\x0fGenerateRequest\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\x12\x1d\n" +
 	"\n" +
@@ -2192,18 +2184,16 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\x06app_id\x18\x03 \x01(\x03R\x05appId\x12\x12\n" +
 	"\x04tags\x18\x04 \x01(\tR\x04tags\x12\x1b\n" +
 	"\thold_till\x18\x05 \x01(\x03R\bholdTill\x12\x1c\n" +
-	"\aitem_id\x18\x06 \x01(\tH\x00R\x06itemId\x88\x01\x01\x120\n" +
-	"\x12source_item_def_id\x18\a \x01(\tH\x01R\x0fsourceItemDefId\x88\x01\x01\x12.\n" +
-	"\x06rarity\x18\b \x01(\x0e2\x11.common.v1.RarityH\x02R\x06rarity\x88\x01\x01\x12\x17\n" +
-	"\x04name\x18\t \x01(\tH\x03R\x04name\x88\x01\x01\x12%\n" +
-	"\vdescription\x18\n" +
-	" \x01(\tH\x04R\vdescription\x88\x01\x01\x12\x1e\n" +
-	"\bicon_url\x18\v \x01(\tH\x05R\aiconUrl\x88\x01\x01\x12 \n" +
-	"\tapp_files\x18\f \x01(\tH\x06R\bappFiles\x88\x01\x01\x12\x1e\n" +
-	"\bapp_meta\x18\r \x01(\tH\aR\aappMeta\x88\x01\x01B\n" +
+	"\aitem_id\x18\x06 \x01(\tH\x00R\x06itemId\x88\x01\x01\x12.\n" +
+	"\x06rarity\x18\a \x01(\x0e2\x11.common.v1.RarityH\x01R\x06rarity\x88\x01\x01\x12\x17\n" +
+	"\x04name\x18\b \x01(\tH\x02R\x04name\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\t \x01(\tH\x03R\vdescription\x88\x01\x01\x12\x1e\n" +
+	"\bicon_url\x18\n" +
+	" \x01(\tH\x04R\aiconUrl\x88\x01\x01\x12 \n" +
+	"\tapp_files\x18\v \x01(\tH\x05R\bappFiles\x88\x01\x01\x12\x1e\n" +
+	"\bapp_meta\x18\f \x01(\tH\x06R\aappMeta\x88\x01\x01B\n" +
 	"\n" +
-	"\b_item_idB\x15\n" +
-	"\x13_source_item_def_idB\t\n" +
+	"\b_item_idB\t\n" +
 	"\a_rarityB\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\v\n" +

@@ -3668,13 +3668,12 @@ appId: jspb.Message.getFieldWithDefault(msg, 3, 0),
 tags: jspb.Message.getFieldWithDefault(msg, 4, ""),
 holdTill: jspb.Message.getFieldWithDefault(msg, 5, 0),
 itemId: (f = jspb.Message.getField(msg, 6)) == null ? undefined : f,
-sourceItemDefId: (f = jspb.Message.getField(msg, 7)) == null ? undefined : f,
-rarity: (f = jspb.Message.getField(msg, 8)) == null ? undefined : f,
-name: (f = jspb.Message.getField(msg, 9)) == null ? undefined : f,
-description: (f = jspb.Message.getField(msg, 10)) == null ? undefined : f,
-iconUrl: (f = jspb.Message.getField(msg, 11)) == null ? undefined : f,
-appFiles: (f = jspb.Message.getField(msg, 12)) == null ? undefined : f,
-appMeta: (f = jspb.Message.getField(msg, 13)) == null ? undefined : f
+rarity: (f = jspb.Message.getField(msg, 7)) == null ? undefined : f,
+name: (f = jspb.Message.getField(msg, 8)) == null ? undefined : f,
+description: (f = jspb.Message.getField(msg, 9)) == null ? undefined : f,
+iconUrl: (f = jspb.Message.getField(msg, 10)) == null ? undefined : f,
+appFiles: (f = jspb.Message.getField(msg, 11)) == null ? undefined : f,
+appMeta: (f = jspb.Message.getField(msg, 12)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -3736,30 +3735,26 @@ proto.inventory.v1.GenerateRequest.deserializeBinaryFromReader = function(msg, r
       msg.setItemId(value);
       break;
     case 7:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSourceItemDefId(value);
-      break;
-    case 8:
       var value = /** @type {!proto.common.v1.Rarity} */ (reader.readEnum());
       msg.setRarity(value);
       break;
-    case 9:
+    case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
-    case 10:
+    case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setDescription(value);
       break;
-    case 11:
+    case 10:
       var value = /** @type {string} */ (reader.readString());
       msg.setIconUrl(value);
       break;
-    case 12:
+    case 11:
       var value = /** @type {string} */ (reader.readString());
       msg.setAppFiles(value);
       break;
-    case 13:
+    case 12:
       var value = /** @type {string} */ (reader.readString());
       msg.setAppMeta(value);
       break;
@@ -3834,16 +3829,16 @@ proto.inventory.v1.GenerateRequest.serializeBinaryToWriter = function(message, w
       f
     );
   }
-  f = /** @type {string} */ (jspb.Message.getField(message, 7));
+  f = /** @type {!proto.common.v1.Rarity} */ (jspb.Message.getField(message, 7));
   if (f != null) {
-    writer.writeString(
+    writer.writeEnum(
       7,
       f
     );
   }
-  f = /** @type {!proto.common.v1.Rarity} */ (jspb.Message.getField(message, 8));
+  f = /** @type {string} */ (jspb.Message.getField(message, 8));
   if (f != null) {
-    writer.writeEnum(
+    writer.writeString(
       8,
       f
     );
@@ -3873,13 +3868,6 @@ proto.inventory.v1.GenerateRequest.serializeBinaryToWriter = function(message, w
   if (f != null) {
     writer.writeString(
       12,
-      f
-    );
-  }
-  f = /** @type {string} */ (jspb.Message.getField(message, 13));
-  if (f != null) {
-    writer.writeString(
-      13,
       f
     );
   }
@@ -4013,47 +4001,11 @@ proto.inventory.v1.GenerateRequest.prototype.hasItemId = function() {
 
 
 /**
- * optional string source_item_def_id = 7;
- * @return {string}
- */
-proto.inventory.v1.GenerateRequest.prototype.getSourceItemDefId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.inventory.v1.GenerateRequest} returns this
- */
-proto.inventory.v1.GenerateRequest.prototype.setSourceItemDefId = function(value) {
-  return jspb.Message.setField(this, 7, value);
-};
-
-
-/**
- * Clears the field making it undefined.
- * @return {!proto.inventory.v1.GenerateRequest} returns this
- */
-proto.inventory.v1.GenerateRequest.prototype.clearSourceItemDefId = function() {
-  return jspb.Message.setField(this, 7, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.inventory.v1.GenerateRequest.prototype.hasSourceItemDefId = function() {
-  return jspb.Message.getField(this, 7) != null;
-};
-
-
-/**
- * optional common.v1.Rarity rarity = 8;
+ * optional common.v1.Rarity rarity = 7;
  * @return {!proto.common.v1.Rarity}
  */
 proto.inventory.v1.GenerateRequest.prototype.getRarity = function() {
-  return /** @type {!proto.common.v1.Rarity} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+  return /** @type {!proto.common.v1.Rarity} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
 };
 
 
@@ -4062,7 +4014,7 @@ proto.inventory.v1.GenerateRequest.prototype.getRarity = function() {
  * @return {!proto.inventory.v1.GenerateRequest} returns this
  */
 proto.inventory.v1.GenerateRequest.prototype.setRarity = function(value) {
-  return jspb.Message.setField(this, 8, value);
+  return jspb.Message.setField(this, 7, value);
 };
 
 
@@ -4071,7 +4023,7 @@ proto.inventory.v1.GenerateRequest.prototype.setRarity = function(value) {
  * @return {!proto.inventory.v1.GenerateRequest} returns this
  */
 proto.inventory.v1.GenerateRequest.prototype.clearRarity = function() {
-  return jspb.Message.setField(this, 8, undefined);
+  return jspb.Message.setField(this, 7, undefined);
 };
 
 
@@ -4080,16 +4032,16 @@ proto.inventory.v1.GenerateRequest.prototype.clearRarity = function() {
  * @return {boolean}
  */
 proto.inventory.v1.GenerateRequest.prototype.hasRarity = function() {
-  return jspb.Message.getField(this, 8) != null;
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
 /**
- * optional string name = 9;
+ * optional string name = 8;
  * @return {string}
  */
 proto.inventory.v1.GenerateRequest.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
 };
 
 
@@ -4098,7 +4050,7 @@ proto.inventory.v1.GenerateRequest.prototype.getName = function() {
  * @return {!proto.inventory.v1.GenerateRequest} returns this
  */
 proto.inventory.v1.GenerateRequest.prototype.setName = function(value) {
-  return jspb.Message.setField(this, 9, value);
+  return jspb.Message.setField(this, 8, value);
 };
 
 
@@ -4107,7 +4059,7 @@ proto.inventory.v1.GenerateRequest.prototype.setName = function(value) {
  * @return {!proto.inventory.v1.GenerateRequest} returns this
  */
 proto.inventory.v1.GenerateRequest.prototype.clearName = function() {
-  return jspb.Message.setField(this, 9, undefined);
+  return jspb.Message.setField(this, 8, undefined);
 };
 
 
@@ -4116,16 +4068,16 @@ proto.inventory.v1.GenerateRequest.prototype.clearName = function() {
  * @return {boolean}
  */
 proto.inventory.v1.GenerateRequest.prototype.hasName = function() {
-  return jspb.Message.getField(this, 9) != null;
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
 /**
- * optional string description = 10;
+ * optional string description = 9;
  * @return {string}
  */
 proto.inventory.v1.GenerateRequest.prototype.getDescription = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
 
 
@@ -4134,7 +4086,7 @@ proto.inventory.v1.GenerateRequest.prototype.getDescription = function() {
  * @return {!proto.inventory.v1.GenerateRequest} returns this
  */
 proto.inventory.v1.GenerateRequest.prototype.setDescription = function(value) {
-  return jspb.Message.setField(this, 10, value);
+  return jspb.Message.setField(this, 9, value);
 };
 
 
@@ -4143,7 +4095,7 @@ proto.inventory.v1.GenerateRequest.prototype.setDescription = function(value) {
  * @return {!proto.inventory.v1.GenerateRequest} returns this
  */
 proto.inventory.v1.GenerateRequest.prototype.clearDescription = function() {
-  return jspb.Message.setField(this, 10, undefined);
+  return jspb.Message.setField(this, 9, undefined);
 };
 
 
@@ -4152,16 +4104,16 @@ proto.inventory.v1.GenerateRequest.prototype.clearDescription = function() {
  * @return {boolean}
  */
 proto.inventory.v1.GenerateRequest.prototype.hasDescription = function() {
-  return jspb.Message.getField(this, 10) != null;
+  return jspb.Message.getField(this, 9) != null;
 };
 
 
 /**
- * optional string icon_url = 11;
+ * optional string icon_url = 10;
  * @return {string}
  */
 proto.inventory.v1.GenerateRequest.prototype.getIconUrl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
 };
 
 
@@ -4170,7 +4122,7 @@ proto.inventory.v1.GenerateRequest.prototype.getIconUrl = function() {
  * @return {!proto.inventory.v1.GenerateRequest} returns this
  */
 proto.inventory.v1.GenerateRequest.prototype.setIconUrl = function(value) {
-  return jspb.Message.setField(this, 11, value);
+  return jspb.Message.setField(this, 10, value);
 };
 
 
@@ -4179,7 +4131,7 @@ proto.inventory.v1.GenerateRequest.prototype.setIconUrl = function(value) {
  * @return {!proto.inventory.v1.GenerateRequest} returns this
  */
 proto.inventory.v1.GenerateRequest.prototype.clearIconUrl = function() {
-  return jspb.Message.setField(this, 11, undefined);
+  return jspb.Message.setField(this, 10, undefined);
 };
 
 
@@ -4188,16 +4140,16 @@ proto.inventory.v1.GenerateRequest.prototype.clearIconUrl = function() {
  * @return {boolean}
  */
 proto.inventory.v1.GenerateRequest.prototype.hasIconUrl = function() {
-  return jspb.Message.getField(this, 11) != null;
+  return jspb.Message.getField(this, 10) != null;
 };
 
 
 /**
- * optional string app_files = 12;
+ * optional string app_files = 11;
  * @return {string}
  */
 proto.inventory.v1.GenerateRequest.prototype.getAppFiles = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
 };
 
 
@@ -4206,7 +4158,7 @@ proto.inventory.v1.GenerateRequest.prototype.getAppFiles = function() {
  * @return {!proto.inventory.v1.GenerateRequest} returns this
  */
 proto.inventory.v1.GenerateRequest.prototype.setAppFiles = function(value) {
-  return jspb.Message.setField(this, 12, value);
+  return jspb.Message.setField(this, 11, value);
 };
 
 
@@ -4215,7 +4167,7 @@ proto.inventory.v1.GenerateRequest.prototype.setAppFiles = function(value) {
  * @return {!proto.inventory.v1.GenerateRequest} returns this
  */
 proto.inventory.v1.GenerateRequest.prototype.clearAppFiles = function() {
-  return jspb.Message.setField(this, 12, undefined);
+  return jspb.Message.setField(this, 11, undefined);
 };
 
 
@@ -4224,16 +4176,16 @@ proto.inventory.v1.GenerateRequest.prototype.clearAppFiles = function() {
  * @return {boolean}
  */
 proto.inventory.v1.GenerateRequest.prototype.hasAppFiles = function() {
-  return jspb.Message.getField(this, 12) != null;
+  return jspb.Message.getField(this, 11) != null;
 };
 
 
 /**
- * optional string app_meta = 13;
+ * optional string app_meta = 12;
  * @return {string}
  */
 proto.inventory.v1.GenerateRequest.prototype.getAppMeta = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
 };
 
 
@@ -4242,7 +4194,7 @@ proto.inventory.v1.GenerateRequest.prototype.getAppMeta = function() {
  * @return {!proto.inventory.v1.GenerateRequest} returns this
  */
 proto.inventory.v1.GenerateRequest.prototype.setAppMeta = function(value) {
-  return jspb.Message.setField(this, 13, value);
+  return jspb.Message.setField(this, 12, value);
 };
 
 
@@ -4251,7 +4203,7 @@ proto.inventory.v1.GenerateRequest.prototype.setAppMeta = function(value) {
  * @return {!proto.inventory.v1.GenerateRequest} returns this
  */
 proto.inventory.v1.GenerateRequest.prototype.clearAppMeta = function() {
-  return jspb.Message.setField(this, 13, undefined);
+  return jspb.Message.setField(this, 12, undefined);
 };
 
 
@@ -4260,7 +4212,7 @@ proto.inventory.v1.GenerateRequest.prototype.clearAppMeta = function() {
  * @return {boolean}
  */
 proto.inventory.v1.GenerateRequest.prototype.hasAppMeta = function() {
-  return jspb.Message.getField(this, 13) != null;
+  return jspb.Message.getField(this, 12) != null;
 };
 
 
