@@ -318,6 +318,34 @@ export interface GenerateRequest {
      * @generated from protobuf field: optional string item_id = 6
      */
     itemId?: string;
+    /**
+     * @generated from protobuf field: optional string source_item_def_id = 7
+     */
+    sourceItemDefId?: string;
+    /**
+     * @generated from protobuf field: optional common.v1.Rarity rarity = 8
+     */
+    rarity?: Rarity;
+    /**
+     * @generated from protobuf field: optional string name = 9
+     */
+    name?: string;
+    /**
+     * @generated from protobuf field: optional string description = 10
+     */
+    description?: string;
+    /**
+     * @generated from protobuf field: optional string icon_url = 11
+     */
+    iconUrl?: string;
+    /**
+     * @generated from protobuf field: optional string app_files = 12
+     */
+    appFiles?: string;
+    /**
+     * @generated from protobuf field: optional string app_meta = 13
+     */
+    appMeta?: string;
 }
 /**
  * @generated from protobuf message inventory.v1.GenerateResponse
@@ -1452,7 +1480,14 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
             { no: 3, name: "app_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 4, name: "tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 5, name: "hold_till", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 6, name: "item_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
+            { no: 6, name: "item_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 7, name: "source_item_def_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 8, name: "rarity", kind: "enum", opt: true, T: () => ["common.v1.Rarity", Rarity] },
+            { no: 9, name: "name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 10, name: "description", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 11, name: "icon_url", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 12, name: "app_files", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 13, name: "app_meta", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<GenerateRequest>): GenerateRequest {
@@ -1489,6 +1524,27 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
                 case /* optional string item_id */ 6:
                     message.itemId = reader.string();
                     break;
+                case /* optional string source_item_def_id */ 7:
+                    message.sourceItemDefId = reader.string();
+                    break;
+                case /* optional common.v1.Rarity rarity */ 8:
+                    message.rarity = reader.int32();
+                    break;
+                case /* optional string name */ 9:
+                    message.name = reader.string();
+                    break;
+                case /* optional string description */ 10:
+                    message.description = reader.string();
+                    break;
+                case /* optional string icon_url */ 11:
+                    message.iconUrl = reader.string();
+                    break;
+                case /* optional string app_files */ 12:
+                    message.appFiles = reader.string();
+                    break;
+                case /* optional string app_meta */ 13:
+                    message.appMeta = reader.string();
+                    break;
                 default:
                     let u = options.readUnknownField;
                     if (u === "throw")
@@ -1519,6 +1575,27 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
         /* optional string item_id = 6; */
         if (message.itemId !== undefined)
             writer.tag(6, WireType.LengthDelimited).string(message.itemId);
+        /* optional string source_item_def_id = 7; */
+        if (message.sourceItemDefId !== undefined)
+            writer.tag(7, WireType.LengthDelimited).string(message.sourceItemDefId);
+        /* optional common.v1.Rarity rarity = 8; */
+        if (message.rarity !== undefined)
+            writer.tag(8, WireType.Varint).int32(message.rarity);
+        /* optional string name = 9; */
+        if (message.name !== undefined)
+            writer.tag(9, WireType.LengthDelimited).string(message.name);
+        /* optional string description = 10; */
+        if (message.description !== undefined)
+            writer.tag(10, WireType.LengthDelimited).string(message.description);
+        /* optional string icon_url = 11; */
+        if (message.iconUrl !== undefined)
+            writer.tag(11, WireType.LengthDelimited).string(message.iconUrl);
+        /* optional string app_files = 12; */
+        if (message.appFiles !== undefined)
+            writer.tag(12, WireType.LengthDelimited).string(message.appFiles);
+        /* optional string app_meta = 13; */
+        if (message.appMeta !== undefined)
+            writer.tag(13, WireType.LengthDelimited).string(message.appMeta);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
