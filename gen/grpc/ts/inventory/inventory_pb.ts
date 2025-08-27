@@ -261,6 +261,28 @@ export interface ConsumeItemResponse {
     status: string;
 }
 /**
+ * @generated from protobuf message inventory.v1.IncrementItemQuantityRequest
+ */
+export interface IncrementItemQuantityRequest {
+    /**
+     * @generated from protobuf field: string item_id = 1
+     */
+    itemId: string;
+    /**
+     * @generated from protobuf field: int32 quantity = 2
+     */
+    quantity: number;
+}
+/**
+ * @generated from protobuf message inventory.v1.IncrementItemQuantityResponse
+ */
+export interface IncrementItemQuantityResponse {
+    /**
+     * @generated from protobuf field: string status = 1
+     */
+    status: string;
+}
+/**
  * @generated from protobuf message inventory.v1.UnpackRequest
  */
 export interface UnpackRequest {
@@ -342,6 +364,10 @@ export interface GenerateRequest {
      * @generated from protobuf field: optional string app_meta = 12
      */
     appMeta?: string;
+    /**
+     * @generated from protobuf field: optional int64 quantity = 13
+     */
+    quantity?: bigint;
 }
 /**
  * @generated from protobuf message inventory.v1.GenerateResponse
@@ -1350,6 +1376,108 @@ class ConsumeItemResponse$Type extends MessageType<ConsumeItemResponse> {
  */
 export const ConsumeItemResponse = new ConsumeItemResponse$Type();
 // @generated message type with reflection information, may provide speed optimized methods
+class IncrementItemQuantityRequest$Type extends MessageType<IncrementItemQuantityRequest> {
+    constructor() {
+        super("inventory.v1.IncrementItemQuantityRequest", [
+            { no: 1, name: "item_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "quantity", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+        ]);
+    }
+    create(value?: PartialMessage<IncrementItemQuantityRequest>): IncrementItemQuantityRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.itemId = "";
+        message.quantity = 0;
+        if (value !== undefined)
+            reflectionMergePartial<IncrementItemQuantityRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: IncrementItemQuantityRequest): IncrementItemQuantityRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string item_id */ 1:
+                    message.itemId = reader.string();
+                    break;
+                case /* int32 quantity */ 2:
+                    message.quantity = reader.int32();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: IncrementItemQuantityRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string item_id = 1; */
+        if (message.itemId !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.itemId);
+        /* int32 quantity = 2; */
+        if (message.quantity !== 0)
+            writer.tag(2, WireType.Varint).int32(message.quantity);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.IncrementItemQuantityRequest
+ */
+export const IncrementItemQuantityRequest = new IncrementItemQuantityRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class IncrementItemQuantityResponse$Type extends MessageType<IncrementItemQuantityResponse> {
+    constructor() {
+        super("inventory.v1.IncrementItemQuantityResponse", [
+            { no: 1, name: "status", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<IncrementItemQuantityResponse>): IncrementItemQuantityResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.status = "";
+        if (value !== undefined)
+            reflectionMergePartial<IncrementItemQuantityResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: IncrementItemQuantityResponse): IncrementItemQuantityResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string status */ 1:
+                    message.status = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: IncrementItemQuantityResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string status = 1; */
+        if (message.status !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.status);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.IncrementItemQuantityResponse
+ */
+export const IncrementItemQuantityResponse = new IncrementItemQuantityResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
 class UnpackRequest$Type extends MessageType<UnpackRequest> {
     constructor() {
         super("inventory.v1.UnpackRequest", [
@@ -1482,7 +1610,8 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
             { no: 9, name: "description", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 10, name: "icon_url", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 11, name: "app_files", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 12, name: "app_meta", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
+            { no: 12, name: "app_meta", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 13, name: "quantity", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<GenerateRequest>): GenerateRequest {
@@ -1537,6 +1666,9 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
                 case /* optional string app_meta */ 12:
                     message.appMeta = reader.string();
                     break;
+                case /* optional int64 quantity */ 13:
+                    message.quantity = reader.int64().toBigInt();
+                    break;
                 default:
                     let u = options.readUnknownField;
                     if (u === "throw")
@@ -1585,6 +1717,9 @@ class GenerateRequest$Type extends MessageType<GenerateRequest> {
         /* optional string app_meta = 12; */
         if (message.appMeta !== undefined)
             writer.tag(12, WireType.LengthDelimited).string(message.appMeta);
+        /* optional int64 quantity = 13; */
+        if (message.quantity !== undefined)
+            writer.tag(13, WireType.Varint).int64(message.quantity);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2679,6 +2814,7 @@ export const InventoryService = new ServiceType("inventory.v1.InventoryService",
     { name: "ListItems", options: {}, I: ListItemsRequest, O: ListItemsResponse },
     { name: "GetItem", options: {}, I: GetItemRequest, O: Item },
     { name: "ConsumeItem", options: {}, I: ConsumeItemRequest, O: ConsumeItemResponse },
+    { name: "IncrementItemQuantity", options: {}, I: IncrementItemQuantityRequest, O: IncrementItemQuantityResponse },
     { name: "Unpack", options: {}, I: UnpackRequest, O: UnpackResponse },
     { name: "Generate", options: {}, I: GenerateRequest, O: GenerateResponse },
     { name: "UpdateItem", options: {}, I: UpdateItemRequest, O: UpdateItemResponse },
