@@ -11,6 +11,7 @@ service InventoryService {
   rpc ListItems(ListItemsRequest) returns (ListItemsResponse) {}
   rpc GetItem(GetItemRequest) returns (Item) {}
   rpc ConsumeItem(ConsumeItemRequest) returns (ConsumeItemResponse) {}
+  rpc IncrementItemQuantity(IncrementItemQuantityRequest) returns (IncrementItemQuantityResponse) {}
   rpc Unpack(UnpackRequest) returns (UnpackResponse) {}
   rpc Generate(GenerateRequest) returns (GenerateResponse) {}
   rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse) {}
@@ -98,6 +99,15 @@ message ConsumeItemResponse {
   string status = 1;
 }
 
+message IncrementItemQuantityRequest {
+  string item_id = 1;
+  int32 quantity = 2;
+}
+
+message IncrementItemQuantityResponse {
+  string status = 1;
+}
+
 message UnpackRequest {
   string item_id = 1;
   int64 account_id = 2;
@@ -122,6 +132,7 @@ message GenerateRequest {
   optional string icon_url = 10;
   optional string app_files = 11;
   optional string app_meta = 12;
+  optional int64 quantity = 13;
 }
 
 message GenerateResponse {

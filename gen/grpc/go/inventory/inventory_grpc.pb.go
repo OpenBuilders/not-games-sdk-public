@@ -19,20 +19,21 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	InventoryService_ListItems_FullMethodName          = "/inventory.v1.InventoryService/ListItems"
-	InventoryService_GetItem_FullMethodName            = "/inventory.v1.InventoryService/GetItem"
-	InventoryService_ConsumeItem_FullMethodName        = "/inventory.v1.InventoryService/ConsumeItem"
-	InventoryService_Unpack_FullMethodName             = "/inventory.v1.InventoryService/Unpack"
-	InventoryService_Generate_FullMethodName           = "/inventory.v1.InventoryService/Generate"
-	InventoryService_UpdateItem_FullMethodName         = "/inventory.v1.InventoryService/UpdateItem"
-	InventoryService_TransferItem_FullMethodName       = "/inventory.v1.InventoryService/TransferItem"
-	InventoryService_StreamItemTransfer_FullMethodName = "/inventory.v1.InventoryService/StreamItemTransfer"
-	InventoryService_StreamItem_FullMethodName         = "/inventory.v1.InventoryService/StreamItem"
-	InventoryService_AddGroup_FullMethodName           = "/inventory.v1.InventoryService/AddGroup"
-	InventoryService_StreamAckMessages_FullMethodName  = "/inventory.v1.InventoryService/StreamAckMessages"
-	InventoryService_AckStreamMessages_FullMethodName  = "/inventory.v1.InventoryService/AckStreamMessages"
-	InventoryService_ListItemsByItemDef_FullMethodName = "/inventory.v1.InventoryService/ListItemsByItemDef"
-	InventoryService_TransferLog_FullMethodName        = "/inventory.v1.InventoryService/TransferLog"
+	InventoryService_ListItems_FullMethodName             = "/inventory.v1.InventoryService/ListItems"
+	InventoryService_GetItem_FullMethodName               = "/inventory.v1.InventoryService/GetItem"
+	InventoryService_ConsumeItem_FullMethodName           = "/inventory.v1.InventoryService/ConsumeItem"
+	InventoryService_IncrementItemQuantity_FullMethodName = "/inventory.v1.InventoryService/IncrementItemQuantity"
+	InventoryService_Unpack_FullMethodName                = "/inventory.v1.InventoryService/Unpack"
+	InventoryService_Generate_FullMethodName              = "/inventory.v1.InventoryService/Generate"
+	InventoryService_UpdateItem_FullMethodName            = "/inventory.v1.InventoryService/UpdateItem"
+	InventoryService_TransferItem_FullMethodName          = "/inventory.v1.InventoryService/TransferItem"
+	InventoryService_StreamItemTransfer_FullMethodName    = "/inventory.v1.InventoryService/StreamItemTransfer"
+	InventoryService_StreamItem_FullMethodName            = "/inventory.v1.InventoryService/StreamItem"
+	InventoryService_AddGroup_FullMethodName              = "/inventory.v1.InventoryService/AddGroup"
+	InventoryService_StreamAckMessages_FullMethodName     = "/inventory.v1.InventoryService/StreamAckMessages"
+	InventoryService_AckStreamMessages_FullMethodName     = "/inventory.v1.InventoryService/AckStreamMessages"
+	InventoryService_ListItemsByItemDef_FullMethodName    = "/inventory.v1.InventoryService/ListItemsByItemDef"
+	InventoryService_TransferLog_FullMethodName           = "/inventory.v1.InventoryService/TransferLog"
 )
 
 // InventoryServiceClient is the client API for InventoryService service.
@@ -42,6 +43,7 @@ type InventoryServiceClient interface {
 	ListItems(ctx context.Context, in *ListItemsRequest, opts ...grpc.CallOption) (*ListItemsResponse, error)
 	GetItem(ctx context.Context, in *GetItemRequest, opts ...grpc.CallOption) (*Item, error)
 	ConsumeItem(ctx context.Context, in *ConsumeItemRequest, opts ...grpc.CallOption) (*ConsumeItemResponse, error)
+	IncrementItemQuantity(ctx context.Context, in *IncrementItemQuantityRequest, opts ...grpc.CallOption) (*IncrementItemQuantityResponse, error)
 	Unpack(ctx context.Context, in *UnpackRequest, opts ...grpc.CallOption) (*UnpackResponse, error)
 	Generate(ctx context.Context, in *GenerateRequest, opts ...grpc.CallOption) (*GenerateResponse, error)
 	UpdateItem(ctx context.Context, in *UpdateItemRequest, opts ...grpc.CallOption) (*UpdateItemResponse, error)
@@ -87,6 +89,16 @@ func (c *inventoryServiceClient) ConsumeItem(ctx context.Context, in *ConsumeIte
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ConsumeItemResponse)
 	err := c.cc.Invoke(ctx, InventoryService_ConsumeItem_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *inventoryServiceClient) IncrementItemQuantity(ctx context.Context, in *IncrementItemQuantityRequest, opts ...grpc.CallOption) (*IncrementItemQuantityResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(IncrementItemQuantityResponse)
+	err := c.cc.Invoke(ctx, InventoryService_IncrementItemQuantity_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -228,6 +240,7 @@ type InventoryServiceServer interface {
 	ListItems(context.Context, *ListItemsRequest) (*ListItemsResponse, error)
 	GetItem(context.Context, *GetItemRequest) (*Item, error)
 	ConsumeItem(context.Context, *ConsumeItemRequest) (*ConsumeItemResponse, error)
+	IncrementItemQuantity(context.Context, *IncrementItemQuantityRequest) (*IncrementItemQuantityResponse, error)
 	Unpack(context.Context, *UnpackRequest) (*UnpackResponse, error)
 	Generate(context.Context, *GenerateRequest) (*GenerateResponse, error)
 	UpdateItem(context.Context, *UpdateItemRequest) (*UpdateItemResponse, error)
@@ -257,6 +270,9 @@ func (UnimplementedInventoryServiceServer) GetItem(context.Context, *GetItemRequ
 }
 func (UnimplementedInventoryServiceServer) ConsumeItem(context.Context, *ConsumeItemRequest) (*ConsumeItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ConsumeItem not implemented")
+}
+func (UnimplementedInventoryServiceServer) IncrementItemQuantity(context.Context, *IncrementItemQuantityRequest) (*IncrementItemQuantityResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method IncrementItemQuantity not implemented")
 }
 func (UnimplementedInventoryServiceServer) Unpack(context.Context, *UnpackRequest) (*UnpackResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Unpack not implemented")
@@ -362,6 +378,24 @@ func _InventoryService_ConsumeItem_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(InventoryServiceServer).ConsumeItem(ctx, req.(*ConsumeItemRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _InventoryService_IncrementItemQuantity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(IncrementItemQuantityRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServiceServer).IncrementItemQuantity(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InventoryService_IncrementItemQuantity_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServiceServer).IncrementItemQuantity(ctx, req.(*IncrementItemQuantityRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -568,6 +602,10 @@ var InventoryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ConsumeItem",
 			Handler:    _InventoryService_ConsumeItem_Handler,
+		},
+		{
+			MethodName: "IncrementItemQuantity",
+			Handler:    _InventoryService_IncrementItemQuantity_Handler,
 		},
 		{
 			MethodName: "Unpack",

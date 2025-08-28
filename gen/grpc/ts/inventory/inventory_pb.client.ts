@@ -26,6 +26,8 @@ import type { GenerateResponse } from "./inventory_pb";
 import type { GenerateRequest } from "./inventory_pb";
 import type { UnpackResponse } from "./inventory_pb";
 import type { UnpackRequest } from "./inventory_pb";
+import type { IncrementItemQuantityResponse } from "./inventory_pb";
+import type { IncrementItemQuantityRequest } from "./inventory_pb";
 import type { ConsumeItemResponse } from "./inventory_pb";
 import type { ConsumeItemRequest } from "./inventory_pb";
 import type { Item } from "./inventory_pb";
@@ -51,6 +53,10 @@ export interface IInventoryServiceClient {
      * @generated from protobuf rpc: ConsumeItem
      */
     consumeItem(input: ConsumeItemRequest, options?: RpcOptions): UnaryCall<ConsumeItemRequest, ConsumeItemResponse>;
+    /**
+     * @generated from protobuf rpc: IncrementItemQuantity
+     */
+    incrementItemQuantity(input: IncrementItemQuantityRequest, options?: RpcOptions): UnaryCall<IncrementItemQuantityRequest, IncrementItemQuantityResponse>;
     /**
      * @generated from protobuf rpc: Unpack
      */
@@ -127,80 +133,87 @@ export class InventoryServiceClient implements IInventoryServiceClient, ServiceI
         return stackIntercept<ConsumeItemRequest, ConsumeItemResponse>("unary", this._transport, method, opt, input);
     }
     /**
+     * @generated from protobuf rpc: IncrementItemQuantity
+     */
+    incrementItemQuantity(input: IncrementItemQuantityRequest, options?: RpcOptions): UnaryCall<IncrementItemQuantityRequest, IncrementItemQuantityResponse> {
+        const method = this.methods[3], opt = this._transport.mergeOptions(options);
+        return stackIntercept<IncrementItemQuantityRequest, IncrementItemQuantityResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
      * @generated from protobuf rpc: Unpack
      */
     unpack(input: UnpackRequest, options?: RpcOptions): UnaryCall<UnpackRequest, UnpackResponse> {
-        const method = this.methods[3], opt = this._transport.mergeOptions(options);
+        const method = this.methods[4], opt = this._transport.mergeOptions(options);
         return stackIntercept<UnpackRequest, UnpackResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: Generate
      */
     generate(input: GenerateRequest, options?: RpcOptions): UnaryCall<GenerateRequest, GenerateResponse> {
-        const method = this.methods[4], opt = this._transport.mergeOptions(options);
+        const method = this.methods[5], opt = this._transport.mergeOptions(options);
         return stackIntercept<GenerateRequest, GenerateResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: UpdateItem
      */
     updateItem(input: UpdateItemRequest, options?: RpcOptions): UnaryCall<UpdateItemRequest, UpdateItemResponse> {
-        const method = this.methods[5], opt = this._transport.mergeOptions(options);
+        const method = this.methods[6], opt = this._transport.mergeOptions(options);
         return stackIntercept<UpdateItemRequest, UpdateItemResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: TransferItem
      */
     transferItem(input: TransferItemRequest, options?: RpcOptions): UnaryCall<TransferItemRequest, TransferItemResponse> {
-        const method = this.methods[6], opt = this._transport.mergeOptions(options);
+        const method = this.methods[7], opt = this._transport.mergeOptions(options);
         return stackIntercept<TransferItemRequest, TransferItemResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: StreamItemTransfer
      */
     streamItemTransfer(input: StreamItemTransfersRequest, options?: RpcOptions): ServerStreamingCall<StreamItemTransfersRequest, StreamItemTransfersResponse> {
-        const method = this.methods[7], opt = this._transport.mergeOptions(options);
+        const method = this.methods[8], opt = this._transport.mergeOptions(options);
         return stackIntercept<StreamItemTransfersRequest, StreamItemTransfersResponse>("serverStreaming", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: StreamItem
      */
     streamItem(input: StreamItemRequest, options?: RpcOptions): ServerStreamingCall<StreamItemRequest, StreamItemResponse> {
-        const method = this.methods[8], opt = this._transport.mergeOptions(options);
+        const method = this.methods[9], opt = this._transport.mergeOptions(options);
         return stackIntercept<StreamItemRequest, StreamItemResponse>("serverStreaming", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: AddGroup
      */
     addGroup(input: AddGroupRequest, options?: RpcOptions): UnaryCall<AddGroupRequest, AddGroupResponse> {
-        const method = this.methods[9], opt = this._transport.mergeOptions(options);
+        const method = this.methods[10], opt = this._transport.mergeOptions(options);
         return stackIntercept<AddGroupRequest, AddGroupResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: StreamAckMessages
      */
     streamAckMessages(input: StreamItemTransfersAckRequest, options?: RpcOptions): UnaryCall<StreamItemTransfersAckRequest, StreamItemTransfersAckResponse> {
-        const method = this.methods[10], opt = this._transport.mergeOptions(options);
+        const method = this.methods[11], opt = this._transport.mergeOptions(options);
         return stackIntercept<StreamItemTransfersAckRequest, StreamItemTransfersAckResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: AckStreamMessages
      */
     ackStreamMessages(input: AckStreamMessagesRequest, options?: RpcOptions): UnaryCall<AckStreamMessagesRequest, AckStreamMessagesResponse> {
-        const method = this.methods[11], opt = this._transport.mergeOptions(options);
+        const method = this.methods[12], opt = this._transport.mergeOptions(options);
         return stackIntercept<AckStreamMessagesRequest, AckStreamMessagesResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: ListItemsByItemDef
      */
     listItemsByItemDef(input: ListItemsByItemDefRequest, options?: RpcOptions): UnaryCall<ListItemsByItemDefRequest, ListItemsResponse> {
-        const method = this.methods[12], opt = this._transport.mergeOptions(options);
+        const method = this.methods[13], opt = this._transport.mergeOptions(options);
         return stackIntercept<ListItemsByItemDefRequest, ListItemsResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: TransferLog
      */
     transferLog(input: TransferLogRequest, options?: RpcOptions): UnaryCall<TransferLogRequest, TransferLogResponse> {
-        const method = this.methods[13], opt = this._transport.mergeOptions(options);
+        const method = this.methods[14], opt = this._transport.mergeOptions(options);
         return stackIntercept<TransferLogRequest, TransferLogResponse>("unary", this._transport, method, opt, input);
     }
 }

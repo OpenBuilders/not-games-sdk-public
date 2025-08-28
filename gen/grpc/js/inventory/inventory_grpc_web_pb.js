@@ -265,6 +265,67 @@ proto.inventory.v1.InventoryServicePromiseClient.prototype.consumeItem =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.inventory.v1.IncrementItemQuantityRequest,
+ *   !proto.inventory.v1.IncrementItemQuantityResponse>}
+ */
+const methodDescriptor_InventoryService_IncrementItemQuantity = new grpc.web.MethodDescriptor(
+  '/inventory.v1.InventoryService/IncrementItemQuantity',
+  grpc.web.MethodType.UNARY,
+  proto.inventory.v1.IncrementItemQuantityRequest,
+  proto.inventory.v1.IncrementItemQuantityResponse,
+  /**
+   * @param {!proto.inventory.v1.IncrementItemQuantityRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.inventory.v1.IncrementItemQuantityResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.inventory.v1.IncrementItemQuantityRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.inventory.v1.IncrementItemQuantityResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.inventory.v1.IncrementItemQuantityResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.inventory.v1.InventoryServiceClient.prototype.incrementItemQuantity =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/inventory.v1.InventoryService/IncrementItemQuantity',
+      request,
+      metadata || {},
+      methodDescriptor_InventoryService_IncrementItemQuantity,
+      callback);
+};
+
+
+/**
+ * @param {!proto.inventory.v1.IncrementItemQuantityRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.inventory.v1.IncrementItemQuantityResponse>}
+ *     Promise that resolves to the response
+ */
+proto.inventory.v1.InventoryServicePromiseClient.prototype.incrementItemQuantity =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/inventory.v1.InventoryService/IncrementItemQuantity',
+      request,
+      metadata || {},
+      methodDescriptor_InventoryService_IncrementItemQuantity);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.inventory.v1.UnpackRequest,
  *   !proto.inventory.v1.UnpackResponse>}
  */
