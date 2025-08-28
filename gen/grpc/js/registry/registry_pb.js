@@ -1249,23 +1249,23 @@ proto.registry.v1.UpdateItemDefRequest.toObject = function(includeInstance, msg)
   var f, obj = {
 itemDefId: jspb.Message.getFieldWithDefault(msg, 1, ""),
 appId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-name: jspb.Message.getFieldWithDefault(msg, 3, ""),
-description: jspb.Message.getFieldWithDefault(msg, 4, ""),
-displayType: jspb.Message.getFieldWithDefault(msg, 5, ""),
-bundle: jspb.Message.getFieldWithDefault(msg, 6, ""),
-price: jspb.Message.getFieldWithDefault(msg, 7, ""),
-iconUrl: jspb.Message.getFieldWithDefault(msg, 8, ""),
-marketable: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
-storeTags: jspb.Message.getFieldWithDefault(msg, 10, ""),
-storeImages: jspb.Message.getFieldWithDefault(msg, 11, ""),
-appFiles: jspb.Message.getFieldWithDefault(msg, 12, ""),
-collection: jspb.Message.getFieldWithDefault(msg, 13, ""),
-hidden: jspb.Message.getBooleanFieldWithDefault(msg, 14, false),
-storeHidden: jspb.Message.getBooleanFieldWithDefault(msg, 15, false),
-gameOnly: jspb.Message.getBooleanFieldWithDefault(msg, 16, false),
-promo: jspb.Message.getFieldWithDefault(msg, 17, ""),
-tradable: jspb.Message.getBooleanFieldWithDefault(msg, 18, false),
-exchange: jspb.Message.getFieldWithDefault(msg, 19, ""),
+name: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
+description: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f,
+displayType: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f,
+bundle: (f = jspb.Message.getField(msg, 6)) == null ? undefined : f,
+price: (f = jspb.Message.getField(msg, 7)) == null ? undefined : f,
+iconUrl: (f = jspb.Message.getField(msg, 8)) == null ? undefined : f,
+marketable: (f = jspb.Message.getBooleanField(msg, 9)) == null ? undefined : f,
+storeTags: (f = jspb.Message.getField(msg, 10)) == null ? undefined : f,
+storeImages: (f = jspb.Message.getField(msg, 11)) == null ? undefined : f,
+appFiles: (f = jspb.Message.getField(msg, 12)) == null ? undefined : f,
+collection: (f = jspb.Message.getField(msg, 13)) == null ? undefined : f,
+hidden: (f = jspb.Message.getBooleanField(msg, 14)) == null ? undefined : f,
+storeHidden: (f = jspb.Message.getBooleanField(msg, 15)) == null ? undefined : f,
+gameOnly: (f = jspb.Message.getBooleanField(msg, 16)) == null ? undefined : f,
+promo: (f = jspb.Message.getField(msg, 17)) == null ? undefined : f,
+tradable: (f = jspb.Message.getBooleanField(msg, 18)) == null ? undefined : f,
+exchange: (f = jspb.Message.getField(msg, 19)) == null ? undefined : f,
 maxSupply: (f = jspb.Message.getField(msg, 20)) == null ? undefined : f
   };
 
@@ -1426,120 +1426,120 @@ proto.registry.v1.UpdateItemDefRequest.serializeBinaryToWriter = function(messag
       f
     );
   }
-  f = message.getName();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getDescription();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeString(
       4,
       f
     );
   }
-  f = message.getDisplayType();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
     writer.writeString(
       5,
       f
     );
   }
-  f = message.getBundle();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
     writer.writeString(
       6,
       f
     );
   }
-  f = message.getPrice();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 7));
+  if (f != null) {
     writer.writeString(
       7,
       f
     );
   }
-  f = message.getIconUrl();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 8));
+  if (f != null) {
     writer.writeString(
       8,
       f
     );
   }
-  f = message.getMarketable();
-  if (f) {
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 9));
+  if (f != null) {
     writer.writeBool(
       9,
       f
     );
   }
-  f = message.getStoreTags();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 10));
+  if (f != null) {
     writer.writeString(
       10,
       f
     );
   }
-  f = message.getStoreImages();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 11));
+  if (f != null) {
     writer.writeString(
       11,
       f
     );
   }
-  f = message.getAppFiles();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 12));
+  if (f != null) {
     writer.writeString(
       12,
       f
     );
   }
-  f = message.getCollection();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 13));
+  if (f != null) {
     writer.writeString(
       13,
       f
     );
   }
-  f = message.getHidden();
-  if (f) {
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 14));
+  if (f != null) {
     writer.writeBool(
       14,
       f
     );
   }
-  f = message.getStoreHidden();
-  if (f) {
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 15));
+  if (f != null) {
     writer.writeBool(
       15,
       f
     );
   }
-  f = message.getGameOnly();
-  if (f) {
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 16));
+  if (f != null) {
     writer.writeBool(
       16,
       f
     );
   }
-  f = message.getPromo();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 17));
+  if (f != null) {
     writer.writeString(
       17,
       f
     );
   }
-  f = message.getTradable();
-  if (f) {
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 18));
+  if (f != null) {
     writer.writeBool(
       18,
       f
     );
   }
-  f = message.getExchange();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 19));
+  if (f != null) {
     writer.writeString(
       19,
       f
@@ -1605,7 +1605,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getName = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setName = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearName = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasName = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -1623,7 +1641,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getDescription = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setDescription = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearDescription = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasDescription = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -1641,7 +1677,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getDisplayType = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setDisplayType = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearDisplayType = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasDisplayType = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -1659,7 +1713,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getBundle = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setBundle = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearBundle = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasBundle = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
@@ -1677,7 +1749,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getPrice = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setPrice = function(value) {
-  return jspb.Message.setProto3StringField(this, 7, value);
+  return jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearPrice = function() {
+  return jspb.Message.setField(this, 7, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasPrice = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
@@ -1695,7 +1785,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getIconUrl = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setIconUrl = function(value) {
-  return jspb.Message.setProto3StringField(this, 8, value);
+  return jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearIconUrl = function() {
+  return jspb.Message.setField(this, 8, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasIconUrl = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
@@ -1713,7 +1821,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getMarketable = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setMarketable = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 9, value);
+  return jspb.Message.setField(this, 9, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearMarketable = function() {
+  return jspb.Message.setField(this, 9, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasMarketable = function() {
+  return jspb.Message.getField(this, 9) != null;
 };
 
 
@@ -1731,7 +1857,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getStoreTags = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setStoreTags = function(value) {
-  return jspb.Message.setProto3StringField(this, 10, value);
+  return jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearStoreTags = function() {
+  return jspb.Message.setField(this, 10, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasStoreTags = function() {
+  return jspb.Message.getField(this, 10) != null;
 };
 
 
@@ -1749,7 +1893,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getStoreImages = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setStoreImages = function(value) {
-  return jspb.Message.setProto3StringField(this, 11, value);
+  return jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearStoreImages = function() {
+  return jspb.Message.setField(this, 11, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasStoreImages = function() {
+  return jspb.Message.getField(this, 11) != null;
 };
 
 
@@ -1767,7 +1929,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getAppFiles = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setAppFiles = function(value) {
-  return jspb.Message.setProto3StringField(this, 12, value);
+  return jspb.Message.setField(this, 12, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearAppFiles = function() {
+  return jspb.Message.setField(this, 12, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasAppFiles = function() {
+  return jspb.Message.getField(this, 12) != null;
 };
 
 
@@ -1785,7 +1965,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getCollection = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setCollection = function(value) {
-  return jspb.Message.setProto3StringField(this, 13, value);
+  return jspb.Message.setField(this, 13, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearCollection = function() {
+  return jspb.Message.setField(this, 13, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasCollection = function() {
+  return jspb.Message.getField(this, 13) != null;
 };
 
 
@@ -1803,7 +2001,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getHidden = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setHidden = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 14, value);
+  return jspb.Message.setField(this, 14, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearHidden = function() {
+  return jspb.Message.setField(this, 14, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasHidden = function() {
+  return jspb.Message.getField(this, 14) != null;
 };
 
 
@@ -1821,7 +2037,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getStoreHidden = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setStoreHidden = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 15, value);
+  return jspb.Message.setField(this, 15, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearStoreHidden = function() {
+  return jspb.Message.setField(this, 15, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasStoreHidden = function() {
+  return jspb.Message.getField(this, 15) != null;
 };
 
 
@@ -1839,7 +2073,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getGameOnly = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setGameOnly = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 16, value);
+  return jspb.Message.setField(this, 16, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearGameOnly = function() {
+  return jspb.Message.setField(this, 16, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasGameOnly = function() {
+  return jspb.Message.getField(this, 16) != null;
 };
 
 
@@ -1857,7 +2109,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getPromo = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setPromo = function(value) {
-  return jspb.Message.setProto3StringField(this, 17, value);
+  return jspb.Message.setField(this, 17, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearPromo = function() {
+  return jspb.Message.setField(this, 17, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasPromo = function() {
+  return jspb.Message.getField(this, 17) != null;
 };
 
 
@@ -1875,7 +2145,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getTradable = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setTradable = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 18, value);
+  return jspb.Message.setField(this, 18, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearTradable = function() {
+  return jspb.Message.setField(this, 18, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasTradable = function() {
+  return jspb.Message.getField(this, 18) != null;
 };
 
 
@@ -1893,7 +2181,25 @@ proto.registry.v1.UpdateItemDefRequest.prototype.getExchange = function() {
  * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
  */
 proto.registry.v1.UpdateItemDefRequest.prototype.setExchange = function(value) {
-  return jspb.Message.setProto3StringField(this, 19, value);
+  return jspb.Message.setField(this, 19, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.UpdateItemDefRequest} returns this
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.clearExchange = function() {
+  return jspb.Message.setField(this, 19, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.UpdateItemDefRequest.prototype.hasExchange = function() {
+  return jspb.Message.getField(this, 19) != null;
 };
 
 

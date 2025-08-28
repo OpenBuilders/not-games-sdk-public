@@ -127,73 +127,73 @@ export interface UpdateItemDefRequest {
      */
     appId: bigint;
     /**
-     * @generated from protobuf field: string name = 3
+     * @generated from protobuf field: optional string name = 3
      */
-    name: string;
+    name?: string;
     /**
-     * @generated from protobuf field: string description = 4
+     * @generated from protobuf field: optional string description = 4
      */
-    description: string;
+    description?: string;
     /**
-     * @generated from protobuf field: string display_type = 5
+     * @generated from protobuf field: optional string display_type = 5
      */
-    displayType: string;
+    displayType?: string;
     /**
-     * @generated from protobuf field: string bundle = 6
+     * @generated from protobuf field: optional string bundle = 6
      */
-    bundle: string;
+    bundle?: string;
     /**
-     * @generated from protobuf field: string price = 7
+     * @generated from protobuf field: optional string price = 7
      */
-    price: string;
+    price?: string;
     /**
-     * @generated from protobuf field: string icon_url = 8
+     * @generated from protobuf field: optional string icon_url = 8
      */
-    iconUrl: string;
+    iconUrl?: string;
     /**
-     * @generated from protobuf field: bool marketable = 9
+     * @generated from protobuf field: optional bool marketable = 9
      */
-    marketable: boolean;
+    marketable?: boolean;
     /**
-     * @generated from protobuf field: string store_tags = 10
+     * @generated from protobuf field: optional string store_tags = 10
      */
-    storeTags: string;
+    storeTags?: string;
     /**
-     * @generated from protobuf field: string store_images = 11
+     * @generated from protobuf field: optional string store_images = 11
      */
-    storeImages: string;
+    storeImages?: string;
     /**
-     * @generated from protobuf field: string app_files = 12
+     * @generated from protobuf field: optional string app_files = 12
      */
-    appFiles: string;
+    appFiles?: string;
     /**
-     * @generated from protobuf field: string collection = 13
+     * @generated from protobuf field: optional string collection = 13
      */
-    collection: string;
+    collection?: string;
     /**
-     * @generated from protobuf field: bool hidden = 14
+     * @generated from protobuf field: optional bool hidden = 14
      */
-    hidden: boolean;
+    hidden?: boolean;
     /**
-     * @generated from protobuf field: bool store_hidden = 15
+     * @generated from protobuf field: optional bool store_hidden = 15
      */
-    storeHidden: boolean;
+    storeHidden?: boolean;
     /**
-     * @generated from protobuf field: bool game_only = 16
+     * @generated from protobuf field: optional bool game_only = 16
      */
-    gameOnly: boolean;
+    gameOnly?: boolean;
     /**
-     * @generated from protobuf field: string promo = 17
+     * @generated from protobuf field: optional string promo = 17
      */
-    promo: string;
+    promo?: string;
     /**
-     * @generated from protobuf field: bool tradable = 18
+     * @generated from protobuf field: optional bool tradable = 18
      */
-    tradable: boolean;
+    tradable?: boolean;
     /**
-     * @generated from protobuf field: string exchange = 19
+     * @generated from protobuf field: optional string exchange = 19
      */
-    exchange: string;
+    exchange?: string;
     /**
      * @generated from protobuf field: optional int64 max_supply = 20
      */
@@ -653,23 +653,23 @@ class UpdateItemDefRequest$Type extends MessageType<UpdateItemDefRequest> {
         super("registry.v1.UpdateItemDefRequest", [
             { no: 1, name: "item_def_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "app_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 3, name: "name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 4, name: "description", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 5, name: "display_type", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 6, name: "bundle", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 7, name: "price", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 8, name: "icon_url", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 9, name: "marketable", kind: "scalar", T: 8 /*ScalarType.BOOL*/ },
-            { no: 10, name: "store_tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 11, name: "store_images", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 12, name: "app_files", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 13, name: "collection", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 14, name: "hidden", kind: "scalar", T: 8 /*ScalarType.BOOL*/ },
-            { no: 15, name: "store_hidden", kind: "scalar", T: 8 /*ScalarType.BOOL*/ },
-            { no: 16, name: "game_only", kind: "scalar", T: 8 /*ScalarType.BOOL*/ },
-            { no: 17, name: "promo", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 18, name: "tradable", kind: "scalar", T: 8 /*ScalarType.BOOL*/ },
-            { no: 19, name: "exchange", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 3, name: "name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "description", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "display_type", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 6, name: "bundle", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 7, name: "price", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 8, name: "icon_url", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 9, name: "marketable", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
+            { no: 10, name: "store_tags", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 11, name: "store_images", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 12, name: "app_files", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 13, name: "collection", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 14, name: "hidden", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
+            { no: 15, name: "store_hidden", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
+            { no: 16, name: "game_only", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
+            { no: 17, name: "promo", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 18, name: "tradable", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
+            { no: 19, name: "exchange", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 20, name: "max_supply", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
@@ -677,23 +677,6 @@ class UpdateItemDefRequest$Type extends MessageType<UpdateItemDefRequest> {
         const message = globalThis.Object.create((this.messagePrototype!));
         message.itemDefId = "";
         message.appId = 0n;
-        message.name = "";
-        message.description = "";
-        message.displayType = "";
-        message.bundle = "";
-        message.price = "";
-        message.iconUrl = "";
-        message.marketable = false;
-        message.storeTags = "";
-        message.storeImages = "";
-        message.appFiles = "";
-        message.collection = "";
-        message.hidden = false;
-        message.storeHidden = false;
-        message.gameOnly = false;
-        message.promo = "";
-        message.tradable = false;
-        message.exchange = "";
         if (value !== undefined)
             reflectionMergePartial<UpdateItemDefRequest>(this, message, value);
         return message;
@@ -709,55 +692,55 @@ class UpdateItemDefRequest$Type extends MessageType<UpdateItemDefRequest> {
                 case /* int64 app_id */ 2:
                     message.appId = reader.int64().toBigInt();
                     break;
-                case /* string name */ 3:
+                case /* optional string name */ 3:
                     message.name = reader.string();
                     break;
-                case /* string description */ 4:
+                case /* optional string description */ 4:
                     message.description = reader.string();
                     break;
-                case /* string display_type */ 5:
+                case /* optional string display_type */ 5:
                     message.displayType = reader.string();
                     break;
-                case /* string bundle */ 6:
+                case /* optional string bundle */ 6:
                     message.bundle = reader.string();
                     break;
-                case /* string price */ 7:
+                case /* optional string price */ 7:
                     message.price = reader.string();
                     break;
-                case /* string icon_url */ 8:
+                case /* optional string icon_url */ 8:
                     message.iconUrl = reader.string();
                     break;
-                case /* bool marketable */ 9:
+                case /* optional bool marketable */ 9:
                     message.marketable = reader.bool();
                     break;
-                case /* string store_tags */ 10:
+                case /* optional string store_tags */ 10:
                     message.storeTags = reader.string();
                     break;
-                case /* string store_images */ 11:
+                case /* optional string store_images */ 11:
                     message.storeImages = reader.string();
                     break;
-                case /* string app_files */ 12:
+                case /* optional string app_files */ 12:
                     message.appFiles = reader.string();
                     break;
-                case /* string collection */ 13:
+                case /* optional string collection */ 13:
                     message.collection = reader.string();
                     break;
-                case /* bool hidden */ 14:
+                case /* optional bool hidden */ 14:
                     message.hidden = reader.bool();
                     break;
-                case /* bool store_hidden */ 15:
+                case /* optional bool store_hidden */ 15:
                     message.storeHidden = reader.bool();
                     break;
-                case /* bool game_only */ 16:
+                case /* optional bool game_only */ 16:
                     message.gameOnly = reader.bool();
                     break;
-                case /* string promo */ 17:
+                case /* optional string promo */ 17:
                     message.promo = reader.string();
                     break;
-                case /* bool tradable */ 18:
+                case /* optional bool tradable */ 18:
                     message.tradable = reader.bool();
                     break;
-                case /* string exchange */ 19:
+                case /* optional string exchange */ 19:
                     message.exchange = reader.string();
                     break;
                 case /* optional int64 max_supply */ 20:
@@ -781,56 +764,56 @@ class UpdateItemDefRequest$Type extends MessageType<UpdateItemDefRequest> {
         /* int64 app_id = 2; */
         if (message.appId !== 0n)
             writer.tag(2, WireType.Varint).int64(message.appId);
-        /* string name = 3; */
-        if (message.name !== "")
+        /* optional string name = 3; */
+        if (message.name !== undefined)
             writer.tag(3, WireType.LengthDelimited).string(message.name);
-        /* string description = 4; */
-        if (message.description !== "")
+        /* optional string description = 4; */
+        if (message.description !== undefined)
             writer.tag(4, WireType.LengthDelimited).string(message.description);
-        /* string display_type = 5; */
-        if (message.displayType !== "")
+        /* optional string display_type = 5; */
+        if (message.displayType !== undefined)
             writer.tag(5, WireType.LengthDelimited).string(message.displayType);
-        /* string bundle = 6; */
-        if (message.bundle !== "")
+        /* optional string bundle = 6; */
+        if (message.bundle !== undefined)
             writer.tag(6, WireType.LengthDelimited).string(message.bundle);
-        /* string price = 7; */
-        if (message.price !== "")
+        /* optional string price = 7; */
+        if (message.price !== undefined)
             writer.tag(7, WireType.LengthDelimited).string(message.price);
-        /* string icon_url = 8; */
-        if (message.iconUrl !== "")
+        /* optional string icon_url = 8; */
+        if (message.iconUrl !== undefined)
             writer.tag(8, WireType.LengthDelimited).string(message.iconUrl);
-        /* bool marketable = 9; */
-        if (message.marketable !== false)
+        /* optional bool marketable = 9; */
+        if (message.marketable !== undefined)
             writer.tag(9, WireType.Varint).bool(message.marketable);
-        /* string store_tags = 10; */
-        if (message.storeTags !== "")
+        /* optional string store_tags = 10; */
+        if (message.storeTags !== undefined)
             writer.tag(10, WireType.LengthDelimited).string(message.storeTags);
-        /* string store_images = 11; */
-        if (message.storeImages !== "")
+        /* optional string store_images = 11; */
+        if (message.storeImages !== undefined)
             writer.tag(11, WireType.LengthDelimited).string(message.storeImages);
-        /* string app_files = 12; */
-        if (message.appFiles !== "")
+        /* optional string app_files = 12; */
+        if (message.appFiles !== undefined)
             writer.tag(12, WireType.LengthDelimited).string(message.appFiles);
-        /* string collection = 13; */
-        if (message.collection !== "")
+        /* optional string collection = 13; */
+        if (message.collection !== undefined)
             writer.tag(13, WireType.LengthDelimited).string(message.collection);
-        /* bool hidden = 14; */
-        if (message.hidden !== false)
+        /* optional bool hidden = 14; */
+        if (message.hidden !== undefined)
             writer.tag(14, WireType.Varint).bool(message.hidden);
-        /* bool store_hidden = 15; */
-        if (message.storeHidden !== false)
+        /* optional bool store_hidden = 15; */
+        if (message.storeHidden !== undefined)
             writer.tag(15, WireType.Varint).bool(message.storeHidden);
-        /* bool game_only = 16; */
-        if (message.gameOnly !== false)
+        /* optional bool game_only = 16; */
+        if (message.gameOnly !== undefined)
             writer.tag(16, WireType.Varint).bool(message.gameOnly);
-        /* string promo = 17; */
-        if (message.promo !== "")
+        /* optional string promo = 17; */
+        if (message.promo !== undefined)
             writer.tag(17, WireType.LengthDelimited).string(message.promo);
-        /* bool tradable = 18; */
-        if (message.tradable !== false)
+        /* optional bool tradable = 18; */
+        if (message.tradable !== undefined)
             writer.tag(18, WireType.Varint).bool(message.tradable);
-        /* string exchange = 19; */
-        if (message.exchange !== "")
+        /* optional string exchange = 19; */
+        if (message.exchange !== undefined)
             writer.tag(19, WireType.LengthDelimited).string(message.exchange);
         /* optional int64 max_supply = 20; */
         if (message.maxSupply !== undefined)
