@@ -48,23 +48,23 @@ message ItemDef {
 message UpdateItemDefRequest {
   string item_def_id = 1;
   int64 app_id = 2;
-  string name = 3;
-  string description = 4;
-  string display_type = 5;
-  string bundle = 6;
-  string price = 7;
-  string icon_url = 8;
-  bool  marketable = 9;
-  string store_tags = 10;
-  string store_images = 11;
-  string app_files = 12;
-  string collection = 13;
-  bool hidden = 14;
-  bool store_hidden = 15;
-  bool game_only = 16;
-  string promo = 17;
-  bool tradable = 18;
-  string exchange = 19;
+  optional string name = 3;
+  optional string description = 4;
+  optional string display_type = 5;
+  optional string bundle = 6;
+  optional string price = 7;
+  optional string icon_url = 8;
+  optional bool  marketable = 9;
+  optional string store_tags = 10;
+  optional string store_images = 11;
+  optional string app_files = 12;
+  optional string collection = 13;
+  optional bool hidden = 14;
+  optional bool store_hidden = 15;
+  optional bool game_only = 16;
+  optional string promo = 17;
+  optional bool tradable = 18;
+  optional string exchange = 19;
   optional int64 max_supply = 20;
 }
 
