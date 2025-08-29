@@ -254,23 +254,23 @@ type UpdateItemDefRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ItemDefId     string                 `protobuf:"bytes,1,opt,name=item_def_id,json=itemDefId,proto3" json:"item_def_id,omitempty"`
 	AppId         int64                  `protobuf:"varint,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
-	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	DisplayType   string                 `protobuf:"bytes,5,opt,name=display_type,json=displayType,proto3" json:"display_type,omitempty"`
-	Bundle        string                 `protobuf:"bytes,6,opt,name=bundle,proto3" json:"bundle,omitempty"`
-	Price         string                 `protobuf:"bytes,7,opt,name=price,proto3" json:"price,omitempty"`
-	IconUrl       string                 `protobuf:"bytes,8,opt,name=icon_url,json=iconUrl,proto3" json:"icon_url,omitempty"`
-	Marketable    bool                   `protobuf:"varint,9,opt,name=marketable,proto3" json:"marketable,omitempty"`
-	StoreTags     string                 `protobuf:"bytes,10,opt,name=store_tags,json=storeTags,proto3" json:"store_tags,omitempty"`
-	StoreImages   string                 `protobuf:"bytes,11,opt,name=store_images,json=storeImages,proto3" json:"store_images,omitempty"`
-	AppFiles      string                 `protobuf:"bytes,12,opt,name=app_files,json=appFiles,proto3" json:"app_files,omitempty"`
-	Collection    string                 `protobuf:"bytes,13,opt,name=collection,proto3" json:"collection,omitempty"`
-	Hidden        bool                   `protobuf:"varint,14,opt,name=hidden,proto3" json:"hidden,omitempty"`
-	StoreHidden   bool                   `protobuf:"varint,15,opt,name=store_hidden,json=storeHidden,proto3" json:"store_hidden,omitempty"`
-	GameOnly      bool                   `protobuf:"varint,16,opt,name=game_only,json=gameOnly,proto3" json:"game_only,omitempty"`
-	Promo         string                 `protobuf:"bytes,17,opt,name=promo,proto3" json:"promo,omitempty"`
-	Tradable      bool                   `protobuf:"varint,18,opt,name=tradable,proto3" json:"tradable,omitempty"`
-	Exchange      string                 `protobuf:"bytes,19,opt,name=exchange,proto3" json:"exchange,omitempty"`
+	Name          *string                `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	Description   *string                `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	DisplayType   *string                `protobuf:"bytes,5,opt,name=display_type,json=displayType,proto3,oneof" json:"display_type,omitempty"`
+	Bundle        *string                `protobuf:"bytes,6,opt,name=bundle,proto3,oneof" json:"bundle,omitempty"`
+	Price         *string                `protobuf:"bytes,7,opt,name=price,proto3,oneof" json:"price,omitempty"`
+	IconUrl       *string                `protobuf:"bytes,8,opt,name=icon_url,json=iconUrl,proto3,oneof" json:"icon_url,omitempty"`
+	Marketable    *bool                  `protobuf:"varint,9,opt,name=marketable,proto3,oneof" json:"marketable,omitempty"`
+	StoreTags     *string                `protobuf:"bytes,10,opt,name=store_tags,json=storeTags,proto3,oneof" json:"store_tags,omitempty"`
+	StoreImages   *string                `protobuf:"bytes,11,opt,name=store_images,json=storeImages,proto3,oneof" json:"store_images,omitempty"`
+	AppFiles      *string                `protobuf:"bytes,12,opt,name=app_files,json=appFiles,proto3,oneof" json:"app_files,omitempty"`
+	Collection    *string                `protobuf:"bytes,13,opt,name=collection,proto3,oneof" json:"collection,omitempty"`
+	Hidden        *bool                  `protobuf:"varint,14,opt,name=hidden,proto3,oneof" json:"hidden,omitempty"`
+	StoreHidden   *bool                  `protobuf:"varint,15,opt,name=store_hidden,json=storeHidden,proto3,oneof" json:"store_hidden,omitempty"`
+	GameOnly      *bool                  `protobuf:"varint,16,opt,name=game_only,json=gameOnly,proto3,oneof" json:"game_only,omitempty"`
+	Promo         *string                `protobuf:"bytes,17,opt,name=promo,proto3,oneof" json:"promo,omitempty"`
+	Tradable      *bool                  `protobuf:"varint,18,opt,name=tradable,proto3,oneof" json:"tradable,omitempty"`
+	Exchange      *string                `protobuf:"bytes,19,opt,name=exchange,proto3,oneof" json:"exchange,omitempty"`
 	MaxSupply     *int64                 `protobuf:"varint,20,opt,name=max_supply,json=maxSupply,proto3,oneof" json:"max_supply,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -321,120 +321,120 @@ func (x *UpdateItemDefRequest) GetAppId() int64 {
 }
 
 func (x *UpdateItemDefRequest) GetName() string {
-	if x != nil {
-		return x.Name
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
 	return ""
 }
 
 func (x *UpdateItemDefRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
 
 func (x *UpdateItemDefRequest) GetDisplayType() string {
-	if x != nil {
-		return x.DisplayType
+	if x != nil && x.DisplayType != nil {
+		return *x.DisplayType
 	}
 	return ""
 }
 
 func (x *UpdateItemDefRequest) GetBundle() string {
-	if x != nil {
-		return x.Bundle
+	if x != nil && x.Bundle != nil {
+		return *x.Bundle
 	}
 	return ""
 }
 
 func (x *UpdateItemDefRequest) GetPrice() string {
-	if x != nil {
-		return x.Price
+	if x != nil && x.Price != nil {
+		return *x.Price
 	}
 	return ""
 }
 
 func (x *UpdateItemDefRequest) GetIconUrl() string {
-	if x != nil {
-		return x.IconUrl
+	if x != nil && x.IconUrl != nil {
+		return *x.IconUrl
 	}
 	return ""
 }
 
 func (x *UpdateItemDefRequest) GetMarketable() bool {
-	if x != nil {
-		return x.Marketable
+	if x != nil && x.Marketable != nil {
+		return *x.Marketable
 	}
 	return false
 }
 
 func (x *UpdateItemDefRequest) GetStoreTags() string {
-	if x != nil {
-		return x.StoreTags
+	if x != nil && x.StoreTags != nil {
+		return *x.StoreTags
 	}
 	return ""
 }
 
 func (x *UpdateItemDefRequest) GetStoreImages() string {
-	if x != nil {
-		return x.StoreImages
+	if x != nil && x.StoreImages != nil {
+		return *x.StoreImages
 	}
 	return ""
 }
 
 func (x *UpdateItemDefRequest) GetAppFiles() string {
-	if x != nil {
-		return x.AppFiles
+	if x != nil && x.AppFiles != nil {
+		return *x.AppFiles
 	}
 	return ""
 }
 
 func (x *UpdateItemDefRequest) GetCollection() string {
-	if x != nil {
-		return x.Collection
+	if x != nil && x.Collection != nil {
+		return *x.Collection
 	}
 	return ""
 }
 
 func (x *UpdateItemDefRequest) GetHidden() bool {
-	if x != nil {
-		return x.Hidden
+	if x != nil && x.Hidden != nil {
+		return *x.Hidden
 	}
 	return false
 }
 
 func (x *UpdateItemDefRequest) GetStoreHidden() bool {
-	if x != nil {
-		return x.StoreHidden
+	if x != nil && x.StoreHidden != nil {
+		return *x.StoreHidden
 	}
 	return false
 }
 
 func (x *UpdateItemDefRequest) GetGameOnly() bool {
-	if x != nil {
-		return x.GameOnly
+	if x != nil && x.GameOnly != nil {
+		return *x.GameOnly
 	}
 	return false
 }
 
 func (x *UpdateItemDefRequest) GetPromo() string {
-	if x != nil {
-		return x.Promo
+	if x != nil && x.Promo != nil {
+		return *x.Promo
 	}
 	return ""
 }
 
 func (x *UpdateItemDefRequest) GetTradable() bool {
-	if x != nil {
-		return x.Tradable
+	if x != nil && x.Tradable != nil {
+		return *x.Tradable
 	}
 	return false
 }
 
 func (x *UpdateItemDefRequest) GetExchange() string {
-	if x != nil {
-		return x.Exchange
+	if x != nil && x.Exchange != nil {
+		return *x.Exchange
 	}
 	return ""
 }
@@ -1283,35 +1283,55 @@ const file_registry_registry_proto_rawDesc = "" +
 	"\x06supply\x18\x17 \x01(\x03R\x06supply\x12\"\n" +
 	"\n" +
 	"max_supply\x18\x18 \x01(\x03H\x00R\tmaxSupply\x88\x01\x01B\r\n" +
-	"\v_max_supply\"\xe7\x04\n" +
+	"\v_max_supply\"\xa2\a\n" +
 	"\x14UpdateItemDefRequest\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\x12\x15\n" +
-	"\x06app_id\x18\x02 \x01(\x03R\x05appId\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12!\n" +
-	"\fdisplay_type\x18\x05 \x01(\tR\vdisplayType\x12\x16\n" +
-	"\x06bundle\x18\x06 \x01(\tR\x06bundle\x12\x14\n" +
-	"\x05price\x18\a \x01(\tR\x05price\x12\x19\n" +
-	"\bicon_url\x18\b \x01(\tR\aiconUrl\x12\x1e\n" +
+	"\x06app_id\x18\x02 \x01(\x03R\x05appId\x12\x17\n" +
+	"\x04name\x18\x03 \x01(\tH\x00R\x04name\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\x04 \x01(\tH\x01R\vdescription\x88\x01\x01\x12&\n" +
+	"\fdisplay_type\x18\x05 \x01(\tH\x02R\vdisplayType\x88\x01\x01\x12\x1b\n" +
+	"\x06bundle\x18\x06 \x01(\tH\x03R\x06bundle\x88\x01\x01\x12\x19\n" +
+	"\x05price\x18\a \x01(\tH\x04R\x05price\x88\x01\x01\x12\x1e\n" +
+	"\bicon_url\x18\b \x01(\tH\x05R\aiconUrl\x88\x01\x01\x12#\n" +
 	"\n" +
-	"marketable\x18\t \x01(\bR\n" +
-	"marketable\x12\x1d\n" +
+	"marketable\x18\t \x01(\bH\x06R\n" +
+	"marketable\x88\x01\x01\x12\"\n" +
 	"\n" +
 	"store_tags\x18\n" +
-	" \x01(\tR\tstoreTags\x12!\n" +
-	"\fstore_images\x18\v \x01(\tR\vstoreImages\x12\x1b\n" +
-	"\tapp_files\x18\f \x01(\tR\bappFiles\x12\x1e\n" +
+	" \x01(\tH\aR\tstoreTags\x88\x01\x01\x12&\n" +
+	"\fstore_images\x18\v \x01(\tH\bR\vstoreImages\x88\x01\x01\x12 \n" +
+	"\tapp_files\x18\f \x01(\tH\tR\bappFiles\x88\x01\x01\x12#\n" +
 	"\n" +
-	"collection\x18\r \x01(\tR\n" +
-	"collection\x12\x16\n" +
-	"\x06hidden\x18\x0e \x01(\bR\x06hidden\x12!\n" +
-	"\fstore_hidden\x18\x0f \x01(\bR\vstoreHidden\x12\x1b\n" +
-	"\tgame_only\x18\x10 \x01(\bR\bgameOnly\x12\x14\n" +
-	"\x05promo\x18\x11 \x01(\tR\x05promo\x12\x1a\n" +
-	"\btradable\x18\x12 \x01(\bR\btradable\x12\x1a\n" +
-	"\bexchange\x18\x13 \x01(\tR\bexchange\x12\"\n" +
+	"collection\x18\r \x01(\tH\n" +
+	"R\n" +
+	"collection\x88\x01\x01\x12\x1b\n" +
+	"\x06hidden\x18\x0e \x01(\bH\vR\x06hidden\x88\x01\x01\x12&\n" +
+	"\fstore_hidden\x18\x0f \x01(\bH\fR\vstoreHidden\x88\x01\x01\x12 \n" +
+	"\tgame_only\x18\x10 \x01(\bH\rR\bgameOnly\x88\x01\x01\x12\x19\n" +
+	"\x05promo\x18\x11 \x01(\tH\x0eR\x05promo\x88\x01\x01\x12\x1f\n" +
+	"\btradable\x18\x12 \x01(\bH\x0fR\btradable\x88\x01\x01\x12\x1f\n" +
+	"\bexchange\x18\x13 \x01(\tH\x10R\bexchange\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"max_supply\x18\x14 \x01(\x03H\x00R\tmaxSupply\x88\x01\x01B\r\n" +
+	"max_supply\x18\x14 \x01(\x03H\x11R\tmaxSupply\x88\x01\x01B\a\n" +
+	"\x05_nameB\x0e\n" +
+	"\f_descriptionB\x0f\n" +
+	"\r_display_typeB\t\n" +
+	"\a_bundleB\b\n" +
+	"\x06_priceB\v\n" +
+	"\t_icon_urlB\r\n" +
+	"\v_marketableB\r\n" +
+	"\v_store_tagsB\x0f\n" +
+	"\r_store_imagesB\f\n" +
+	"\n" +
+	"_app_filesB\r\n" +
+	"\v_collectionB\t\n" +
+	"\a_hiddenB\x0f\n" +
+	"\r_store_hiddenB\f\n" +
+	"\n" +
+	"_game_onlyB\b\n" +
+	"\x06_promoB\v\n" +
+	"\t_tradableB\v\n" +
+	"\t_exchangeB\r\n" +
 	"\v_max_supply\"\xf5\x01\n" +
 	"\x0eAchievementDef\x12,\n" +
 	"\x12achievement_def_id\x18\x01 \x01(\tR\x10achievementDefId\x12\x15\n" +
