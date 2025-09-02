@@ -308,9 +308,9 @@ export interface UnpackRequest {
  */
 export interface UnpackResponse {
     /**
-     * @generated from protobuf field: repeated string item_ids = 1
+     * @generated from protobuf field: repeated inventory.v1.Item items = 1
      */
-    itemIds: string[];
+    items: Item[];
 }
 /**
  * @generated from protobuf message inventory.v1.GenerateRequest
@@ -1552,12 +1552,12 @@ export const UnpackRequest = new UnpackRequest$Type();
 class UnpackResponse$Type extends MessageType<UnpackResponse> {
     constructor() {
         super("inventory.v1.UnpackResponse", [
-            { no: 1, name: "item_ids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ }
+            { no: 1, name: "items", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Item }
         ]);
     }
     create(value?: PartialMessage<UnpackResponse>): UnpackResponse {
         const message = globalThis.Object.create((this.messagePrototype!));
-        message.itemIds = [];
+        message.items = [];
         if (value !== undefined)
             reflectionMergePartial<UnpackResponse>(this, message, value);
         return message;
@@ -1567,8 +1567,8 @@ class UnpackResponse$Type extends MessageType<UnpackResponse> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated string item_ids */ 1:
-                    message.itemIds.push(reader.string());
+                case /* repeated inventory.v1.Item items */ 1:
+                    message.items.push(Item.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1582,9 +1582,9 @@ class UnpackResponse$Type extends MessageType<UnpackResponse> {
         return message;
     }
     internalBinaryWrite(message: UnpackResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated string item_ids = 1; */
-        for (let i = 0; i < message.itemIds.length; i++)
-            writer.tag(1, WireType.LengthDelimited).string(message.itemIds[i]);
+        /* repeated inventory.v1.Item items = 1; */
+        for (let i = 0; i < message.items.length; i++)
+            Item.internalBinaryWrite(message.items[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
