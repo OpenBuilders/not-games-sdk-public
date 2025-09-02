@@ -116,7 +116,7 @@ message UnpackRequest {
 }
 
 message UnpackResponse {
-  repeated string item_ids = 1;
+  repeated Item items = 1;
 }
 
 message GenerateRequest {
