@@ -23,6 +23,8 @@ grpc.web = require('grpc-web');
 var common_pagination_pb = require('../common/pagination_pb.js')
 
 var common_rarity_pb = require('../common/rarity_pb.js')
+
+var common_tags_pb = require('../common/tags_pb.js')
 const proto = {};
 proto.inventory = {};
 proto.inventory.v1 = require('./inventory_pb.js');

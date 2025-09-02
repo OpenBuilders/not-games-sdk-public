@@ -23,2062 +23,405 @@ import type { RequestArgs } from './base';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
-/**
- * 
- * @export
- * @interface AchievementsGet200Response
- */
 export interface AchievementsGet200Response {
-    /**
-     * 
-     * @type {InternalModuleAchievementPresentationHttpListAchievementsResponse}
-     * @memberof AchievementsGet200Response
-     */
     'data'?: InternalModuleAchievementPresentationHttpListAchievementsResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof AchievementsGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AchievementsGet200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface AchievementsIdGet200Response
- */
 export interface AchievementsIdGet200Response {
-    /**
-     * 
-     * @type {InternalModuleAchievementPresentationHttpGetAchievementOneResponse}
-     * @memberof AchievementsIdGet200Response
-     */
     'data'?: InternalModuleAchievementPresentationHttpGetAchievementOneResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof AchievementsIdGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AchievementsIdGet200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface AchievementsPost200Response
- */
 export interface AchievementsPost200Response {
-    /**
-     * 
-     * @type {InternalModuleAchievementPresentationHttpCreateAchievementsResponse}
-     * @memberof AchievementsPost200Response
-     */
     'data'?: InternalModuleAchievementPresentationHttpCreateAchievementsResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof AchievementsPost200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AchievementsPost200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface AuthGeneratePost200Response
- */
 export interface AuthGeneratePost200Response {
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse}
-     * @memberof AuthGeneratePost200Response
-     */
     'data'?: GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthGeneratePost200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AuthGeneratePost200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface DropsIdGet200Response
- */
 export interface DropsIdGet200Response {
-    /**
-     * 
-     * @type {string}
-     * @memberof DropsIdGet200Response
-     */
     'data'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DropsIdGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DropsIdGet200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface DropsPost200Response
- */
 export interface DropsPost200Response {
-    /**
-     * 
-     * @type {InternalModuleDropsPresentationDropsHttpCreateDropResponse}
-     * @memberof DropsPost200Response
-     */
     'data'?: InternalModuleDropsPresentationDropsHttpCreateDropResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof DropsPost200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DropsPost200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest
- */
 export interface GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest
-     */
     'refresh_token'?: string;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse
- */
 export interface GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse
-     */
     'private'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse
-     */
     'refresh_token'?: string;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest
- */
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest
-     */
     'item_id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest
-     */
     'quantity'?: number;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest
- */
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest
-     */
     'item_def_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest
-     */
     'tags'?: string;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
- */
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse {
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'account_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'app_files'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'app_meta'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'collection'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'created_at'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'default_tags'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'display_type'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'game_only'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'hidden'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'icon_url'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'item_def_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'item_id'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'marketable'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'name'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'quantity'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'rarity'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'serial'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'supply'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'tags'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'tradable'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse
-     */
     'updated_at'?: string;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelListItemsResponse
- */
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelListItemsResponse {
-    /**
-     * 
-     * @type {Array<GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse>}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelListItemsResponse
-     */
     'items'?: Array<GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse>;
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelListItemsResponse
-     */
     'pagination'?: GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse
- */
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse {
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleProfileDomainEntityAccount}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse
-     */
     'account'?: GithubComNotPlatformInternalModuleProfileDomainEntityAccount;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse
-     */
     'is_possible'?: boolean;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest
- */
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest
-     */
     'account_to'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest
-     */
     'comment'?: string;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest
- */
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest
-     */
     'item_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest
-     */
     'tags'?: string;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest
- */
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest
-     */
     'app_meta'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest
-     */
     'rarity'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest
-     */
     'tags'?: string;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleProfileDomainEntityAccount
- */
 export interface GithubComNotPlatformInternalModuleProfileDomainEntityAccount {
     /**
      * telegram id
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleProfileDomainEntityAccount
      */
     'account_id'?: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalModuleProfileDomainEntityAccount
-     */
     'allow_pm'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfileDomainEntityAccount
-     */
     'avatar'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfileDomainEntityAccount
-     */
     'created_at'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfileDomainEntityAccount
-     */
     'first_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfileDomainEntityAccount
-     */
     'last_login'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfileDomainEntityAccount
-     */
     'last_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfileDomainEntityAccount
-     */
     'locale'?: string;
     /**
      * telegram group id
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleProfileDomainEntityAccount
      */
     'squad_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfileDomainEntityAccount
-     */
     'user_name'?: string;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse
- */
 export interface GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse
-     */
     'image'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse
-     */
     'is_default'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse
-     */
     'item_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse
-     */
     'name'?: string;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse
- */
 export interface GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse
-     */
     'avatar'?: string;
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse
-     */
     'background'?: GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse
-     */
     'created_at'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse
-     */
     'first_name'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse
-     */
     'id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse
-     */
     'last_login'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse
-     */
     'last_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse
-     */
     'locale'?: string;
     /**
      * telegram group id
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse
      */
     'squad_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse
-     */
     'username'?: string;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
- */
 export interface GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'app_files'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'bundle'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'collection'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'display_type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'exchange'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'game_only'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'hidden'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'icon_url'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'item_def_id'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'marketable'?: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'max_supply'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'price'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'promo'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'rarity'?: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'store_hidden'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'store_images'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'store_tags'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'supply'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'tags'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'tradable'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse
-     */
     'type'?: string;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelListItemDefResponse
- */
 export interface GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelListItemDefResponse {
-    /**
-     * 
-     * @type {Array<GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse>}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelListItemDefResponse
-     */
     'item_defs'?: Array<GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse>;
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse}
-     * @memberof GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelListItemDefResponse
-     */
     'pagination'?: GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse
- */
 export interface GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse {
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse
-     */
     'count'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse
-     */
     'offset'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse
-     */
     'total'?: number;
 }
-/**
- * 
- * @export
- * @interface GithubComNotPlatformInternalServerTemplatesResponseTemplate
- */
 export interface GithubComNotPlatformInternalServerTemplatesResponseTemplate {
-    /**
-     * 
-     * @type {object}
-     * @memberof GithubComNotPlatformInternalServerTemplatesResponseTemplate
-     */
     'data'?: object;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubComNotPlatformInternalServerTemplatesResponseTemplate
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubComNotPlatformInternalServerTemplatesResponseTemplate
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface HttpAppOneResponse
- */
 export interface HttpAppOneResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof HttpAppOneResponse
-     */
     'avatar'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof HttpAppOneResponse
-     */
     'background'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof HttpAppOneResponse
-     */
     'created_at'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof HttpAppOneResponse
-     */
     'id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof HttpAppOneResponse
-     */
     'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof HttpAppOneResponse
-     */
     'slug'?: string;
-    /**
-     * 
-     * @type {Array<HttpAppSocial>}
-     * @memberof HttpAppOneResponse
-     */
     'socials'?: Array<HttpAppSocial>;
-    /**
-     * 
-     * @type {string}
-     * @memberof HttpAppOneResponse
-     */
     'updated_at'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof HttpAppOneResponse
-     */
     'verified'?: boolean;
 }
-/**
- * 
- * @export
- * @interface HttpAppSocial
- */
 export interface HttpAppSocial {
-    /**
-     * 
-     * @type {string}
-     * @memberof HttpAppSocial
-     */
     'title'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof HttpAppSocial
-     */
     'type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof HttpAppSocial
-     */
     'url'?: string;
 }
-/**
- * 
- * @export
- * @interface HttpListAppResponse
- */
 export interface HttpListAppResponse {
-    /**
-     * 
-     * @type {Array<HttpAppOneResponse>}
-     * @memberof HttpListAppResponse
-     */
     'results'?: Array<HttpAppOneResponse>;
 }
-/**
- * 
- * @export
- * @interface InternalModuleAchievementPresentationHttpCreateAchievementOneResponse
- */
 export interface InternalModuleAchievementPresentationHttpCreateAchievementOneResponse {
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementOneResponse
-     */
     'account_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementOneResponse
-     */
     'achievement_def_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementOneResponse
-     */
     'achievement_id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementOneResponse
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementOneResponse
-     */
     'default_tags'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementOneResponse
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementOneResponse
-     */
     'display_type'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementOneResponse
-     */
     'hidden'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementOneResponse
-     */
     'icon_url'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementOneResponse
-     */
     'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementOneResponse
-     */
     'tags'?: string;
 }
-/**
- * 
- * @export
- * @interface InternalModuleAchievementPresentationHttpCreateAchievementsRequest
- */
 export interface InternalModuleAchievementPresentationHttpCreateAchievementsRequest {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementsRequest
-     */
     'achievement_def_ids'?: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementsRequest
-     */
     'tags'?: string;
 }
-/**
- * 
- * @export
- * @interface InternalModuleAchievementPresentationHttpCreateAchievementsResponse
- */
 export interface InternalModuleAchievementPresentationHttpCreateAchievementsResponse {
-    /**
-     * 
-     * @type {Array<InternalModuleAchievementPresentationHttpCreateAchievementOneResponse>}
-     * @memberof InternalModuleAchievementPresentationHttpCreateAchievementsResponse
-     */
     'achievements'?: Array<InternalModuleAchievementPresentationHttpCreateAchievementOneResponse>;
 }
-/**
- * 
- * @export
- * @interface InternalModuleAchievementPresentationHttpGetAchievementOneResponse
- */
 export interface InternalModuleAchievementPresentationHttpGetAchievementOneResponse {
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleAchievementPresentationHttpGetAchievementOneResponse
-     */
     'account_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpGetAchievementOneResponse
-     */
     'achievement_def_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpGetAchievementOneResponse
-     */
     'achievement_id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleAchievementPresentationHttpGetAchievementOneResponse
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpGetAchievementOneResponse
-     */
     'default_tags'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpGetAchievementOneResponse
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpGetAchievementOneResponse
-     */
     'display_type'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleAchievementPresentationHttpGetAchievementOneResponse
-     */
     'hidden'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpGetAchievementOneResponse
-     */
     'icon_url'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpGetAchievementOneResponse
-     */
     'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleAchievementPresentationHttpGetAchievementOneResponse
-     */
     'tags'?: string;
 }
-/**
- * 
- * @export
- * @interface InternalModuleAchievementPresentationHttpListAchievementsResponse
- */
 export interface InternalModuleAchievementPresentationHttpListAchievementsResponse {
-    /**
-     * 
-     * @type {Array<InternalModuleAchievementPresentationHttpGetAchievementOneResponse>}
-     * @memberof InternalModuleAchievementPresentationHttpListAchievementsResponse
-     */
     'achievements'?: Array<InternalModuleAchievementPresentationHttpGetAchievementOneResponse>;
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse}
-     * @memberof InternalModuleAchievementPresentationHttpListAchievementsResponse
-     */
     'pagination'?: GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse;
 }
-/**
- * 
- * @export
- * @interface InternalModuleDropsPresentationDropsHttpCreateDropRequest
- */
 export interface InternalModuleDropsPresentationDropsHttpCreateDropRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleDropsPresentationDropsHttpCreateDropRequest
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleDropsPresentationDropsHttpCreateDropRequest
-     */
     'available_at'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleDropsPresentationDropsHttpCreateDropRequest
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleDropsPresentationDropsHttpCreateDropRequest
-     */
     'finished_at'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleDropsPresentationDropsHttpCreateDropRequest
-     */
     'item_def_ids'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleDropsPresentationDropsHttpCreateDropRequest
-     */
     'random_pick'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleDropsPresentationDropsHttpCreateDropRequest
-     */
     'whitelist'?: boolean;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof InternalModuleDropsPresentationDropsHttpCreateDropRequest
-     */
     'whitelist_user_ids'?: Array<number>;
 }
-/**
- * 
- * @export
- * @interface InternalModuleDropsPresentationDropsHttpCreateDropResponse
- */
 export interface InternalModuleDropsPresentationDropsHttpCreateDropResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleDropsPresentationDropsHttpCreateDropResponse
-     */
     'drop_id'?: string;
 }
-/**
- * 
- * @export
- * @interface InternalModuleDropsPresentationDropsHttpWhitelistDropUserRequest
- */
 export interface InternalModuleDropsPresentationDropsHttpWhitelistDropUserRequest {
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof InternalModuleDropsPresentationDropsHttpWhitelistDropUserRequest
-     */
     'user_ids'?: Array<number>;
 }
-/**
- * 
- * @export
- * @interface InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse
- */
 export interface InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse
-     */
     'achievement_def_id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse
-     */
     'display_type'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse
-     */
     'hidden'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse
-     */
     'icon_url'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse
-     */
     'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse
-     */
     'tags'?: string;
 }
-/**
- * 
- * @export
- * @interface InternalModuleRegistryPresentationAchievementHttpCreateRequest
- */
 export interface InternalModuleRegistryPresentationAchievementHttpCreateRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpCreateRequest
-     */
     'achievement_def_id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpCreateRequest
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpCreateRequest
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpCreateRequest
-     */
     'display_type'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpCreateRequest
-     */
     'hidden'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpCreateRequest
-     */
     'icon_url'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpCreateRequest
-     */
     'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpCreateRequest
-     */
     'tags'?: string;
 }
-/**
- * 
- * @export
- * @interface InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse
- */
 export interface InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse {
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse
-     */
     'pagination'?: GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse;
-    /**
-     * 
-     * @type {Array<InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse>}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse
-     */
     'results'?: Array<InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse>;
 }
-/**
- * 
- * @export
- * @interface InternalModuleRegistryPresentationAchievementHttpUpdateRequest
- */
 export interface InternalModuleRegistryPresentationAchievementHttpUpdateRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpUpdateRequest
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpUpdateRequest
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpUpdateRequest
-     */
     'display_type'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpUpdateRequest
-     */
     'hidden'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpUpdateRequest
-     */
     'icon_url'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpUpdateRequest
-     */
     'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationAchievementHttpUpdateRequest
-     */
     'tags'?: string;
 }
-/**
- * 
- * @export
- * @interface InternalModuleRegistryPresentationItemHttpCreateRequest
- */
 export interface InternalModuleRegistryPresentationItemHttpCreateRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'app_files'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'bundle'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'collection'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'display_type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'exchange'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'game_only'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'hidden'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'icon_url'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'item_def_id'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'marketable'?: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'max_supply'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'price'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'promo'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'rarity'?: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'store_hidden'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'store_images'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'store_tags'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'tags'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'tradable'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpCreateRequest
-     */
     'type'?: string;
 }
-/**
- * 
- * @export
- * @interface InternalModuleRegistryPresentationItemHttpUpdateRequest
- */
 export interface InternalModuleRegistryPresentationItemHttpUpdateRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'app_files'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'app_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'bundle'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'collection'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'display_type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'exchange'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'game_only'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'hidden'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'icon_url'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'marketable'?: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'max_supply'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'price'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'promo'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'store_hidden'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'store_images'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'store_tags'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InternalModuleRegistryPresentationItemHttpUpdateRequest
-     */
     'tradable'?: boolean;
 }
-/**
- * 
- * @export
- * @interface InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse
- */
 export interface InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse
-     */
     'avatar'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse
-     */
     'chat_id'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse
-     */
     'id'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse
-     */
     'members_amount'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse
-     */
     'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse
-     */
     'slug'?: string;
 }
-/**
- * 
- * @export
- * @interface InternalModuleSquadsPresentationSquadsHttpListSquadsResponse
- */
 export interface InternalModuleSquadsPresentationSquadsHttpListSquadsResponse {
-    /**
-     * 
-     * @type {Array<InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse>}
-     * @memberof InternalModuleSquadsPresentationSquadsHttpListSquadsResponse
-     */
     'squads'?: Array<InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse>;
 }
-/**
- * 
- * @export
- * @interface InventoryItemsGet200Response
- */
 export interface InventoryItemsGet200Response {
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelListItemsResponse}
-     * @memberof InventoryItemsGet200Response
-     */
     'data'?: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelListItemsResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof InventoryItemsGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InventoryItemsGet200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface InventoryItemsItemIdGet200Response
- */
 export interface InventoryItemsItemIdGet200Response {
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse}
-     * @memberof InventoryItemsItemIdGet200Response
-     */
     'data'?: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof InventoryItemsItemIdGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InventoryItemsItemIdGet200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface InventoryItemsItemIdTransferPreflightPost200Response
- */
 export interface InventoryItemsItemIdTransferPreflightPost200Response {
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse}
-     * @memberof InventoryItemsItemIdTransferPreflightPost200Response
-     */
     'data'?: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof InventoryItemsItemIdTransferPreflightPost200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InventoryItemsItemIdTransferPreflightPost200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface InventoryItemsUnpackPost200Response
- */
 export interface InventoryItemsUnpackPost200Response {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof InventoryItemsUnpackPost200Response
-     */
     'data'?: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof InventoryItemsUnpackPost200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InventoryItemsUnpackPost200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface ProfileAccountIdGet200Response
- */
 export interface ProfileAccountIdGet200Response {
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse}
-     * @memberof ProfileAccountIdGet200Response
-     */
     'data'?: GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProfileAccountIdGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ProfileAccountIdGet200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface RegistryAchievementsAchievementDefIdGet200Response
- */
 export interface RegistryAchievementsAchievementDefIdGet200Response {
-    /**
-     * 
-     * @type {InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse}
-     * @memberof RegistryAchievementsAchievementDefIdGet200Response
-     */
     'data'?: InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof RegistryAchievementsAchievementDefIdGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RegistryAchievementsAchievementDefIdGet200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface RegistryAchievementsGet200Response
- */
 export interface RegistryAchievementsGet200Response {
-    /**
-     * 
-     * @type {InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse}
-     * @memberof RegistryAchievementsGet200Response
-     */
     'data'?: InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof RegistryAchievementsGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RegistryAchievementsGet200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface RegistryAppsGet200Response
- */
 export interface RegistryAppsGet200Response {
-    /**
-     * 
-     * @type {HttpListAppResponse}
-     * @memberof RegistryAppsGet200Response
-     */
     'data'?: HttpListAppResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof RegistryAppsGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RegistryAppsGet200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface RegistryItemsGet200Response
- */
 export interface RegistryItemsGet200Response {
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelListItemDefResponse}
-     * @memberof RegistryItemsGet200Response
-     */
     'data'?: GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelListItemDefResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof RegistryItemsGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RegistryItemsGet200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface RegistryItemsItemDefIdGet200Response
- */
 export interface RegistryItemsItemDefIdGet200Response {
-    /**
-     * 
-     * @type {GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse}
-     * @memberof RegistryItemsItemDefIdGet200Response
-     */
     'data'?: GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof RegistryItemsItemDefIdGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RegistryItemsItemDefIdGet200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface SquadsGet200Response
- */
 export interface SquadsGet200Response {
-    /**
-     * 
-     * @type {InternalModuleSquadsPresentationSquadsHttpListSquadsResponse}
-     * @memberof SquadsGet200Response
-     */
     'data'?: InternalModuleSquadsPresentationSquadsHttpListSquadsResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof SquadsGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SquadsGet200Response
-     */
     'ok'?: boolean;
 }
-/**
- * 
- * @export
- * @interface SquadsIdGet200Response
- */
 export interface SquadsIdGet200Response {
-    /**
-     * 
-     * @type {InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse}
-     * @memberof SquadsIdGet200Response
-     */
     'data'?: InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof SquadsIdGet200Response
-     */
     'error_code'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SquadsIdGet200Response
-     */
     'ok'?: boolean;
 }
 
 /**
  * AchievementsApi - axios parameter creator
- * @export
  */
 export const AchievementsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -2217,7 +560,6 @@ export const AchievementsApiAxiosParamCreator = function (configuration?: Config
 
 /**
  * AchievementsApi - functional programming interface
- * @export
  */
 export const AchievementsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = AchievementsApiAxiosParamCreator(configuration)
@@ -2268,7 +610,6 @@ export const AchievementsApiFp = function(configuration?: Configuration) {
 
 /**
  * AchievementsApi - factory interface
- * @export
  */
 export const AchievementsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = AchievementsApiFp(configuration)
@@ -2310,9 +651,6 @@ export const AchievementsApiFactory = function (configuration?: Configuration, b
 
 /**
  * AchievementsApi - object-oriented interface
- * @export
- * @class AchievementsApi
- * @extends {BaseAPI}
  */
 export class AchievementsApi extends BaseAPI {
     /**
@@ -2323,7 +661,6 @@ export class AchievementsApi extends BaseAPI {
      * @param {number} offset offset
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AchievementsApi
      */
     public achievementsGet(appId: string, limit: number, offset: number, options?: RawAxiosRequestConfig) {
         return AchievementsApiFp(this.configuration).achievementsGet(appId, limit, offset, options).then((request) => request(this.axios, this.basePath));
@@ -2335,7 +672,6 @@ export class AchievementsApi extends BaseAPI {
      * @param {string} id achievement id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AchievementsApi
      */
     public achievementsIdGet(id: string, options?: RawAxiosRequestConfig) {
         return AchievementsApiFp(this.configuration).achievementsIdGet(id, options).then((request) => request(this.axios, this.basePath));
@@ -2347,7 +683,6 @@ export class AchievementsApi extends BaseAPI {
      * @param {InternalModuleAchievementPresentationHttpCreateAchievementsRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AchievementsApi
      */
     public achievementsPost(request: InternalModuleAchievementPresentationHttpCreateAchievementsRequest, options?: RawAxiosRequestConfig) {
         return AchievementsApiFp(this.configuration).achievementsPost(request, options).then((request) => request(this.axios, this.basePath));
@@ -2358,7 +693,6 @@ export class AchievementsApi extends BaseAPI {
 
 /**
  * AuthApi - axios parameter creator
- * @export
  */
 export const AuthApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -2403,7 +737,6 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
 
 /**
  * AuthApi - functional programming interface
- * @export
  */
 export const AuthApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = AuthApiAxiosParamCreator(configuration)
@@ -2426,7 +759,6 @@ export const AuthApiFp = function(configuration?: Configuration) {
 
 /**
  * AuthApi - factory interface
- * @export
  */
 export const AuthApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = AuthApiFp(configuration)
@@ -2446,9 +778,6 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
 
 /**
  * AuthApi - object-oriented interface
- * @export
- * @class AuthApi
- * @extends {BaseAPI}
  */
 export class AuthApi extends BaseAPI {
     /**
@@ -2457,7 +786,6 @@ export class AuthApi extends BaseAPI {
      * @param {GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AuthApi
      */
     public authGeneratePost(request: GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest, options?: RawAxiosRequestConfig) {
         return AuthApiFp(this.configuration).authGeneratePost(request, options).then((request) => request(this.axios, this.basePath));
@@ -2468,7 +796,6 @@ export class AuthApi extends BaseAPI {
 
 /**
  * DropsApi - axios parameter creator
- * @export
  */
 export const DropsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -2596,7 +923,6 @@ export const DropsApiAxiosParamCreator = function (configuration?: Configuration
 
 /**
  * DropsApi - functional programming interface
- * @export
  */
 export const DropsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = DropsApiAxiosParamCreator(configuration)
@@ -2646,7 +972,6 @@ export const DropsApiFp = function(configuration?: Configuration) {
 
 /**
  * DropsApi - factory interface
- * @export
  */
 export const DropsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = DropsApiFp(configuration)
@@ -2687,9 +1012,6 @@ export const DropsApiFactory = function (configuration?: Configuration, basePath
 
 /**
  * DropsApi - object-oriented interface
- * @export
- * @class DropsApi
- * @extends {BaseAPI}
  */
 export class DropsApi extends BaseAPI {
     /**
@@ -2698,7 +1020,6 @@ export class DropsApi extends BaseAPI {
      * @param {string} id Drop ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DropsApi
      */
     public dropsIdGet(id: string, options?: RawAxiosRequestConfig) {
         return DropsApiFp(this.configuration).dropsIdGet(id, options).then((request) => request(this.axios, this.basePath));
@@ -2711,7 +1032,6 @@ export class DropsApi extends BaseAPI {
      * @param {InternalModuleDropsPresentationDropsHttpWhitelistDropUserRequest} request Whitelist Drop User Request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DropsApi
      */
     public dropsIdWhitelistPost(id: string, request: InternalModuleDropsPresentationDropsHttpWhitelistDropUserRequest, options?: RawAxiosRequestConfig) {
         return DropsApiFp(this.configuration).dropsIdWhitelistPost(id, request, options).then((request) => request(this.axios, this.basePath));
@@ -2723,7 +1043,6 @@ export class DropsApi extends BaseAPI {
      * @param {InternalModuleDropsPresentationDropsHttpCreateDropRequest} request Create Drop Request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DropsApi
      */
     public dropsPost(request: InternalModuleDropsPresentationDropsHttpCreateDropRequest, options?: RawAxiosRequestConfig) {
         return DropsApiFp(this.configuration).dropsPost(request, options).then((request) => request(this.axios, this.basePath));
@@ -2734,7 +1053,6 @@ export class DropsApi extends BaseAPI {
 
 /**
  * InventoryApi - axios parameter creator
- * @export
  */
 export const InventoryApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -3082,7 +1400,6 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
 
 /**
  * InventoryApi - functional programming interface
- * @export
  */
 export const InventoryApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = InventoryApiAxiosParamCreator(configuration)
@@ -3202,7 +1519,6 @@ export const InventoryApiFp = function(configuration?: Configuration) {
 
 /**
  * InventoryApi - factory interface
- * @export
  */
 export const InventoryApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = InventoryApiFp(configuration)
@@ -3298,9 +1614,6 @@ export const InventoryApiFactory = function (configuration?: Configuration, base
 
 /**
  * InventoryApi - object-oriented interface
- * @export
- * @class InventoryApi
- * @extends {BaseAPI}
  */
 export class InventoryApi extends BaseAPI {
     /**
@@ -3309,7 +1622,6 @@ export class InventoryApi extends BaseAPI {
      * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InventoryApi
      */
     public inventoryItemsGeneratePost(request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest, options?: RawAxiosRequestConfig) {
         return InventoryApiFp(this.configuration).inventoryItemsGeneratePost(request, options).then((request) => request(this.axios, this.basePath));
@@ -3322,7 +1634,6 @@ export class InventoryApi extends BaseAPI {
      * @param {number} offset offset
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InventoryApi
      */
     public inventoryItemsGet(limit: number, offset: number, options?: RawAxiosRequestConfig) {
         return InventoryApiFp(this.configuration).inventoryItemsGet(limit, offset, options).then((request) => request(this.axios, this.basePath));
@@ -3335,7 +1646,6 @@ export class InventoryApi extends BaseAPI {
      * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InventoryApi
      */
     public inventoryItemsItemIdConsumePost(itemId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options?: RawAxiosRequestConfig) {
         return InventoryApiFp(this.configuration).inventoryItemsItemIdConsumePost(itemId, request, options).then((request) => request(this.axios, this.basePath));
@@ -3348,7 +1658,6 @@ export class InventoryApi extends BaseAPI {
      * @param {number} [appId] app id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InventoryApi
      */
     public inventoryItemsItemIdGet(itemId: string, appId?: number, options?: RawAxiosRequestConfig) {
         return InventoryApiFp(this.configuration).inventoryItemsItemIdGet(itemId, appId, options).then((request) => request(this.axios, this.basePath));
@@ -3361,7 +1670,6 @@ export class InventoryApi extends BaseAPI {
      * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InventoryApi
      */
     public inventoryItemsItemIdPut(itemId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest, options?: RawAxiosRequestConfig) {
         return InventoryApiFp(this.configuration).inventoryItemsItemIdPut(itemId, request, options).then((request) => request(this.axios, this.basePath));
@@ -3374,7 +1682,6 @@ export class InventoryApi extends BaseAPI {
      * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InventoryApi
      */
     public inventoryItemsItemIdTransferPost(itemId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest, options?: RawAxiosRequestConfig) {
         return InventoryApiFp(this.configuration).inventoryItemsItemIdTransferPost(itemId, request, options).then((request) => request(this.axios, this.basePath));
@@ -3387,7 +1694,6 @@ export class InventoryApi extends BaseAPI {
      * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InventoryApi
      */
     public inventoryItemsItemIdTransferPreflightPost(itemId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest, options?: RawAxiosRequestConfig) {
         return InventoryApiFp(this.configuration).inventoryItemsItemIdTransferPreflightPost(itemId, request, options).then((request) => request(this.axios, this.basePath));
@@ -3399,7 +1705,6 @@ export class InventoryApi extends BaseAPI {
      * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof InventoryApi
      */
     public inventoryItemsUnpackPost(request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest, options?: RawAxiosRequestConfig) {
         return InventoryApiFp(this.configuration).inventoryItemsUnpackPost(request, options).then((request) => request(this.axios, this.basePath));
@@ -3410,7 +1715,6 @@ export class InventoryApi extends BaseAPI {
 
 /**
  * ProfileApi - axios parameter creator
- * @export
  */
 export const ProfileApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -3456,7 +1760,6 @@ export const ProfileApiAxiosParamCreator = function (configuration?: Configurati
 
 /**
  * ProfileApi - functional programming interface
- * @export
  */
 export const ProfileApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ProfileApiAxiosParamCreator(configuration)
@@ -3479,7 +1782,6 @@ export const ProfileApiFp = function(configuration?: Configuration) {
 
 /**
  * ProfileApi - factory interface
- * @export
  */
 export const ProfileApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = ProfileApiFp(configuration)
@@ -3499,9 +1801,6 @@ export const ProfileApiFactory = function (configuration?: Configuration, basePa
 
 /**
  * ProfileApi - object-oriented interface
- * @export
- * @class ProfileApi
- * @extends {BaseAPI}
  */
 export class ProfileApi extends BaseAPI {
     /**
@@ -3510,7 +1809,6 @@ export class ProfileApi extends BaseAPI {
      * @param {string} accountId account id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ProfileApi
      */
     public profileAccountIdGet(accountId: string, options?: RawAxiosRequestConfig) {
         return ProfileApiFp(this.configuration).profileAccountIdGet(accountId, options).then((request) => request(this.axios, this.basePath));
@@ -3521,7 +1819,6 @@ export class ProfileApi extends BaseAPI {
 
 /**
  * RegistryApi - axios parameter creator
- * @export
  */
 export const RegistryApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -3983,7 +2280,6 @@ export const RegistryApiAxiosParamCreator = function (configuration?: Configurat
 
 /**
  * RegistryApi - functional programming interface
- * @export
  */
 export const RegistryApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = RegistryApiAxiosParamCreator(configuration)
@@ -4141,7 +2437,6 @@ export const RegistryApiFp = function(configuration?: Configuration) {
 
 /**
  * RegistryApi - factory interface
- * @export
  */
 export const RegistryApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = RegistryApiFp(configuration)
@@ -4266,9 +2561,6 @@ export const RegistryApiFactory = function (configuration?: Configuration, baseP
 
 /**
  * RegistryApi - object-oriented interface
- * @export
- * @class RegistryApi
- * @extends {BaseAPI}
  */
 export class RegistryApi extends BaseAPI {
     /**
@@ -4277,7 +2569,6 @@ export class RegistryApi extends BaseAPI {
      * @param {string} achievementDefId achievement_def_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RegistryApi
      */
     public registryAchievementsAchievementDefIdDelete(achievementDefId: string, options?: RawAxiosRequestConfig) {
         return RegistryApiFp(this.configuration).registryAchievementsAchievementDefIdDelete(achievementDefId, options).then((request) => request(this.axios, this.basePath));
@@ -4289,7 +2580,6 @@ export class RegistryApi extends BaseAPI {
      * @param {string} achievementDefId achievement_def_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RegistryApi
      */
     public registryAchievementsAchievementDefIdGet(achievementDefId: string, options?: RawAxiosRequestConfig) {
         return RegistryApiFp(this.configuration).registryAchievementsAchievementDefIdGet(achievementDefId, options).then((request) => request(this.axios, this.basePath));
@@ -4302,7 +2592,6 @@ export class RegistryApi extends BaseAPI {
      * @param {InternalModuleRegistryPresentationAchievementHttpUpdateRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RegistryApi
      */
     public registryAchievementsAchievementDefIdPut(achievementDefId: string, request: InternalModuleRegistryPresentationAchievementHttpUpdateRequest, options?: RawAxiosRequestConfig) {
         return RegistryApiFp(this.configuration).registryAchievementsAchievementDefIdPut(achievementDefId, request, options).then((request) => request(this.axios, this.basePath));
@@ -4315,7 +2604,6 @@ export class RegistryApi extends BaseAPI {
      * @param {number} offset offset
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RegistryApi
      */
     public registryAchievementsGet(limit: number, offset: number, options?: RawAxiosRequestConfig) {
         return RegistryApiFp(this.configuration).registryAchievementsGet(limit, offset, options).then((request) => request(this.axios, this.basePath));
@@ -4327,7 +2615,6 @@ export class RegistryApi extends BaseAPI {
      * @param {InternalModuleRegistryPresentationAchievementHttpCreateRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RegistryApi
      */
     public registryAchievementsPost(request: InternalModuleRegistryPresentationAchievementHttpCreateRequest, options?: RawAxiosRequestConfig) {
         return RegistryApiFp(this.configuration).registryAchievementsPost(request, options).then((request) => request(this.axios, this.basePath));
@@ -4340,7 +2627,6 @@ export class RegistryApi extends BaseAPI {
      * @param {number} offset offset
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RegistryApi
      */
     public registryAppsGet(limit: number, offset: number, options?: RawAxiosRequestConfig) {
         return RegistryApiFp(this.configuration).registryAppsGet(limit, offset, options).then((request) => request(this.axios, this.basePath));
@@ -4353,7 +2639,6 @@ export class RegistryApi extends BaseAPI {
      * @param {number} offset offset
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RegistryApi
      */
     public registryItemsGet(limit: number, offset: number, options?: RawAxiosRequestConfig) {
         return RegistryApiFp(this.configuration).registryItemsGet(limit, offset, options).then((request) => request(this.axios, this.basePath));
@@ -4365,7 +2650,6 @@ export class RegistryApi extends BaseAPI {
      * @param {string} itemDefId item_def_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RegistryApi
      */
     public registryItemsItemDefIdDelete(itemDefId: string, options?: RawAxiosRequestConfig) {
         return RegistryApiFp(this.configuration).registryItemsItemDefIdDelete(itemDefId, options).then((request) => request(this.axios, this.basePath));
@@ -4377,7 +2661,6 @@ export class RegistryApi extends BaseAPI {
      * @param {string} itemDefId item_def_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RegistryApi
      */
     public registryItemsItemDefIdGet(itemDefId: string, options?: RawAxiosRequestConfig) {
         return RegistryApiFp(this.configuration).registryItemsItemDefIdGet(itemDefId, options).then((request) => request(this.axios, this.basePath));
@@ -4390,7 +2673,6 @@ export class RegistryApi extends BaseAPI {
      * @param {InternalModuleRegistryPresentationItemHttpUpdateRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RegistryApi
      */
     public registryItemsItemDefIdPut(itemDefId: string, request: InternalModuleRegistryPresentationItemHttpUpdateRequest, options?: RawAxiosRequestConfig) {
         return RegistryApiFp(this.configuration).registryItemsItemDefIdPut(itemDefId, request, options).then((request) => request(this.axios, this.basePath));
@@ -4402,7 +2684,6 @@ export class RegistryApi extends BaseAPI {
      * @param {InternalModuleRegistryPresentationItemHttpCreateRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RegistryApi
      */
     public registryItemsPost(request: InternalModuleRegistryPresentationItemHttpCreateRequest, options?: RawAxiosRequestConfig) {
         return RegistryApiFp(this.configuration).registryItemsPost(request, options).then((request) => request(this.axios, this.basePath));
@@ -4413,7 +2694,6 @@ export class RegistryApi extends BaseAPI {
 
 /**
  * SquadsApi - axios parameter creator
- * @export
  */
 export const SquadsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -4521,7 +2801,6 @@ export const SquadsApiAxiosParamCreator = function (configuration?: Configuratio
 
 /**
  * SquadsApi - functional programming interface
- * @export
  */
 export const SquadsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = SquadsApiAxiosParamCreator(configuration)
@@ -4561,7 +2840,6 @@ export const SquadsApiFp = function(configuration?: Configuration) {
 
 /**
  * SquadsApi - factory interface
- * @export
  */
 export const SquadsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = SquadsApiFp(configuration)
@@ -4595,9 +2873,6 @@ export const SquadsApiFactory = function (configuration?: Configuration, basePat
 
 /**
  * SquadsApi - object-oriented interface
- * @export
- * @class SquadsApi
- * @extends {BaseAPI}
  */
 export class SquadsApi extends BaseAPI {
     /**
@@ -4610,7 +2885,6 @@ export class SquadsApi extends BaseAPI {
      * @param {number} [minMembersAmount] Min members amount
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SquadsApi
      */
     public squadsGet(limit: number, offset: number, slug?: string, sort?: string, minMembersAmount?: number, options?: RawAxiosRequestConfig) {
         return SquadsApiFp(this.configuration).squadsGet(limit, offset, slug, sort, minMembersAmount, options).then((request) => request(this.axios, this.basePath));
@@ -4622,7 +2896,6 @@ export class SquadsApi extends BaseAPI {
      * @param {number} id Squad ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SquadsApi
      */
     public squadsIdGet(id: number, options?: RawAxiosRequestConfig) {
         return SquadsApiFp(this.configuration).squadsIdGet(id, options).then((request) => request(this.axios, this.basePath));
