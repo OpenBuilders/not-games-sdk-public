@@ -3814,7 +3814,7 @@ proto.inventory.v1.UnpackRequest.prototype.setTags = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.inventory.v1.UnpackResponse.repeatedFields_ = [1];
+proto.inventory.v1.UnpackResponse.repeatedFields_ = [1,2];
 
 
 
@@ -3847,7 +3847,9 @@ proto.inventory.v1.UnpackResponse.prototype.toObject = function(opt_includeInsta
  */
 proto.inventory.v1.UnpackResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-itemIdsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+itemIdsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+itemsList: jspb.Message.toObjectList(msg.getItemsList(),
+    proto.inventory.v1.Item.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -3888,6 +3890,11 @@ proto.inventory.v1.UnpackResponse.deserializeBinaryFromReader = function(msg, re
       var value = /** @type {string} */ (reader.readString());
       msg.addItemIds(value);
       break;
+    case 2:
+      var value = new proto.inventory.v1.Item;
+      reader.readMessage(value,proto.inventory.v1.Item.deserializeBinaryFromReader);
+      msg.addItems(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3922,6 +3929,14 @@ proto.inventory.v1.UnpackResponse.serializeBinaryToWriter = function(message, wr
     writer.writeRepeatedString(
       1,
       f
+    );
+  }
+  f = message.getItemsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.inventory.v1.Item.serializeBinaryToWriter
     );
   }
 };
@@ -3961,6 +3976,44 @@ proto.inventory.v1.UnpackResponse.prototype.addItemIds = function(value, opt_ind
  */
 proto.inventory.v1.UnpackResponse.prototype.clearItemIdsList = function() {
   return this.setItemIdsList([]);
+};
+
+
+/**
+ * repeated Item items = 2;
+ * @return {!Array<!proto.inventory.v1.Item>}
+ */
+proto.inventory.v1.UnpackResponse.prototype.getItemsList = function() {
+  return /** @type{!Array<!proto.inventory.v1.Item>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.inventory.v1.Item, 2));
+};
+
+
+/**
+ * @param {!Array<!proto.inventory.v1.Item>} value
+ * @return {!proto.inventory.v1.UnpackResponse} returns this
+*/
+proto.inventory.v1.UnpackResponse.prototype.setItemsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.inventory.v1.Item=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.inventory.v1.Item}
+ */
+proto.inventory.v1.UnpackResponse.prototype.addItems = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.inventory.v1.Item, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.inventory.v1.UnpackResponse} returns this
+ */
+proto.inventory.v1.UnpackResponse.prototype.clearItemsList = function() {
+  return this.setItemsList([]);
 };
 
 
