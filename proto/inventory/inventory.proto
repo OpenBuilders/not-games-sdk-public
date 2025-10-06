@@ -113,6 +113,7 @@ message UnpackRequest {
   int64 account_id = 2;
   int64 app_id = 3;
   string tags = 4;
+  string generator_bundle_overwrite = 5;
 }
 
 message UnpackResponse {
