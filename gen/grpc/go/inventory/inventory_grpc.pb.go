@@ -25,6 +25,7 @@ const (
 	InventoryService_IncrementItemQuantity_FullMethodName = "/inventory.v1.InventoryService/IncrementItemQuantity"
 	InventoryService_Unpack_FullMethodName                = "/inventory.v1.InventoryService/Unpack"
 	InventoryService_Generate_FullMethodName              = "/inventory.v1.InventoryService/Generate"
+	InventoryService_GenerateMany_FullMethodName          = "/inventory.v1.InventoryService/GenerateMany"
 	InventoryService_UpdateItem_FullMethodName            = "/inventory.v1.InventoryService/UpdateItem"
 	InventoryService_TransferItem_FullMethodName          = "/inventory.v1.InventoryService/TransferItem"
 	InventoryService_StreamItemTransfer_FullMethodName    = "/inventory.v1.InventoryService/StreamItemTransfer"
@@ -46,6 +47,7 @@ type InventoryServiceClient interface {
 	IncrementItemQuantity(ctx context.Context, in *IncrementItemQuantityRequest, opts ...grpc.CallOption) (*IncrementItemQuantityResponse, error)
 	Unpack(ctx context.Context, in *UnpackRequest, opts ...grpc.CallOption) (*UnpackResponse, error)
 	Generate(ctx context.Context, in *GenerateRequest, opts ...grpc.CallOption) (*GenerateResponse, error)
+	GenerateMany(ctx context.Context, in *GenerateManyRequest, opts ...grpc.CallOption) (*GenerateManyResponse, error)
 	UpdateItem(ctx context.Context, in *UpdateItemRequest, opts ...grpc.CallOption) (*UpdateItemResponse, error)
 	TransferItem(ctx context.Context, in *TransferItemRequest, opts ...grpc.CallOption) (*TransferItemResponse, error)
 	StreamItemTransfer(ctx context.Context, in *StreamItemTransfersRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[StreamItemTransfersResponse], error)
@@ -119,6 +121,16 @@ func (c *inventoryServiceClient) Generate(ctx context.Context, in *GenerateReque
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GenerateResponse)
 	err := c.cc.Invoke(ctx, InventoryService_Generate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *inventoryServiceClient) GenerateMany(ctx context.Context, in *GenerateManyRequest, opts ...grpc.CallOption) (*GenerateManyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GenerateManyResponse)
+	err := c.cc.Invoke(ctx, InventoryService_GenerateMany_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -243,6 +255,7 @@ type InventoryServiceServer interface {
 	IncrementItemQuantity(context.Context, *IncrementItemQuantityRequest) (*IncrementItemQuantityResponse, error)
 	Unpack(context.Context, *UnpackRequest) (*UnpackResponse, error)
 	Generate(context.Context, *GenerateRequest) (*GenerateResponse, error)
+	GenerateMany(context.Context, *GenerateManyRequest) (*GenerateManyResponse, error)
 	UpdateItem(context.Context, *UpdateItemRequest) (*UpdateItemResponse, error)
 	TransferItem(context.Context, *TransferItemRequest) (*TransferItemResponse, error)
 	StreamItemTransfer(*StreamItemTransfersRequest, grpc.ServerStreamingServer[StreamItemTransfersResponse]) error
@@ -279,6 +292,9 @@ func (UnimplementedInventoryServiceServer) Unpack(context.Context, *UnpackReques
 }
 func (UnimplementedInventoryServiceServer) Generate(context.Context, *GenerateRequest) (*GenerateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Generate not implemented")
+}
+func (UnimplementedInventoryServiceServer) GenerateMany(context.Context, *GenerateManyRequest) (*GenerateManyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateMany not implemented")
 }
 func (UnimplementedInventoryServiceServer) UpdateItem(context.Context, *UpdateItemRequest) (*UpdateItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateItem not implemented")
@@ -432,6 +448,24 @@ func _InventoryService_Generate_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(InventoryServiceServer).Generate(ctx, req.(*GenerateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _InventoryService_GenerateMany_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GenerateManyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServiceServer).GenerateMany(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InventoryService_GenerateMany_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServiceServer).GenerateMany(ctx, req.(*GenerateManyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -614,6 +648,10 @@ var InventoryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Generate",
 			Handler:    _InventoryService_Generate_Handler,
+		},
+		{
+			MethodName: "GenerateMany",
+			Handler:    _InventoryService_GenerateMany_Handler,
 		},
 		{
 			MethodName: "UpdateItem",

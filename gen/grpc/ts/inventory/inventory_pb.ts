@@ -302,6 +302,10 @@ export interface UnpackRequest {
      * @generated from protobuf field: string tags = 4
      */
     tags: string;
+    /**
+     * @generated from protobuf field: string generator_bundle_overwrite = 5
+     */
+    generatorBundleOverwrite: string;
 }
 /**
  * @generated from protobuf message inventory.v1.UnpackResponse
@@ -381,6 +385,24 @@ export interface GenerateResponse {
      * @generated from protobuf field: string item_id = 1
      */
     itemId: string;
+}
+/**
+ * @generated from protobuf message inventory.v1.GenerateManyRequest
+ */
+export interface GenerateManyRequest {
+    /**
+     * @generated from protobuf field: repeated inventory.v1.GenerateRequest items = 1
+     */
+    items: GenerateRequest[];
+}
+/**
+ * @generated from protobuf message inventory.v1.GenerateManyResponse
+ */
+export interface GenerateManyResponse {
+    /**
+     * @generated from protobuf field: repeated inventory.v1.Item items = 1
+     */
+    items: Item[];
 }
 /**
  * @generated from protobuf message inventory.v1.UpdateItemRequest
@@ -1488,7 +1510,8 @@ class UnpackRequest$Type extends MessageType<UnpackRequest> {
             { no: 1, name: "item_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 3, name: "app_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 4, name: "tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 4, name: "tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "generator_bundle_overwrite", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<UnpackRequest>): UnpackRequest {
@@ -1497,6 +1520,7 @@ class UnpackRequest$Type extends MessageType<UnpackRequest> {
         message.accountId = 0n;
         message.appId = 0n;
         message.tags = "";
+        message.generatorBundleOverwrite = "";
         if (value !== undefined)
             reflectionMergePartial<UnpackRequest>(this, message, value);
         return message;
@@ -1517,6 +1541,9 @@ class UnpackRequest$Type extends MessageType<UnpackRequest> {
                     break;
                 case /* string tags */ 4:
                     message.tags = reader.string();
+                    break;
+                case /* string generator_bundle_overwrite */ 5:
+                    message.generatorBundleOverwrite = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1542,6 +1569,9 @@ class UnpackRequest$Type extends MessageType<UnpackRequest> {
         /* string tags = 4; */
         if (message.tags !== "")
             writer.tag(4, WireType.LengthDelimited).string(message.tags);
+        /* string generator_bundle_overwrite = 5; */
+        if (message.generatorBundleOverwrite !== "")
+            writer.tag(5, WireType.LengthDelimited).string(message.generatorBundleOverwrite);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1789,6 +1819,100 @@ class GenerateResponse$Type extends MessageType<GenerateResponse> {
  * @generated MessageType for protobuf message inventory.v1.GenerateResponse
  */
 export const GenerateResponse = new GenerateResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class GenerateManyRequest$Type extends MessageType<GenerateManyRequest> {
+    constructor() {
+        super("inventory.v1.GenerateManyRequest", [
+            { no: 1, name: "items", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => GenerateRequest }
+        ]);
+    }
+    create(value?: PartialMessage<GenerateManyRequest>): GenerateManyRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.items = [];
+        if (value !== undefined)
+            reflectionMergePartial<GenerateManyRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: GenerateManyRequest): GenerateManyRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* repeated inventory.v1.GenerateRequest items */ 1:
+                    message.items.push(GenerateRequest.internalBinaryRead(reader, reader.uint32(), options));
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: GenerateManyRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* repeated inventory.v1.GenerateRequest items = 1; */
+        for (let i = 0; i < message.items.length; i++)
+            GenerateRequest.internalBinaryWrite(message.items[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.GenerateManyRequest
+ */
+export const GenerateManyRequest = new GenerateManyRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class GenerateManyResponse$Type extends MessageType<GenerateManyResponse> {
+    constructor() {
+        super("inventory.v1.GenerateManyResponse", [
+            { no: 1, name: "items", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Item }
+        ]);
+    }
+    create(value?: PartialMessage<GenerateManyResponse>): GenerateManyResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.items = [];
+        if (value !== undefined)
+            reflectionMergePartial<GenerateManyResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: GenerateManyResponse): GenerateManyResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* repeated inventory.v1.Item items */ 1:
+                    message.items.push(Item.internalBinaryRead(reader, reader.uint32(), options));
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: GenerateManyResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* repeated inventory.v1.Item items = 1; */
+        for (let i = 0; i < message.items.length; i++)
+            Item.internalBinaryWrite(message.items[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.GenerateManyResponse
+ */
+export const GenerateManyResponse = new GenerateManyResponse$Type();
 // @generated message type with reflection information, may provide speed optimized methods
 class UpdateItemRequest$Type extends MessageType<UpdateItemRequest> {
     constructor() {
@@ -2829,6 +2953,7 @@ export const InventoryService = new ServiceType("inventory.v1.InventoryService",
     { name: "IncrementItemQuantity", options: {}, I: IncrementItemQuantityRequest, O: IncrementItemQuantityResponse },
     { name: "Unpack", options: {}, I: UnpackRequest, O: UnpackResponse },
     { name: "Generate", options: {}, I: GenerateRequest, O: GenerateResponse },
+    { name: "GenerateMany", options: {}, I: GenerateManyRequest, O: GenerateManyResponse },
     { name: "UpdateItem", options: {}, I: UpdateItemRequest, O: UpdateItemResponse },
     { name: "TransferItem", options: {}, I: TransferItemRequest, O: TransferItemResponse },
     { name: "StreamItemTransfer", serverStreaming: true, options: {}, I: StreamItemTransfersRequest, O: StreamItemTransfersResponse },
