@@ -3623,7 +3623,8 @@ proto.inventory.v1.UnpackRequest.toObject = function(includeInstance, msg) {
 itemId: jspb.Message.getFieldWithDefault(msg, 1, ""),
 accountId: jspb.Message.getFieldWithDefault(msg, 2, 0),
 appId: jspb.Message.getFieldWithDefault(msg, 3, 0),
-tags: jspb.Message.getFieldWithDefault(msg, 4, "")
+tags: jspb.Message.getFieldWithDefault(msg, 4, ""),
+generatorBundleOverwrite: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -3675,6 +3676,10 @@ proto.inventory.v1.UnpackRequest.deserializeBinaryFromReader = function(msg, rea
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setTags(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setGeneratorBundleOverwrite(value);
       break;
     default:
       reader.skipField();
@@ -3730,6 +3735,13 @@ proto.inventory.v1.UnpackRequest.serializeBinaryToWriter = function(message, wri
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getGeneratorBundleOverwrite();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -3805,6 +3817,24 @@ proto.inventory.v1.UnpackRequest.prototype.getTags = function() {
  */
 proto.inventory.v1.UnpackRequest.prototype.setTags = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string generator_bundle_overwrite = 5;
+ * @return {string}
+ */
+proto.inventory.v1.UnpackRequest.prototype.getGeneratorBundleOverwrite = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.inventory.v1.UnpackRequest} returns this
+ */
+proto.inventory.v1.UnpackRequest.prototype.setGeneratorBundleOverwrite = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
