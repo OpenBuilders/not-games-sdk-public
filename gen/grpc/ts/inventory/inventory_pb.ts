@@ -391,7 +391,11 @@ export interface GenerateResponse {
  */
 export interface GenerateManyRequest {
     /**
-     * @generated from protobuf field: repeated inventory.v1.GenerateRequest items = 1
+     * @generated from protobuf field: int64 account_id = 1
+     */
+    accountId: bigint;
+    /**
+     * @generated from protobuf field: repeated inventory.v1.GenerateRequest items = 2
      */
     items: GenerateRequest[];
 }
@@ -1823,11 +1827,13 @@ export const GenerateResponse = new GenerateResponse$Type();
 class GenerateManyRequest$Type extends MessageType<GenerateManyRequest> {
     constructor() {
         super("inventory.v1.GenerateManyRequest", [
-            { no: 1, name: "items", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => GenerateRequest }
+            { no: 1, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 2, name: "items", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => GenerateRequest }
         ]);
     }
     create(value?: PartialMessage<GenerateManyRequest>): GenerateManyRequest {
         const message = globalThis.Object.create((this.messagePrototype!));
+        message.accountId = 0n;
         message.items = [];
         if (value !== undefined)
             reflectionMergePartial<GenerateManyRequest>(this, message, value);
@@ -1838,7 +1844,10 @@ class GenerateManyRequest$Type extends MessageType<GenerateManyRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated inventory.v1.GenerateRequest items */ 1:
+                case /* int64 account_id */ 1:
+                    message.accountId = reader.int64().toBigInt();
+                    break;
+                case /* repeated inventory.v1.GenerateRequest items */ 2:
                     message.items.push(GenerateRequest.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
@@ -1853,9 +1862,12 @@ class GenerateManyRequest$Type extends MessageType<GenerateManyRequest> {
         return message;
     }
     internalBinaryWrite(message: GenerateManyRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated inventory.v1.GenerateRequest items = 1; */
+        /* int64 account_id = 1; */
+        if (message.accountId !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.accountId);
+        /* repeated inventory.v1.GenerateRequest items = 2; */
         for (let i = 0; i < message.items.length; i++)
-            GenerateRequest.internalBinaryWrite(message.items[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+            GenerateRequest.internalBinaryWrite(message.items[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

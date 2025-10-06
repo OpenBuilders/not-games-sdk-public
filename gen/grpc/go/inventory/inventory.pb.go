@@ -1206,7 +1206,8 @@ func (x *GenerateResponse) GetItemId() string {
 
 type GenerateManyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Items         []*GenerateRequest     `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	AccountId     int64                  `protobuf:"varint,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
+	Items         []*GenerateRequest     `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1239,6 +1240,13 @@ func (x *GenerateManyRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GenerateManyRequest.ProtoReflect.Descriptor instead.
 func (*GenerateManyRequest) Descriptor() ([]byte, []int) {
 	return file_inventory_inventory_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *GenerateManyRequest) GetAccountId() int64 {
+	if x != nil {
+		return x.AccountId
+	}
+	return 0
 }
 
 func (x *GenerateManyRequest) GetItems() []*GenerateRequest {
@@ -2419,9 +2427,11 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\t_app_metaB\v\n" +
 	"\t_quantity\"+\n" +
 	"\x10GenerateResponse\x12\x17\n" +
-	"\aitem_id\x18\x01 \x01(\tR\x06itemId\"J\n" +
-	"\x13GenerateManyRequest\x123\n" +
-	"\x05items\x18\x01 \x03(\v2\x1d.inventory.v1.GenerateRequestR\x05items\"@\n" +
+	"\aitem_id\x18\x01 \x01(\tR\x06itemId\"i\n" +
+	"\x13GenerateManyRequest\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x01 \x01(\x03R\taccountId\x123\n" +
+	"\x05items\x18\x02 \x03(\v2\x1d.inventory.v1.GenerateRequestR\x05items\"@\n" +
 	"\x14GenerateManyResponse\x12(\n" +
 	"\x05items\x18\x01 \x03(\v2\x12.inventory.v1.ItemR\x05items\"\xd6\x01\n" +
 	"\x11UpdateItemRequest\x12\x17\n" +

@@ -4861,7 +4861,7 @@ proto.inventory.v1.GenerateResponse.prototype.setItemId = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.inventory.v1.GenerateManyRequest.repeatedFields_ = [1];
+proto.inventory.v1.GenerateManyRequest.repeatedFields_ = [2];
 
 
 
@@ -4894,6 +4894,7 @@ proto.inventory.v1.GenerateManyRequest.prototype.toObject = function(opt_include
  */
 proto.inventory.v1.GenerateManyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
+accountId: jspb.Message.getFieldWithDefault(msg, 1, 0),
 itemsList: jspb.Message.toObjectList(msg.getItemsList(),
     proto.inventory.v1.GenerateRequest.toObject, includeInstance)
   };
@@ -4933,6 +4934,10 @@ proto.inventory.v1.GenerateManyRequest.deserializeBinaryFromReader = function(ms
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setAccountId(value);
+      break;
+    case 2:
       var value = new proto.inventory.v1.GenerateRequest;
       reader.readMessage(value,proto.inventory.v1.GenerateRequest.deserializeBinaryFromReader);
       msg.addItems(value);
@@ -4966,10 +4971,17 @@ proto.inventory.v1.GenerateManyRequest.prototype.serializeBinary = function() {
  */
 proto.inventory.v1.GenerateManyRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getAccountId();
+  if (f !== 0) {
+    writer.writeInt64(
+      1,
+      f
+    );
+  }
   f = message.getItemsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      1,
+      2,
       f,
       proto.inventory.v1.GenerateRequest.serializeBinaryToWriter
     );
@@ -4978,12 +4990,30 @@ proto.inventory.v1.GenerateManyRequest.serializeBinaryToWriter = function(messag
 
 
 /**
- * repeated GenerateRequest items = 1;
+ * optional int64 account_id = 1;
+ * @return {number}
+ */
+proto.inventory.v1.GenerateManyRequest.prototype.getAccountId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.inventory.v1.GenerateManyRequest} returns this
+ */
+proto.inventory.v1.GenerateManyRequest.prototype.setAccountId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * repeated GenerateRequest items = 2;
  * @return {!Array<!proto.inventory.v1.GenerateRequest>}
  */
 proto.inventory.v1.GenerateManyRequest.prototype.getItemsList = function() {
   return /** @type{!Array<!proto.inventory.v1.GenerateRequest>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.inventory.v1.GenerateRequest, 1));
+    jspb.Message.getRepeatedWrapperField(this, proto.inventory.v1.GenerateRequest, 2));
 };
 
 
@@ -4992,7 +5022,7 @@ proto.inventory.v1.GenerateManyRequest.prototype.getItemsList = function() {
  * @return {!proto.inventory.v1.GenerateManyRequest} returns this
 */
 proto.inventory.v1.GenerateManyRequest.prototype.setItemsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
@@ -5002,7 +5032,7 @@ proto.inventory.v1.GenerateManyRequest.prototype.setItemsList = function(value) 
  * @return {!proto.inventory.v1.GenerateRequest}
  */
 proto.inventory.v1.GenerateManyRequest.prototype.addItems = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.inventory.v1.GenerateRequest, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.inventory.v1.GenerateRequest, opt_index);
 };
 
 
