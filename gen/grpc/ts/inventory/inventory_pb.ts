@@ -302,6 +302,10 @@ export interface UnpackRequest {
      * @generated from protobuf field: string tags = 4
      */
     tags: string;
+    /**
+     * @generated from protobuf field: string generator_bundle_overwrite = 5
+     */
+    generatorBundleOverwrite: string;
 }
 /**
  * @generated from protobuf message inventory.v1.UnpackResponse
@@ -1488,7 +1492,8 @@ class UnpackRequest$Type extends MessageType<UnpackRequest> {
             { no: 1, name: "item_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 3, name: "app_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 4, name: "tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 4, name: "tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "generator_bundle_overwrite", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<UnpackRequest>): UnpackRequest {
@@ -1497,6 +1502,7 @@ class UnpackRequest$Type extends MessageType<UnpackRequest> {
         message.accountId = 0n;
         message.appId = 0n;
         message.tags = "";
+        message.generatorBundleOverwrite = "";
         if (value !== undefined)
             reflectionMergePartial<UnpackRequest>(this, message, value);
         return message;
@@ -1517,6 +1523,9 @@ class UnpackRequest$Type extends MessageType<UnpackRequest> {
                     break;
                 case /* string tags */ 4:
                     message.tags = reader.string();
+                    break;
+                case /* string generator_bundle_overwrite */ 5:
+                    message.generatorBundleOverwrite = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1542,6 +1551,9 @@ class UnpackRequest$Type extends MessageType<UnpackRequest> {
         /* string tags = 4; */
         if (message.tags !== "")
             writer.tag(4, WireType.LengthDelimited).string(message.tags);
+        /* string generator_bundle_overwrite = 5; */
+        if (message.generatorBundleOverwrite !== "")
+            writer.tag(5, WireType.LengthDelimited).string(message.generatorBundleOverwrite);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
