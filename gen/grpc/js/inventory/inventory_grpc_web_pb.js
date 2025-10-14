@@ -448,6 +448,67 @@ proto.inventory.v1.InventoryServicePromiseClient.prototype.generate =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.inventory.v1.GenerateManyRequest,
+ *   !proto.inventory.v1.GenerateManyResponse>}
+ */
+const methodDescriptor_InventoryService_GenerateMany = new grpc.web.MethodDescriptor(
+  '/inventory.v1.InventoryService/GenerateMany',
+  grpc.web.MethodType.UNARY,
+  proto.inventory.v1.GenerateManyRequest,
+  proto.inventory.v1.GenerateManyResponse,
+  /**
+   * @param {!proto.inventory.v1.GenerateManyRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.inventory.v1.GenerateManyResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.inventory.v1.GenerateManyRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.inventory.v1.GenerateManyResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.inventory.v1.GenerateManyResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.inventory.v1.InventoryServiceClient.prototype.generateMany =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/inventory.v1.InventoryService/GenerateMany',
+      request,
+      metadata || {},
+      methodDescriptor_InventoryService_GenerateMany,
+      callback);
+};
+
+
+/**
+ * @param {!proto.inventory.v1.GenerateManyRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.inventory.v1.GenerateManyResponse>}
+ *     Promise that resolves to the response
+ */
+proto.inventory.v1.InventoryServicePromiseClient.prototype.generateMany =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/inventory.v1.InventoryService/GenerateMany',
+      request,
+      metadata || {},
+      methodDescriptor_InventoryService_GenerateMany);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.inventory.v1.UpdateItemRequest,
  *   !proto.inventory.v1.UpdateItemResponse>}
  */

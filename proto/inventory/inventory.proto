@@ -14,6 +14,7 @@ service InventoryService {
   rpc IncrementItemQuantity(IncrementItemQuantityRequest) returns (IncrementItemQuantityResponse) {}
   rpc Unpack(UnpackRequest) returns (UnpackResponse) {}
   rpc Generate(GenerateRequest) returns (GenerateResponse) {}
+  rpc GenerateMany(GenerateManyRequest) returns (GenerateManyResponse) {}
   rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse) {}
   rpc TransferItem(TransferItemRequest) returns (TransferItemResponse) {}
   rpc StreamItemTransfer(StreamItemTransfersRequest) returns (stream StreamItemTransfersResponse) {}
@@ -113,6 +114,7 @@ message UnpackRequest {
   int64 account_id = 2;
   int64 app_id = 3;
   string tags = 4;
+  string generator_bundle_overwrite = 5;
 }
 
 message UnpackResponse {
@@ -138,6 +140,15 @@ message GenerateRequest {
 
 message GenerateResponse {
   string item_id = 1;
+}
+
+message GenerateManyRequest {
+  int64 account_id = 1;
+  repeated GenerateRequest items = 2;
+}
+
+message GenerateManyResponse {
+  repeated Item items = 1;
 }
 
 message UpdateItemRequest {
