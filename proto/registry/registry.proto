@@ -6,6 +6,7 @@ option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/re
 
 import "common/rarity.proto";
 import "common/pagination.proto";
+import "common/tags.proto";
 
 service RegistryService {
   rpc GetItemDef(GetItemDefRequest) returns (ItemDef) {}
@@ -130,6 +131,7 @@ message ListItemDefsRequest {
   optional int64 supply = 12;
   repeated string sort_fields = 13;
   repeated string directions = 14;
+  optional common.v1.FilterTagList tags = 15;
 }
 
 message ListItemDefsResponse {

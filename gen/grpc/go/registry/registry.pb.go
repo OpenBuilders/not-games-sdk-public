@@ -958,6 +958,7 @@ type ListItemDefsRequest struct {
 	Supply        *int64                 `protobuf:"varint,12,opt,name=supply,proto3,oneof" json:"supply,omitempty"`
 	SortFields    []string               `protobuf:"bytes,13,rep,name=sort_fields,json=sortFields,proto3" json:"sort_fields,omitempty"`
 	Directions    []string               `protobuf:"bytes,14,rep,name=directions,proto3" json:"directions,omitempty"`
+	Tags          *common.FilterTagList  `protobuf:"bytes,15,opt,name=tags,proto3,oneof" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1086,6 +1087,13 @@ func (x *ListItemDefsRequest) GetSortFields() []string {
 func (x *ListItemDefsRequest) GetDirections() []string {
 	if x != nil {
 		return x.Directions
+	}
+	return nil
+}
+
+func (x *ListItemDefsRequest) GetTags() *common.FilterTagList {
+	if x != nil {
+		return x.Tags
 	}
 	return nil
 }
@@ -1250,7 +1258,7 @@ var File_registry_registry_proto protoreflect.FileDescriptor
 
 const file_registry_registry_proto_rawDesc = "" +
 	"\n" +
-	"\x17registry/registry.proto\x12\vregistry.v1\x1a\x13common/rarity.proto\x1a\x17common/pagination.proto\"\xc5\x05\n" +
+	"\x17registry/registry.proto\x12\vregistry.v1\x1a\x13common/rarity.proto\x1a\x17common/pagination.proto\x1a\x11common/tags.proto\"\xc5\x05\n" +
 	"\aItemDef\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\x12\x15\n" +
 	"\x06app_id\x18\x02 \x01(\x03R\x05appId\x12\x12\n" +
@@ -1359,7 +1367,7 @@ const file_registry_registry_proto_rawDesc = "" +
 	"\x1bUpdateAchievementDefRequest\x12D\n" +
 	"\x0fachievement_def\x18\x01 \x01(\v2\x1b.registry.v1.AchievementDefR\x0eachievementDef\"6\n" +
 	"\x1cUpdateAchievementDefResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status\"\xd7\x04\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"\x93\x05\n" +
 	"\x13ListItemDefsRequest\x12\x14\n" +
 	"\x05limit\x18\x01 \x01(\x05R\x05limit\x12\x16\n" +
 	"\x06offset\x18\x02 \x01(\x05R\x06offset\x12#\n" +
@@ -1380,7 +1388,9 @@ const file_registry_registry_proto_rawDesc = "" +
 	"sortFields\x12\x1e\n" +
 	"\n" +
 	"directions\x18\x0e \x03(\tR\n" +
-	"directionsB\r\n" +
+	"directions\x121\n" +
+	"\x04tags\x18\x0f \x01(\v2\x18.common.v1.FilterTagListH\n" +
+	"R\x04tags\x88\x01\x01B\r\n" +
 	"\v_collectionB\a\n" +
 	"\x05_nameB\t\n" +
 	"\a_rarityB\a\n" +
@@ -1391,7 +1401,8 @@ const file_registry_registry_proto_rawDesc = "" +
 	"_game_onlyB\x0f\n" +
 	"\r_store_hiddenB\v\n" +
 	"\t_tradableB\t\n" +
-	"\a_supply\"y\n" +
+	"\a_supplyB\a\n" +
+	"\x05_tags\"y\n" +
 	"\x14ListItemDefsResponse\x12*\n" +
 	"\x05items\x18\x01 \x03(\v2\x14.registry.v1.ItemDefR\x05items\x125\n" +
 	"\n" +
@@ -1447,7 +1458,8 @@ var file_registry_registry_proto_goTypes = []any{
 	(*ListAchievementsDefsRequest)(nil),  // 14: registry.v1.ListAchievementsDefsRequest
 	(*ListAchievementsDefsResponse)(nil), // 15: registry.v1.ListAchievementsDefsResponse
 	(common.Rarity)(0),                   // 16: common.v1.Rarity
-	(*common.Pagination)(nil),            // 17: common.v1.Pagination
+	(*common.FilterTagList)(nil),         // 17: common.v1.FilterTagList
+	(*common.Pagination)(nil),            // 18: common.v1.Pagination
 }
 var file_registry_registry_proto_depIdxs = []int32{
 	16, // 0: registry.v1.ItemDef.rarity:type_name -> common.v1.Rarity
@@ -1455,31 +1467,32 @@ var file_registry_registry_proto_depIdxs = []int32{
 	2,  // 2: registry.v1.CreateAchievementDefRequest.achievement_def:type_name -> registry.v1.AchievementDef
 	2,  // 3: registry.v1.UpdateAchievementDefRequest.achievement_def:type_name -> registry.v1.AchievementDef
 	16, // 4: registry.v1.ListItemDefsRequest.rarity:type_name -> common.v1.Rarity
-	0,  // 5: registry.v1.ListItemDefsResponse.items:type_name -> registry.v1.ItemDef
-	17, // 6: registry.v1.ListItemDefsResponse.pagination:type_name -> common.v1.Pagination
-	2,  // 7: registry.v1.ListAchievementsDefsResponse.items:type_name -> registry.v1.AchievementDef
-	17, // 8: registry.v1.ListAchievementsDefsResponse.pagination:type_name -> common.v1.Pagination
-	3,  // 9: registry.v1.RegistryService.GetItemDef:input_type -> registry.v1.GetItemDefRequest
-	4,  // 10: registry.v1.RegistryService.CreateItemDef:input_type -> registry.v1.CreateItemDefRequest
-	1,  // 11: registry.v1.RegistryService.UpdateItemDef:input_type -> registry.v1.UpdateItemDefRequest
-	7,  // 12: registry.v1.RegistryService.GetAchievementDef:input_type -> registry.v1.GetAchievementDefRequest
-	8,  // 13: registry.v1.RegistryService.CreateAchievementDef:input_type -> registry.v1.CreateAchievementDefRequest
-	10, // 14: registry.v1.RegistryService.UpdateAchievementDef:input_type -> registry.v1.UpdateAchievementDefRequest
-	12, // 15: registry.v1.RegistryService.ListItemDefs:input_type -> registry.v1.ListItemDefsRequest
-	14, // 16: registry.v1.RegistryService.ListAchievementsDefs:input_type -> registry.v1.ListAchievementsDefsRequest
-	0,  // 17: registry.v1.RegistryService.GetItemDef:output_type -> registry.v1.ItemDef
-	5,  // 18: registry.v1.RegistryService.CreateItemDef:output_type -> registry.v1.CreateItemDefResponse
-	6,  // 19: registry.v1.RegistryService.UpdateItemDef:output_type -> registry.v1.UpdateItemDefResponse
-	2,  // 20: registry.v1.RegistryService.GetAchievementDef:output_type -> registry.v1.AchievementDef
-	9,  // 21: registry.v1.RegistryService.CreateAchievementDef:output_type -> registry.v1.CreateAchievementDefResponse
-	11, // 22: registry.v1.RegistryService.UpdateAchievementDef:output_type -> registry.v1.UpdateAchievementDefResponse
-	13, // 23: registry.v1.RegistryService.ListItemDefs:output_type -> registry.v1.ListItemDefsResponse
-	15, // 24: registry.v1.RegistryService.ListAchievementsDefs:output_type -> registry.v1.ListAchievementsDefsResponse
-	17, // [17:25] is the sub-list for method output_type
-	9,  // [9:17] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	17, // 5: registry.v1.ListItemDefsRequest.tags:type_name -> common.v1.FilterTagList
+	0,  // 6: registry.v1.ListItemDefsResponse.items:type_name -> registry.v1.ItemDef
+	18, // 7: registry.v1.ListItemDefsResponse.pagination:type_name -> common.v1.Pagination
+	2,  // 8: registry.v1.ListAchievementsDefsResponse.items:type_name -> registry.v1.AchievementDef
+	18, // 9: registry.v1.ListAchievementsDefsResponse.pagination:type_name -> common.v1.Pagination
+	3,  // 10: registry.v1.RegistryService.GetItemDef:input_type -> registry.v1.GetItemDefRequest
+	4,  // 11: registry.v1.RegistryService.CreateItemDef:input_type -> registry.v1.CreateItemDefRequest
+	1,  // 12: registry.v1.RegistryService.UpdateItemDef:input_type -> registry.v1.UpdateItemDefRequest
+	7,  // 13: registry.v1.RegistryService.GetAchievementDef:input_type -> registry.v1.GetAchievementDefRequest
+	8,  // 14: registry.v1.RegistryService.CreateAchievementDef:input_type -> registry.v1.CreateAchievementDefRequest
+	10, // 15: registry.v1.RegistryService.UpdateAchievementDef:input_type -> registry.v1.UpdateAchievementDefRequest
+	12, // 16: registry.v1.RegistryService.ListItemDefs:input_type -> registry.v1.ListItemDefsRequest
+	14, // 17: registry.v1.RegistryService.ListAchievementsDefs:input_type -> registry.v1.ListAchievementsDefsRequest
+	0,  // 18: registry.v1.RegistryService.GetItemDef:output_type -> registry.v1.ItemDef
+	5,  // 19: registry.v1.RegistryService.CreateItemDef:output_type -> registry.v1.CreateItemDefResponse
+	6,  // 20: registry.v1.RegistryService.UpdateItemDef:output_type -> registry.v1.UpdateItemDefResponse
+	2,  // 21: registry.v1.RegistryService.GetAchievementDef:output_type -> registry.v1.AchievementDef
+	9,  // 22: registry.v1.RegistryService.CreateAchievementDef:output_type -> registry.v1.CreateAchievementDefResponse
+	11, // 23: registry.v1.RegistryService.UpdateAchievementDef:output_type -> registry.v1.UpdateAchievementDefResponse
+	13, // 24: registry.v1.RegistryService.ListItemDefs:output_type -> registry.v1.ListItemDefsResponse
+	15, // 25: registry.v1.RegistryService.ListAchievementsDefs:output_type -> registry.v1.ListAchievementsDefsResponse
+	18, // [18:26] is the sub-list for method output_type
+	10, // [10:18] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_registry_registry_proto_init() }

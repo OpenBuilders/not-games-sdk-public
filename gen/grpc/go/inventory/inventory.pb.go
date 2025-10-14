@@ -433,6 +433,7 @@ type ListItemsRequest struct {
 	Tradable      *bool                  `protobuf:"varint,13,opt,name=tradable,proto3,oneof" json:"tradable,omitempty"`
 	SortFields    []string               `protobuf:"bytes,14,rep,name=sort_fields,json=sortFields,proto3" json:"sort_fields,omitempty"`
 	Directions    []string               `protobuf:"bytes,15,rep,name=directions,proto3" json:"directions,omitempty"`
+	Tags          *common.FilterTagList  `protobuf:"bytes,16,opt,name=tags,proto3,oneof" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -568,6 +569,13 @@ func (x *ListItemsRequest) GetSortFields() []string {
 func (x *ListItemsRequest) GetDirections() []string {
 	if x != nil {
 		return x.Directions
+	}
+	return nil
+}
+
+func (x *ListItemsRequest) GetTags() *common.FilterTagList {
+	if x != nil {
+		return x.Tags
 	}
 	return nil
 }
@@ -2294,7 +2302,7 @@ var File_inventory_inventory_proto protoreflect.FileDescriptor
 
 const file_inventory_inventory_proto_rawDesc = "" +
 	"\n" +
-	"\x19inventory/inventory.proto\x12\finventory.v1\x1a\x17common/pagination.proto\x1a\x13common/rarity.proto\"\xe7\x05\n" +
+	"\x19inventory/inventory.proto\x12\finventory.v1\x1a\x17common/pagination.proto\x1a\x13common/rarity.proto\x1a\x11common/tags.proto\"\xe7\x05\n" +
 	"\x04Item\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\x12\x1d\n" +
 	"\n" +
@@ -2332,7 +2340,7 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\thold_till\x18\x1a \x01(\x03R\bholdTill\"@\n" +
 	"\x0eGetItemRequest\x12\x17\n" +
 	"\aitem_id\x18\x01 \x01(\tR\x06itemId\x12\x15\n" +
-	"\x06app_id\x18\x02 \x01(\x03R\x05appId\"\xfe\x04\n" +
+	"\x06app_id\x18\x02 \x01(\x03R\x05appId\"\xba\x05\n" +
 	"\x10ListItemsRequest\x12\x1d\n" +
 	"\n" +
 	"account_id\x18\x01 \x01(\x03R\taccountId\x12\x14\n" +
@@ -2355,7 +2363,9 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"sortFields\x12\x1e\n" +
 	"\n" +
 	"directions\x18\x0f \x03(\tR\n" +
-	"directionsB\x0e\n" +
+	"directions\x121\n" +
+	"\x04tags\x18\x10 \x01(\v2\x18.common.v1.FilterTagListH\n" +
+	"R\x04tags\x88\x01\x01B\x0e\n" +
 	"\f_item_def_idB\r\n" +
 	"\v_collectionB\a\n" +
 	"\x05_nameB\t\n" +
@@ -2365,7 +2375,8 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\a_hiddenB\v\n" +
 	"\t_gameOnlyB\x0f\n" +
 	"\r_store_hiddenB\v\n" +
-	"\t_tradable\"\xaa\x01\n" +
+	"\t_tradableB\a\n" +
+	"\x05_tags\"\xaa\x01\n" +
 	"\x19ListItemsByItemDefRequest\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12\x16\n" +
@@ -2593,61 +2604,63 @@ var file_inventory_inventory_proto_goTypes = []any{
 	(*TransferLogResponse)(nil),            // 32: inventory.v1.TransferLogResponse
 	(*TransferLogResponse_Transfer)(nil),   // 33: inventory.v1.TransferLogResponse.Transfer
 	(common.Rarity)(0),                     // 34: common.v1.Rarity
-	(*common.Pagination)(nil),              // 35: common.v1.Pagination
+	(*common.FilterTagList)(nil),           // 35: common.v1.FilterTagList
+	(*common.Pagination)(nil),              // 36: common.v1.Pagination
 }
 var file_inventory_inventory_proto_depIdxs = []int32{
 	34, // 0: inventory.v1.Item.rarity:type_name -> common.v1.Rarity
 	34, // 1: inventory.v1.ListItemsRequest.rarity:type_name -> common.v1.Rarity
-	2,  // 2: inventory.v1.ListItemsResponse.items:type_name -> inventory.v1.Item
-	35, // 3: inventory.v1.ListItemsResponse.pagination:type_name -> common.v1.Pagination
-	2,  // 4: inventory.v1.UnpackResponse.items:type_name -> inventory.v1.Item
-	34, // 5: inventory.v1.GenerateRequest.rarity:type_name -> common.v1.Rarity
-	13, // 6: inventory.v1.GenerateManyRequest.items:type_name -> inventory.v1.GenerateRequest
-	2,  // 7: inventory.v1.GenerateManyResponse.items:type_name -> inventory.v1.Item
-	34, // 8: inventory.v1.UpdateItemRequest.rarity:type_name -> common.v1.Rarity
-	2,  // 9: inventory.v1.StreamItemResponse.item:type_name -> inventory.v1.Item
-	0,  // 10: inventory.v1.StreamItemResponse.type:type_name -> inventory.v1.StreamItemOpType
-	1,  // 11: inventory.v1.AddGroupRequest.type:type_name -> inventory.v1.StreamType
-	1,  // 12: inventory.v1.AckStreamMessagesRequest.type:type_name -> inventory.v1.StreamType
-	33, // 13: inventory.v1.TransferLogResponse.transfers:type_name -> inventory.v1.TransferLogResponse.Transfer
-	35, // 14: inventory.v1.TransferLogResponse.pagination:type_name -> common.v1.Pagination
-	4,  // 15: inventory.v1.InventoryService.ListItems:input_type -> inventory.v1.ListItemsRequest
-	3,  // 16: inventory.v1.InventoryService.GetItem:input_type -> inventory.v1.GetItemRequest
-	7,  // 17: inventory.v1.InventoryService.ConsumeItem:input_type -> inventory.v1.ConsumeItemRequest
-	9,  // 18: inventory.v1.InventoryService.IncrementItemQuantity:input_type -> inventory.v1.IncrementItemQuantityRequest
-	11, // 19: inventory.v1.InventoryService.Unpack:input_type -> inventory.v1.UnpackRequest
-	13, // 20: inventory.v1.InventoryService.Generate:input_type -> inventory.v1.GenerateRequest
-	15, // 21: inventory.v1.InventoryService.GenerateMany:input_type -> inventory.v1.GenerateManyRequest
-	17, // 22: inventory.v1.InventoryService.UpdateItem:input_type -> inventory.v1.UpdateItemRequest
-	19, // 23: inventory.v1.InventoryService.TransferItem:input_type -> inventory.v1.TransferItemRequest
-	21, // 24: inventory.v1.InventoryService.StreamItemTransfer:input_type -> inventory.v1.StreamItemTransfersRequest
-	23, // 25: inventory.v1.InventoryService.StreamItem:input_type -> inventory.v1.StreamItemRequest
-	25, // 26: inventory.v1.InventoryService.AddGroup:input_type -> inventory.v1.AddGroupRequest
-	27, // 27: inventory.v1.InventoryService.StreamAckMessages:input_type -> inventory.v1.StreamItemTransfersAckRequest
-	29, // 28: inventory.v1.InventoryService.AckStreamMessages:input_type -> inventory.v1.AckStreamMessagesRequest
-	5,  // 29: inventory.v1.InventoryService.ListItemsByItemDef:input_type -> inventory.v1.ListItemsByItemDefRequest
-	31, // 30: inventory.v1.InventoryService.TransferLog:input_type -> inventory.v1.TransferLogRequest
-	6,  // 31: inventory.v1.InventoryService.ListItems:output_type -> inventory.v1.ListItemsResponse
-	2,  // 32: inventory.v1.InventoryService.GetItem:output_type -> inventory.v1.Item
-	8,  // 33: inventory.v1.InventoryService.ConsumeItem:output_type -> inventory.v1.ConsumeItemResponse
-	10, // 34: inventory.v1.InventoryService.IncrementItemQuantity:output_type -> inventory.v1.IncrementItemQuantityResponse
-	12, // 35: inventory.v1.InventoryService.Unpack:output_type -> inventory.v1.UnpackResponse
-	14, // 36: inventory.v1.InventoryService.Generate:output_type -> inventory.v1.GenerateResponse
-	16, // 37: inventory.v1.InventoryService.GenerateMany:output_type -> inventory.v1.GenerateManyResponse
-	18, // 38: inventory.v1.InventoryService.UpdateItem:output_type -> inventory.v1.UpdateItemResponse
-	20, // 39: inventory.v1.InventoryService.TransferItem:output_type -> inventory.v1.TransferItemResponse
-	22, // 40: inventory.v1.InventoryService.StreamItemTransfer:output_type -> inventory.v1.StreamItemTransfersResponse
-	24, // 41: inventory.v1.InventoryService.StreamItem:output_type -> inventory.v1.StreamItemResponse
-	26, // 42: inventory.v1.InventoryService.AddGroup:output_type -> inventory.v1.AddGroupResponse
-	28, // 43: inventory.v1.InventoryService.StreamAckMessages:output_type -> inventory.v1.StreamItemTransfersAckResponse
-	30, // 44: inventory.v1.InventoryService.AckStreamMessages:output_type -> inventory.v1.AckStreamMessagesResponse
-	6,  // 45: inventory.v1.InventoryService.ListItemsByItemDef:output_type -> inventory.v1.ListItemsResponse
-	32, // 46: inventory.v1.InventoryService.TransferLog:output_type -> inventory.v1.TransferLogResponse
-	31, // [31:47] is the sub-list for method output_type
-	15, // [15:31] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	35, // 2: inventory.v1.ListItemsRequest.tags:type_name -> common.v1.FilterTagList
+	2,  // 3: inventory.v1.ListItemsResponse.items:type_name -> inventory.v1.Item
+	36, // 4: inventory.v1.ListItemsResponse.pagination:type_name -> common.v1.Pagination
+	2,  // 5: inventory.v1.UnpackResponse.items:type_name -> inventory.v1.Item
+	34, // 6: inventory.v1.GenerateRequest.rarity:type_name -> common.v1.Rarity
+	13, // 7: inventory.v1.GenerateManyRequest.items:type_name -> inventory.v1.GenerateRequest
+	2,  // 8: inventory.v1.GenerateManyResponse.items:type_name -> inventory.v1.Item
+	34, // 9: inventory.v1.UpdateItemRequest.rarity:type_name -> common.v1.Rarity
+	2,  // 10: inventory.v1.StreamItemResponse.item:type_name -> inventory.v1.Item
+	0,  // 11: inventory.v1.StreamItemResponse.type:type_name -> inventory.v1.StreamItemOpType
+	1,  // 12: inventory.v1.AddGroupRequest.type:type_name -> inventory.v1.StreamType
+	1,  // 13: inventory.v1.AckStreamMessagesRequest.type:type_name -> inventory.v1.StreamType
+	33, // 14: inventory.v1.TransferLogResponse.transfers:type_name -> inventory.v1.TransferLogResponse.Transfer
+	36, // 15: inventory.v1.TransferLogResponse.pagination:type_name -> common.v1.Pagination
+	4,  // 16: inventory.v1.InventoryService.ListItems:input_type -> inventory.v1.ListItemsRequest
+	3,  // 17: inventory.v1.InventoryService.GetItem:input_type -> inventory.v1.GetItemRequest
+	7,  // 18: inventory.v1.InventoryService.ConsumeItem:input_type -> inventory.v1.ConsumeItemRequest
+	9,  // 19: inventory.v1.InventoryService.IncrementItemQuantity:input_type -> inventory.v1.IncrementItemQuantityRequest
+	11, // 20: inventory.v1.InventoryService.Unpack:input_type -> inventory.v1.UnpackRequest
+	13, // 21: inventory.v1.InventoryService.Generate:input_type -> inventory.v1.GenerateRequest
+	15, // 22: inventory.v1.InventoryService.GenerateMany:input_type -> inventory.v1.GenerateManyRequest
+	17, // 23: inventory.v1.InventoryService.UpdateItem:input_type -> inventory.v1.UpdateItemRequest
+	19, // 24: inventory.v1.InventoryService.TransferItem:input_type -> inventory.v1.TransferItemRequest
+	21, // 25: inventory.v1.InventoryService.StreamItemTransfer:input_type -> inventory.v1.StreamItemTransfersRequest
+	23, // 26: inventory.v1.InventoryService.StreamItem:input_type -> inventory.v1.StreamItemRequest
+	25, // 27: inventory.v1.InventoryService.AddGroup:input_type -> inventory.v1.AddGroupRequest
+	27, // 28: inventory.v1.InventoryService.StreamAckMessages:input_type -> inventory.v1.StreamItemTransfersAckRequest
+	29, // 29: inventory.v1.InventoryService.AckStreamMessages:input_type -> inventory.v1.AckStreamMessagesRequest
+	5,  // 30: inventory.v1.InventoryService.ListItemsByItemDef:input_type -> inventory.v1.ListItemsByItemDefRequest
+	31, // 31: inventory.v1.InventoryService.TransferLog:input_type -> inventory.v1.TransferLogRequest
+	6,  // 32: inventory.v1.InventoryService.ListItems:output_type -> inventory.v1.ListItemsResponse
+	2,  // 33: inventory.v1.InventoryService.GetItem:output_type -> inventory.v1.Item
+	8,  // 34: inventory.v1.InventoryService.ConsumeItem:output_type -> inventory.v1.ConsumeItemResponse
+	10, // 35: inventory.v1.InventoryService.IncrementItemQuantity:output_type -> inventory.v1.IncrementItemQuantityResponse
+	12, // 36: inventory.v1.InventoryService.Unpack:output_type -> inventory.v1.UnpackResponse
+	14, // 37: inventory.v1.InventoryService.Generate:output_type -> inventory.v1.GenerateResponse
+	16, // 38: inventory.v1.InventoryService.GenerateMany:output_type -> inventory.v1.GenerateManyResponse
+	18, // 39: inventory.v1.InventoryService.UpdateItem:output_type -> inventory.v1.UpdateItemResponse
+	20, // 40: inventory.v1.InventoryService.TransferItem:output_type -> inventory.v1.TransferItemResponse
+	22, // 41: inventory.v1.InventoryService.StreamItemTransfer:output_type -> inventory.v1.StreamItemTransfersResponse
+	24, // 42: inventory.v1.InventoryService.StreamItem:output_type -> inventory.v1.StreamItemResponse
+	26, // 43: inventory.v1.InventoryService.AddGroup:output_type -> inventory.v1.AddGroupResponse
+	28, // 44: inventory.v1.InventoryService.StreamAckMessages:output_type -> inventory.v1.StreamItemTransfersAckResponse
+	30, // 45: inventory.v1.InventoryService.AckStreamMessages:output_type -> inventory.v1.AckStreamMessagesResponse
+	6,  // 46: inventory.v1.InventoryService.ListItemsByItemDef:output_type -> inventory.v1.ListItemsResponse
+	32, // 47: inventory.v1.InventoryService.TransferLog:output_type -> inventory.v1.TransferLogResponse
+	32, // [32:48] is the sub-list for method output_type
+	16, // [16:32] is the sub-list for method input_type
+	16, // [16:16] is the sub-list for extension type_name
+	16, // [16:16] is the sub-list for extension extendee
+	0,  // [0:16] is the sub-list for field type_name
 }
 
 func init() { file_inventory_inventory_proto_init() }
