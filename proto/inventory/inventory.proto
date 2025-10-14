@@ -6,6 +6,7 @@ option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/in
 
 import "common/pagination.proto";
 import "common/rarity.proto";
+import "common/tags.proto";
 
 service InventoryService {
   rpc ListItems(ListItemsRequest) returns (ListItemsResponse) {}
@@ -76,6 +77,7 @@ message ListItemsRequest {
   optional bool tradable = 13;
   repeated string sort_fields = 14;
   repeated string directions = 15;
+  optional common.v1.FilterTagList tags = 16;
 }
 
 message ListItemsByItemDefRequest {

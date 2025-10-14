@@ -12,6 +12,7 @@ import type { PartialMessage } from "@protobuf-ts/runtime";
 import { reflectionMergePartial } from "@protobuf-ts/runtime";
 import { MessageType } from "@protobuf-ts/runtime";
 import { Pagination } from "../common/pagination_pb";
+import { FilterTagList } from "../common/tags_pb";
 import { Rarity } from "../common/rarity_pb";
 /**
  * @generated from protobuf message inventory.v1.Item
@@ -199,6 +200,10 @@ export interface ListItemsRequest {
      * @generated from protobuf field: repeated string directions = 15
      */
     directions: string[];
+    /**
+     * @generated from protobuf field: optional common.v1.FilterTagList tags = 16
+     */
+    tags?: FilterTagList;
 }
 /**
  * @generated from protobuf message inventory.v1.ListItemsByItemDefRequest
@@ -1039,7 +1044,8 @@ class ListItemsRequest$Type extends MessageType<ListItemsRequest> {
             { no: 12, name: "store_hidden", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 13, name: "tradable", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 14, name: "sort_fields", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
-            { no: 15, name: "directions", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ }
+            { no: 15, name: "directions", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
+            { no: 16, name: "tags", kind: "message", T: () => FilterTagList }
         ]);
     }
     create(value?: PartialMessage<ListItemsRequest>): ListItemsRequest {
@@ -1103,6 +1109,9 @@ class ListItemsRequest$Type extends MessageType<ListItemsRequest> {
                 case /* repeated string directions */ 15:
                     message.directions.push(reader.string());
                     break;
+                case /* optional common.v1.FilterTagList tags */ 16:
+                    message.tags = FilterTagList.internalBinaryRead(reader, reader.uint32(), options, message.tags);
+                    break;
                 default:
                     let u = options.readUnknownField;
                     if (u === "throw")
@@ -1160,6 +1169,9 @@ class ListItemsRequest$Type extends MessageType<ListItemsRequest> {
         /* repeated string directions = 15; */
         for (let i = 0; i < message.directions.length; i++)
             writer.tag(15, WireType.LengthDelimited).string(message.directions[i]);
+        /* optional common.v1.FilterTagList tags = 16; */
+        if (message.tags)
+            FilterTagList.internalBinaryWrite(message.tags, writer.tag(16, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
