@@ -96,6 +96,7 @@ message ListItemsResponse {
 message ConsumeItemRequest {
   string item_id = 1;
   int32 quantity = 2;
+  int64 account_id = 3;
 }
 
 message ConsumeItemResponse {
@@ -105,6 +106,7 @@ message ConsumeItemResponse {
 message IncrementItemQuantityRequest {
   string item_id = 1;
   int32 quantity = 2;
+  int64 account_id = 3;
 }
 
 message IncrementItemQuantityResponse {
@@ -169,6 +171,7 @@ message TransferItemRequest {
   string item_id = 1;
   int64 account_to = 2;
   string comment = 3;
+  int64 account_from = 4;
 }
 
 message TransferItemResponse {
