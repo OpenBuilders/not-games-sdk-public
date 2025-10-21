@@ -255,6 +255,10 @@ export interface ConsumeItemRequest {
      * @generated from protobuf field: int32 quantity = 2
      */
     quantity: number;
+    /**
+     * @generated from protobuf field: int64 account_id = 3
+     */
+    accountId: bigint;
 }
 /**
  * @generated from protobuf message inventory.v1.ConsumeItemResponse
@@ -277,6 +281,10 @@ export interface IncrementItemQuantityRequest {
      * @generated from protobuf field: int32 quantity = 2
      */
     quantity: number;
+    /**
+     * @generated from protobuf field: int64 account_id = 3
+     */
+    accountId: bigint;
 }
 /**
  * @generated from protobuf message inventory.v1.IncrementItemQuantityResponse
@@ -463,6 +471,10 @@ export interface TransferItemRequest {
      * @generated from protobuf field: string comment = 3
      */
     comment: string;
+    /**
+     * @generated from protobuf field: int64 account_from = 4
+     */
+    accountFrom: bigint;
 }
 /**
  * @generated from protobuf message inventory.v1.TransferItemResponse
@@ -1320,13 +1332,15 @@ class ConsumeItemRequest$Type extends MessageType<ConsumeItemRequest> {
     constructor() {
         super("inventory.v1.ConsumeItemRequest", [
             { no: 1, name: "item_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 2, name: "quantity", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "quantity", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<ConsumeItemRequest>): ConsumeItemRequest {
         const message = globalThis.Object.create((this.messagePrototype!));
         message.itemId = "";
         message.quantity = 0;
+        message.accountId = 0n;
         if (value !== undefined)
             reflectionMergePartial<ConsumeItemRequest>(this, message, value);
         return message;
@@ -1341,6 +1355,9 @@ class ConsumeItemRequest$Type extends MessageType<ConsumeItemRequest> {
                     break;
                 case /* int32 quantity */ 2:
                     message.quantity = reader.int32();
+                    break;
+                case /* int64 account_id */ 3:
+                    message.accountId = reader.int64().toBigInt();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1360,6 +1377,9 @@ class ConsumeItemRequest$Type extends MessageType<ConsumeItemRequest> {
         /* int32 quantity = 2; */
         if (message.quantity !== 0)
             writer.tag(2, WireType.Varint).int32(message.quantity);
+        /* int64 account_id = 3; */
+        if (message.accountId !== 0n)
+            writer.tag(3, WireType.Varint).int64(message.accountId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1422,13 +1442,15 @@ class IncrementItemQuantityRequest$Type extends MessageType<IncrementItemQuantit
     constructor() {
         super("inventory.v1.IncrementItemQuantityRequest", [
             { no: 1, name: "item_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 2, name: "quantity", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "quantity", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<IncrementItemQuantityRequest>): IncrementItemQuantityRequest {
         const message = globalThis.Object.create((this.messagePrototype!));
         message.itemId = "";
         message.quantity = 0;
+        message.accountId = 0n;
         if (value !== undefined)
             reflectionMergePartial<IncrementItemQuantityRequest>(this, message, value);
         return message;
@@ -1443,6 +1465,9 @@ class IncrementItemQuantityRequest$Type extends MessageType<IncrementItemQuantit
                     break;
                 case /* int32 quantity */ 2:
                     message.quantity = reader.int32();
+                    break;
+                case /* int64 account_id */ 3:
+                    message.accountId = reader.int64().toBigInt();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1462,6 +1487,9 @@ class IncrementItemQuantityRequest$Type extends MessageType<IncrementItemQuantit
         /* int32 quantity = 2; */
         if (message.quantity !== 0)
             writer.tag(2, WireType.Varint).int32(message.quantity);
+        /* int64 account_id = 3; */
+        if (message.accountId !== 0n)
+            writer.tag(3, WireType.Varint).int64(message.accountId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2066,7 +2094,8 @@ class TransferItemRequest$Type extends MessageType<TransferItemRequest> {
         super("inventory.v1.TransferItemRequest", [
             { no: 1, name: "item_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "account_to", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 3, name: "comment", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 3, name: "comment", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "account_from", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<TransferItemRequest>): TransferItemRequest {
@@ -2074,6 +2103,7 @@ class TransferItemRequest$Type extends MessageType<TransferItemRequest> {
         message.itemId = "";
         message.accountTo = 0n;
         message.comment = "";
+        message.accountFrom = 0n;
         if (value !== undefined)
             reflectionMergePartial<TransferItemRequest>(this, message, value);
         return message;
@@ -2091,6 +2121,9 @@ class TransferItemRequest$Type extends MessageType<TransferItemRequest> {
                     break;
                 case /* string comment */ 3:
                     message.comment = reader.string();
+                    break;
+                case /* int64 account_from */ 4:
+                    message.accountFrom = reader.int64().toBigInt();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2113,6 +2146,9 @@ class TransferItemRequest$Type extends MessageType<TransferItemRequest> {
         /* string comment = 3; */
         if (message.comment !== "")
             writer.tag(3, WireType.LengthDelimited).string(message.comment);
+        /* int64 account_from = 4; */
+        if (message.accountFrom !== 0n)
+            writer.tag(4, WireType.Varint).int64(message.accountFrom);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

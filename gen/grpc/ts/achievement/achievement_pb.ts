@@ -85,6 +85,10 @@ export interface ListAchievementsRequest {
      * @generated from protobuf field: int32 offset = 3
      */
     offset: number;
+    /**
+     * @generated from protobuf field: int64 account_id = 4
+     */
+    accountId: bigint;
 }
 /**
  * @generated from protobuf message achievement.v1.ListAchievementsResponse
@@ -120,6 +124,10 @@ export interface CreateAchievementsRequest {
      * @generated from protobuf field: string tags = 2
      */
     tags: string;
+    /**
+     * @generated from protobuf field: int64 account_id = 3
+     */
+    accountId: bigint;
 }
 /**
  * @generated from protobuf message achievement.v1.CreateAchievementsResponse
@@ -279,13 +287,15 @@ class ListAchievementsRequest$Type extends MessageType<ListAchievementsRequest> 
         super("achievement.v1.ListAchievementsRequest", [
             { no: 1, name: "app_id", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 2, name: "limit", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "offset", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 3, name: "offset", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 4, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<ListAchievementsRequest>): ListAchievementsRequest {
         const message = globalThis.Object.create((this.messagePrototype!));
         message.limit = 0;
         message.offset = 0;
+        message.accountId = 0n;
         if (value !== undefined)
             reflectionMergePartial<ListAchievementsRequest>(this, message, value);
         return message;
@@ -303,6 +313,9 @@ class ListAchievementsRequest$Type extends MessageType<ListAchievementsRequest> 
                     break;
                 case /* int32 offset */ 3:
                     message.offset = reader.int32();
+                    break;
+                case /* int64 account_id */ 4:
+                    message.accountId = reader.int64().toBigInt();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -325,6 +338,9 @@ class ListAchievementsRequest$Type extends MessageType<ListAchievementsRequest> 
         /* int32 offset = 3; */
         if (message.offset !== 0)
             writer.tag(3, WireType.Varint).int32(message.offset);
+        /* int64 account_id = 4; */
+        if (message.accountId !== 0n)
+            writer.tag(4, WireType.Varint).int64(message.accountId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -441,13 +457,15 @@ class CreateAchievementsRequest$Type extends MessageType<CreateAchievementsReque
     constructor() {
         super("achievement.v1.CreateAchievementsRequest", [
             { no: 1, name: "achievement_def_ids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
-            { no: 2, name: "tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 2, name: "tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 3, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<CreateAchievementsRequest>): CreateAchievementsRequest {
         const message = globalThis.Object.create((this.messagePrototype!));
         message.achievementDefIds = [];
         message.tags = "";
+        message.accountId = 0n;
         if (value !== undefined)
             reflectionMergePartial<CreateAchievementsRequest>(this, message, value);
         return message;
@@ -462,6 +480,9 @@ class CreateAchievementsRequest$Type extends MessageType<CreateAchievementsReque
                     break;
                 case /* string tags */ 2:
                     message.tags = reader.string();
+                    break;
+                case /* int64 account_id */ 3:
+                    message.accountId = reader.int64().toBigInt();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -481,6 +502,9 @@ class CreateAchievementsRequest$Type extends MessageType<CreateAchievementsReque
         /* string tags = 2; */
         if (message.tags !== "")
             writer.tag(2, WireType.LengthDelimited).string(message.tags);
+        /* int64 account_id = 3; */
+        if (message.accountId !== 0n)
+            writer.tag(3, WireType.Varint).int64(message.accountId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

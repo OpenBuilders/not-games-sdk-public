@@ -62,6 +62,10 @@ export interface CheckEligibilityRequest {
      * @generated from protobuf field: string drop_id = 1
      */
     dropId: string;
+    /**
+     * @generated from protobuf field: int64 account_id = 2
+     */
+    accountId: bigint;
 }
 /**
  * @generated from protobuf message drops.v1.CheckEligibilityResponse
@@ -246,12 +250,14 @@ export const CreateDropResponse = new CreateDropResponse$Type();
 class CheckEligibilityRequest$Type extends MessageType<CheckEligibilityRequest> {
     constructor() {
         super("drops.v1.CheckEligibilityRequest", [
-            { no: 1, name: "drop_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 1, name: "drop_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<CheckEligibilityRequest>): CheckEligibilityRequest {
         const message = globalThis.Object.create((this.messagePrototype!));
         message.dropId = "";
+        message.accountId = 0n;
         if (value !== undefined)
             reflectionMergePartial<CheckEligibilityRequest>(this, message, value);
         return message;
@@ -263,6 +269,9 @@ class CheckEligibilityRequest$Type extends MessageType<CheckEligibilityRequest> 
             switch (fieldNo) {
                 case /* string drop_id */ 1:
                     message.dropId = reader.string();
+                    break;
+                case /* int64 account_id */ 2:
+                    message.accountId = reader.int64().toBigInt();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -279,6 +288,9 @@ class CheckEligibilityRequest$Type extends MessageType<CheckEligibilityRequest> 
         /* string drop_id = 1; */
         if (message.dropId !== "")
             writer.tag(1, WireType.LengthDelimited).string(message.dropId);
+        /* int64 account_id = 2; */
+        if (message.accountId !== 0n)
+            writer.tag(2, WireType.Varint).int64(message.accountId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
