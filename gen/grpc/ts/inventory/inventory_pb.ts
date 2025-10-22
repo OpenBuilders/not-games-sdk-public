@@ -204,6 +204,10 @@ export interface ListItemsRequest {
      * @generated from protobuf field: optional common.v1.FilterTagList tags = 16
      */
     tags?: FilterTagList;
+    /**
+     * @generated from protobuf field: repeated string item_def_ids = 17
+     */
+    itemDefIds: string[];
 }
 /**
  * @generated from protobuf message inventory.v1.ListItemsByItemDefRequest
@@ -1057,7 +1061,8 @@ class ListItemsRequest$Type extends MessageType<ListItemsRequest> {
             { no: 13, name: "tradable", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 14, name: "sort_fields", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 15, name: "directions", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
-            { no: 16, name: "tags", kind: "message", T: () => FilterTagList }
+            { no: 16, name: "tags", kind: "message", T: () => FilterTagList },
+            { no: 17, name: "item_def_ids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<ListItemsRequest>): ListItemsRequest {
@@ -1067,6 +1072,7 @@ class ListItemsRequest$Type extends MessageType<ListItemsRequest> {
         message.offset = 0;
         message.sortFields = [];
         message.directions = [];
+        message.itemDefIds = [];
         if (value !== undefined)
             reflectionMergePartial<ListItemsRequest>(this, message, value);
         return message;
@@ -1123,6 +1129,9 @@ class ListItemsRequest$Type extends MessageType<ListItemsRequest> {
                     break;
                 case /* optional common.v1.FilterTagList tags */ 16:
                     message.tags = FilterTagList.internalBinaryRead(reader, reader.uint32(), options, message.tags);
+                    break;
+                case /* repeated string item_def_ids */ 17:
+                    message.itemDefIds.push(reader.string());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1184,6 +1193,9 @@ class ListItemsRequest$Type extends MessageType<ListItemsRequest> {
         /* optional common.v1.FilterTagList tags = 16; */
         if (message.tags)
             FilterTagList.internalBinaryWrite(message.tags, writer.tag(16, WireType.LengthDelimited).fork(), options).join();
+        /* repeated string item_def_ids = 17; */
+        for (let i = 0; i < message.itemDefIds.length; i++)
+            writer.tag(17, WireType.LengthDelimited).string(message.itemDefIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

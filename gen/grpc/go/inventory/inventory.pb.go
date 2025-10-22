@@ -434,6 +434,7 @@ type ListItemsRequest struct {
 	SortFields    []string               `protobuf:"bytes,14,rep,name=sort_fields,json=sortFields,proto3" json:"sort_fields,omitempty"`
 	Directions    []string               `protobuf:"bytes,15,rep,name=directions,proto3" json:"directions,omitempty"`
 	Tags          *common.FilterTagList  `protobuf:"bytes,16,opt,name=tags,proto3,oneof" json:"tags,omitempty"`
+	ItemDefIds    []string               `protobuf:"bytes,17,rep,name=item_def_ids,json=itemDefIds,proto3" json:"item_def_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -576,6 +577,13 @@ func (x *ListItemsRequest) GetDirections() []string {
 func (x *ListItemsRequest) GetTags() *common.FilterTagList {
 	if x != nil {
 		return x.Tags
+	}
+	return nil
+}
+
+func (x *ListItemsRequest) GetItemDefIds() []string {
+	if x != nil {
+		return x.ItemDefIds
 	}
 	return nil
 }
@@ -2364,7 +2372,7 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\thold_till\x18\x1a \x01(\x03R\bholdTill\"@\n" +
 	"\x0eGetItemRequest\x12\x17\n" +
 	"\aitem_id\x18\x01 \x01(\tR\x06itemId\x12\x15\n" +
-	"\x06app_id\x18\x02 \x01(\x03R\x05appId\"\xba\x05\n" +
+	"\x06app_id\x18\x02 \x01(\x03R\x05appId\"\xdc\x05\n" +
 	"\x10ListItemsRequest\x12\x1d\n" +
 	"\n" +
 	"account_id\x18\x01 \x01(\x03R\taccountId\x12\x14\n" +
@@ -2389,7 +2397,9 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"directions\x18\x0f \x03(\tR\n" +
 	"directions\x121\n" +
 	"\x04tags\x18\x10 \x01(\v2\x18.common.v1.FilterTagListH\n" +
-	"R\x04tags\x88\x01\x01B\x0e\n" +
+	"R\x04tags\x88\x01\x01\x12 \n" +
+	"\fitem_def_ids\x18\x11 \x03(\tR\n" +
+	"itemDefIdsB\x0e\n" +
 	"\f_item_def_idB\r\n" +
 	"\v_collectionB\a\n" +
 	"\x05_nameB\t\n" +
