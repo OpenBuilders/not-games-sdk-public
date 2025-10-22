@@ -712,6 +712,7 @@ type ConsumeItemRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ItemId        string                 `protobuf:"bytes,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
 	Quantity      int32                  `protobuf:"varint,2,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	AccountId     int64                  `protobuf:"varint,3,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -756,6 +757,13 @@ func (x *ConsumeItemRequest) GetItemId() string {
 func (x *ConsumeItemRequest) GetQuantity() int32 {
 	if x != nil {
 		return x.Quantity
+	}
+	return 0
+}
+
+func (x *ConsumeItemRequest) GetAccountId() int64 {
+	if x != nil {
+		return x.AccountId
 	}
 	return 0
 }
@@ -808,6 +816,7 @@ type IncrementItemQuantityRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ItemId        string                 `protobuf:"bytes,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
 	Quantity      int32                  `protobuf:"varint,2,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	AccountId     int64                  `protobuf:"varint,3,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -852,6 +861,13 @@ func (x *IncrementItemQuantityRequest) GetItemId() string {
 func (x *IncrementItemQuantityRequest) GetQuantity() int32 {
 	if x != nil {
 		return x.Quantity
+	}
+	return 0
+}
+
+func (x *IncrementItemQuantityRequest) GetAccountId() int64 {
+	if x != nil {
+		return x.AccountId
 	}
 	return 0
 }
@@ -1433,6 +1449,7 @@ type TransferItemRequest struct {
 	ItemId        string                 `protobuf:"bytes,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
 	AccountTo     int64                  `protobuf:"varint,2,opt,name=account_to,json=accountTo,proto3" json:"account_to,omitempty"`
 	Comment       string                 `protobuf:"bytes,3,opt,name=comment,proto3" json:"comment,omitempty"`
+	AccountFrom   int64                  `protobuf:"varint,4,opt,name=account_from,json=accountFrom,proto3" json:"account_from,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1486,6 +1503,13 @@ func (x *TransferItemRequest) GetComment() string {
 		return x.Comment
 	}
 	return ""
+}
+
+func (x *TransferItemRequest) GetAccountFrom() int64 {
+	if x != nil {
+		return x.AccountFrom
+	}
+	return 0
 }
 
 type TransferItemResponse struct {
@@ -2390,15 +2414,19 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\x05items\x18\x01 \x03(\v2\x12.inventory.v1.ItemR\x05items\x125\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x15.common.v1.PaginationR\n" +
-	"pagination\"I\n" +
+	"pagination\"h\n" +
 	"\x12ConsumeItemRequest\x12\x17\n" +
 	"\aitem_id\x18\x01 \x01(\tR\x06itemId\x12\x1a\n" +
-	"\bquantity\x18\x02 \x01(\x05R\bquantity\"-\n" +
+	"\bquantity\x18\x02 \x01(\x05R\bquantity\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x03 \x01(\x03R\taccountId\"-\n" +
 	"\x13ConsumeItemResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status\"S\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"r\n" +
 	"\x1cIncrementItemQuantityRequest\x12\x17\n" +
 	"\aitem_id\x18\x01 \x01(\tR\x06itemId\x12\x1a\n" +
-	"\bquantity\x18\x02 \x01(\x05R\bquantity\"7\n" +
+	"\bquantity\x18\x02 \x01(\x05R\bquantity\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x03 \x01(\x03R\taccountId\"7\n" +
 	"\x1dIncrementItemQuantityResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"\xb0\x01\n" +
 	"\rUnpackRequest\x12\x17\n" +
@@ -2456,12 +2484,13 @@ const file_inventory_inventory_proto_rawDesc = "" +
 	"\n" +
 	"_hold_till\",\n" +
 	"\x12UpdateItemResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status\"g\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"\x8a\x01\n" +
 	"\x13TransferItemRequest\x12\x17\n" +
 	"\aitem_id\x18\x01 \x01(\tR\x06itemId\x12\x1d\n" +
 	"\n" +
 	"account_to\x18\x02 \x01(\x03R\taccountTo\x12\x18\n" +
-	"\acomment\x18\x03 \x01(\tR\acomment\".\n" +
+	"\acomment\x18\x03 \x01(\tR\acomment\x12!\n" +
+	"\faccount_from\x18\x04 \x01(\x03R\vaccountFrom\".\n" +
 	"\x14TransferItemResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"t\n" +
 	"\x1aStreamItemTransfersRequest\x12\x1a\n" +

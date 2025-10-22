@@ -167,6 +167,7 @@ type ListAchievementsRequest struct {
 	AppId         *int64                 `protobuf:"varint,1,opt,name=app_id,json=appId,proto3,oneof" json:"app_id,omitempty"`
 	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
 	Offset        int32                  `protobuf:"varint,3,opt,name=offset,proto3" json:"offset,omitempty"`
+	AccountId     int64                  `protobuf:"varint,4,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -218,6 +219,13 @@ func (x *ListAchievementsRequest) GetLimit() int32 {
 func (x *ListAchievementsRequest) GetOffset() int32 {
 	if x != nil {
 		return x.Offset
+	}
+	return 0
+}
+
+func (x *ListAchievementsRequest) GetAccountId() int64 {
+	if x != nil {
+		return x.AccountId
 	}
 	return 0
 }
@@ -322,6 +330,7 @@ type CreateAchievementsRequest struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	AchievementDefIds []string               `protobuf:"bytes,1,rep,name=achievement_def_ids,json=achievementDefIds,proto3" json:"achievement_def_ids,omitempty"`
 	Tags              string                 `protobuf:"bytes,2,opt,name=tags,proto3" json:"tags,omitempty"`
+	AccountId         int64                  `protobuf:"varint,3,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -368,6 +377,13 @@ func (x *CreateAchievementsRequest) GetTags() string {
 		return x.Tags
 	}
 	return ""
+}
+
+func (x *CreateAchievementsRequest) GetAccountId() int64 {
+	if x != nil {
+		return x.AccountId
+	}
+	return 0
 }
 
 type CreateAchievementsResponse struct {
@@ -436,11 +452,13 @@ const file_achievement_achievement_proto_rawDesc = "" +
 	"created_at\x18\v \x01(\tR\tcreatedAt\x12\x1d\n" +
 	"\n" +
 	"updated_at\x18\f \x01(\tR\tupdatedAt\x12!\n" +
-	"\fdefault_tags\x18\r \x01(\tR\vdefaultTags\"n\n" +
+	"\fdefault_tags\x18\r \x01(\tR\vdefaultTags\"\x8d\x01\n" +
 	"\x17ListAchievementsRequest\x12\x1a\n" +
 	"\x06app_id\x18\x01 \x01(\x03H\x00R\x05appId\x88\x01\x01\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12\x16\n" +
-	"\x06offset\x18\x03 \x01(\x05R\x06offsetB\t\n" +
+	"\x06offset\x18\x03 \x01(\x05R\x06offset\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x04 \x01(\x03R\taccountIdB\t\n" +
 	"\a_app_id\"\x92\x01\n" +
 	"\x18ListAchievementsResponse\x12?\n" +
 	"\fachievements\x18\x01 \x03(\v2\x1b.achievement.v1.AchievementR\fachievements\x125\n" +
@@ -448,10 +466,12 @@ const file_achievement_achievement_proto_rawDesc = "" +
 	"pagination\x18\x02 \x01(\v2\x15.common.v1.PaginationR\n" +
 	"pagination\">\n" +
 	"\x15GetAchievementRequest\x12%\n" +
-	"\x0eachievement_id\x18\x01 \x01(\tR\rachievementId\"_\n" +
+	"\x0eachievement_id\x18\x01 \x01(\tR\rachievementId\"~\n" +
 	"\x19CreateAchievementsRequest\x12.\n" +
 	"\x13achievement_def_ids\x18\x01 \x03(\tR\x11achievementDefIds\x12\x12\n" +
-	"\x04tags\x18\x02 \x01(\tR\x04tags\"]\n" +
+	"\x04tags\x18\x02 \x01(\tR\x04tags\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x03 \x01(\x03R\taccountId\"]\n" +
 	"\x1aCreateAchievementsResponse\x12?\n" +
 	"\fachievements\x18\x01 \x03(\v2\x1b.achievement.v1.AchievementR\fachievements2\xc4\x02\n" +
 	"\x12AchievementService\x12g\n" +

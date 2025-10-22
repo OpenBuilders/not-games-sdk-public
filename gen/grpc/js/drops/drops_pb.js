@@ -697,7 +697,8 @@ proto.drops.v1.CheckEligibilityRequest.prototype.toObject = function(opt_include
  */
 proto.drops.v1.CheckEligibilityRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-dropId: jspb.Message.getFieldWithDefault(msg, 1, "")
+dropId: jspb.Message.getFieldWithDefault(msg, 1, ""),
+accountId: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -738,6 +739,10 @@ proto.drops.v1.CheckEligibilityRequest.deserializeBinaryFromReader = function(ms
       var value = /** @type {string} */ (reader.readString());
       msg.setDropId(value);
       break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setAccountId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -774,6 +779,13 @@ proto.drops.v1.CheckEligibilityRequest.serializeBinaryToWriter = function(messag
       f
     );
   }
+  f = message.getAccountId();
+  if (f !== 0) {
+    writer.writeInt64(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -792,6 +804,24 @@ proto.drops.v1.CheckEligibilityRequest.prototype.getDropId = function() {
  */
 proto.drops.v1.CheckEligibilityRequest.prototype.setDropId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional int64 account_id = 2;
+ * @return {number}
+ */
+proto.drops.v1.CheckEligibilityRequest.prototype.getAccountId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.drops.v1.CheckEligibilityRequest} returns this
+ */
+proto.drops.v1.CheckEligibilityRequest.prototype.setAccountId = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
