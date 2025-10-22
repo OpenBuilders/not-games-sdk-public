@@ -1779,7 +1779,7 @@ proto.inventory.v1.GetItemRequest.prototype.setAppId = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.inventory.v1.ListItemsRequest.repeatedFields_ = [14,15];
+proto.inventory.v1.ListItemsRequest.repeatedFields_ = [14,15,17];
 
 
 
@@ -1827,7 +1827,8 @@ storeHidden: (f = jspb.Message.getBooleanField(msg, 12)) == null ? undefined : f
 tradable: (f = jspb.Message.getBooleanField(msg, 13)) == null ? undefined : f,
 sortFieldsList: (f = jspb.Message.getRepeatedField(msg, 14)) == null ? undefined : f,
 directionsList: (f = jspb.Message.getRepeatedField(msg, 15)) == null ? undefined : f,
-tags: (f = msg.getTags()) && common_tags_pb.FilterTagList.toObject(includeInstance, f)
+tags: (f = msg.getTags()) && common_tags_pb.FilterTagList.toObject(includeInstance, f),
+itemDefIdsList: (f = jspb.Message.getRepeatedField(msg, 17)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1928,6 +1929,10 @@ proto.inventory.v1.ListItemsRequest.deserializeBinaryFromReader = function(msg, 
       var value = new common_tags_pb.FilterTagList;
       reader.readMessage(value,common_tags_pb.FilterTagList.deserializeBinaryFromReader);
       msg.setTags(value);
+      break;
+    case 17:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addItemDefIds(value);
       break;
     default:
       reader.skipField();
@@ -2069,6 +2074,13 @@ proto.inventory.v1.ListItemsRequest.serializeBinaryToWriter = function(message, 
       16,
       f,
       common_tags_pb.FilterTagList.serializeBinaryToWriter
+    );
+  }
+  f = message.getItemDefIdsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      17,
+      f
     );
   }
 };
@@ -2596,6 +2608,43 @@ proto.inventory.v1.ListItemsRequest.prototype.clearTags = function() {
  */
 proto.inventory.v1.ListItemsRequest.prototype.hasTags = function() {
   return jspb.Message.getField(this, 16) != null;
+};
+
+
+/**
+ * repeated string item_def_ids = 17;
+ * @return {!Array<string>}
+ */
+proto.inventory.v1.ListItemsRequest.prototype.getItemDefIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 17));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.inventory.v1.ListItemsRequest} returns this
+ */
+proto.inventory.v1.ListItemsRequest.prototype.setItemDefIdsList = function(value) {
+  return jspb.Message.setField(this, 17, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.inventory.v1.ListItemsRequest} returns this
+ */
+proto.inventory.v1.ListItemsRequest.prototype.addItemDefIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 17, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.inventory.v1.ListItemsRequest} returns this
+ */
+proto.inventory.v1.ListItemsRequest.prototype.clearItemDefIdsList = function() {
+  return this.setItemDefIdsList([]);
 };
 
 
@@ -3138,7 +3187,8 @@ proto.inventory.v1.ConsumeItemRequest.prototype.toObject = function(opt_includeI
 proto.inventory.v1.ConsumeItemRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
 itemId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-quantity: jspb.Message.getFieldWithDefault(msg, 2, 0)
+quantity: jspb.Message.getFieldWithDefault(msg, 2, 0),
+accountId: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -3183,6 +3233,10 @@ proto.inventory.v1.ConsumeItemRequest.deserializeBinaryFromReader = function(msg
       var value = /** @type {number} */ (reader.readInt32());
       msg.setQuantity(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setAccountId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3226,6 +3280,13 @@ proto.inventory.v1.ConsumeItemRequest.serializeBinaryToWriter = function(message
       f
     );
   }
+  f = message.getAccountId();
+  if (f !== 0) {
+    writer.writeInt64(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -3262,6 +3323,24 @@ proto.inventory.v1.ConsumeItemRequest.prototype.getQuantity = function() {
  */
 proto.inventory.v1.ConsumeItemRequest.prototype.setQuantity = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional int64 account_id = 3;
+ * @return {number}
+ */
+proto.inventory.v1.ConsumeItemRequest.prototype.getAccountId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.inventory.v1.ConsumeItemRequest} returns this
+ */
+proto.inventory.v1.ConsumeItemRequest.prototype.setAccountId = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
@@ -3428,7 +3507,8 @@ proto.inventory.v1.IncrementItemQuantityRequest.prototype.toObject = function(op
 proto.inventory.v1.IncrementItemQuantityRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
 itemId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-quantity: jspb.Message.getFieldWithDefault(msg, 2, 0)
+quantity: jspb.Message.getFieldWithDefault(msg, 2, 0),
+accountId: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -3473,6 +3553,10 @@ proto.inventory.v1.IncrementItemQuantityRequest.deserializeBinaryFromReader = fu
       var value = /** @type {number} */ (reader.readInt32());
       msg.setQuantity(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setAccountId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3516,6 +3600,13 @@ proto.inventory.v1.IncrementItemQuantityRequest.serializeBinaryToWriter = functi
       f
     );
   }
+  f = message.getAccountId();
+  if (f !== 0) {
+    writer.writeInt64(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -3552,6 +3643,24 @@ proto.inventory.v1.IncrementItemQuantityRequest.prototype.getQuantity = function
  */
 proto.inventory.v1.IncrementItemQuantityRequest.prototype.setQuantity = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional int64 account_id = 3;
+ * @return {number}
+ */
+proto.inventory.v1.IncrementItemQuantityRequest.prototype.getAccountId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.inventory.v1.IncrementItemQuantityRequest} returns this
+ */
+proto.inventory.v1.IncrementItemQuantityRequest.prototype.setAccountId = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
@@ -5726,7 +5835,8 @@ proto.inventory.v1.TransferItemRequest.toObject = function(includeInstance, msg)
   var f, obj = {
 itemId: jspb.Message.getFieldWithDefault(msg, 1, ""),
 accountTo: jspb.Message.getFieldWithDefault(msg, 2, 0),
-comment: jspb.Message.getFieldWithDefault(msg, 3, "")
+comment: jspb.Message.getFieldWithDefault(msg, 3, ""),
+accountFrom: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -5775,6 +5885,10 @@ proto.inventory.v1.TransferItemRequest.deserializeBinaryFromReader = function(ms
       var value = /** @type {string} */ (reader.readString());
       msg.setComment(value);
       break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setAccountFrom(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -5822,6 +5936,13 @@ proto.inventory.v1.TransferItemRequest.serializeBinaryToWriter = function(messag
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getAccountFrom();
+  if (f !== 0) {
+    writer.writeInt64(
+      4,
       f
     );
   }
@@ -5879,6 +6000,24 @@ proto.inventory.v1.TransferItemRequest.prototype.getComment = function() {
  */
 proto.inventory.v1.TransferItemRequest.prototype.setComment = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional int64 account_from = 4;
+ * @return {number}
+ */
+proto.inventory.v1.TransferItemRequest.prototype.getAccountFrom = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.inventory.v1.TransferItemRequest} returns this
+ */
+proto.inventory.v1.TransferItemRequest.prototype.setAccountFrom = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 

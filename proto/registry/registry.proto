@@ -132,6 +132,7 @@ message ListItemDefsRequest {
   repeated string sort_fields = 13;
   repeated string directions = 14;
   optional common.v1.FilterTagList tags = 15;
+  repeated string item_def_ids = 16;
 }
 
 message ListItemDefsResponse {
