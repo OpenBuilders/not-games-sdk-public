@@ -3820,7 +3820,7 @@ proto.registry.v1.UpdateAchievementDefResponse.prototype.setStatus = function(va
  * @private {!Array<number>}
  * @const
  */
-proto.registry.v1.ListItemDefsRequest.repeatedFields_ = [13,14];
+proto.registry.v1.ListItemDefsRequest.repeatedFields_ = [13,14,16];
 
 
 
@@ -3867,7 +3867,8 @@ tradable: (f = jspb.Message.getField(msg, 11)) == null ? undefined : f,
 supply: (f = jspb.Message.getField(msg, 12)) == null ? undefined : f,
 sortFieldsList: (f = jspb.Message.getRepeatedField(msg, 13)) == null ? undefined : f,
 directionsList: (f = jspb.Message.getRepeatedField(msg, 14)) == null ? undefined : f,
-tags: (f = msg.getTags()) && common_tags_pb.FilterTagList.toObject(includeInstance, f)
+tags: (f = msg.getTags()) && common_tags_pb.FilterTagList.toObject(includeInstance, f),
+itemDefIdsList: (f = jspb.Message.getRepeatedField(msg, 16)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -3964,6 +3965,10 @@ proto.registry.v1.ListItemDefsRequest.deserializeBinaryFromReader = function(msg
       var value = new common_tags_pb.FilterTagList;
       reader.readMessage(value,common_tags_pb.FilterTagList.deserializeBinaryFromReader);
       msg.setTags(value);
+      break;
+    case 16:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addItemDefIds(value);
       break;
     default:
       reader.skipField();
@@ -4098,6 +4103,13 @@ proto.registry.v1.ListItemDefsRequest.serializeBinaryToWriter = function(message
       15,
       f,
       common_tags_pb.FilterTagList.serializeBinaryToWriter
+    );
+  }
+  f = message.getItemDefIdsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      16,
+      f
     );
   }
 };
@@ -4607,6 +4619,43 @@ proto.registry.v1.ListItemDefsRequest.prototype.clearTags = function() {
  */
 proto.registry.v1.ListItemDefsRequest.prototype.hasTags = function() {
   return jspb.Message.getField(this, 15) != null;
+};
+
+
+/**
+ * repeated string item_def_ids = 16;
+ * @return {!Array<string>}
+ */
+proto.registry.v1.ListItemDefsRequest.prototype.getItemDefIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 16));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.registry.v1.ListItemDefsRequest} returns this
+ */
+proto.registry.v1.ListItemDefsRequest.prototype.setItemDefIdsList = function(value) {
+  return jspb.Message.setField(this, 16, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.registry.v1.ListItemDefsRequest} returns this
+ */
+proto.registry.v1.ListItemDefsRequest.prototype.addItemDefIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 16, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.registry.v1.ListItemDefsRequest} returns this
+ */
+proto.registry.v1.ListItemDefsRequest.prototype.clearItemDefIdsList = function() {
+  return this.setItemDefIdsList([]);
 };
 
 

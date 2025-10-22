@@ -959,6 +959,7 @@ type ListItemDefsRequest struct {
 	SortFields    []string               `protobuf:"bytes,13,rep,name=sort_fields,json=sortFields,proto3" json:"sort_fields,omitempty"`
 	Directions    []string               `protobuf:"bytes,14,rep,name=directions,proto3" json:"directions,omitempty"`
 	Tags          *common.FilterTagList  `protobuf:"bytes,15,opt,name=tags,proto3,oneof" json:"tags,omitempty"`
+	ItemDefIds    []string               `protobuf:"bytes,16,rep,name=item_def_ids,json=itemDefIds,proto3" json:"item_def_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1094,6 +1095,13 @@ func (x *ListItemDefsRequest) GetDirections() []string {
 func (x *ListItemDefsRequest) GetTags() *common.FilterTagList {
 	if x != nil {
 		return x.Tags
+	}
+	return nil
+}
+
+func (x *ListItemDefsRequest) GetItemDefIds() []string {
+	if x != nil {
+		return x.ItemDefIds
 	}
 	return nil
 }
@@ -1367,7 +1375,7 @@ const file_registry_registry_proto_rawDesc = "" +
 	"\x1bUpdateAchievementDefRequest\x12D\n" +
 	"\x0fachievement_def\x18\x01 \x01(\v2\x1b.registry.v1.AchievementDefR\x0eachievementDef\"6\n" +
 	"\x1cUpdateAchievementDefResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status\"\x93\x05\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"\xb5\x05\n" +
 	"\x13ListItemDefsRequest\x12\x14\n" +
 	"\x05limit\x18\x01 \x01(\x05R\x05limit\x12\x16\n" +
 	"\x06offset\x18\x02 \x01(\x05R\x06offset\x12#\n" +
@@ -1390,7 +1398,9 @@ const file_registry_registry_proto_rawDesc = "" +
 	"directions\x18\x0e \x03(\tR\n" +
 	"directions\x121\n" +
 	"\x04tags\x18\x0f \x01(\v2\x18.common.v1.FilterTagListH\n" +
-	"R\x04tags\x88\x01\x01B\r\n" +
+	"R\x04tags\x88\x01\x01\x12 \n" +
+	"\fitem_def_ids\x18\x10 \x03(\tR\n" +
+	"itemDefIdsB\r\n" +
 	"\v_collectionB\a\n" +
 	"\x05_nameB\t\n" +
 	"\a_rarityB\a\n" +
