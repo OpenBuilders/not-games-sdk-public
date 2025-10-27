@@ -679,7 +679,8 @@ proto.achievement.v1.ListAchievementsRequest.toObject = function(includeInstance
   var f, obj = {
 appId: (f = jspb.Message.getField(msg, 1)) == null ? undefined : f,
 limit: jspb.Message.getFieldWithDefault(msg, 2, 0),
-offset: jspb.Message.getFieldWithDefault(msg, 3, 0)
+offset: jspb.Message.getFieldWithDefault(msg, 3, 0),
+accountId: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -728,6 +729,10 @@ proto.achievement.v1.ListAchievementsRequest.deserializeBinaryFromReader = funct
       var value = /** @type {number} */ (reader.readInt32());
       msg.setOffset(value);
       break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setAccountId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -775,6 +780,13 @@ proto.achievement.v1.ListAchievementsRequest.serializeBinaryToWriter = function(
   if (f !== 0) {
     writer.writeInt32(
       3,
+      f
+    );
+  }
+  f = message.getAccountId();
+  if (f !== 0) {
+    writer.writeInt64(
+      4,
       f
     );
   }
@@ -850,6 +862,24 @@ proto.achievement.v1.ListAchievementsRequest.prototype.getOffset = function() {
  */
 proto.achievement.v1.ListAchievementsRequest.prototype.setOffset = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional int64 account_id = 4;
+ * @return {number}
+ */
+proto.achievement.v1.ListAchievementsRequest.prototype.getAccountId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.achievement.v1.ListAchievementsRequest} returns this
+ */
+proto.achievement.v1.ListAchievementsRequest.prototype.setAccountId = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 
@@ -1234,7 +1264,8 @@ proto.achievement.v1.CreateAchievementsRequest.prototype.toObject = function(opt
 proto.achievement.v1.CreateAchievementsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
 achievementDefIdsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
-tags: jspb.Message.getFieldWithDefault(msg, 2, "")
+tags: jspb.Message.getFieldWithDefault(msg, 2, ""),
+accountId: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -1279,6 +1310,10 @@ proto.achievement.v1.CreateAchievementsRequest.deserializeBinaryFromReader = fun
       var value = /** @type {string} */ (reader.readString());
       msg.setTags(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setAccountId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1319,6 +1354,13 @@ proto.achievement.v1.CreateAchievementsRequest.serializeBinaryToWriter = functio
   if (f.length > 0) {
     writer.writeString(
       2,
+      f
+    );
+  }
+  f = message.getAccountId();
+  if (f !== 0) {
+    writer.writeInt64(
+      3,
       f
     );
   }
@@ -1377,6 +1419,24 @@ proto.achievement.v1.CreateAchievementsRequest.prototype.getTags = function() {
  */
 proto.achievement.v1.CreateAchievementsRequest.prototype.setTags = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional int64 account_id = 3;
+ * @return {number}
+ */
+proto.achievement.v1.CreateAchievementsRequest.prototype.getAccountId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.achievement.v1.CreateAchievementsRequest} returns this
+ */
+proto.achievement.v1.CreateAchievementsRequest.prototype.setAccountId = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 

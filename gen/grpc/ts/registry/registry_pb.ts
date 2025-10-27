@@ -382,6 +382,10 @@ export interface ListItemDefsRequest {
      * @generated from protobuf field: optional common.v1.FilterTagList tags = 15
      */
     tags?: FilterTagList;
+    /**
+     * @generated from protobuf field: repeated string item_def_ids = 16
+     */
+    itemDefIds: string[];
 }
 /**
  * @generated from protobuf message registry.v1.ListItemDefsResponse
@@ -1374,7 +1378,8 @@ class ListItemDefsRequest$Type extends MessageType<ListItemDefsRequest> {
             { no: 12, name: "supply", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 13, name: "sort_fields", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 14, name: "directions", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
-            { no: 15, name: "tags", kind: "message", T: () => FilterTagList }
+            { no: 15, name: "tags", kind: "message", T: () => FilterTagList },
+            { no: 16, name: "item_def_ids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<ListItemDefsRequest>): ListItemDefsRequest {
@@ -1383,6 +1388,7 @@ class ListItemDefsRequest$Type extends MessageType<ListItemDefsRequest> {
         message.offset = 0;
         message.sortFields = [];
         message.directions = [];
+        message.itemDefIds = [];
         if (value !== undefined)
             reflectionMergePartial<ListItemDefsRequest>(this, message, value);
         return message;
@@ -1436,6 +1442,9 @@ class ListItemDefsRequest$Type extends MessageType<ListItemDefsRequest> {
                     break;
                 case /* optional common.v1.FilterTagList tags */ 15:
                     message.tags = FilterTagList.internalBinaryRead(reader, reader.uint32(), options, message.tags);
+                    break;
+                case /* repeated string item_def_ids */ 16:
+                    message.itemDefIds.push(reader.string());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1494,6 +1503,9 @@ class ListItemDefsRequest$Type extends MessageType<ListItemDefsRequest> {
         /* optional common.v1.FilterTagList tags = 15; */
         if (message.tags)
             FilterTagList.internalBinaryWrite(message.tags, writer.tag(15, WireType.LengthDelimited).fork(), options).join();
+        /* repeated string item_def_ids = 16; */
+        for (let i = 0; i < message.itemDefIds.length; i++)
+            writer.tag(16, WireType.LengthDelimited).string(message.itemDefIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

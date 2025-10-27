@@ -161,6 +161,7 @@ func (x *CreateDropResponse) GetDropId() string {
 type CheckEligibilityRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	DropId        string                 `protobuf:"bytes,1,opt,name=drop_id,json=dropId,proto3" json:"drop_id,omitempty"`
+	AccountId     int64                  `protobuf:"varint,2,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -200,6 +201,13 @@ func (x *CheckEligibilityRequest) GetDropId() string {
 		return x.DropId
 	}
 	return ""
+}
+
+func (x *CheckEligibilityRequest) GetAccountId() int64 {
+	if x != nil {
+		return x.AccountId
+	}
+	return 0
 }
 
 type CheckEligibilityResponse struct {
@@ -359,9 +367,11 @@ const file_drops_drops_proto_rawDesc = "" +
 	"finishedAt\x12,\n" +
 	"\x12whitelist_user_ids\x18\a \x03(\x03R\x10whitelistUserIds\"-\n" +
 	"\x12CreateDropResponse\x12\x17\n" +
-	"\adrop_id\x18\x01 \x01(\tR\x06dropId\"2\n" +
+	"\adrop_id\x18\x01 \x01(\tR\x06dropId\"Q\n" +
 	"\x17CheckEligibilityRequest\x12\x17\n" +
-	"\adrop_id\x18\x01 \x01(\tR\x06dropId\"2\n" +
+	"\adrop_id\x18\x01 \x01(\tR\x06dropId\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x02 \x01(\x03R\taccountId\"2\n" +
 	"\x18CheckEligibilityResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"N\n" +
 	"\x18WhitelistDropUserRequest\x12\x17\n" +
