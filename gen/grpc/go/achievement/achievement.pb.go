@@ -331,6 +331,8 @@ type CreateAchievementsRequest struct {
 	AchievementDefIds []string               `protobuf:"bytes,1,rep,name=achievement_def_ids,json=achievementDefIds,proto3" json:"achievement_def_ids,omitempty"`
 	Tags              string                 `protobuf:"bytes,2,opt,name=tags,proto3" json:"tags,omitempty"`
 	AccountId         int64                  `protobuf:"varint,3,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
+	AchievementId     *string                `protobuf:"bytes,4,opt,name=achievement_id,json=achievementId,proto3,oneof" json:"achievement_id,omitempty"`
+	IconUrl           *string                `protobuf:"bytes,5,opt,name=icon_url,json=iconUrl,proto3,oneof" json:"icon_url,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -384,6 +386,20 @@ func (x *CreateAchievementsRequest) GetAccountId() int64 {
 		return x.AccountId
 	}
 	return 0
+}
+
+func (x *CreateAchievementsRequest) GetAchievementId() string {
+	if x != nil && x.AchievementId != nil {
+		return *x.AchievementId
+	}
+	return ""
+}
+
+func (x *CreateAchievementsRequest) GetIconUrl() string {
+	if x != nil && x.IconUrl != nil {
+		return *x.IconUrl
+	}
+	return ""
 }
 
 type CreateAchievementsResponse struct {
@@ -466,12 +482,16 @@ const file_achievement_achievement_proto_rawDesc = "" +
 	"pagination\x18\x02 \x01(\v2\x15.common.v1.PaginationR\n" +
 	"pagination\">\n" +
 	"\x15GetAchievementRequest\x12%\n" +
-	"\x0eachievement_id\x18\x01 \x01(\tR\rachievementId\"~\n" +
+	"\x0eachievement_id\x18\x01 \x01(\tR\rachievementId\"\xea\x01\n" +
 	"\x19CreateAchievementsRequest\x12.\n" +
 	"\x13achievement_def_ids\x18\x01 \x03(\tR\x11achievementDefIds\x12\x12\n" +
 	"\x04tags\x18\x02 \x01(\tR\x04tags\x12\x1d\n" +
 	"\n" +
-	"account_id\x18\x03 \x01(\x03R\taccountId\"]\n" +
+	"account_id\x18\x03 \x01(\x03R\taccountId\x12*\n" +
+	"\x0eachievement_id\x18\x04 \x01(\tH\x00R\rachievementId\x88\x01\x01\x12\x1e\n" +
+	"\bicon_url\x18\x05 \x01(\tH\x01R\aiconUrl\x88\x01\x01B\x11\n" +
+	"\x0f_achievement_idB\v\n" +
+	"\t_icon_url\"]\n" +
 	"\x1aCreateAchievementsResponse\x12?\n" +
 	"\fachievements\x18\x01 \x03(\v2\x1b.achievement.v1.AchievementR\fachievements2\xc4\x02\n" +
 	"\x12AchievementService\x12g\n" +
@@ -524,6 +544,7 @@ func file_achievement_achievement_proto_init() {
 		return
 	}
 	file_achievement_achievement_proto_msgTypes[1].OneofWrappers = []any{}
+	file_achievement_achievement_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
