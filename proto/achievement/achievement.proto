@@ -48,6 +48,8 @@ message CreateAchievementsRequest {
     repeated string achievement_def_ids = 1;
     string tags = 2;
     int64 account_id = 3;
+    optional string achievement_id = 4;
+    optional string icon_url = 5;
 }
 
 message CreateAchievementsResponse {
