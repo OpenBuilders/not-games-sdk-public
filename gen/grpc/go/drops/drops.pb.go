@@ -213,6 +213,12 @@ func (x *CheckEligibilityRequest) GetAccountId() int64 {
 type CheckEligibilityResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	DropId        string                 `protobuf:"bytes,2,opt,name=drop_id,json=dropId,proto3" json:"drop_id,omitempty"`
+	AppId         int64                  `protobuf:"varint,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
+	ItemDefIds    string                 `protobuf:"bytes,5,opt,name=item_def_ids,json=itemDefIds,proto3" json:"item_def_ids,omitempty"`
+	AvailableAt   *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=available_at,json=availableAt,proto3" json:"available_at,omitempty"`
+	FinishedAt    *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=finished_at,json=finishedAt,proto3" json:"finished_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -252,6 +258,48 @@ func (x *CheckEligibilityResponse) GetStatus() string {
 		return x.Status
 	}
 	return ""
+}
+
+func (x *CheckEligibilityResponse) GetDropId() string {
+	if x != nil {
+		return x.DropId
+	}
+	return ""
+}
+
+func (x *CheckEligibilityResponse) GetAppId() int64 {
+	if x != nil {
+		return x.AppId
+	}
+	return 0
+}
+
+func (x *CheckEligibilityResponse) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *CheckEligibilityResponse) GetItemDefIds() string {
+	if x != nil {
+		return x.ItemDefIds
+	}
+	return ""
+}
+
+func (x *CheckEligibilityResponse) GetAvailableAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.AvailableAt
+	}
+	return nil
+}
+
+func (x *CheckEligibilityResponse) GetFinishedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.FinishedAt
+	}
+	return nil
 }
 
 type WhitelistDropUserRequest struct {
@@ -371,9 +419,17 @@ const file_drops_drops_proto_rawDesc = "" +
 	"\x17CheckEligibilityRequest\x12\x17\n" +
 	"\adrop_id\x18\x01 \x01(\tR\x06dropId\x12\x1d\n" +
 	"\n" +
-	"account_id\x18\x02 \x01(\x03R\taccountId\"2\n" +
+	"account_id\x18\x02 \x01(\x03R\taccountId\"\xa2\x02\n" +
 	"\x18CheckEligibilityResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status\"N\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\x12\x17\n" +
+	"\adrop_id\x18\x02 \x01(\tR\x06dropId\x12\x15\n" +
+	"\x06app_id\x18\x03 \x01(\x03R\x05appId\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12 \n" +
+	"\fitem_def_ids\x18\x05 \x01(\tR\n" +
+	"itemDefIds\x12=\n" +
+	"\favailable_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\vavailableAt\x12;\n" +
+	"\vfinished_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\n" +
+	"finishedAt\"N\n" +
 	"\x18WhitelistDropUserRequest\x12\x17\n" +
 	"\adrop_id\x18\x01 \x01(\tR\x06dropId\x12\x19\n" +
 	"\buser_ids\x18\x02 \x03(\x03R\auserIds\"3\n" +
@@ -410,17 +466,19 @@ var file_drops_drops_proto_goTypes = []any{
 var file_drops_drops_proto_depIdxs = []int32{
 	6, // 0: drops.v1.CreateDropRequest.available_at:type_name -> google.protobuf.Timestamp
 	6, // 1: drops.v1.CreateDropRequest.finished_at:type_name -> google.protobuf.Timestamp
-	0, // 2: drops.v1.DropsService.CreateDrop:input_type -> drops.v1.CreateDropRequest
-	2, // 3: drops.v1.DropsService.CheckEligibility:input_type -> drops.v1.CheckEligibilityRequest
-	4, // 4: drops.v1.DropsService.WhitelistDropUser:input_type -> drops.v1.WhitelistDropUserRequest
-	1, // 5: drops.v1.DropsService.CreateDrop:output_type -> drops.v1.CreateDropResponse
-	3, // 6: drops.v1.DropsService.CheckEligibility:output_type -> drops.v1.CheckEligibilityResponse
-	5, // 7: drops.v1.DropsService.WhitelistDropUser:output_type -> drops.v1.WhitelistDropUserResponse
-	5, // [5:8] is the sub-list for method output_type
-	2, // [2:5] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	6, // 2: drops.v1.CheckEligibilityResponse.available_at:type_name -> google.protobuf.Timestamp
+	6, // 3: drops.v1.CheckEligibilityResponse.finished_at:type_name -> google.protobuf.Timestamp
+	0, // 4: drops.v1.DropsService.CreateDrop:input_type -> drops.v1.CreateDropRequest
+	2, // 5: drops.v1.DropsService.CheckEligibility:input_type -> drops.v1.CheckEligibilityRequest
+	4, // 6: drops.v1.DropsService.WhitelistDropUser:input_type -> drops.v1.WhitelistDropUserRequest
+	1, // 7: drops.v1.DropsService.CreateDrop:output_type -> drops.v1.CreateDropResponse
+	3, // 8: drops.v1.DropsService.CheckEligibility:output_type -> drops.v1.CheckEligibilityResponse
+	5, // 9: drops.v1.DropsService.WhitelistDropUser:output_type -> drops.v1.WhitelistDropUserResponse
+	7, // [7:10] is the sub-list for method output_type
+	4, // [4:7] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_drops_drops_proto_init() }
