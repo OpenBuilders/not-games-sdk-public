@@ -1265,7 +1265,9 @@ proto.achievement.v1.CreateAchievementsRequest.toObject = function(includeInstan
   var f, obj = {
 achievementDefIdsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
 tags: jspb.Message.getFieldWithDefault(msg, 2, ""),
-accountId: jspb.Message.getFieldWithDefault(msg, 3, 0)
+accountId: jspb.Message.getFieldWithDefault(msg, 3, 0),
+achievementId: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f,
+iconUrl: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1314,6 +1316,14 @@ proto.achievement.v1.CreateAchievementsRequest.deserializeBinaryFromReader = fun
       var value = /** @type {number} */ (reader.readInt64());
       msg.setAccountId(value);
       break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAchievementId(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIconUrl(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1361,6 +1371,20 @@ proto.achievement.v1.CreateAchievementsRequest.serializeBinaryToWriter = functio
   if (f !== 0) {
     writer.writeInt64(
       3,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -1437,6 +1461,78 @@ proto.achievement.v1.CreateAchievementsRequest.prototype.getAccountId = function
  */
 proto.achievement.v1.CreateAchievementsRequest.prototype.setAccountId = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional string achievement_id = 4;
+ * @return {string}
+ */
+proto.achievement.v1.CreateAchievementsRequest.prototype.getAchievementId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.achievement.v1.CreateAchievementsRequest} returns this
+ */
+proto.achievement.v1.CreateAchievementsRequest.prototype.setAchievementId = function(value) {
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.achievement.v1.CreateAchievementsRequest} returns this
+ */
+proto.achievement.v1.CreateAchievementsRequest.prototype.clearAchievementId = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.achievement.v1.CreateAchievementsRequest.prototype.hasAchievementId = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional string icon_url = 5;
+ * @return {string}
+ */
+proto.achievement.v1.CreateAchievementsRequest.prototype.getIconUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.achievement.v1.CreateAchievementsRequest} returns this
+ */
+proto.achievement.v1.CreateAchievementsRequest.prototype.setIconUrl = function(value) {
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.achievement.v1.CreateAchievementsRequest} returns this
+ */
+proto.achievement.v1.CreateAchievementsRequest.prototype.clearIconUrl = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.achievement.v1.CreateAchievementsRequest.prototype.hasIconUrl = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 

@@ -128,6 +128,14 @@ export interface CreateAchievementsRequest {
      * @generated from protobuf field: int64 account_id = 3
      */
     accountId: bigint;
+    /**
+     * @generated from protobuf field: optional string achievement_id = 4
+     */
+    achievementId?: string;
+    /**
+     * @generated from protobuf field: optional string icon_url = 5
+     */
+    iconUrl?: string;
 }
 /**
  * @generated from protobuf message achievement.v1.CreateAchievementsResponse
@@ -458,7 +466,9 @@ class CreateAchievementsRequest$Type extends MessageType<CreateAchievementsReque
         super("achievement.v1.CreateAchievementsRequest", [
             { no: 1, name: "achievement_def_ids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "tags", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 3, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 3, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 4, name: "achievement_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "icon_url", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<CreateAchievementsRequest>): CreateAchievementsRequest {
@@ -484,6 +494,12 @@ class CreateAchievementsRequest$Type extends MessageType<CreateAchievementsReque
                 case /* int64 account_id */ 3:
                     message.accountId = reader.int64().toBigInt();
                     break;
+                case /* optional string achievement_id */ 4:
+                    message.achievementId = reader.string();
+                    break;
+                case /* optional string icon_url */ 5:
+                    message.iconUrl = reader.string();
+                    break;
                 default:
                     let u = options.readUnknownField;
                     if (u === "throw")
@@ -505,6 +521,12 @@ class CreateAchievementsRequest$Type extends MessageType<CreateAchievementsReque
         /* int64 account_id = 3; */
         if (message.accountId !== 0n)
             writer.tag(3, WireType.Varint).int64(message.accountId);
+        /* optional string achievement_id = 4; */
+        if (message.achievementId !== undefined)
+            writer.tag(4, WireType.LengthDelimited).string(message.achievementId);
+        /* optional string icon_url = 5; */
+        if (message.iconUrl !== undefined)
+            writer.tag(5, WireType.LengthDelimited).string(message.iconUrl);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
