@@ -857,7 +857,13 @@ proto.drops.v1.CheckEligibilityResponse.prototype.toObject = function(opt_includ
  */
 proto.drops.v1.CheckEligibilityResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-status: jspb.Message.getFieldWithDefault(msg, 1, "")
+status: jspb.Message.getFieldWithDefault(msg, 1, ""),
+dropId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+appId: jspb.Message.getFieldWithDefault(msg, 3, 0),
+description: jspb.Message.getFieldWithDefault(msg, 4, ""),
+itemDefIds: jspb.Message.getFieldWithDefault(msg, 5, ""),
+availableAt: (f = msg.getAvailableAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+finishedAt: (f = msg.getFinishedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -898,6 +904,32 @@ proto.drops.v1.CheckEligibilityResponse.deserializeBinaryFromReader = function(m
       var value = /** @type {string} */ (reader.readString());
       msg.setStatus(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDropId(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setAppId(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setItemDefIds(value);
+      break;
+    case 6:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setAvailableAt(value);
+      break;
+    case 7:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setFinishedAt(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -934,6 +966,50 @@ proto.drops.v1.CheckEligibilityResponse.serializeBinaryToWriter = function(messa
       f
     );
   }
+  f = message.getDropId();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getAppId();
+  if (f !== 0) {
+    writer.writeInt64(
+      3,
+      f
+    );
+  }
+  f = message.getDescription();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getItemDefIds();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getAvailableAt();
+  if (f != null) {
+    writer.writeMessage(
+      6,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getFinishedAt();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -952,6 +1028,152 @@ proto.drops.v1.CheckEligibilityResponse.prototype.getStatus = function() {
  */
 proto.drops.v1.CheckEligibilityResponse.prototype.setStatus = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string drop_id = 2;
+ * @return {string}
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.getDropId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.drops.v1.CheckEligibilityResponse} returns this
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.setDropId = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional int64 app_id = 3;
+ * @return {number}
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.getAppId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.drops.v1.CheckEligibilityResponse} returns this
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.setAppId = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional string description = 4;
+ * @return {string}
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.drops.v1.CheckEligibilityResponse} returns this
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.setDescription = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string item_def_ids = 5;
+ * @return {string}
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.getItemDefIds = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.drops.v1.CheckEligibilityResponse} returns this
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.setItemDefIds = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp available_at = 6;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.getAvailableAt = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 6));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.drops.v1.CheckEligibilityResponse} returns this
+*/
+proto.drops.v1.CheckEligibilityResponse.prototype.setAvailableAt = function(value) {
+  return jspb.Message.setWrapperField(this, 6, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.drops.v1.CheckEligibilityResponse} returns this
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.clearAvailableAt = function() {
+  return this.setAvailableAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.hasAvailableAt = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp finished_at = 7;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.getFinishedAt = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.drops.v1.CheckEligibilityResponse} returns this
+*/
+proto.drops.v1.CheckEligibilityResponse.prototype.setFinishedAt = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.drops.v1.CheckEligibilityResponse} returns this
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.clearFinishedAt = function() {
+  return this.setFinishedAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.drops.v1.CheckEligibilityResponse.prototype.hasFinishedAt = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 

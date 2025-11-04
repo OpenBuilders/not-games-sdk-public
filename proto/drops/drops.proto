@@ -33,6 +33,12 @@ message CheckEligibilityRequest {
 
 message CheckEligibilityResponse {
     string status = 1;
+    string drop_id = 2;
+    int64 app_id = 3;
+    string description = 4;
+    string item_def_ids = 5;
+    google.protobuf.Timestamp available_at = 6;
+    google.protobuf.Timestamp finished_at = 7;
 }
 
 message WhitelistDropUserRequest {

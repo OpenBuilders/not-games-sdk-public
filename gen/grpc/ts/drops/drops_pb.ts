@@ -75,6 +75,30 @@ export interface CheckEligibilityResponse {
      * @generated from protobuf field: string status = 1
      */
     status: string;
+    /**
+     * @generated from protobuf field: string drop_id = 2
+     */
+    dropId: string;
+    /**
+     * @generated from protobuf field: int64 app_id = 3
+     */
+    appId: bigint;
+    /**
+     * @generated from protobuf field: string description = 4
+     */
+    description: string;
+    /**
+     * @generated from protobuf field: string item_def_ids = 5
+     */
+    itemDefIds: string;
+    /**
+     * @generated from protobuf field: google.protobuf.Timestamp available_at = 6
+     */
+    availableAt?: Timestamp;
+    /**
+     * @generated from protobuf field: google.protobuf.Timestamp finished_at = 7
+     */
+    finishedAt?: Timestamp;
 }
 /**
  * @generated from protobuf message drops.v1.WhitelistDropUserRequest
@@ -305,12 +329,22 @@ export const CheckEligibilityRequest = new CheckEligibilityRequest$Type();
 class CheckEligibilityResponse$Type extends MessageType<CheckEligibilityResponse> {
     constructor() {
         super("drops.v1.CheckEligibilityResponse", [
-            { no: 1, name: "status", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 1, name: "status", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "drop_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 3, name: "app_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 4, name: "description", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "item_def_ids", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 6, name: "available_at", kind: "message", T: () => Timestamp },
+            { no: 7, name: "finished_at", kind: "message", T: () => Timestamp }
         ]);
     }
     create(value?: PartialMessage<CheckEligibilityResponse>): CheckEligibilityResponse {
         const message = globalThis.Object.create((this.messagePrototype!));
         message.status = "";
+        message.dropId = "";
+        message.appId = 0n;
+        message.description = "";
+        message.itemDefIds = "";
         if (value !== undefined)
             reflectionMergePartial<CheckEligibilityResponse>(this, message, value);
         return message;
@@ -322,6 +356,24 @@ class CheckEligibilityResponse$Type extends MessageType<CheckEligibilityResponse
             switch (fieldNo) {
                 case /* string status */ 1:
                     message.status = reader.string();
+                    break;
+                case /* string drop_id */ 2:
+                    message.dropId = reader.string();
+                    break;
+                case /* int64 app_id */ 3:
+                    message.appId = reader.int64().toBigInt();
+                    break;
+                case /* string description */ 4:
+                    message.description = reader.string();
+                    break;
+                case /* string item_def_ids */ 5:
+                    message.itemDefIds = reader.string();
+                    break;
+                case /* google.protobuf.Timestamp available_at */ 6:
+                    message.availableAt = Timestamp.internalBinaryRead(reader, reader.uint32(), options, message.availableAt);
+                    break;
+                case /* google.protobuf.Timestamp finished_at */ 7:
+                    message.finishedAt = Timestamp.internalBinaryRead(reader, reader.uint32(), options, message.finishedAt);
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -338,6 +390,24 @@ class CheckEligibilityResponse$Type extends MessageType<CheckEligibilityResponse
         /* string status = 1; */
         if (message.status !== "")
             writer.tag(1, WireType.LengthDelimited).string(message.status);
+        /* string drop_id = 2; */
+        if (message.dropId !== "")
+            writer.tag(2, WireType.LengthDelimited).string(message.dropId);
+        /* int64 app_id = 3; */
+        if (message.appId !== 0n)
+            writer.tag(3, WireType.Varint).int64(message.appId);
+        /* string description = 4; */
+        if (message.description !== "")
+            writer.tag(4, WireType.LengthDelimited).string(message.description);
+        /* string item_def_ids = 5; */
+        if (message.itemDefIds !== "")
+            writer.tag(5, WireType.LengthDelimited).string(message.itemDefIds);
+        /* google.protobuf.Timestamp available_at = 6; */
+        if (message.availableAt)
+            Timestamp.internalBinaryWrite(message.availableAt, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        /* google.protobuf.Timestamp finished_at = 7; */
+        if (message.finishedAt)
+            Timestamp.internalBinaryWrite(message.finishedAt, writer.tag(7, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
