@@ -434,7 +434,8 @@ tradable: jspb.Message.getBooleanFieldWithDefault(msg, 20, false),
 rarity: jspb.Message.getFieldWithDefault(msg, 21, 0),
 exchange: jspb.Message.getFieldWithDefault(msg, 22, ""),
 supply: jspb.Message.getFieldWithDefault(msg, 23, 0),
-maxSupply: (f = jspb.Message.getField(msg, 24)) == null ? undefined : f
+maxSupply: (f = jspb.Message.getField(msg, 24)) == null ? undefined : f,
+issued: (f = jspb.Message.getField(msg, 25)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -566,6 +567,10 @@ proto.registry.v1.ItemDef.deserializeBinaryFromReader = function(msg, reader) {
     case 24:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setMaxSupply(value);
+      break;
+    case 25:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setIssued(value);
       break;
     default:
       reader.skipField();
@@ -761,6 +766,13 @@ proto.registry.v1.ItemDef.serializeBinaryToWriter = function(message, writer) {
   if (f != null) {
     writer.writeInt64(
       24,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 25));
+  if (f != null) {
+    writer.writeInt64(
+      25,
       f
     );
   }
@@ -1214,6 +1226,42 @@ proto.registry.v1.ItemDef.prototype.clearMaxSupply = function() {
  */
 proto.registry.v1.ItemDef.prototype.hasMaxSupply = function() {
   return jspb.Message.getField(this, 24) != null;
+};
+
+
+/**
+ * optional int64 issued = 25;
+ * @return {number}
+ */
+proto.registry.v1.ItemDef.prototype.getIssued = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 25, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.registry.v1.ItemDef} returns this
+ */
+proto.registry.v1.ItemDef.prototype.setIssued = function(value) {
+  return jspb.Message.setField(this, 25, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.registry.v1.ItemDef} returns this
+ */
+proto.registry.v1.ItemDef.prototype.clearIssued = function() {
+  return jspb.Message.setField(this, 25, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.registry.v1.ItemDef.prototype.hasIssued = function() {
+  return jspb.Message.getField(this, 25) != null;
 };
 
 
