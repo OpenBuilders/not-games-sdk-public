@@ -44,6 +44,7 @@ message ItemDef {
   string exchange = 22;
   int64 supply = 23;
   optional int64 max_supply = 24;
+  optional int64 issued = 25;
 }
 
 message UpdateItemDefRequest {
