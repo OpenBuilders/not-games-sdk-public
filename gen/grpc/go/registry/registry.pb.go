@@ -48,6 +48,7 @@ type ItemDef struct {
 	Exchange      string                 `protobuf:"bytes,22,opt,name=exchange,proto3" json:"exchange,omitempty"`
 	Supply        int64                  `protobuf:"varint,23,opt,name=supply,proto3" json:"supply,omitempty"`
 	MaxSupply     *int64                 `protobuf:"varint,24,opt,name=max_supply,json=maxSupply,proto3,oneof" json:"max_supply,omitempty"`
+	Issued        *int64                 `protobuf:"varint,25,opt,name=issued,proto3,oneof" json:"issued,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -246,6 +247,13 @@ func (x *ItemDef) GetSupply() int64 {
 func (x *ItemDef) GetMaxSupply() int64 {
 	if x != nil && x.MaxSupply != nil {
 		return *x.MaxSupply
+	}
+	return 0
+}
+
+func (x *ItemDef) GetIssued() int64 {
+	if x != nil && x.Issued != nil {
+		return *x.Issued
 	}
 	return 0
 }
@@ -1266,7 +1274,7 @@ var File_registry_registry_proto protoreflect.FileDescriptor
 
 const file_registry_registry_proto_rawDesc = "" +
 	"\n" +
-	"\x17registry/registry.proto\x12\vregistry.v1\x1a\x13common/rarity.proto\x1a\x17common/pagination.proto\x1a\x11common/tags.proto\"\xc5\x05\n" +
+	"\x17registry/registry.proto\x12\vregistry.v1\x1a\x13common/rarity.proto\x1a\x17common/pagination.proto\x1a\x11common/tags.proto\"\xed\x05\n" +
 	"\aItemDef\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\x12\x15\n" +
 	"\x06app_id\x18\x02 \x01(\x03R\x05appId\x12\x12\n" +
@@ -1298,8 +1306,10 @@ const file_registry_registry_proto_rawDesc = "" +
 	"\bexchange\x18\x16 \x01(\tR\bexchange\x12\x16\n" +
 	"\x06supply\x18\x17 \x01(\x03R\x06supply\x12\"\n" +
 	"\n" +
-	"max_supply\x18\x18 \x01(\x03H\x00R\tmaxSupply\x88\x01\x01B\r\n" +
-	"\v_max_supply\"\xa2\a\n" +
+	"max_supply\x18\x18 \x01(\x03H\x00R\tmaxSupply\x88\x01\x01\x12\x1b\n" +
+	"\x06issued\x18\x19 \x01(\x03H\x01R\x06issued\x88\x01\x01B\r\n" +
+	"\v_max_supplyB\t\n" +
+	"\a_issued\"\xa2\a\n" +
 	"\x14UpdateItemDefRequest\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\x12\x15\n" +
 	"\x06app_id\x18\x02 \x01(\x03R\x05appId\x12\x17\n" +

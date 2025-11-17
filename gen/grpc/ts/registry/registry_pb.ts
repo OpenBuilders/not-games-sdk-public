@@ -114,6 +114,10 @@ export interface ItemDef {
      * @generated from protobuf field: optional int64 max_supply = 24
      */
     maxSupply?: bigint;
+    /**
+     * @generated from protobuf field: optional int64 issued = 25
+     */
+    issued?: bigint;
 }
 /**
  * @generated from protobuf message registry.v1.UpdateItemDefRequest
@@ -453,7 +457,8 @@ class ItemDef$Type extends MessageType<ItemDef> {
             { no: 21, name: "rarity", kind: "enum", T: () => ["common.v1.Rarity", Rarity] },
             { no: 22, name: "exchange", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 23, name: "supply", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 24, name: "max_supply", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 24, name: "max_supply", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 25, name: "issued", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<ItemDef>): ItemDef {
@@ -562,6 +567,9 @@ class ItemDef$Type extends MessageType<ItemDef> {
                 case /* optional int64 max_supply */ 24:
                     message.maxSupply = reader.int64().toBigInt();
                     break;
+                case /* optional int64 issued */ 25:
+                    message.issued = reader.int64().toBigInt();
+                    break;
                 default:
                     let u = options.readUnknownField;
                     if (u === "throw")
@@ -646,6 +654,9 @@ class ItemDef$Type extends MessageType<ItemDef> {
         /* optional int64 max_supply = 24; */
         if (message.maxSupply !== undefined)
             writer.tag(24, WireType.Varint).int64(message.maxSupply);
+        /* optional int64 issued = 25; */
+        if (message.issued !== undefined)
+            writer.tag(25, WireType.Varint).int64(message.issued);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
