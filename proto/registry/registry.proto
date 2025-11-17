@@ -68,6 +68,7 @@ message UpdateItemDefRequest {
   optional bool tradable = 18;
   optional string exchange = 19;
   optional int64 max_supply = 20;
+  optional string tags = 21;
 }
 
 message AchievementDef {
