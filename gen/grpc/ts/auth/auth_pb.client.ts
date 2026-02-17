@@ -4,6 +4,8 @@
 import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
 import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
 import { AuthService } from "./auth_pb";
+import type { SocialLoginResponse } from "./auth_pb";
+import type { SocialLoginRequest } from "./auth_pb";
 import { stackIntercept } from "@protobuf-ts/runtime-rpc";
 import type { NewAuthResponse } from "./auth_pb";
 import type { NewAuthRequest } from "./auth_pb";
@@ -17,6 +19,10 @@ export interface IAuthServiceClient {
      * @generated from protobuf rpc: NewAuth
      */
     newAuth(input: NewAuthRequest, options?: RpcOptions): UnaryCall<NewAuthRequest, NewAuthResponse>;
+    /**
+     * @generated from protobuf rpc: SocialLogin
+     */
+    socialLogin(input: SocialLoginRequest, options?: RpcOptions): UnaryCall<SocialLoginRequest, SocialLoginResponse>;
 }
 /**
  * @generated from protobuf service auth.v1.AuthService
@@ -33,5 +39,12 @@ export class AuthServiceClient implements IAuthServiceClient, ServiceInfo {
     newAuth(input: NewAuthRequest, options?: RpcOptions): UnaryCall<NewAuthRequest, NewAuthResponse> {
         const method = this.methods[0], opt = this._transport.mergeOptions(options);
         return stackIntercept<NewAuthRequest, NewAuthResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
+     * @generated from protobuf rpc: SocialLogin
+     */
+    socialLogin(input: SocialLoginRequest, options?: RpcOptions): UnaryCall<SocialLoginRequest, SocialLoginResponse> {
+        const method = this.methods[1], opt = this._transport.mergeOptions(options);
+        return stackIntercept<SocialLoginRequest, SocialLoginResponse>("unary", this._transport, method, opt, input);
     }
 }

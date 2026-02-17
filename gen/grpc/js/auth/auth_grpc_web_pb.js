@@ -136,5 +136,66 @@ proto.auth.v1.AuthServicePromiseClient.prototype.newAuth =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.auth.v1.SocialLoginRequest,
+ *   !proto.auth.v1.SocialLoginResponse>}
+ */
+const methodDescriptor_AuthService_SocialLogin = new grpc.web.MethodDescriptor(
+  '/auth.v1.AuthService/SocialLogin',
+  grpc.web.MethodType.UNARY,
+  proto.auth.v1.SocialLoginRequest,
+  proto.auth.v1.SocialLoginResponse,
+  /**
+   * @param {!proto.auth.v1.SocialLoginRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.auth.v1.SocialLoginResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.auth.v1.SocialLoginRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.auth.v1.SocialLoginResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.auth.v1.SocialLoginResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.auth.v1.AuthServiceClient.prototype.socialLogin =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/auth.v1.AuthService/SocialLogin',
+      request,
+      metadata || {},
+      methodDescriptor_AuthService_SocialLogin,
+      callback);
+};
+
+
+/**
+ * @param {!proto.auth.v1.SocialLoginRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.auth.v1.SocialLoginResponse>}
+ *     Promise that resolves to the response
+ */
+proto.auth.v1.AuthServicePromiseClient.prototype.socialLogin =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/auth.v1.AuthService/SocialLogin',
+      request,
+      metadata || {},
+      methodDescriptor_AuthService_SocialLogin);
+};
+
+
 module.exports = proto.auth.v1;
 
