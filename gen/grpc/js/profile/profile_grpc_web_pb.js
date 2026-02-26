@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for auth.v1
+ * @fileoverview gRPC-Web generated client stub for profile.v1
  * @enhanceable
  * @public
  */
@@ -8,7 +8,7 @@
 // versions:
 // 	protoc-gen-grpc-web v1.5.0
 // 	protoc              v0.0.0
-// source: auth/auth.proto
+// source: profile/profile.proto
 
 
 /* eslint-disable */
@@ -20,8 +20,8 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 const proto = {};
-proto.auth = {};
-proto.auth.v1 = require('./auth_pb.js');
+proto.profile = {};
+proto.profile.v1 = require('./profile_pb.js');
 
 /**
  * @param {string} hostname
@@ -31,7 +31,7 @@ proto.auth.v1 = require('./auth_pb.js');
  * @struct
  * @final
  */
-proto.auth.v1.AuthServiceClient =
+proto.profile.v1.ProfileServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -57,7 +57,7 @@ proto.auth.v1.AuthServiceClient =
  * @struct
  * @final
  */
-proto.auth.v1.AuthServicePromiseClient =
+proto.profile.v1.ProfileServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -78,63 +78,63 @@ proto.auth.v1.AuthServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.auth.v1.NewAuthRequest,
- *   !proto.auth.v1.NewAuthResponse>}
+ *   !proto.profile.v1.SocialLoginRequest,
+ *   !proto.profile.v1.SocialLoginResponse>}
  */
-const methodDescriptor_AuthService_NewAuth = new grpc.web.MethodDescriptor(
-  '/auth.v1.AuthService/NewAuth',
+const methodDescriptor_ProfileService_SocialLogin = new grpc.web.MethodDescriptor(
+  '/profile.v1.ProfileService/SocialLogin',
   grpc.web.MethodType.UNARY,
-  proto.auth.v1.NewAuthRequest,
-  proto.auth.v1.NewAuthResponse,
+  proto.profile.v1.SocialLoginRequest,
+  proto.profile.v1.SocialLoginResponse,
   /**
-   * @param {!proto.auth.v1.NewAuthRequest} request
+   * @param {!proto.profile.v1.SocialLoginRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.auth.v1.NewAuthResponse.deserializeBinary
+  proto.profile.v1.SocialLoginResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.auth.v1.NewAuthRequest} request The
+ * @param {!proto.profile.v1.SocialLoginRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.auth.v1.NewAuthResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.profile.v1.SocialLoginResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.auth.v1.NewAuthResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.profile.v1.SocialLoginResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.auth.v1.AuthServiceClient.prototype.newAuth =
+proto.profile.v1.ProfileServiceClient.prototype.socialLogin =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/auth.v1.AuthService/NewAuth',
+      '/profile.v1.ProfileService/SocialLogin',
       request,
       metadata || {},
-      methodDescriptor_AuthService_NewAuth,
+      methodDescriptor_ProfileService_SocialLogin,
       callback);
 };
 
 
 /**
- * @param {!proto.auth.v1.NewAuthRequest} request The
+ * @param {!proto.profile.v1.SocialLoginRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.auth.v1.NewAuthResponse>}
+ * @return {!Promise<!proto.profile.v1.SocialLoginResponse>}
  *     Promise that resolves to the response
  */
-proto.auth.v1.AuthServicePromiseClient.prototype.newAuth =
+proto.profile.v1.ProfileServicePromiseClient.prototype.socialLogin =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/auth.v1.AuthService/NewAuth',
+      '/profile.v1.ProfileService/SocialLogin',
       request,
       metadata || {},
-      methodDescriptor_AuthService_NewAuth);
+      methodDescriptor_ProfileService_SocialLogin);
 };
 
 
-module.exports = proto.auth.v1;
+module.exports = proto.profile.v1;
 

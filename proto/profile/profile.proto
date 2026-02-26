@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package profile.v1;
+
+option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/profile";
+
+service ProfileService {
+  rpc SocialLogin(SocialLoginRequest) returns (SocialLoginResponse) {}
+}
+
+message SocialLoginRequest {
+  string provider = 1;
+  string external_id = 2;
+  optional string username = 3;
+  optional string first_name = 4;
+  optional string last_name = 5;
+  optional string locale = 6;
+  optional string avatar = 7;
+}
+
+message SocialLoginResponse {
+  int64 account_id = 1;
+}
