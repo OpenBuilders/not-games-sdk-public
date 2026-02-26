@@ -125,142 +125,6 @@ func (x *NewAuthResponse) GetRefreshToken() string {
 	return ""
 }
 
-type SocialLoginRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Provider      string                 `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
-	ExternalId    string                 `protobuf:"bytes,2,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	Username      *string                `protobuf:"bytes,3,opt,name=username,proto3,oneof" json:"username,omitempty"`
-	FirstName     *string                `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3,oneof" json:"first_name,omitempty"`
-	LastName      *string                `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
-	Locale        *string                `protobuf:"bytes,6,opt,name=locale,proto3,oneof" json:"locale,omitempty"`
-	Avatar        *string                `protobuf:"bytes,7,opt,name=avatar,proto3,oneof" json:"avatar,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SocialLoginRequest) Reset() {
-	*x = SocialLoginRequest{}
-	mi := &file_auth_auth_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SocialLoginRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SocialLoginRequest) ProtoMessage() {}
-
-func (x *SocialLoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SocialLoginRequest.ProtoReflect.Descriptor instead.
-func (*SocialLoginRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *SocialLoginRequest) GetProvider() string {
-	if x != nil {
-		return x.Provider
-	}
-	return ""
-}
-
-func (x *SocialLoginRequest) GetExternalId() string {
-	if x != nil {
-		return x.ExternalId
-	}
-	return ""
-}
-
-func (x *SocialLoginRequest) GetUsername() string {
-	if x != nil && x.Username != nil {
-		return *x.Username
-	}
-	return ""
-}
-
-func (x *SocialLoginRequest) GetFirstName() string {
-	if x != nil && x.FirstName != nil {
-		return *x.FirstName
-	}
-	return ""
-}
-
-func (x *SocialLoginRequest) GetLastName() string {
-	if x != nil && x.LastName != nil {
-		return *x.LastName
-	}
-	return ""
-}
-
-func (x *SocialLoginRequest) GetLocale() string {
-	if x != nil && x.Locale != nil {
-		return *x.Locale
-	}
-	return ""
-}
-
-func (x *SocialLoginRequest) GetAvatar() string {
-	if x != nil && x.Avatar != nil {
-		return *x.Avatar
-	}
-	return ""
-}
-
-type SocialLoginResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccountId     int64                  `protobuf:"varint,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SocialLoginResponse) Reset() {
-	*x = SocialLoginResponse{}
-	mi := &file_auth_auth_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SocialLoginResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SocialLoginResponse) ProtoMessage() {}
-
-func (x *SocialLoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SocialLoginResponse.ProtoReflect.Descriptor instead.
-func (*SocialLoginResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *SocialLoginResponse) GetAccountId() int64 {
-	if x != nil {
-		return x.AccountId
-	}
-	return 0
-}
-
 var File_auth_auth_proto protoreflect.FileDescriptor
 
 const file_auth_auth_proto_rawDesc = "" +
@@ -272,29 +136,9 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x0fNewAuthResponse\x12\x1f\n" +
 	"\vprivate_key\x18\x01 \x01(\tR\n" +
 	"privateKey\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"\xb2\x02\n" +
-	"\x12SocialLoginRequest\x12\x1a\n" +
-	"\bprovider\x18\x01 \x01(\tR\bprovider\x12\x1f\n" +
-	"\vexternal_id\x18\x02 \x01(\tR\n" +
-	"externalId\x12\x1f\n" +
-	"\busername\x18\x03 \x01(\tH\x00R\busername\x88\x01\x01\x12\"\n" +
-	"\n" +
-	"first_name\x18\x04 \x01(\tH\x01R\tfirstName\x88\x01\x01\x12 \n" +
-	"\tlast_name\x18\x05 \x01(\tH\x02R\blastName\x88\x01\x01\x12\x1b\n" +
-	"\x06locale\x18\x06 \x01(\tH\x03R\x06locale\x88\x01\x01\x12\x1b\n" +
-	"\x06avatar\x18\a \x01(\tH\x04R\x06avatar\x88\x01\x01B\v\n" +
-	"\t_usernameB\r\n" +
-	"\v_first_nameB\f\n" +
-	"\n" +
-	"_last_nameB\t\n" +
-	"\a_localeB\t\n" +
-	"\a_avatar\"4\n" +
-	"\x13SocialLoginResponse\x12\x1d\n" +
-	"\n" +
-	"account_id\x18\x01 \x01(\x03R\taccountId2\x99\x01\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken2M\n" +
 	"\vAuthService\x12>\n" +
-	"\aNewAuth\x12\x17.auth.v1.NewAuthRequest\x1a\x18.auth.v1.NewAuthResponse\"\x00\x12J\n" +
-	"\vSocialLogin\x12\x1b.auth.v1.SocialLoginRequest\x1a\x1c.auth.v1.SocialLoginResponse\"\x00B?Z=github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/authb\x06proto3"
+	"\aNewAuth\x12\x17.auth.v1.NewAuthRequest\x1a\x18.auth.v1.NewAuthResponse\"\x00B?Z=github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/authb\x06proto3"
 
 var (
 	file_auth_auth_proto_rawDescOnce sync.Once
@@ -308,20 +152,16 @@ func file_auth_auth_proto_rawDescGZIP() []byte {
 	return file_auth_auth_proto_rawDescData
 }
 
-var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_auth_auth_proto_goTypes = []any{
-	(*NewAuthRequest)(nil),      // 0: auth.v1.NewAuthRequest
-	(*NewAuthResponse)(nil),     // 1: auth.v1.NewAuthResponse
-	(*SocialLoginRequest)(nil),  // 2: auth.v1.SocialLoginRequest
-	(*SocialLoginResponse)(nil), // 3: auth.v1.SocialLoginResponse
+	(*NewAuthRequest)(nil),  // 0: auth.v1.NewAuthRequest
+	(*NewAuthResponse)(nil), // 1: auth.v1.NewAuthResponse
 }
 var file_auth_auth_proto_depIdxs = []int32{
 	0, // 0: auth.v1.AuthService.NewAuth:input_type -> auth.v1.NewAuthRequest
-	2, // 1: auth.v1.AuthService.SocialLogin:input_type -> auth.v1.SocialLoginRequest
-	1, // 2: auth.v1.AuthService.NewAuth:output_type -> auth.v1.NewAuthResponse
-	3, // 3: auth.v1.AuthService.SocialLogin:output_type -> auth.v1.SocialLoginResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	1, // 1: auth.v1.AuthService.NewAuth:output_type -> auth.v1.NewAuthResponse
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -332,14 +172,13 @@ func file_auth_auth_proto_init() {
 	if File_auth_auth_proto != nil {
 		return
 	}
-	file_auth_auth_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

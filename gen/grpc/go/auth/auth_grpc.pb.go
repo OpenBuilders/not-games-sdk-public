@@ -19,8 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthService_NewAuth_FullMethodName     = "/auth.v1.AuthService/NewAuth"
-	AuthService_SocialLogin_FullMethodName = "/auth.v1.AuthService/SocialLogin"
+	AuthService_NewAuth_FullMethodName = "/auth.v1.AuthService/NewAuth"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -28,7 +27,6 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthServiceClient interface {
 	NewAuth(ctx context.Context, in *NewAuthRequest, opts ...grpc.CallOption) (*NewAuthResponse, error)
-	SocialLogin(ctx context.Context, in *SocialLoginRequest, opts ...grpc.CallOption) (*SocialLoginResponse, error)
 }
 
 type authServiceClient struct {
@@ -49,22 +47,11 @@ func (c *authServiceClient) NewAuth(ctx context.Context, in *NewAuthRequest, opt
 	return out, nil
 }
 
-func (c *authServiceClient) SocialLogin(ctx context.Context, in *SocialLoginRequest, opts ...grpc.CallOption) (*SocialLoginResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SocialLoginResponse)
-	err := c.cc.Invoke(ctx, AuthService_SocialLogin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility.
 type AuthServiceServer interface {
 	NewAuth(context.Context, *NewAuthRequest) (*NewAuthResponse, error)
-	SocialLogin(context.Context, *SocialLoginRequest) (*SocialLoginResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -77,9 +64,6 @@ type UnimplementedAuthServiceServer struct{}
 
 func (UnimplementedAuthServiceServer) NewAuth(context.Context, *NewAuthRequest) (*NewAuthResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method NewAuth not implemented")
-}
-func (UnimplementedAuthServiceServer) SocialLogin(context.Context, *SocialLoginRequest) (*SocialLoginResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method SocialLogin not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
@@ -120,24 +104,6 @@ func _AuthService_NewAuth_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthService_SocialLogin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SocialLoginRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).SocialLogin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_SocialLogin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).SocialLogin(ctx, req.(*SocialLoginRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -148,10 +114,6 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "NewAuth",
 			Handler:    _AuthService_NewAuth_Handler,
-		},
-		{
-			MethodName: "SocialLogin",
-			Handler:    _AuthService_SocialLogin_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
