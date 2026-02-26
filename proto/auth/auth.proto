@@ -6,7 +6,6 @@ option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/au
 
 service AuthService {
   rpc NewAuth(NewAuthRequest) returns (NewAuthResponse) {}
-  rpc SocialLogin(SocialLoginRequest) returns (SocialLoginResponse) {}
 }
 
 message NewAuthRequest {
@@ -17,18 +16,4 @@ message NewAuthRequest {
 message NewAuthResponse {
   string private_key = 1;
   string refresh_token = 2;
-}
-
-message SocialLoginRequest {
-  string provider = 1;
-  string external_id = 2;
-  optional string username = 3;
-  optional string first_name = 4;
-  optional string last_name = 5;
-  optional string locale = 6;
-  optional string avatar = 7;
-}
-
-message SocialLoginResponse {
-  int64 account_id = 1;
 }
