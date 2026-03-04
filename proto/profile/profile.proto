@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package profile.v1;
+package ngprofile.v1;
 
 option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/profile";
 
