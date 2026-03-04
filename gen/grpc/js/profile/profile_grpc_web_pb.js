@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for profile.v1
+ * @fileoverview gRPC-Web generated client stub for ngprofile.v1
  * @enhanceable
  * @public
  */
@@ -20,8 +20,8 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 const proto = {};
-proto.profile = {};
-proto.profile.v1 = require('./profile_pb.js');
+proto.ngprofile = {};
+proto.ngprofile.v1 = require('./profile_pb.js');
 
 /**
  * @param {string} hostname
@@ -31,7 +31,7 @@ proto.profile.v1 = require('./profile_pb.js');
  * @struct
  * @final
  */
-proto.profile.v1.ProfileServiceClient =
+proto.ngprofile.v1.ProfileServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -57,7 +57,7 @@ proto.profile.v1.ProfileServiceClient =
  * @struct
  * @final
  */
-proto.profile.v1.ProfileServicePromiseClient =
+proto.ngprofile.v1.ProfileServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -78,39 +78,39 @@ proto.profile.v1.ProfileServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.profile.v1.SocialLoginRequest,
- *   !proto.profile.v1.SocialLoginResponse>}
+ *   !proto.ngprofile.v1.SocialLoginRequest,
+ *   !proto.ngprofile.v1.SocialLoginResponse>}
  */
 const methodDescriptor_ProfileService_SocialLogin = new grpc.web.MethodDescriptor(
-  '/profile.v1.ProfileService/SocialLogin',
+  '/ngprofile.v1.ProfileService/SocialLogin',
   grpc.web.MethodType.UNARY,
-  proto.profile.v1.SocialLoginRequest,
-  proto.profile.v1.SocialLoginResponse,
+  proto.ngprofile.v1.SocialLoginRequest,
+  proto.ngprofile.v1.SocialLoginResponse,
   /**
-   * @param {!proto.profile.v1.SocialLoginRequest} request
+   * @param {!proto.ngprofile.v1.SocialLoginRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.profile.v1.SocialLoginResponse.deserializeBinary
+  proto.ngprofile.v1.SocialLoginResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.profile.v1.SocialLoginRequest} request The
+ * @param {!proto.ngprofile.v1.SocialLoginRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.profile.v1.SocialLoginResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.ngprofile.v1.SocialLoginResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.profile.v1.SocialLoginResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ngprofile.v1.SocialLoginResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.profile.v1.ProfileServiceClient.prototype.socialLogin =
+proto.ngprofile.v1.ProfileServiceClient.prototype.socialLogin =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/profile.v1.ProfileService/SocialLogin',
+      '/ngprofile.v1.ProfileService/SocialLogin',
       request,
       metadata || {},
       methodDescriptor_ProfileService_SocialLogin,
@@ -119,22 +119,22 @@ proto.profile.v1.ProfileServiceClient.prototype.socialLogin =
 
 
 /**
- * @param {!proto.profile.v1.SocialLoginRequest} request The
+ * @param {!proto.ngprofile.v1.SocialLoginRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.profile.v1.SocialLoginResponse>}
+ * @return {!Promise<!proto.ngprofile.v1.SocialLoginResponse>}
  *     Promise that resolves to the response
  */
-proto.profile.v1.ProfileServicePromiseClient.prototype.socialLogin =
+proto.ngprofile.v1.ProfileServicePromiseClient.prototype.socialLogin =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/profile.v1.ProfileService/SocialLogin',
+      '/ngprofile.v1.ProfileService/SocialLogin',
       request,
       metadata || {},
       methodDescriptor_ProfileService_SocialLogin);
 };
 
 
-module.exports = proto.profile.v1;
+module.exports = proto.ngprofile.v1;
 

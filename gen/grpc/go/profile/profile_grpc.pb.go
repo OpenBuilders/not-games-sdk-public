@@ -19,7 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ProfileService_SocialLogin_FullMethodName = "/profile.v1.ProfileService/SocialLogin"
+	ProfileService_SocialLogin_FullMethodName = "/ngprofile.v1.ProfileService/SocialLogin"
 )
 
 // ProfileServiceClient is the client API for ProfileService service.
@@ -108,7 +108,7 @@ func _ProfileService_SocialLogin_Handler(srv interface{}, ctx context.Context, d
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ProfileService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "profile.v1.ProfileService",
+	ServiceName: "ngprofile.v1.ProfileService",
 	HandlerType: (*ProfileServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
