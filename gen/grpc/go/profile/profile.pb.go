@@ -161,8 +161,7 @@ var File_profile_profile_proto protoreflect.FileDescriptor
 
 const file_profile_profile_proto_rawDesc = "" +
 	"\n" +
-	"\x15profile/profile.proto\x12\n" +
-	"profile.v1\"\xb2\x02\n" +
+	"\x15profile/profile.proto\x12\fngprofile.v1\"\xb2\x02\n" +
 	"\x12SocialLoginRequest\x12\x1a\n" +
 	"\bprovider\x18\x01 \x01(\tR\bprovider\x12\x1f\n" +
 	"\vexternal_id\x18\x02 \x01(\tR\n" +
@@ -181,9 +180,9 @@ const file_profile_profile_proto_rawDesc = "" +
 	"\a_avatar\"4\n" +
 	"\x13SocialLoginResponse\x12\x1d\n" +
 	"\n" +
-	"account_id\x18\x01 \x01(\x03R\taccountId2b\n" +
-	"\x0eProfileService\x12P\n" +
-	"\vSocialLogin\x12\x1e.profile.v1.SocialLoginRequest\x1a\x1f.profile.v1.SocialLoginResponse\"\x00BBZ@github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/profileb\x06proto3"
+	"account_id\x18\x01 \x01(\x03R\taccountId2f\n" +
+	"\x0eProfileService\x12T\n" +
+	"\vSocialLogin\x12 .ngprofile.v1.SocialLoginRequest\x1a!.ngprofile.v1.SocialLoginResponse\"\x00BBZ@github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/profileb\x06proto3"
 
 var (
 	file_profile_profile_proto_rawDescOnce sync.Once
@@ -199,12 +198,12 @@ func file_profile_profile_proto_rawDescGZIP() []byte {
 
 var file_profile_profile_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_profile_profile_proto_goTypes = []any{
-	(*SocialLoginRequest)(nil),  // 0: profile.v1.SocialLoginRequest
-	(*SocialLoginResponse)(nil), // 1: profile.v1.SocialLoginResponse
+	(*SocialLoginRequest)(nil),  // 0: ngprofile.v1.SocialLoginRequest
+	(*SocialLoginResponse)(nil), // 1: ngprofile.v1.SocialLoginResponse
 }
 var file_profile_profile_proto_depIdxs = []int32{
-	0, // 0: profile.v1.ProfileService.SocialLogin:input_type -> profile.v1.SocialLoginRequest
-	1, // 1: profile.v1.ProfileService.SocialLogin:output_type -> profile.v1.SocialLoginResponse
+	0, // 0: ngprofile.v1.ProfileService.SocialLogin:input_type -> ngprofile.v1.SocialLoginRequest
+	1, // 1: ngprofile.v1.ProfileService.SocialLogin:output_type -> ngprofile.v1.SocialLoginResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
