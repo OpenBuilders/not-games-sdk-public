@@ -1828,7 +1828,8 @@ tradable: (f = jspb.Message.getBooleanField(msg, 13)) == null ? undefined : f,
 sortFieldsList: (f = jspb.Message.getRepeatedField(msg, 14)) == null ? undefined : f,
 directionsList: (f = jspb.Message.getRepeatedField(msg, 15)) == null ? undefined : f,
 tags: (f = msg.getTags()) && common_tags_pb.FilterTagList.toObject(includeInstance, f),
-itemDefIdsList: (f = jspb.Message.getRepeatedField(msg, 17)) == null ? undefined : f
+itemDefIdsList: (f = jspb.Message.getRepeatedField(msg, 17)) == null ? undefined : f,
+appId: (f = jspb.Message.getField(msg, 18)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1933,6 +1934,10 @@ proto.inventory.v1.ListItemsRequest.deserializeBinaryFromReader = function(msg, 
     case 17:
       var value = /** @type {string} */ (reader.readString());
       msg.addItemDefIds(value);
+      break;
+    case 18:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setAppId(value);
       break;
     default:
       reader.skipField();
@@ -2080,6 +2085,13 @@ proto.inventory.v1.ListItemsRequest.serializeBinaryToWriter = function(message, 
   if (f.length > 0) {
     writer.writeRepeatedString(
       17,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 18));
+  if (f != null) {
+    writer.writeInt64(
+      18,
       f
     );
   }
@@ -2645,6 +2657,42 @@ proto.inventory.v1.ListItemsRequest.prototype.addItemDefIds = function(value, op
  */
 proto.inventory.v1.ListItemsRequest.prototype.clearItemDefIdsList = function() {
   return this.setItemDefIdsList([]);
+};
+
+
+/**
+ * optional int64 app_id = 18;
+ * @return {number}
+ */
+proto.inventory.v1.ListItemsRequest.prototype.getAppId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 18, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.inventory.v1.ListItemsRequest} returns this
+ */
+proto.inventory.v1.ListItemsRequest.prototype.setAppId = function(value) {
+  return jspb.Message.setField(this, 18, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.inventory.v1.ListItemsRequest} returns this
+ */
+proto.inventory.v1.ListItemsRequest.prototype.clearAppId = function() {
+  return jspb.Message.setField(this, 18, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.inventory.v1.ListItemsRequest.prototype.hasAppId = function() {
+  return jspb.Message.getField(this, 18) != null;
 };
 
 
