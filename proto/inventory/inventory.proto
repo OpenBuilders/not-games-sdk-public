@@ -79,6 +79,7 @@ message ListItemsRequest {
   repeated string directions = 15;
   optional common.v1.FilterTagList tags = 16;
   repeated string item_def_ids = 17;
+  optional int64 app_id = 18;
 }
 
 message ListItemsByItemDefRequest {
