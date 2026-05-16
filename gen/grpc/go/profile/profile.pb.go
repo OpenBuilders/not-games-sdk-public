@@ -157,6 +157,158 @@ func (x *SocialLoginResponse) GetAccountId() int64 {
 	return 0
 }
 
+type ExternalAuthRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Provider      string                 `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
+	Data          map[string]string      `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExternalAuthRequest) Reset() {
+	*x = ExternalAuthRequest{}
+	mi := &file_profile_profile_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExternalAuthRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExternalAuthRequest) ProtoMessage() {}
+
+func (x *ExternalAuthRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_profile_profile_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExternalAuthRequest.ProtoReflect.Descriptor instead.
+func (*ExternalAuthRequest) Descriptor() ([]byte, []int) {
+	return file_profile_profile_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ExternalAuthRequest) GetProvider() string {
+	if x != nil {
+		return x.Provider
+	}
+	return ""
+}
+
+func (x *ExternalAuthRequest) GetData() map[string]string {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type ExternalAuthResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccountId     int64                  `protobuf:"varint,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
+	Provider      string                 `protobuf:"bytes,2,opt,name=provider,proto3" json:"provider,omitempty"`
+	ExternalId    string                 `protobuf:"bytes,3,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	Username      string                 `protobuf:"bytes,4,opt,name=username,proto3" json:"username,omitempty"`
+	Avatar        *string                `protobuf:"bytes,5,opt,name=avatar,proto3,oneof" json:"avatar,omitempty"`
+	FirstName     string                 `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	Locale        string                 `protobuf:"bytes,8,opt,name=locale,proto3" json:"locale,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExternalAuthResponse) Reset() {
+	*x = ExternalAuthResponse{}
+	mi := &file_profile_profile_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExternalAuthResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExternalAuthResponse) ProtoMessage() {}
+
+func (x *ExternalAuthResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_profile_profile_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExternalAuthResponse.ProtoReflect.Descriptor instead.
+func (*ExternalAuthResponse) Descriptor() ([]byte, []int) {
+	return file_profile_profile_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ExternalAuthResponse) GetAccountId() int64 {
+	if x != nil {
+		return x.AccountId
+	}
+	return 0
+}
+
+func (x *ExternalAuthResponse) GetProvider() string {
+	if x != nil {
+		return x.Provider
+	}
+	return ""
+}
+
+func (x *ExternalAuthResponse) GetExternalId() string {
+	if x != nil {
+		return x.ExternalId
+	}
+	return ""
+}
+
+func (x *ExternalAuthResponse) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
+}
+
+func (x *ExternalAuthResponse) GetAvatar() string {
+	if x != nil && x.Avatar != nil {
+		return *x.Avatar
+	}
+	return ""
+}
+
+func (x *ExternalAuthResponse) GetFirstName() string {
+	if x != nil {
+		return x.FirstName
+	}
+	return ""
+}
+
+func (x *ExternalAuthResponse) GetLastName() string {
+	if x != nil {
+		return x.LastName
+	}
+	return ""
+}
+
+func (x *ExternalAuthResponse) GetLocale() string {
+	if x != nil {
+		return x.Locale
+	}
+	return ""
+}
+
 var File_profile_profile_proto protoreflect.FileDescriptor
 
 const file_profile_profile_proto_rawDesc = "" +
@@ -180,9 +332,29 @@ const file_profile_profile_proto_rawDesc = "" +
 	"\a_avatar\"4\n" +
 	"\x13SocialLoginResponse\x12\x1d\n" +
 	"\n" +
-	"account_id\x18\x01 \x01(\x03R\taccountId2f\n" +
+	"account_id\x18\x01 \x01(\x03R\taccountId\"\xab\x01\n" +
+	"\x13ExternalAuthRequest\x12\x1a\n" +
+	"\bprovider\x18\x01 \x01(\tR\bprovider\x12?\n" +
+	"\x04data\x18\x02 \x03(\v2+.ngprofile.v1.ExternalAuthRequest.DataEntryR\x04data\x1a7\n" +
+	"\tDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x8a\x02\n" +
+	"\x14ExternalAuthResponse\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x01 \x01(\x03R\taccountId\x12\x1a\n" +
+	"\bprovider\x18\x02 \x01(\tR\bprovider\x12\x1f\n" +
+	"\vexternal_id\x18\x03 \x01(\tR\n" +
+	"externalId\x12\x1a\n" +
+	"\busername\x18\x04 \x01(\tR\busername\x12\x1b\n" +
+	"\x06avatar\x18\x05 \x01(\tH\x00R\x06avatar\x88\x01\x01\x12\x1d\n" +
+	"\n" +
+	"first_name\x18\x06 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\a \x01(\tR\blastName\x12\x16\n" +
+	"\x06locale\x18\b \x01(\tR\x06localeB\t\n" +
+	"\a_avatar2\xbf\x01\n" +
 	"\x0eProfileService\x12T\n" +
-	"\vSocialLogin\x12 .ngprofile.v1.SocialLoginRequest\x1a!.ngprofile.v1.SocialLoginResponse\"\x00BBZ@github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/profileb\x06proto3"
+	"\vSocialLogin\x12 .ngprofile.v1.SocialLoginRequest\x1a!.ngprofile.v1.SocialLoginResponse\"\x00\x12W\n" +
+	"\fExternalAuth\x12!.ngprofile.v1.ExternalAuthRequest\x1a\".ngprofile.v1.ExternalAuthResponse\"\x00BBZ@github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/profileb\x06proto3"
 
 var (
 	file_profile_profile_proto_rawDescOnce sync.Once
@@ -196,19 +368,25 @@ func file_profile_profile_proto_rawDescGZIP() []byte {
 	return file_profile_profile_proto_rawDescData
 }
 
-var file_profile_profile_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_profile_profile_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_profile_profile_proto_goTypes = []any{
-	(*SocialLoginRequest)(nil),  // 0: ngprofile.v1.SocialLoginRequest
-	(*SocialLoginResponse)(nil), // 1: ngprofile.v1.SocialLoginResponse
+	(*SocialLoginRequest)(nil),   // 0: ngprofile.v1.SocialLoginRequest
+	(*SocialLoginResponse)(nil),  // 1: ngprofile.v1.SocialLoginResponse
+	(*ExternalAuthRequest)(nil),  // 2: ngprofile.v1.ExternalAuthRequest
+	(*ExternalAuthResponse)(nil), // 3: ngprofile.v1.ExternalAuthResponse
+	nil,                          // 4: ngprofile.v1.ExternalAuthRequest.DataEntry
 }
 var file_profile_profile_proto_depIdxs = []int32{
-	0, // 0: ngprofile.v1.ProfileService.SocialLogin:input_type -> ngprofile.v1.SocialLoginRequest
-	1, // 1: ngprofile.v1.ProfileService.SocialLogin:output_type -> ngprofile.v1.SocialLoginResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	4, // 0: ngprofile.v1.ExternalAuthRequest.data:type_name -> ngprofile.v1.ExternalAuthRequest.DataEntry
+	0, // 1: ngprofile.v1.ProfileService.SocialLogin:input_type -> ngprofile.v1.SocialLoginRequest
+	2, // 2: ngprofile.v1.ProfileService.ExternalAuth:input_type -> ngprofile.v1.ExternalAuthRequest
+	1, // 3: ngprofile.v1.ProfileService.SocialLogin:output_type -> ngprofile.v1.SocialLoginResponse
+	3, // 4: ngprofile.v1.ProfileService.ExternalAuth:output_type -> ngprofile.v1.ExternalAuthResponse
+	3, // [3:5] is the sub-list for method output_type
+	1, // [1:3] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_profile_profile_proto_init() }
@@ -217,13 +395,14 @@ func file_profile_profile_proto_init() {
 		return
 	}
 	file_profile_profile_proto_msgTypes[0].OneofWrappers = []any{}
+	file_profile_profile_proto_msgTypes[3].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_profile_profile_proto_rawDesc), len(file_profile_profile_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

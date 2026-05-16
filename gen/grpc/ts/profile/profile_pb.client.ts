@@ -4,6 +4,8 @@
 import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
 import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
 import { ProfileService } from "./profile_pb";
+import type { ExternalAuthResponse } from "./profile_pb";
+import type { ExternalAuthRequest } from "./profile_pb";
 import { stackIntercept } from "@protobuf-ts/runtime-rpc";
 import type { SocialLoginResponse } from "./profile_pb";
 import type { SocialLoginRequest } from "./profile_pb";
@@ -17,6 +19,10 @@ export interface IProfileServiceClient {
      * @generated from protobuf rpc: SocialLogin
      */
     socialLogin(input: SocialLoginRequest, options?: RpcOptions): UnaryCall<SocialLoginRequest, SocialLoginResponse>;
+    /**
+     * @generated from protobuf rpc: ExternalAuth
+     */
+    externalAuth(input: ExternalAuthRequest, options?: RpcOptions): UnaryCall<ExternalAuthRequest, ExternalAuthResponse>;
 }
 /**
  * @generated from protobuf service ngprofile.v1.ProfileService
@@ -33,5 +39,12 @@ export class ProfileServiceClient implements IProfileServiceClient, ServiceInfo 
     socialLogin(input: SocialLoginRequest, options?: RpcOptions): UnaryCall<SocialLoginRequest, SocialLoginResponse> {
         const method = this.methods[0], opt = this._transport.mergeOptions(options);
         return stackIntercept<SocialLoginRequest, SocialLoginResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
+     * @generated from protobuf rpc: ExternalAuth
+     */
+    externalAuth(input: ExternalAuthRequest, options?: RpcOptions): UnaryCall<ExternalAuthRequest, ExternalAuthResponse> {
+        const method = this.methods[1], opt = this._transport.mergeOptions(options);
+        return stackIntercept<ExternalAuthRequest, ExternalAuthResponse>("unary", this._transport, method, opt, input);
     }
 }

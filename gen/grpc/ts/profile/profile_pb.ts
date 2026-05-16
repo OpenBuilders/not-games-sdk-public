@@ -53,6 +53,58 @@ export interface SocialLoginResponse {
      */
     accountId: bigint;
 }
+/**
+ * @generated from protobuf message ngprofile.v1.ExternalAuthRequest
+ */
+export interface ExternalAuthRequest {
+    /**
+     * @generated from protobuf field: string provider = 1
+     */
+    provider: string;
+    /**
+     * @generated from protobuf field: map<string, string> data = 2
+     */
+    data: {
+        [key: string]: string;
+    };
+}
+/**
+ * @generated from protobuf message ngprofile.v1.ExternalAuthResponse
+ */
+export interface ExternalAuthResponse {
+    /**
+     * @generated from protobuf field: int64 account_id = 1
+     */
+    accountId: bigint;
+    /**
+     * @generated from protobuf field: string provider = 2
+     */
+    provider: string;
+    /**
+     * @generated from protobuf field: string external_id = 3
+     */
+    externalId: string;
+    /**
+     * @generated from protobuf field: string username = 4
+     */
+    username: string;
+    /**
+     * @generated from protobuf field: optional string avatar = 5
+     */
+    avatar?: string;
+    /**
+     * @generated from protobuf field: string first_name = 6
+     */
+    firstName: string;
+    /**
+     * @generated from protobuf field: string last_name = 7
+     */
+    lastName: string;
+    /**
+     * @generated from protobuf field: string locale = 8
+     */
+    locale: string;
+}
 // @generated message type with reflection information, may provide speed optimized methods
 class SocialLoginRequest$Type extends MessageType<SocialLoginRequest> {
     constructor() {
@@ -190,9 +242,183 @@ class SocialLoginResponse$Type extends MessageType<SocialLoginResponse> {
  * @generated MessageType for protobuf message ngprofile.v1.SocialLoginResponse
  */
 export const SocialLoginResponse = new SocialLoginResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class ExternalAuthRequest$Type extends MessageType<ExternalAuthRequest> {
+    constructor() {
+        super("ngprofile.v1.ExternalAuthRequest", [
+            { no: 1, name: "provider", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "data", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "scalar", T: 9 /*ScalarType.STRING*/ } }
+        ]);
+    }
+    create(value?: PartialMessage<ExternalAuthRequest>): ExternalAuthRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.provider = "";
+        message.data = {};
+        if (value !== undefined)
+            reflectionMergePartial<ExternalAuthRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ExternalAuthRequest): ExternalAuthRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string provider */ 1:
+                    message.provider = reader.string();
+                    break;
+                case /* map<string, string> data */ 2:
+                    this.binaryReadMap2(message.data, reader, options);
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    private binaryReadMap2(map: ExternalAuthRequest["data"], reader: IBinaryReader, options: BinaryReadOptions): void {
+        let len = reader.uint32(), end = reader.pos + len, key: keyof ExternalAuthRequest["data"] | undefined, val: ExternalAuthRequest["data"][any] | undefined;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case 1:
+                    key = reader.string();
+                    break;
+                case 2:
+                    val = reader.string();
+                    break;
+                default: throw new globalThis.Error("unknown map entry field for ngprofile.v1.ExternalAuthRequest.data");
+            }
+        }
+        map[key ?? ""] = val ?? "";
+    }
+    internalBinaryWrite(message: ExternalAuthRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string provider = 1; */
+        if (message.provider !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.provider);
+        /* map<string, string> data = 2; */
+        for (let k of globalThis.Object.keys(message.data))
+            writer.tag(2, WireType.LengthDelimited).fork().tag(1, WireType.LengthDelimited).string(k).tag(2, WireType.LengthDelimited).string(message.data[k]).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message ngprofile.v1.ExternalAuthRequest
+ */
+export const ExternalAuthRequest = new ExternalAuthRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class ExternalAuthResponse$Type extends MessageType<ExternalAuthResponse> {
+    constructor() {
+        super("ngprofile.v1.ExternalAuthResponse", [
+            { no: 1, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 2, name: "provider", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 3, name: "external_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "username", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "avatar", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 6, name: "first_name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 7, name: "last_name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 8, name: "locale", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<ExternalAuthResponse>): ExternalAuthResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.accountId = 0n;
+        message.provider = "";
+        message.externalId = "";
+        message.username = "";
+        message.firstName = "";
+        message.lastName = "";
+        message.locale = "";
+        if (value !== undefined)
+            reflectionMergePartial<ExternalAuthResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ExternalAuthResponse): ExternalAuthResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* int64 account_id */ 1:
+                    message.accountId = reader.int64().toBigInt();
+                    break;
+                case /* string provider */ 2:
+                    message.provider = reader.string();
+                    break;
+                case /* string external_id */ 3:
+                    message.externalId = reader.string();
+                    break;
+                case /* string username */ 4:
+                    message.username = reader.string();
+                    break;
+                case /* optional string avatar */ 5:
+                    message.avatar = reader.string();
+                    break;
+                case /* string first_name */ 6:
+                    message.firstName = reader.string();
+                    break;
+                case /* string last_name */ 7:
+                    message.lastName = reader.string();
+                    break;
+                case /* string locale */ 8:
+                    message.locale = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: ExternalAuthResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int64 account_id = 1; */
+        if (message.accountId !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.accountId);
+        /* string provider = 2; */
+        if (message.provider !== "")
+            writer.tag(2, WireType.LengthDelimited).string(message.provider);
+        /* string external_id = 3; */
+        if (message.externalId !== "")
+            writer.tag(3, WireType.LengthDelimited).string(message.externalId);
+        /* string username = 4; */
+        if (message.username !== "")
+            writer.tag(4, WireType.LengthDelimited).string(message.username);
+        /* optional string avatar = 5; */
+        if (message.avatar !== undefined)
+            writer.tag(5, WireType.LengthDelimited).string(message.avatar);
+        /* string first_name = 6; */
+        if (message.firstName !== "")
+            writer.tag(6, WireType.LengthDelimited).string(message.firstName);
+        /* string last_name = 7; */
+        if (message.lastName !== "")
+            writer.tag(7, WireType.LengthDelimited).string(message.lastName);
+        /* string locale = 8; */
+        if (message.locale !== "")
+            writer.tag(8, WireType.LengthDelimited).string(message.locale);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message ngprofile.v1.ExternalAuthResponse
+ */
+export const ExternalAuthResponse = new ExternalAuthResponse$Type();
 /**
  * @generated ServiceType for protobuf service ngprofile.v1.ProfileService
  */
 export const ProfileService = new ServiceType("ngprofile.v1.ProfileService", [
-    { name: "SocialLogin", options: {}, I: SocialLoginRequest, O: SocialLoginResponse }
+    { name: "SocialLogin", options: {}, I: SocialLoginRequest, O: SocialLoginResponse },
+    { name: "ExternalAuth", options: {}, I: ExternalAuthRequest, O: ExternalAuthResponse }
 ]);
