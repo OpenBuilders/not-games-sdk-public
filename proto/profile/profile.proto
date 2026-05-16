@@ -6,6 +6,7 @@ option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/pr
 
 service ProfileService {
   rpc SocialLogin(SocialLoginRequest) returns (SocialLoginResponse) {}
+  rpc ExternalAuth(ExternalAuthRequest) returns (ExternalAuthResponse) {}
 }
 
 message SocialLoginRequest {
@@ -20,4 +21,20 @@ message SocialLoginRequest {
 
 message SocialLoginResponse {
   int64 account_id = 1;
+}
+
+message ExternalAuthRequest {
+  string provider = 1;
+  map<string, string> data = 2;
+}
+
+message ExternalAuthResponse {
+  int64 account_id = 1;
+  string provider = 2;
+  string external_id = 3;
+  string username = 4;
+  optional string avatar = 5;
+  string first_name = 6;
+  string last_name = 7;
+  string locale = 8;
 }
