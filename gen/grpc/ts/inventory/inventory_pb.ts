@@ -208,6 +208,10 @@ export interface ListItemsRequest {
      * @generated from protobuf field: repeated string item_def_ids = 17
      */
     itemDefIds: string[];
+    /**
+     * @generated from protobuf field: optional int64 app_id = 18
+     */
+    appId?: bigint;
 }
 /**
  * @generated from protobuf message inventory.v1.ListItemsByItemDefRequest
@@ -1062,7 +1066,8 @@ class ListItemsRequest$Type extends MessageType<ListItemsRequest> {
             { no: 14, name: "sort_fields", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 15, name: "directions", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 16, name: "tags", kind: "message", T: () => FilterTagList },
-            { no: 17, name: "item_def_ids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ }
+            { no: 17, name: "item_def_ids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
+            { no: 18, name: "app_id", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<ListItemsRequest>): ListItemsRequest {
@@ -1133,6 +1138,9 @@ class ListItemsRequest$Type extends MessageType<ListItemsRequest> {
                 case /* repeated string item_def_ids */ 17:
                     message.itemDefIds.push(reader.string());
                     break;
+                case /* optional int64 app_id */ 18:
+                    message.appId = reader.int64().toBigInt();
+                    break;
                 default:
                     let u = options.readUnknownField;
                     if (u === "throw")
@@ -1196,6 +1204,9 @@ class ListItemsRequest$Type extends MessageType<ListItemsRequest> {
         /* repeated string item_def_ids = 17; */
         for (let i = 0; i < message.itemDefIds.length; i++)
             writer.tag(17, WireType.LengthDelimited).string(message.itemDefIds[i]);
+        /* optional int64 app_id = 18; */
+        if (message.appId !== undefined)
+            writer.tag(18, WireType.Varint).int64(message.appId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
