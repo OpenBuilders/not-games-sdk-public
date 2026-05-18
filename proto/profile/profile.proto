@@ -32,9 +32,9 @@ message ExternalAuthResponse {
   int64 account_id = 1;
   string provider = 2;
   string external_id = 3;
-  string username = 4;
+  optional string username = 4;
   optional string avatar = 5;
-  string first_name = 6;
-  string last_name = 7;
-  string locale = 8;
+  optional string first_name = 6;
+  optional string last_name = 7;
+  optional string locale = 8;
 }
