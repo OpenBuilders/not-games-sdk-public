@@ -838,11 +838,11 @@ proto.ngprofile.v1.ExternalAuthResponse.toObject = function(includeInstance, msg
 accountId: jspb.Message.getFieldWithDefault(msg, 1, 0),
 provider: jspb.Message.getFieldWithDefault(msg, 2, ""),
 externalId: jspb.Message.getFieldWithDefault(msg, 3, ""),
-username: jspb.Message.getFieldWithDefault(msg, 4, ""),
+username: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f,
 avatar: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f,
-firstName: jspb.Message.getFieldWithDefault(msg, 6, ""),
-lastName: jspb.Message.getFieldWithDefault(msg, 7, ""),
-locale: jspb.Message.getFieldWithDefault(msg, 8, "")
+firstName: (f = jspb.Message.getField(msg, 6)) == null ? undefined : f,
+lastName: (f = jspb.Message.getField(msg, 7)) == null ? undefined : f,
+locale: (f = jspb.Message.getField(msg, 8)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -961,8 +961,8 @@ proto.ngprofile.v1.ExternalAuthResponse.serializeBinaryToWriter = function(messa
       f
     );
   }
-  f = message.getUsername();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeString(
       4,
       f
@@ -975,22 +975,22 @@ proto.ngprofile.v1.ExternalAuthResponse.serializeBinaryToWriter = function(messa
       f
     );
   }
-  f = message.getFirstName();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
     writer.writeString(
       6,
       f
     );
   }
-  f = message.getLastName();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 7));
+  if (f != null) {
     writer.writeString(
       7,
       f
     );
   }
-  f = message.getLocale();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 8));
+  if (f != null) {
     writer.writeString(
       8,
       f
@@ -1067,7 +1067,25 @@ proto.ngprofile.v1.ExternalAuthResponse.prototype.getUsername = function() {
  * @return {!proto.ngprofile.v1.ExternalAuthResponse} returns this
  */
 proto.ngprofile.v1.ExternalAuthResponse.prototype.setUsername = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ngprofile.v1.ExternalAuthResponse} returns this
+ */
+proto.ngprofile.v1.ExternalAuthResponse.prototype.clearUsername = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ngprofile.v1.ExternalAuthResponse.prototype.hasUsername = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -1121,7 +1139,25 @@ proto.ngprofile.v1.ExternalAuthResponse.prototype.getFirstName = function() {
  * @return {!proto.ngprofile.v1.ExternalAuthResponse} returns this
  */
 proto.ngprofile.v1.ExternalAuthResponse.prototype.setFirstName = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ngprofile.v1.ExternalAuthResponse} returns this
+ */
+proto.ngprofile.v1.ExternalAuthResponse.prototype.clearFirstName = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ngprofile.v1.ExternalAuthResponse.prototype.hasFirstName = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
@@ -1139,7 +1175,25 @@ proto.ngprofile.v1.ExternalAuthResponse.prototype.getLastName = function() {
  * @return {!proto.ngprofile.v1.ExternalAuthResponse} returns this
  */
 proto.ngprofile.v1.ExternalAuthResponse.prototype.setLastName = function(value) {
-  return jspb.Message.setProto3StringField(this, 7, value);
+  return jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ngprofile.v1.ExternalAuthResponse} returns this
+ */
+proto.ngprofile.v1.ExternalAuthResponse.prototype.clearLastName = function() {
+  return jspb.Message.setField(this, 7, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ngprofile.v1.ExternalAuthResponse.prototype.hasLastName = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
@@ -1157,7 +1211,25 @@ proto.ngprofile.v1.ExternalAuthResponse.prototype.getLocale = function() {
  * @return {!proto.ngprofile.v1.ExternalAuthResponse} returns this
  */
 proto.ngprofile.v1.ExternalAuthResponse.prototype.setLocale = function(value) {
-  return jspb.Message.setProto3StringField(this, 8, value);
+  return jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ngprofile.v1.ExternalAuthResponse} returns this
+ */
+proto.ngprofile.v1.ExternalAuthResponse.prototype.clearLocale = function() {
+  return jspb.Message.setField(this, 8, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ngprofile.v1.ExternalAuthResponse.prototype.hasLocale = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 

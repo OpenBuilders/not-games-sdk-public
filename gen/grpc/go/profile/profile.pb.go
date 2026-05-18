@@ -214,11 +214,11 @@ type ExternalAuthResponse struct {
 	AccountId     int64                  `protobuf:"varint,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	Provider      string                 `protobuf:"bytes,2,opt,name=provider,proto3" json:"provider,omitempty"`
 	ExternalId    string                 `protobuf:"bytes,3,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	Username      string                 `protobuf:"bytes,4,opt,name=username,proto3" json:"username,omitempty"`
+	Username      *string                `protobuf:"bytes,4,opt,name=username,proto3,oneof" json:"username,omitempty"`
 	Avatar        *string                `protobuf:"bytes,5,opt,name=avatar,proto3,oneof" json:"avatar,omitempty"`
-	FirstName     string                 `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName      string                 `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	Locale        string                 `protobuf:"bytes,8,opt,name=locale,proto3" json:"locale,omitempty"`
+	FirstName     *string                `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3,oneof" json:"first_name,omitempty"`
+	LastName      *string                `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3,oneof" json:"last_name,omitempty"`
+	Locale        *string                `protobuf:"bytes,8,opt,name=locale,proto3,oneof" json:"locale,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -275,8 +275,8 @@ func (x *ExternalAuthResponse) GetExternalId() string {
 }
 
 func (x *ExternalAuthResponse) GetUsername() string {
-	if x != nil {
-		return x.Username
+	if x != nil && x.Username != nil {
+		return *x.Username
 	}
 	return ""
 }
@@ -289,22 +289,22 @@ func (x *ExternalAuthResponse) GetAvatar() string {
 }
 
 func (x *ExternalAuthResponse) GetFirstName() string {
-	if x != nil {
-		return x.FirstName
+	if x != nil && x.FirstName != nil {
+		return *x.FirstName
 	}
 	return ""
 }
 
 func (x *ExternalAuthResponse) GetLastName() string {
-	if x != nil {
-		return x.LastName
+	if x != nil && x.LastName != nil {
+		return *x.LastName
 	}
 	return ""
 }
 
 func (x *ExternalAuthResponse) GetLocale() string {
-	if x != nil {
-		return x.Locale
+	if x != nil && x.Locale != nil {
+		return *x.Locale
 	}
 	return ""
 }
@@ -338,20 +338,25 @@ const file_profile_profile_proto_rawDesc = "" +
 	"\x04data\x18\x02 \x03(\v2+.ngprofile.v1.ExternalAuthRequest.DataEntryR\x04data\x1a7\n" +
 	"\tDataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x8a\x02\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xd3\x02\n" +
 	"\x14ExternalAuthResponse\x12\x1d\n" +
 	"\n" +
 	"account_id\x18\x01 \x01(\x03R\taccountId\x12\x1a\n" +
 	"\bprovider\x18\x02 \x01(\tR\bprovider\x12\x1f\n" +
 	"\vexternal_id\x18\x03 \x01(\tR\n" +
-	"externalId\x12\x1a\n" +
-	"\busername\x18\x04 \x01(\tR\busername\x12\x1b\n" +
-	"\x06avatar\x18\x05 \x01(\tH\x00R\x06avatar\x88\x01\x01\x12\x1d\n" +
+	"externalId\x12\x1f\n" +
+	"\busername\x18\x04 \x01(\tH\x00R\busername\x88\x01\x01\x12\x1b\n" +
+	"\x06avatar\x18\x05 \x01(\tH\x01R\x06avatar\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"first_name\x18\x06 \x01(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\a \x01(\tR\blastName\x12\x16\n" +
-	"\x06locale\x18\b \x01(\tR\x06localeB\t\n" +
-	"\a_avatar2\xbf\x01\n" +
+	"first_name\x18\x06 \x01(\tH\x02R\tfirstName\x88\x01\x01\x12 \n" +
+	"\tlast_name\x18\a \x01(\tH\x03R\blastName\x88\x01\x01\x12\x1b\n" +
+	"\x06locale\x18\b \x01(\tH\x04R\x06locale\x88\x01\x01B\v\n" +
+	"\t_usernameB\t\n" +
+	"\a_avatarB\r\n" +
+	"\v_first_nameB\f\n" +
+	"\n" +
+	"_last_nameB\t\n" +
+	"\a_locale2\xbf\x01\n" +
 	"\x0eProfileService\x12T\n" +
 	"\vSocialLogin\x12 .ngprofile.v1.SocialLoginRequest\x1a!.ngprofile.v1.SocialLoginResponse\"\x00\x12W\n" +
 	"\fExternalAuth\x12!.ngprofile.v1.ExternalAuthRequest\x1a\".ngprofile.v1.ExternalAuthResponse\"\x00BBZ@github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/profileb\x06proto3"

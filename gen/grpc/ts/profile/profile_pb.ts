@@ -85,25 +85,25 @@ export interface ExternalAuthResponse {
      */
     externalId: string;
     /**
-     * @generated from protobuf field: string username = 4
+     * @generated from protobuf field: optional string username = 4
      */
-    username: string;
+    username?: string;
     /**
      * @generated from protobuf field: optional string avatar = 5
      */
     avatar?: string;
     /**
-     * @generated from protobuf field: string first_name = 6
+     * @generated from protobuf field: optional string first_name = 6
      */
-    firstName: string;
+    firstName?: string;
     /**
-     * @generated from protobuf field: string last_name = 7
+     * @generated from protobuf field: optional string last_name = 7
      */
-    lastName: string;
+    lastName?: string;
     /**
-     * @generated from protobuf field: string locale = 8
+     * @generated from protobuf field: optional string locale = 8
      */
-    locale: string;
+    locale?: string;
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class SocialLoginRequest$Type extends MessageType<SocialLoginRequest> {
@@ -320,11 +320,11 @@ class ExternalAuthResponse$Type extends MessageType<ExternalAuthResponse> {
             { no: 1, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 2, name: "provider", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "external_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 4, name: "username", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "username", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 5, name: "avatar", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 6, name: "first_name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 7, name: "last_name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 8, name: "locale", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 6, name: "first_name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 7, name: "last_name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 8, name: "locale", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<ExternalAuthResponse>): ExternalAuthResponse {
@@ -332,10 +332,6 @@ class ExternalAuthResponse$Type extends MessageType<ExternalAuthResponse> {
         message.accountId = 0n;
         message.provider = "";
         message.externalId = "";
-        message.username = "";
-        message.firstName = "";
-        message.lastName = "";
-        message.locale = "";
         if (value !== undefined)
             reflectionMergePartial<ExternalAuthResponse>(this, message, value);
         return message;
@@ -354,19 +350,19 @@ class ExternalAuthResponse$Type extends MessageType<ExternalAuthResponse> {
                 case /* string external_id */ 3:
                     message.externalId = reader.string();
                     break;
-                case /* string username */ 4:
+                case /* optional string username */ 4:
                     message.username = reader.string();
                     break;
                 case /* optional string avatar */ 5:
                     message.avatar = reader.string();
                     break;
-                case /* string first_name */ 6:
+                case /* optional string first_name */ 6:
                     message.firstName = reader.string();
                     break;
-                case /* string last_name */ 7:
+                case /* optional string last_name */ 7:
                     message.lastName = reader.string();
                     break;
-                case /* string locale */ 8:
+                case /* optional string locale */ 8:
                     message.locale = reader.string();
                     break;
                 default:
@@ -390,20 +386,20 @@ class ExternalAuthResponse$Type extends MessageType<ExternalAuthResponse> {
         /* string external_id = 3; */
         if (message.externalId !== "")
             writer.tag(3, WireType.LengthDelimited).string(message.externalId);
-        /* string username = 4; */
-        if (message.username !== "")
+        /* optional string username = 4; */
+        if (message.username !== undefined)
             writer.tag(4, WireType.LengthDelimited).string(message.username);
         /* optional string avatar = 5; */
         if (message.avatar !== undefined)
             writer.tag(5, WireType.LengthDelimited).string(message.avatar);
-        /* string first_name = 6; */
-        if (message.firstName !== "")
+        /* optional string first_name = 6; */
+        if (message.firstName !== undefined)
             writer.tag(6, WireType.LengthDelimited).string(message.firstName);
-        /* string last_name = 7; */
-        if (message.lastName !== "")
+        /* optional string last_name = 7; */
+        if (message.lastName !== undefined)
             writer.tag(7, WireType.LengthDelimited).string(message.lastName);
-        /* string locale = 8; */
-        if (message.locale !== "")
+        /* optional string locale = 8; */
+        if (message.locale !== undefined)
             writer.tag(8, WireType.LengthDelimited).string(message.locale);
         let u = options.writeUnknownFields;
         if (u !== false)
