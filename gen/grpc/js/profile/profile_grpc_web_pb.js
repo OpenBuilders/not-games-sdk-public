@@ -136,5 +136,66 @@ proto.ngprofile.v1.ProfileServicePromiseClient.prototype.socialLogin =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ngprofile.v1.ExternalAuthRequest,
+ *   !proto.ngprofile.v1.ExternalAuthResponse>}
+ */
+const methodDescriptor_ProfileService_ExternalAuth = new grpc.web.MethodDescriptor(
+  '/ngprofile.v1.ProfileService/ExternalAuth',
+  grpc.web.MethodType.UNARY,
+  proto.ngprofile.v1.ExternalAuthRequest,
+  proto.ngprofile.v1.ExternalAuthResponse,
+  /**
+   * @param {!proto.ngprofile.v1.ExternalAuthRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ngprofile.v1.ExternalAuthResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ngprofile.v1.ExternalAuthRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ngprofile.v1.ExternalAuthResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ngprofile.v1.ExternalAuthResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ngprofile.v1.ProfileServiceClient.prototype.externalAuth =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ngprofile.v1.ProfileService/ExternalAuth',
+      request,
+      metadata || {},
+      methodDescriptor_ProfileService_ExternalAuth,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ngprofile.v1.ExternalAuthRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ngprofile.v1.ExternalAuthResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ngprofile.v1.ProfileServicePromiseClient.prototype.externalAuth =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ngprofile.v1.ProfileService/ExternalAuth',
+      request,
+      metadata || {},
+      methodDescriptor_ProfileService_ExternalAuth);
+};
+
+
 module.exports = proto.ngprofile.v1;
 
