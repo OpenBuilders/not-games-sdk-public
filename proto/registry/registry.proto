@@ -68,6 +68,7 @@ message UpdateItemDefRequest {
   optional bool tradable = 18;
   optional string exchange = 19;
   optional int64 max_supply = 20;
+  optional string tags = 21;
 }
 
 message AchievementDef {
@@ -79,6 +80,17 @@ message AchievementDef {
   string tags = 6;
   bool hidden = 7;
   string display_type = 8;
+}
+
+message UpdateAchievementDef {
+  string achievement_def_id = 1;
+  int64 app_id = 2;
+  optional string name = 3;
+  optional string description = 4;
+  optional string icon_url = 5;
+  optional string tags = 6;
+  optional bool hidden = 7;
+  optional string display_type = 8;
 }
 
 message GetItemDefRequest {
@@ -110,7 +122,7 @@ message CreateAchievementDefResponse {
 }
 
 message UpdateAchievementDefRequest {
-  AchievementDef achievement_def = 1;
+  UpdateAchievementDef achievement_def = 1;
 }
 
 message UpdateAchievementDefResponse {
