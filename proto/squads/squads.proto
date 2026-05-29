@@ -1,17 +1,16 @@
 syntax = "proto3";
 
-import "google/protobuf/timestamp.proto";
-import "common/pagination.proto";
-
 package squad.v1;
 
 option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/squad";
+
+import "google/protobuf/timestamp.proto";
+import "common/pagination.proto";
 
 service SquadsService {
   rpc StreamEvents(StreamEventsRequest) returns (stream StreamEventsResponse) {}
   rpc AddGroup(AddGroupRequest) returns (AddGroupResponse) {}
   rpc StreamAckMessages(StreamEventAckRequest) returns (StreamEventAckResponse) {}
-
   rpc GetSquad(GetSquadRequest) returns (GetSquadResponse) {}
   rpc ListSquads(ListSquadsRequest) returns (ListSquadsResponse) {}
 }
@@ -44,7 +43,6 @@ message StreamEventAckRequest {
 message StreamEventAckResponse {
   bool status = 1;
 }
-
 
 message Squad {
   int64 id = 1;
