@@ -7,8 +7,10 @@
 package squad
 
 import (
+	common "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -325,11 +327,391 @@ func (x *StreamEventAckResponse) GetStatus() bool {
 	return false
 }
 
+type Squad struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Id             int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name           string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Slug           string                 `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug,omitempty"`
+	ChatId         int64                  `protobuf:"varint,4,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
+	Avatar         string                 `protobuf:"bytes,5,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	MembersAmount  int64                  `protobuf:"varint,6,opt,name=members_amount,json=membersAmount,proto3" json:"members_amount,omitempty"`
+	Prefix         string                 `protobuf:"bytes,7,opt,name=prefix,proto3" json:"prefix,omitempty"`
+	OwnerAccountId int64                  `protobuf:"varint,8,opt,name=owner_account_id,json=ownerAccountId,proto3" json:"owner_account_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *Squad) Reset() {
+	*x = Squad{}
+	mi := &file_squads_squads_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Squad) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Squad) ProtoMessage() {}
+
+func (x *Squad) ProtoReflect() protoreflect.Message {
+	mi := &file_squads_squads_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Squad.ProtoReflect.Descriptor instead.
+func (*Squad) Descriptor() ([]byte, []int) {
+	return file_squads_squads_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *Squad) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Squad) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Squad) GetSlug() string {
+	if x != nil {
+		return x.Slug
+	}
+	return ""
+}
+
+func (x *Squad) GetChatId() int64 {
+	if x != nil {
+		return x.ChatId
+	}
+	return 0
+}
+
+func (x *Squad) GetAvatar() string {
+	if x != nil {
+		return x.Avatar
+	}
+	return ""
+}
+
+func (x *Squad) GetMembersAmount() int64 {
+	if x != nil {
+		return x.MembersAmount
+	}
+	return 0
+}
+
+func (x *Squad) GetPrefix() string {
+	if x != nil {
+		return x.Prefix
+	}
+	return ""
+}
+
+func (x *Squad) GetOwnerAccountId() int64 {
+	if x != nil {
+		return x.OwnerAccountId
+	}
+	return 0
+}
+
+type GetSquadRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SquadId       int64                  `protobuf:"varint,1,opt,name=squad_id,json=squadId,proto3" json:"squad_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetSquadRequest) Reset() {
+	*x = GetSquadRequest{}
+	mi := &file_squads_squads_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetSquadRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSquadRequest) ProtoMessage() {}
+
+func (x *GetSquadRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_squads_squads_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSquadRequest.ProtoReflect.Descriptor instead.
+func (*GetSquadRequest) Descriptor() ([]byte, []int) {
+	return file_squads_squads_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetSquadRequest) GetSquadId() int64 {
+	if x != nil {
+		return x.SquadId
+	}
+	return 0
+}
+
+type GetSquadResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Squad         *Squad                 `protobuf:"bytes,1,opt,name=squad,proto3" json:"squad,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetSquadResponse) Reset() {
+	*x = GetSquadResponse{}
+	mi := &file_squads_squads_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetSquadResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSquadResponse) ProtoMessage() {}
+
+func (x *GetSquadResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_squads_squads_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSquadResponse.ProtoReflect.Descriptor instead.
+func (*GetSquadResponse) Descriptor() ([]byte, []int) {
+	return file_squads_squads_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetSquadResponse) GetSquad() *Squad {
+	if x != nil {
+		return x.Squad
+	}
+	return nil
+}
+
+type ListSquadsRequest struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Limit            int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Offset           int32                  `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
+	Name             *string                `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	Slug             *string                `protobuf:"bytes,4,opt,name=slug,proto3,oneof" json:"slug,omitempty"`
+	ChatId           *int64                 `protobuf:"varint,5,opt,name=chat_id,json=chatId,proto3,oneof" json:"chat_id,omitempty"`
+	Prefix           *string                `protobuf:"bytes,6,opt,name=prefix,proto3,oneof" json:"prefix,omitempty"`
+	MembersAmount    *int64                 `protobuf:"varint,7,opt,name=members_amount,json=membersAmount,proto3,oneof" json:"members_amount,omitempty"`
+	MembersAmountMin *int64                 `protobuf:"varint,8,opt,name=members_amount_min,json=membersAmountMin,proto3,oneof" json:"members_amount_min,omitempty"`
+	MembersAmountMax *int64                 `protobuf:"varint,9,opt,name=members_amount_max,json=membersAmountMax,proto3,oneof" json:"members_amount_max,omitempty"`
+	CreatedAtGte     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at_gte,json=createdAtGte,proto3,oneof" json:"created_at_gte,omitempty"`
+	CreatedAtLte     *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=created_at_lte,json=createdAtLte,proto3,oneof" json:"created_at_lte,omitempty"`
+	SortFields       []string               `protobuf:"bytes,12,rep,name=sort_fields,json=sortFields,proto3" json:"sort_fields,omitempty"`
+	Directions       []string               `protobuf:"bytes,13,rep,name=directions,proto3" json:"directions,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *ListSquadsRequest) Reset() {
+	*x = ListSquadsRequest{}
+	mi := &file_squads_squads_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSquadsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSquadsRequest) ProtoMessage() {}
+
+func (x *ListSquadsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_squads_squads_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSquadsRequest.ProtoReflect.Descriptor instead.
+func (*ListSquadsRequest) Descriptor() ([]byte, []int) {
+	return file_squads_squads_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ListSquadsRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *ListSquadsRequest) GetOffset() int32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+func (x *ListSquadsRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListSquadsRequest) GetSlug() string {
+	if x != nil && x.Slug != nil {
+		return *x.Slug
+	}
+	return ""
+}
+
+func (x *ListSquadsRequest) GetChatId() int64 {
+	if x != nil && x.ChatId != nil {
+		return *x.ChatId
+	}
+	return 0
+}
+
+func (x *ListSquadsRequest) GetPrefix() string {
+	if x != nil && x.Prefix != nil {
+		return *x.Prefix
+	}
+	return ""
+}
+
+func (x *ListSquadsRequest) GetMembersAmount() int64 {
+	if x != nil && x.MembersAmount != nil {
+		return *x.MembersAmount
+	}
+	return 0
+}
+
+func (x *ListSquadsRequest) GetMembersAmountMin() int64 {
+	if x != nil && x.MembersAmountMin != nil {
+		return *x.MembersAmountMin
+	}
+	return 0
+}
+
+func (x *ListSquadsRequest) GetMembersAmountMax() int64 {
+	if x != nil && x.MembersAmountMax != nil {
+		return *x.MembersAmountMax
+	}
+	return 0
+}
+
+func (x *ListSquadsRequest) GetCreatedAtGte() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAtGte
+	}
+	return nil
+}
+
+func (x *ListSquadsRequest) GetCreatedAtLte() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAtLte
+	}
+	return nil
+}
+
+func (x *ListSquadsRequest) GetSortFields() []string {
+	if x != nil {
+		return x.SortFields
+	}
+	return nil
+}
+
+func (x *ListSquadsRequest) GetDirections() []string {
+	if x != nil {
+		return x.Directions
+	}
+	return nil
+}
+
+type ListSquadsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Squads        []*Squad               `protobuf:"bytes,1,rep,name=squads,proto3" json:"squads,omitempty"`
+	Pagination    *common.Pagination     `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListSquadsResponse) Reset() {
+	*x = ListSquadsResponse{}
+	mi := &file_squads_squads_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSquadsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSquadsResponse) ProtoMessage() {}
+
+func (x *ListSquadsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_squads_squads_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSquadsResponse.ProtoReflect.Descriptor instead.
+func (*ListSquadsResponse) Descriptor() ([]byte, []int) {
+	return file_squads_squads_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ListSquadsResponse) GetSquads() []*Squad {
+	if x != nil {
+		return x.Squads
+	}
+	return nil
+}
+
+func (x *ListSquadsResponse) GetPagination() *common.Pagination {
+	if x != nil {
+		return x.Pagination
+	}
+	return nil
+}
+
 var File_squads_squads_proto protoreflect.FileDescriptor
 
 const file_squads_squads_proto_rawDesc = "" +
 	"\n" +
-	"\x13squads/squads.proto\x12\bsquad.v1\"m\n" +
+	"\x13squads/squads.proto\x12\bsquad.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x17common/pagination.proto\"m\n" +
 	"\x13StreamEventsRequest\x12\x1a\n" +
 	"\bconsumer\x18\x01 \x01(\tR\bconsumer\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x03R\x05limit\x12$\n" +
@@ -348,11 +730,60 @@ const file_squads_squads_proto_rawDesc = "" +
 	"\x15StreamEventAckRequest\x12\x1a\n" +
 	"\bmessages\x18\x01 \x03(\tR\bmessages\"0\n" +
 	"\x16StreamEventAckResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\bR\x06status2\x81\x02\n" +
+	"\x06status\x18\x01 \x01(\bR\x06status\"\xd9\x01\n" +
+	"\x05Squad\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04slug\x18\x03 \x01(\tR\x04slug\x12\x17\n" +
+	"\achat_id\x18\x04 \x01(\x03R\x06chatId\x12\x16\n" +
+	"\x06avatar\x18\x05 \x01(\tR\x06avatar\x12%\n" +
+	"\x0emembers_amount\x18\x06 \x01(\x03R\rmembersAmount\x12\x16\n" +
+	"\x06prefix\x18\a \x01(\tR\x06prefix\x12(\n" +
+	"\x10owner_account_id\x18\b \x01(\x03R\x0eownerAccountId\",\n" +
+	"\x0fGetSquadRequest\x12\x19\n" +
+	"\bsquad_id\x18\x01 \x01(\x03R\asquadId\"9\n" +
+	"\x10GetSquadResponse\x12%\n" +
+	"\x05squad\x18\x01 \x01(\v2\x0f.squad.v1.SquadR\x05squad\"\x9f\x05\n" +
+	"\x11ListSquadsRequest\x12\x14\n" +
+	"\x05limit\x18\x01 \x01(\x05R\x05limit\x12\x16\n" +
+	"\x06offset\x18\x02 \x01(\x05R\x06offset\x12\x17\n" +
+	"\x04name\x18\x03 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x17\n" +
+	"\x04slug\x18\x04 \x01(\tH\x01R\x04slug\x88\x01\x01\x12\x1c\n" +
+	"\achat_id\x18\x05 \x01(\x03H\x02R\x06chatId\x88\x01\x01\x12\x1b\n" +
+	"\x06prefix\x18\x06 \x01(\tH\x03R\x06prefix\x88\x01\x01\x12*\n" +
+	"\x0emembers_amount\x18\a \x01(\x03H\x04R\rmembersAmount\x88\x01\x01\x121\n" +
+	"\x12members_amount_min\x18\b \x01(\x03H\x05R\x10membersAmountMin\x88\x01\x01\x121\n" +
+	"\x12members_amount_max\x18\t \x01(\x03H\x06R\x10membersAmountMax\x88\x01\x01\x12E\n" +
+	"\x0ecreated_at_gte\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampH\aR\fcreatedAtGte\x88\x01\x01\x12E\n" +
+	"\x0ecreated_at_lte\x18\v \x01(\v2\x1a.google.protobuf.TimestampH\bR\fcreatedAtLte\x88\x01\x01\x12\x1f\n" +
+	"\vsort_fields\x18\f \x03(\tR\n" +
+	"sortFields\x12\x1e\n" +
+	"\n" +
+	"directions\x18\r \x03(\tR\n" +
+	"directionsB\a\n" +
+	"\x05_nameB\a\n" +
+	"\x05_slugB\n" +
+	"\n" +
+	"\b_chat_idB\t\n" +
+	"\a_prefixB\x11\n" +
+	"\x0f_members_amountB\x15\n" +
+	"\x13_members_amount_minB\x15\n" +
+	"\x13_members_amount_maxB\x11\n" +
+	"\x0f_created_at_gteB\x11\n" +
+	"\x0f_created_at_lte\"t\n" +
+	"\x12ListSquadsResponse\x12'\n" +
+	"\x06squads\x18\x01 \x03(\v2\x0f.squad.v1.SquadR\x06squads\x125\n" +
+	"\n" +
+	"pagination\x18\x02 \x01(\v2\x15.common.v1.PaginationR\n" +
+	"pagination2\x91\x03\n" +
 	"\rSquadsService\x12Q\n" +
 	"\fStreamEvents\x12\x1d.squad.v1.StreamEventsRequest\x1a\x1e.squad.v1.StreamEventsResponse\"\x000\x01\x12C\n" +
 	"\bAddGroup\x12\x19.squad.v1.AddGroupRequest\x1a\x1a.squad.v1.AddGroupResponse\"\x00\x12X\n" +
-	"\x11StreamAckMessages\x12\x1f.squad.v1.StreamEventAckRequest\x1a .squad.v1.StreamEventAckResponse\"\x00B@Z>github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/squadb\x06proto3"
+	"\x11StreamAckMessages\x12\x1f.squad.v1.StreamEventAckRequest\x1a .squad.v1.StreamEventAckResponse\"\x00\x12C\n" +
+	"\bGetSquad\x12\x19.squad.v1.GetSquadRequest\x1a\x1a.squad.v1.GetSquadResponse\"\x00\x12I\n" +
+	"\n" +
+	"ListSquads\x12\x1b.squad.v1.ListSquadsRequest\x1a\x1c.squad.v1.ListSquadsResponse\"\x00B@Z>github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/squadb\x06proto3"
 
 var (
 	file_squads_squads_proto_rawDescOnce sync.Once
@@ -366,7 +797,7 @@ func file_squads_squads_proto_rawDescGZIP() []byte {
 	return file_squads_squads_proto_rawDescData
 }
 
-var file_squads_squads_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_squads_squads_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_squads_squads_proto_goTypes = []any{
 	(*StreamEventsRequest)(nil),    // 0: squad.v1.StreamEventsRequest
 	(*StreamEventsResponse)(nil),   // 1: squad.v1.StreamEventsResponse
@@ -374,19 +805,35 @@ var file_squads_squads_proto_goTypes = []any{
 	(*AddGroupResponse)(nil),       // 3: squad.v1.AddGroupResponse
 	(*StreamEventAckRequest)(nil),  // 4: squad.v1.StreamEventAckRequest
 	(*StreamEventAckResponse)(nil), // 5: squad.v1.StreamEventAckResponse
+	(*Squad)(nil),                  // 6: squad.v1.Squad
+	(*GetSquadRequest)(nil),        // 7: squad.v1.GetSquadRequest
+	(*GetSquadResponse)(nil),       // 8: squad.v1.GetSquadResponse
+	(*ListSquadsRequest)(nil),      // 9: squad.v1.ListSquadsRequest
+	(*ListSquadsResponse)(nil),     // 10: squad.v1.ListSquadsResponse
+	(*timestamppb.Timestamp)(nil),  // 11: google.protobuf.Timestamp
+	(*common.Pagination)(nil),      // 12: common.v1.Pagination
 }
 var file_squads_squads_proto_depIdxs = []int32{
-	0, // 0: squad.v1.SquadsService.StreamEvents:input_type -> squad.v1.StreamEventsRequest
-	2, // 1: squad.v1.SquadsService.AddGroup:input_type -> squad.v1.AddGroupRequest
-	4, // 2: squad.v1.SquadsService.StreamAckMessages:input_type -> squad.v1.StreamEventAckRequest
-	1, // 3: squad.v1.SquadsService.StreamEvents:output_type -> squad.v1.StreamEventsResponse
-	3, // 4: squad.v1.SquadsService.AddGroup:output_type -> squad.v1.AddGroupResponse
-	5, // 5: squad.v1.SquadsService.StreamAckMessages:output_type -> squad.v1.StreamEventAckResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	6,  // 0: squad.v1.GetSquadResponse.squad:type_name -> squad.v1.Squad
+	11, // 1: squad.v1.ListSquadsRequest.created_at_gte:type_name -> google.protobuf.Timestamp
+	11, // 2: squad.v1.ListSquadsRequest.created_at_lte:type_name -> google.protobuf.Timestamp
+	6,  // 3: squad.v1.ListSquadsResponse.squads:type_name -> squad.v1.Squad
+	12, // 4: squad.v1.ListSquadsResponse.pagination:type_name -> common.v1.Pagination
+	0,  // 5: squad.v1.SquadsService.StreamEvents:input_type -> squad.v1.StreamEventsRequest
+	2,  // 6: squad.v1.SquadsService.AddGroup:input_type -> squad.v1.AddGroupRequest
+	4,  // 7: squad.v1.SquadsService.StreamAckMessages:input_type -> squad.v1.StreamEventAckRequest
+	7,  // 8: squad.v1.SquadsService.GetSquad:input_type -> squad.v1.GetSquadRequest
+	9,  // 9: squad.v1.SquadsService.ListSquads:input_type -> squad.v1.ListSquadsRequest
+	1,  // 10: squad.v1.SquadsService.StreamEvents:output_type -> squad.v1.StreamEventsResponse
+	3,  // 11: squad.v1.SquadsService.AddGroup:output_type -> squad.v1.AddGroupResponse
+	5,  // 12: squad.v1.SquadsService.StreamAckMessages:output_type -> squad.v1.StreamEventAckResponse
+	8,  // 13: squad.v1.SquadsService.GetSquad:output_type -> squad.v1.GetSquadResponse
+	10, // 14: squad.v1.SquadsService.ListSquads:output_type -> squad.v1.ListSquadsResponse
+	10, // [10:15] is the sub-list for method output_type
+	5,  // [5:10] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_squads_squads_proto_init() }
@@ -394,13 +841,14 @@ func file_squads_squads_proto_init() {
 	if File_squads_squads_proto != nil {
 		return
 	}
+	file_squads_squads_proto_msgTypes[9].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_squads_squads_proto_rawDesc), len(file_squads_squads_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

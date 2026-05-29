@@ -11,6 +11,8 @@ import { UnknownFieldHandler } from "@protobuf-ts/runtime";
 import type { PartialMessage } from "@protobuf-ts/runtime";
 import { reflectionMergePartial } from "@protobuf-ts/runtime";
 import { MessageType } from "@protobuf-ts/runtime";
+import { Pagination } from "../common/pagination_pb";
+import { Timestamp } from "../google/protobuf/timestamp_pb";
 /**
  * @generated from protobuf message squad.v1.StreamEventsRequest
  */
@@ -84,6 +86,131 @@ export interface StreamEventAckResponse {
      * @generated from protobuf field: bool status = 1
      */
     status: boolean;
+}
+/**
+ * @generated from protobuf message squad.v1.Squad
+ */
+export interface Squad {
+    /**
+     * @generated from protobuf field: int64 id = 1
+     */
+    id: bigint;
+    /**
+     * @generated from protobuf field: string name = 2
+     */
+    name: string;
+    /**
+     * @generated from protobuf field: string slug = 3
+     */
+    slug: string;
+    /**
+     * @generated from protobuf field: int64 chat_id = 4
+     */
+    chatId: bigint;
+    /**
+     * @generated from protobuf field: string avatar = 5
+     */
+    avatar: string;
+    /**
+     * @generated from protobuf field: int64 members_amount = 6
+     */
+    membersAmount: bigint;
+    /**
+     * @generated from protobuf field: string prefix = 7
+     */
+    prefix: string;
+    /**
+     * @generated from protobuf field: int64 owner_account_id = 8
+     */
+    ownerAccountId: bigint;
+}
+/**
+ * @generated from protobuf message squad.v1.GetSquadRequest
+ */
+export interface GetSquadRequest {
+    /**
+     * @generated from protobuf field: int64 squad_id = 1
+     */
+    squadId: bigint;
+}
+/**
+ * @generated from protobuf message squad.v1.GetSquadResponse
+ */
+export interface GetSquadResponse {
+    /**
+     * @generated from protobuf field: squad.v1.Squad squad = 1
+     */
+    squad?: Squad;
+}
+/**
+ * @generated from protobuf message squad.v1.ListSquadsRequest
+ */
+export interface ListSquadsRequest {
+    /**
+     * @generated from protobuf field: int32 limit = 1
+     */
+    limit: number;
+    /**
+     * @generated from protobuf field: int32 offset = 2
+     */
+    offset: number;
+    /**
+     * @generated from protobuf field: optional string name = 3
+     */
+    name?: string;
+    /**
+     * @generated from protobuf field: optional string slug = 4
+     */
+    slug?: string;
+    /**
+     * @generated from protobuf field: optional int64 chat_id = 5
+     */
+    chatId?: bigint;
+    /**
+     * @generated from protobuf field: optional string prefix = 6
+     */
+    prefix?: string;
+    /**
+     * @generated from protobuf field: optional int64 members_amount = 7
+     */
+    membersAmount?: bigint;
+    /**
+     * @generated from protobuf field: optional int64 members_amount_min = 8
+     */
+    membersAmountMin?: bigint;
+    /**
+     * @generated from protobuf field: optional int64 members_amount_max = 9
+     */
+    membersAmountMax?: bigint;
+    /**
+     * @generated from protobuf field: optional google.protobuf.Timestamp created_at_gte = 10
+     */
+    createdAtGte?: Timestamp;
+    /**
+     * @generated from protobuf field: optional google.protobuf.Timestamp created_at_lte = 11
+     */
+    createdAtLte?: Timestamp;
+    /**
+     * @generated from protobuf field: repeated string sort_fields = 12
+     */
+    sortFields: string[];
+    /**
+     * @generated from protobuf field: repeated string directions = 13
+     */
+    directions: string[];
+}
+/**
+ * @generated from protobuf message squad.v1.ListSquadsResponse
+ */
+export interface ListSquadsResponse {
+    /**
+     * @generated from protobuf field: repeated squad.v1.Squad squads = 1
+     */
+    squads: Squad[];
+    /**
+     * @generated from protobuf field: common.v1.Pagination pagination = 2
+     */
+    pagination?: Pagination;
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class StreamEventsRequest$Type extends MessageType<StreamEventsRequest> {
@@ -406,11 +533,397 @@ class StreamEventAckResponse$Type extends MessageType<StreamEventAckResponse> {
  * @generated MessageType for protobuf message squad.v1.StreamEventAckResponse
  */
 export const StreamEventAckResponse = new StreamEventAckResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class Squad$Type extends MessageType<Squad> {
+    constructor() {
+        super("squad.v1.Squad", [
+            { no: 1, name: "id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 2, name: "name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 3, name: "slug", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "chat_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 5, name: "avatar", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 6, name: "members_amount", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 7, name: "prefix", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 8, name: "owner_account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+        ]);
+    }
+    create(value?: PartialMessage<Squad>): Squad {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.id = 0n;
+        message.name = "";
+        message.slug = "";
+        message.chatId = 0n;
+        message.avatar = "";
+        message.membersAmount = 0n;
+        message.prefix = "";
+        message.ownerAccountId = 0n;
+        if (value !== undefined)
+            reflectionMergePartial<Squad>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: Squad): Squad {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* int64 id */ 1:
+                    message.id = reader.int64().toBigInt();
+                    break;
+                case /* string name */ 2:
+                    message.name = reader.string();
+                    break;
+                case /* string slug */ 3:
+                    message.slug = reader.string();
+                    break;
+                case /* int64 chat_id */ 4:
+                    message.chatId = reader.int64().toBigInt();
+                    break;
+                case /* string avatar */ 5:
+                    message.avatar = reader.string();
+                    break;
+                case /* int64 members_amount */ 6:
+                    message.membersAmount = reader.int64().toBigInt();
+                    break;
+                case /* string prefix */ 7:
+                    message.prefix = reader.string();
+                    break;
+                case /* int64 owner_account_id */ 8:
+                    message.ownerAccountId = reader.int64().toBigInt();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: Squad, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int64 id = 1; */
+        if (message.id !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.id);
+        /* string name = 2; */
+        if (message.name !== "")
+            writer.tag(2, WireType.LengthDelimited).string(message.name);
+        /* string slug = 3; */
+        if (message.slug !== "")
+            writer.tag(3, WireType.LengthDelimited).string(message.slug);
+        /* int64 chat_id = 4; */
+        if (message.chatId !== 0n)
+            writer.tag(4, WireType.Varint).int64(message.chatId);
+        /* string avatar = 5; */
+        if (message.avatar !== "")
+            writer.tag(5, WireType.LengthDelimited).string(message.avatar);
+        /* int64 members_amount = 6; */
+        if (message.membersAmount !== 0n)
+            writer.tag(6, WireType.Varint).int64(message.membersAmount);
+        /* string prefix = 7; */
+        if (message.prefix !== "")
+            writer.tag(7, WireType.LengthDelimited).string(message.prefix);
+        /* int64 owner_account_id = 8; */
+        if (message.ownerAccountId !== 0n)
+            writer.tag(8, WireType.Varint).int64(message.ownerAccountId);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message squad.v1.Squad
+ */
+export const Squad = new Squad$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class GetSquadRequest$Type extends MessageType<GetSquadRequest> {
+    constructor() {
+        super("squad.v1.GetSquadRequest", [
+            { no: 1, name: "squad_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+        ]);
+    }
+    create(value?: PartialMessage<GetSquadRequest>): GetSquadRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.squadId = 0n;
+        if (value !== undefined)
+            reflectionMergePartial<GetSquadRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: GetSquadRequest): GetSquadRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* int64 squad_id */ 1:
+                    message.squadId = reader.int64().toBigInt();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: GetSquadRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int64 squad_id = 1; */
+        if (message.squadId !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.squadId);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message squad.v1.GetSquadRequest
+ */
+export const GetSquadRequest = new GetSquadRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class GetSquadResponse$Type extends MessageType<GetSquadResponse> {
+    constructor() {
+        super("squad.v1.GetSquadResponse", [
+            { no: 1, name: "squad", kind: "message", T: () => Squad }
+        ]);
+    }
+    create(value?: PartialMessage<GetSquadResponse>): GetSquadResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        if (value !== undefined)
+            reflectionMergePartial<GetSquadResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: GetSquadResponse): GetSquadResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* squad.v1.Squad squad */ 1:
+                    message.squad = Squad.internalBinaryRead(reader, reader.uint32(), options, message.squad);
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: GetSquadResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* squad.v1.Squad squad = 1; */
+        if (message.squad)
+            Squad.internalBinaryWrite(message.squad, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message squad.v1.GetSquadResponse
+ */
+export const GetSquadResponse = new GetSquadResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class ListSquadsRequest$Type extends MessageType<ListSquadsRequest> {
+    constructor() {
+        super("squad.v1.ListSquadsRequest", [
+            { no: 1, name: "limit", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "offset", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "slug", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "chat_id", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 6, name: "prefix", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 7, name: "members_amount", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 8, name: "members_amount_min", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 9, name: "members_amount_max", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 10, name: "created_at_gte", kind: "message", T: () => Timestamp },
+            { no: 11, name: "created_at_lte", kind: "message", T: () => Timestamp },
+            { no: 12, name: "sort_fields", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
+            { no: 13, name: "directions", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<ListSquadsRequest>): ListSquadsRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.limit = 0;
+        message.offset = 0;
+        message.sortFields = [];
+        message.directions = [];
+        if (value !== undefined)
+            reflectionMergePartial<ListSquadsRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ListSquadsRequest): ListSquadsRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* int32 limit */ 1:
+                    message.limit = reader.int32();
+                    break;
+                case /* int32 offset */ 2:
+                    message.offset = reader.int32();
+                    break;
+                case /* optional string name */ 3:
+                    message.name = reader.string();
+                    break;
+                case /* optional string slug */ 4:
+                    message.slug = reader.string();
+                    break;
+                case /* optional int64 chat_id */ 5:
+                    message.chatId = reader.int64().toBigInt();
+                    break;
+                case /* optional string prefix */ 6:
+                    message.prefix = reader.string();
+                    break;
+                case /* optional int64 members_amount */ 7:
+                    message.membersAmount = reader.int64().toBigInt();
+                    break;
+                case /* optional int64 members_amount_min */ 8:
+                    message.membersAmountMin = reader.int64().toBigInt();
+                    break;
+                case /* optional int64 members_amount_max */ 9:
+                    message.membersAmountMax = reader.int64().toBigInt();
+                    break;
+                case /* optional google.protobuf.Timestamp created_at_gte */ 10:
+                    message.createdAtGte = Timestamp.internalBinaryRead(reader, reader.uint32(), options, message.createdAtGte);
+                    break;
+                case /* optional google.protobuf.Timestamp created_at_lte */ 11:
+                    message.createdAtLte = Timestamp.internalBinaryRead(reader, reader.uint32(), options, message.createdAtLte);
+                    break;
+                case /* repeated string sort_fields */ 12:
+                    message.sortFields.push(reader.string());
+                    break;
+                case /* repeated string directions */ 13:
+                    message.directions.push(reader.string());
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: ListSquadsRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int32 limit = 1; */
+        if (message.limit !== 0)
+            writer.tag(1, WireType.Varint).int32(message.limit);
+        /* int32 offset = 2; */
+        if (message.offset !== 0)
+            writer.tag(2, WireType.Varint).int32(message.offset);
+        /* optional string name = 3; */
+        if (message.name !== undefined)
+            writer.tag(3, WireType.LengthDelimited).string(message.name);
+        /* optional string slug = 4; */
+        if (message.slug !== undefined)
+            writer.tag(4, WireType.LengthDelimited).string(message.slug);
+        /* optional int64 chat_id = 5; */
+        if (message.chatId !== undefined)
+            writer.tag(5, WireType.Varint).int64(message.chatId);
+        /* optional string prefix = 6; */
+        if (message.prefix !== undefined)
+            writer.tag(6, WireType.LengthDelimited).string(message.prefix);
+        /* optional int64 members_amount = 7; */
+        if (message.membersAmount !== undefined)
+            writer.tag(7, WireType.Varint).int64(message.membersAmount);
+        /* optional int64 members_amount_min = 8; */
+        if (message.membersAmountMin !== undefined)
+            writer.tag(8, WireType.Varint).int64(message.membersAmountMin);
+        /* optional int64 members_amount_max = 9; */
+        if (message.membersAmountMax !== undefined)
+            writer.tag(9, WireType.Varint).int64(message.membersAmountMax);
+        /* optional google.protobuf.Timestamp created_at_gte = 10; */
+        if (message.createdAtGte)
+            Timestamp.internalBinaryWrite(message.createdAtGte, writer.tag(10, WireType.LengthDelimited).fork(), options).join();
+        /* optional google.protobuf.Timestamp created_at_lte = 11; */
+        if (message.createdAtLte)
+            Timestamp.internalBinaryWrite(message.createdAtLte, writer.tag(11, WireType.LengthDelimited).fork(), options).join();
+        /* repeated string sort_fields = 12; */
+        for (let i = 0; i < message.sortFields.length; i++)
+            writer.tag(12, WireType.LengthDelimited).string(message.sortFields[i]);
+        /* repeated string directions = 13; */
+        for (let i = 0; i < message.directions.length; i++)
+            writer.tag(13, WireType.LengthDelimited).string(message.directions[i]);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message squad.v1.ListSquadsRequest
+ */
+export const ListSquadsRequest = new ListSquadsRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class ListSquadsResponse$Type extends MessageType<ListSquadsResponse> {
+    constructor() {
+        super("squad.v1.ListSquadsResponse", [
+            { no: 1, name: "squads", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Squad },
+            { no: 2, name: "pagination", kind: "message", T: () => Pagination }
+        ]);
+    }
+    create(value?: PartialMessage<ListSquadsResponse>): ListSquadsResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.squads = [];
+        if (value !== undefined)
+            reflectionMergePartial<ListSquadsResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ListSquadsResponse): ListSquadsResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* repeated squad.v1.Squad squads */ 1:
+                    message.squads.push(Squad.internalBinaryRead(reader, reader.uint32(), options));
+                    break;
+                case /* common.v1.Pagination pagination */ 2:
+                    message.pagination = Pagination.internalBinaryRead(reader, reader.uint32(), options, message.pagination);
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: ListSquadsResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* repeated squad.v1.Squad squads = 1; */
+        for (let i = 0; i < message.squads.length; i++)
+            Squad.internalBinaryWrite(message.squads[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* common.v1.Pagination pagination = 2; */
+        if (message.pagination)
+            Pagination.internalBinaryWrite(message.pagination, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message squad.v1.ListSquadsResponse
+ */
+export const ListSquadsResponse = new ListSquadsResponse$Type();
 /**
  * @generated ServiceType for protobuf service squad.v1.SquadsService
  */
 export const SquadsService = new ServiceType("squad.v1.SquadsService", [
     { name: "StreamEvents", serverStreaming: true, options: {}, I: StreamEventsRequest, O: StreamEventsResponse },
     { name: "AddGroup", options: {}, I: AddGroupRequest, O: AddGroupResponse },
-    { name: "StreamAckMessages", options: {}, I: StreamEventAckRequest, O: StreamEventAckResponse }
+    { name: "StreamAckMessages", options: {}, I: StreamEventAckRequest, O: StreamEventAckResponse },
+    { name: "GetSquad", options: {}, I: GetSquadRequest, O: GetSquadResponse },
+    { name: "ListSquads", options: {}, I: ListSquadsRequest, O: ListSquadsResponse }
 ]);

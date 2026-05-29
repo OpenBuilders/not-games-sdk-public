@@ -22,6 +22,8 @@ const (
 	SquadsService_StreamEvents_FullMethodName      = "/squad.v1.SquadsService/StreamEvents"
 	SquadsService_AddGroup_FullMethodName          = "/squad.v1.SquadsService/AddGroup"
 	SquadsService_StreamAckMessages_FullMethodName = "/squad.v1.SquadsService/StreamAckMessages"
+	SquadsService_GetSquad_FullMethodName          = "/squad.v1.SquadsService/GetSquad"
+	SquadsService_ListSquads_FullMethodName        = "/squad.v1.SquadsService/ListSquads"
 )
 
 // SquadsServiceClient is the client API for SquadsService service.
@@ -31,6 +33,8 @@ type SquadsServiceClient interface {
 	StreamEvents(ctx context.Context, in *StreamEventsRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[StreamEventsResponse], error)
 	AddGroup(ctx context.Context, in *AddGroupRequest, opts ...grpc.CallOption) (*AddGroupResponse, error)
 	StreamAckMessages(ctx context.Context, in *StreamEventAckRequest, opts ...grpc.CallOption) (*StreamEventAckResponse, error)
+	GetSquad(ctx context.Context, in *GetSquadRequest, opts ...grpc.CallOption) (*GetSquadResponse, error)
+	ListSquads(ctx context.Context, in *ListSquadsRequest, opts ...grpc.CallOption) (*ListSquadsResponse, error)
 }
 
 type squadsServiceClient struct {
@@ -80,6 +84,26 @@ func (c *squadsServiceClient) StreamAckMessages(ctx context.Context, in *StreamE
 	return out, nil
 }
 
+func (c *squadsServiceClient) GetSquad(ctx context.Context, in *GetSquadRequest, opts ...grpc.CallOption) (*GetSquadResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetSquadResponse)
+	err := c.cc.Invoke(ctx, SquadsService_GetSquad_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *squadsServiceClient) ListSquads(ctx context.Context, in *ListSquadsRequest, opts ...grpc.CallOption) (*ListSquadsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListSquadsResponse)
+	err := c.cc.Invoke(ctx, SquadsService_ListSquads_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SquadsServiceServer is the server API for SquadsService service.
 // All implementations must embed UnimplementedSquadsServiceServer
 // for forward compatibility.
@@ -87,6 +111,8 @@ type SquadsServiceServer interface {
 	StreamEvents(*StreamEventsRequest, grpc.ServerStreamingServer[StreamEventsResponse]) error
 	AddGroup(context.Context, *AddGroupRequest) (*AddGroupResponse, error)
 	StreamAckMessages(context.Context, *StreamEventAckRequest) (*StreamEventAckResponse, error)
+	GetSquad(context.Context, *GetSquadRequest) (*GetSquadResponse, error)
+	ListSquads(context.Context, *ListSquadsRequest) (*ListSquadsResponse, error)
 	mustEmbedUnimplementedSquadsServiceServer()
 }
 
@@ -105,6 +131,12 @@ func (UnimplementedSquadsServiceServer) AddGroup(context.Context, *AddGroupReque
 }
 func (UnimplementedSquadsServiceServer) StreamAckMessages(context.Context, *StreamEventAckRequest) (*StreamEventAckResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method StreamAckMessages not implemented")
+}
+func (UnimplementedSquadsServiceServer) GetSquad(context.Context, *GetSquadRequest) (*GetSquadResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetSquad not implemented")
+}
+func (UnimplementedSquadsServiceServer) ListSquads(context.Context, *ListSquadsRequest) (*ListSquadsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListSquads not implemented")
 }
 func (UnimplementedSquadsServiceServer) mustEmbedUnimplementedSquadsServiceServer() {}
 func (UnimplementedSquadsServiceServer) testEmbeddedByValue()                       {}
@@ -174,6 +206,42 @@ func _SquadsService_StreamAckMessages_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SquadsService_GetSquad_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSquadRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SquadsServiceServer).GetSquad(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SquadsService_GetSquad_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SquadsServiceServer).GetSquad(ctx, req.(*GetSquadRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SquadsService_ListSquads_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListSquadsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SquadsServiceServer).ListSquads(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SquadsService_ListSquads_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SquadsServiceServer).ListSquads(ctx, req.(*ListSquadsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SquadsService_ServiceDesc is the grpc.ServiceDesc for SquadsService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -188,6 +256,14 @@ var SquadsService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "StreamAckMessages",
 			Handler:    _SquadsService_StreamAckMessages_Handler,
+		},
+		{
+			MethodName: "GetSquad",
+			Handler:    _SquadsService_GetSquad_Handler,
+		},
+		{
+			MethodName: "ListSquads",
+			Handler:    _SquadsService_ListSquads_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
