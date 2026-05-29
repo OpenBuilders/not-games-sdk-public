@@ -43,9 +43,9 @@ jobs:
           go-version: '1.23'
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '22'
 
       - name: Install Buf
         run: |
@@ -65,7 +65,7 @@ jobs:
           sudo rm -rf node_modules
 
       - name: Install OpenAPI Generator
-        run: npm install -g @openapitools/openapi-generator-cli
+        run: npm install -g @openapitools/openapi-generator-cli@2.34.0
 
       - name: Generate proto-SDK
         run: |
