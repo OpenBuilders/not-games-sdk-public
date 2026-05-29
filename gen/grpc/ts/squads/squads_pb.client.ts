@@ -4,6 +4,10 @@
 import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
 import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
 import { SquadsService } from "./squads_pb";
+import type { ListSquadsResponse } from "./squads_pb";
+import type { ListSquadsRequest } from "./squads_pb";
+import type { GetSquadResponse } from "./squads_pb";
+import type { GetSquadRequest } from "./squads_pb";
 import type { StreamEventAckResponse } from "./squads_pb";
 import type { StreamEventAckRequest } from "./squads_pb";
 import type { AddGroupResponse } from "./squads_pb";
@@ -30,6 +34,14 @@ export interface ISquadsServiceClient {
      * @generated from protobuf rpc: StreamAckMessages
      */
     streamAckMessages(input: StreamEventAckRequest, options?: RpcOptions): UnaryCall<StreamEventAckRequest, StreamEventAckResponse>;
+    /**
+     * @generated from protobuf rpc: GetSquad
+     */
+    getSquad(input: GetSquadRequest, options?: RpcOptions): UnaryCall<GetSquadRequest, GetSquadResponse>;
+    /**
+     * @generated from protobuf rpc: ListSquads
+     */
+    listSquads(input: ListSquadsRequest, options?: RpcOptions): UnaryCall<ListSquadsRequest, ListSquadsResponse>;
 }
 /**
  * @generated from protobuf service squad.v1.SquadsService
@@ -60,5 +72,19 @@ export class SquadsServiceClient implements ISquadsServiceClient, ServiceInfo {
     streamAckMessages(input: StreamEventAckRequest, options?: RpcOptions): UnaryCall<StreamEventAckRequest, StreamEventAckResponse> {
         const method = this.methods[2], opt = this._transport.mergeOptions(options);
         return stackIntercept<StreamEventAckRequest, StreamEventAckResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
+     * @generated from protobuf rpc: GetSquad
+     */
+    getSquad(input: GetSquadRequest, options?: RpcOptions): UnaryCall<GetSquadRequest, GetSquadResponse> {
+        const method = this.methods[3], opt = this._transport.mergeOptions(options);
+        return stackIntercept<GetSquadRequest, GetSquadResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
+     * @generated from protobuf rpc: ListSquads
+     */
+    listSquads(input: ListSquadsRequest, options?: RpcOptions): UnaryCall<ListSquadsRequest, ListSquadsResponse> {
+        const method = this.methods[4], opt = this._transport.mergeOptions(options);
+        return stackIntercept<ListSquadsRequest, ListSquadsResponse>("unary", this._transport, method, opt, input);
     }
 }

@@ -19,6 +19,10 @@
 const grpc = {};
 grpc.web = require('grpc-web');
 
+
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
+
+var common_pagination_pb = require('../common/pagination_pb.js')
 const proto = {};
 proto.squad = {};
 proto.squad.v1 = require('./squads_pb.js');
@@ -250,6 +254,128 @@ proto.squad.v1.SquadsServicePromiseClient.prototype.streamAckMessages =
       request,
       metadata || {},
       methodDescriptor_SquadsService_StreamAckMessages);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.squad.v1.GetSquadRequest,
+ *   !proto.squad.v1.GetSquadResponse>}
+ */
+const methodDescriptor_SquadsService_GetSquad = new grpc.web.MethodDescriptor(
+  '/squad.v1.SquadsService/GetSquad',
+  grpc.web.MethodType.UNARY,
+  proto.squad.v1.GetSquadRequest,
+  proto.squad.v1.GetSquadResponse,
+  /**
+   * @param {!proto.squad.v1.GetSquadRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.squad.v1.GetSquadResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.squad.v1.GetSquadRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.squad.v1.GetSquadResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.squad.v1.GetSquadResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.squad.v1.SquadsServiceClient.prototype.getSquad =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/squad.v1.SquadsService/GetSquad',
+      request,
+      metadata || {},
+      methodDescriptor_SquadsService_GetSquad,
+      callback);
+};
+
+
+/**
+ * @param {!proto.squad.v1.GetSquadRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.squad.v1.GetSquadResponse>}
+ *     Promise that resolves to the response
+ */
+proto.squad.v1.SquadsServicePromiseClient.prototype.getSquad =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/squad.v1.SquadsService/GetSquad',
+      request,
+      metadata || {},
+      methodDescriptor_SquadsService_GetSquad);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.squad.v1.ListSquadsRequest,
+ *   !proto.squad.v1.ListSquadsResponse>}
+ */
+const methodDescriptor_SquadsService_ListSquads = new grpc.web.MethodDescriptor(
+  '/squad.v1.SquadsService/ListSquads',
+  grpc.web.MethodType.UNARY,
+  proto.squad.v1.ListSquadsRequest,
+  proto.squad.v1.ListSquadsResponse,
+  /**
+   * @param {!proto.squad.v1.ListSquadsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.squad.v1.ListSquadsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.squad.v1.ListSquadsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.squad.v1.ListSquadsResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.squad.v1.ListSquadsResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.squad.v1.SquadsServiceClient.prototype.listSquads =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/squad.v1.SquadsService/ListSquads',
+      request,
+      metadata || {},
+      methodDescriptor_SquadsService_ListSquads,
+      callback);
+};
+
+
+/**
+ * @param {!proto.squad.v1.ListSquadsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.squad.v1.ListSquadsResponse>}
+ *     Promise that resolves to the response
+ */
+proto.squad.v1.SquadsServicePromiseClient.prototype.listSquads =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/squad.v1.SquadsService/ListSquads',
+      request,
+      metadata || {},
+      methodDescriptor_SquadsService_ListSquads);
 };
 
 
