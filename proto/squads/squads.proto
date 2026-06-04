@@ -4,10 +4,15 @@ package squad.v1;
 
 option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/squad";
 
+import "google/protobuf/timestamp.proto";
+import "common/pagination.proto";
+
 service SquadsService {
   rpc StreamEvents(StreamEventsRequest) returns (stream StreamEventsResponse) {}
   rpc AddGroup(AddGroupRequest) returns (AddGroupResponse) {}
   rpc StreamAckMessages(StreamEventAckRequest) returns (StreamEventAckResponse) {}
+  rpc GetSquad(GetSquadRequest) returns (GetSquadResponse) {}
+  rpc ListSquads(ListSquadsRequest) returns (ListSquadsResponse) {}
 }
 
 message StreamEventsRequest {
@@ -37,4 +42,44 @@ message StreamEventAckRequest {
 
 message StreamEventAckResponse {
   bool status = 1;
+}
+
+message Squad {
+  int64 id = 1;
+  string name = 2;
+  string slug = 3;
+  int64 chat_id = 4;
+  string avatar = 5;
+  int64 members_amount = 6;
+  string prefix = 7;
+  int64 owner_account_id = 8;
+}
+
+message GetSquadRequest {
+  int64 squad_id = 1;
+}
+
+message GetSquadResponse {
+  Squad squad = 1;
+}
+
+message ListSquadsRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+  optional string name = 3;
+  optional string slug = 4;
+  optional int64 chat_id = 5;
+  optional string prefix = 6;
+  optional int64 members_amount = 7;
+  optional int64 members_amount_min = 8;
+  optional int64 members_amount_max = 9;
+  optional google.protobuf.Timestamp created_at_gte = 10;
+  optional google.protobuf.Timestamp created_at_lte = 11;
+  repeated string sort_fields = 12;
+  repeated string directions = 13;
+}
+
+message ListSquadsResponse {
+  repeated Squad squads = 1;
+  common.v1.Pagination pagination = 2;
 }
