@@ -30,7 +30,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Clone Source Repo
-        run: git clone --branch dev https://${{ secrets.SOURCE_REPO_TOKEN }}@github.com/OpenBuilders/not-platform-v2.git source-repo
+        uses: actions/checkout@v4
+        with:
+          repository: OpenBuilders/not-platform-v2
+          ref: dev
+          token: ${{ secrets.SOURCE_REPO_TOKEN }}
+          path: source-repo
 
       - name: Copy Changed Files
         run: |
