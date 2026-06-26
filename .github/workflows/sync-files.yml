@@ -4,14 +4,6 @@ on:
   repository_dispatch:
     types: [webhook_trigger]
   workflow_dispatch:
-  push:
-    branches:
-      - dev
-      - master
-    paths:
-      - 'proto/**'
-      - 'docs/**'
-      - '.github/**'
   pull_request:
     paths:
       - 'proto/**'
@@ -28,19 +20,6 @@ jobs:
     steps:
       - name: Checkout Сode
         uses: actions/checkout@v4
-
-      - name: Clone Source Repo
-        uses: actions/checkout@v4
-        with:
-          repository: OpenBuilders/not-platform-v2
-          ref: dev
-          token: ${{ secrets.SOURCE_REPO_TOKEN }}
-          path: source-repo
-
-      - name: Copy Changed Files
-        run: |
-          cp -r source-repo/docs/external docs
-          rm -rf source-repo
 
       - name: Set up Go
         uses: actions/setup-go@v4
