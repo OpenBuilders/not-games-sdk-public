@@ -37,6 +37,13 @@ const docTemplate = `{
                         "required": true
                     },
                     {
+                        "type": "string",
+                        "description": "account id",
+                        "name": "account_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
                         "type": "integer",
                         "description": "limit",
                         "name": "limit",
@@ -174,6 +181,168 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/v1/market/apps/new": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Market"
+                ],
+                "summary": "List new visible apps for external market",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "from date, RFC3339 or YYYY-MM-DD",
+                        "name": "from_date",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "limit, max 500",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "comma separated: created_at|name",
+                        "name": "sort_fields",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "comma separated: asc|desc",
+                        "name": "directions",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ListNewAppsResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/market/profile/{account_id}/items-by-apps": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Market"
+                ],
+                "summary": "market profile apps items",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "account id",
+                        "name": "account_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ProfileAppsItemsResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/profile/{account_id}/items-by-display-types": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Market"
+                ],
+                "summary": "market profile app items",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "account id",
+                        "name": "account_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "app id",
+                        "name": "app_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ProfileDisplayTypeItemsResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                        }
+                    }
+                }
+            }
+        },
         "/auth/generate": {
             "post": {
                 "security": [],
@@ -280,7 +449,7 @@ const docTemplate = `{
         },
         "/drops/{id}": {
             "get": {
-                "description": "Check user eligibility for a drop. Account ID must be provided in authorization token. This only used for game to know if user can claim drop.",
+                "description": "Check user eligibility for a drop. This only used for game to know if user can claim drop.",
                 "produces": [
                     "application/json"
                 ],
@@ -294,6 +463,13 @@ const docTemplate = `{
                         "description": "Drop ID",
                         "name": "id",
                         "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Account ID",
+                        "name": "account_id",
+                        "in": "query",
                         "required": true
                     }
                 ],
@@ -309,7 +485,7 @@ const docTemplate = `{
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "type": "string"
+                                            "$ref": "#/definitions/github_com_not-platform_internal_module_drops_presentation_drops_http_models.CheckEligibilityResponse"
                                         }
                                     }
                                 }
@@ -357,6 +533,78 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                        }
+                    }
+                }
+            }
+        },
+        "/inventory/by_itemdef": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "List items",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "offset",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "item_def_id",
+                        "name": "item_def_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "comma separated sort fields",
+                        "name": "sort_fields",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "comma separated sort directions",
+                        "name": "directions",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ListItemsResponse"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     "500": {
@@ -509,7 +757,7 @@ const docTemplate = `{
                                         "data": {
                                             "type": "array",
                                             "items": {
-                                                "type": "string"
+                                                "$ref": "#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ListItemsResponse"
                                             }
                                         }
                                     }
@@ -643,6 +891,66 @@ const docTemplate = `{
                         "required": true
                     },
                     {
+                        "type": "string",
+                        "description": "account id (int64)",
+                        "name": "account_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "request body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ConsumeItemRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                        }
+                    }
+                }
+            }
+        },
+        "/inventory/items/{item_id}/increment-quantity": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Consume item",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "item id (uuid)",
+                        "name": "item_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "account id (int64)",
+                        "name": "account_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
                         "description": "request body",
                         "name": "request",
                         "in": "body",
@@ -758,6 +1066,57 @@ const docTemplate = `{
                                     }
                                 }
                             ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                        }
+                    }
+                }
+            }
+        },
+        "/inventory/items/{item_id}/transfer_log": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Get transfer logs",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "item id (uuid)",
+                        "name": "item_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "offset",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
                         }
                     },
                     "500": {
@@ -1064,7 +1423,7 @@ const docTemplate = `{
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/definitions/http.ListAppResponse"
+                                            "$ref": "#/definitions/internal_module_registry_presentation_app_http.ListAppResponse"
                                         }
                                     }
                                 }
@@ -1103,6 +1462,78 @@ const docTemplate = `{
                         "name": "offset",
                         "in": "query",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter by collection",
+                        "name": "collection",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter by name",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter by rarity",
+                        "name": "rarity",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter by type",
+                        "name": "type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter by display type",
+                        "name": "display_type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Filter by hidden status",
+                        "name": "hidden",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Filter by game only status",
+                        "name": "game_only",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Filter by store hidden status",
+                        "name": "store_hidden",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Filter by tradable status",
+                        "name": "tradable",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Filter by supply",
+                        "name": "supply",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Comma-separated sort fields",
+                        "name": "sort_fields",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Comma-separated sort directions",
+                        "name": "directions",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -1318,20 +1749,68 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
+                        "description": "Name",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
                         "description": "Slug",
                         "name": "slug",
                         "in": "query"
                     },
                     {
+                        "type": "integer",
+                        "description": "Telegram chat ID",
+                        "name": "chat_id",
+                        "in": "query"
+                    },
+                    {
                         "type": "string",
-                        "description": "Sort",
-                        "name": "sort",
+                        "description": "Squad prefix",
+                        "name": "prefix",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "Min members amount",
-                        "name": "min_members_amount",
+                        "description": "Members amount",
+                        "name": "members_amount",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Members amount min",
+                        "name": "members_amount_min",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Members amount max",
+                        "name": "members_amount_max",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Created at greater than or equal, RFC3339",
+                        "name": "created_at_gte",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Created at less than or equal, RFC3339",
+                        "name": "created_at_lte",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort fields",
+                        "name": "sortFields",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort directions",
+                        "name": "directions",
                         "in": "query"
                     }
                 ],
@@ -1400,6 +1879,24 @@ const docTemplate = `{
                             ]
                         }
                     },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_server_templates_response.Template"
+                        }
+                    },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
@@ -1433,9 +1930,38 @@ const docTemplate = `{
                 }
             }
         },
+        "github_com_not-platform_internal_module_drops_presentation_drops_http_models.CheckEligibilityResponse": {
+            "type": "object",
+            "properties": {
+                "app_id": {
+                    "type": "integer"
+                },
+                "available_at": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "finished_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "item_def_ids": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
         "github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ConsumeItemRequest": {
             "type": "object",
             "properties": {
+                "account_id": {
+                    "type": "integer"
+                },
                 "item_id": {
                     "type": "string"
                 },
@@ -1447,11 +1973,41 @@ const docTemplate = `{
         "github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.GenerateItemRequest": {
             "type": "object",
             "properties": {
+                "account_id": {
+                    "type": "integer"
+                },
+                "app_files": {
+                    "type": "string"
+                },
                 "app_id": {
                     "type": "integer"
                 },
+                "app_meta": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "hold_till": {
+                    "type": "integer"
+                },
+                "icon_url": {
+                    "type": "string"
+                },
                 "item_def_id": {
                     "type": "string"
+                },
+                "item_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "rarity": {
+                    "type": "integer"
                 },
                 "tags": {
                     "type": "string"
@@ -1494,8 +2050,14 @@ const docTemplate = `{
                 "hidden": {
                     "type": "boolean"
                 },
+                "hold_till": {
+                    "type": "integer"
+                },
                 "icon_url": {
                     "type": "string"
+                },
+                "issued": {
+                    "type": "integer"
                 },
                 "item_def_id": {
                     "type": "string"
@@ -1555,14 +2117,23 @@ const docTemplate = `{
                 "account": {
                     "$ref": "#/definitions/github_com_not-platform_internal_module_profile_domain_entity.Account"
                 },
+                "invoice_url": {
+                    "type": "string"
+                },
                 "is_possible": {
                     "type": "boolean"
+                },
+                "payment_star": {
+                    "type": "integer"
                 }
             }
         },
         "github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.TransferItemRequest": {
             "type": "object",
             "properties": {
+                "account_from": {
+                    "type": "integer"
+                },
                 "account_to": {
                     "type": "integer"
                 },
@@ -1574,6 +2145,9 @@ const docTemplate = `{
         "github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.UnpackItemRequest": {
             "type": "object",
             "properties": {
+                "account_id": {
+                    "type": "integer"
+                },
                 "app_id": {
                     "type": "integer"
                 },
@@ -1591,6 +2165,9 @@ const docTemplate = `{
                 "app_meta": {
                     "type": "string"
                 },
+                "hold_till": {
+                    "type": "integer"
+                },
                 "rarity": {
                     "type": "integer"
                 },
@@ -1599,11 +2176,113 @@ const docTemplate = `{
                 }
             }
         },
+        "github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.AppMetaResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "items_count": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.DisplayTypeMetaResponse": {
+            "type": "object",
+            "properties": {
+                "display_type": {
+                    "type": "string"
+                },
+                "items_count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ListNewAppsResponse": {
+            "type": "object",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.NewAppResponse"
+                    }
+                }
+            }
+        },
+        "github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.NewAppResponse": {
+            "type": "object",
+            "properties": {
+                "avatar": {
+                    "type": "string"
+                },
+                "background": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "string"
+                },
+                "verified": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ProfileAppsItemsResponse": {
+            "type": "object",
+            "properties": {
+                "pagination": {
+                    "$ref": "#/definitions/github_com_not-platform_internal_module_shared_valueobject.PaginationResponse"
+                },
+                "sorted_apps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.AppMetaResponse"
+                    }
+                }
+            }
+        },
+        "github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ProfileDisplayTypeItemsResponse": {
+            "type": "object",
+            "properties": {
+                "display_types_items": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.InventoryItemResponse"
+                        }
+                    }
+                },
+                "pagination": {
+                    "$ref": "#/definitions/github_com_not-platform_internal_module_shared_valueobject.PaginationResponse"
+                },
+                "sorted_display_types": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.DisplayTypeMetaResponse"
+                    }
+                }
+            }
+        },
         "github_com_not-platform_internal_module_profile_domain_entity.Account": {
             "type": "object",
             "properties": {
                 "account_id": {
-                    "description": "telegram id",
+                    "description": "account id (positive: Telegram, negative: social providers)",
                     "type": "integer"
                 },
                 "allow_pm": {
@@ -1613,6 +2292,10 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "created_at": {
+                    "type": "string"
+                },
+                "external_id": {
+                    "description": "provider-specific user ID",
                     "type": "string"
                 },
                 "first_name": {
@@ -1627,9 +2310,16 @@ const docTemplate = `{
                 "locale": {
                     "type": "string"
                 },
+                "provider": {
+                    "description": "auth provider: telegram, google, twitter",
+                    "type": "string"
+                },
                 "squad_id": {
                     "description": "telegram group id",
                     "type": "integer"
+                },
+                "squad_prefix": {
+                    "type": "string"
                 },
                 "user_name": {
                     "type": "string"
@@ -1684,6 +2374,9 @@ const docTemplate = `{
                     "description": "telegram group id",
                     "type": "integer"
                 },
+                "squad_prefix": {
+                    "type": "string"
+                },
                 "username": {
                     "type": "string"
                 }
@@ -1721,6 +2414,9 @@ const docTemplate = `{
                 },
                 "icon_url": {
                     "type": "string"
+                },
+                "issued": {
+                    "type": "integer"
                 },
                 "item_def_id": {
                     "type": "string"
@@ -1801,67 +2497,13 @@ const docTemplate = `{
                 "error_code": {
                     "type": "string"
                 },
+                "message": {
+                    "type": "string"
+                },
                 "ok": {
                     "type": "boolean"
-                }
-            }
-        },
-        "http.ListAppResponse": {
-            "type": "object",
-            "properties": {
-                "results": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/http.appOneResponse"
-                    }
-                }
-            }
-        },
-        "http.appOneResponse": {
-            "type": "object",
-            "properties": {
-                "avatar": {
-                    "type": "string"
                 },
-                "background": {
-                    "type": "string"
-                },
-                "created_at": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "slug": {
-                    "type": "string"
-                },
-                "socials": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/http.appSocial"
-                    }
-                },
-                "updated_at": {
-                    "type": "string"
-                },
-                "verified": {
-                    "type": "boolean"
-                }
-            }
-        },
-        "http.appSocial": {
-            "type": "object",
-            "properties": {
-                "title": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string"
-                },
-                "url": {
+                "request_id": {
                     "type": "string"
                 }
             }
@@ -1907,11 +2549,20 @@ const docTemplate = `{
         "internal_module_achievement_presentation_http.CreateAchievementsRequest": {
             "type": "object",
             "properties": {
+                "account_id": {
+                    "type": "integer"
+                },
                 "achievement_def_ids": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
+                },
+                "achievement_id": {
+                    "type": "string"
+                },
+                "icon_url": {
+                    "type": "string"
                 },
                 "tags": {
                     "type": "string"
@@ -2130,6 +2781,72 @@ const docTemplate = `{
                 }
             }
         },
+        "internal_module_registry_presentation_app_http.ListAppResponse": {
+            "type": "object",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/internal_module_registry_presentation_app_http.appOneResponse"
+                    }
+                }
+            }
+        },
+        "internal_module_registry_presentation_app_http.appOneResponse": {
+            "type": "object",
+            "properties": {
+                "avatar": {
+                    "type": "string"
+                },
+                "background": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "hidden": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                },
+                "socials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/internal_module_registry_presentation_app_http.appSocial"
+                    }
+                },
+                "tags": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "verified": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "internal_module_registry_presentation_app_http.appSocial": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
         "internal_module_registry_presentation_item_http.createRequest": {
             "type": "object",
             "properties": {
@@ -2284,6 +3001,12 @@ const docTemplate = `{
                 "name": {
                     "type": "string"
                 },
+                "owner_account_id": {
+                    "type": "integer"
+                },
+                "prefix": {
+                    "type": "string"
+                },
                 "slug": {
                     "type": "string"
                 }
@@ -2292,6 +3015,9 @@ const docTemplate = `{
         "internal_module_squads_presentation_squads_http.ListSquadsResponse": {
             "type": "object",
             "properties": {
+                "pagination": {
+                    "$ref": "#/definitions/github_com_not-platform_internal_module_shared_valueobject.PaginationResponse"
+                },
                 "squads": {
                     "type": "array",
                     "items": {
