@@ -14,8 +14,27 @@ definitions:
       refresh_token:
         type: string
     type: object
+  github_com_not-platform_internal_module_drops_presentation_drops_http_models.CheckEligibilityResponse:
+    properties:
+      app_id:
+        type: integer
+      available_at:
+        type: string
+      description:
+        type: string
+      finished_at:
+        type: string
+      id:
+        type: string
+      item_def_ids:
+        type: string
+      status:
+        type: string
+    type: object
   github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ConsumeItemRequest:
     properties:
+      account_id:
+        type: integer
       item_id:
         type: string
       quantity:
@@ -23,10 +42,30 @@ definitions:
     type: object
   github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.GenerateItemRequest:
     properties:
+      account_id:
+        type: integer
+      app_files:
+        type: string
       app_id:
         type: integer
+      app_meta:
+        type: string
+      description:
+        type: string
+      hold_till:
+        type: integer
+      icon_url:
+        type: string
       item_def_id:
         type: string
+      item_id:
+        type: string
+      name:
+        type: string
+      quantity:
+        type: integer
+      rarity:
+        type: integer
       tags:
         type: string
     type: object
@@ -54,8 +93,12 @@ definitions:
         type: boolean
       hidden:
         type: boolean
+      hold_till:
+        type: integer
       icon_url:
         type: string
+      issued:
+        type: integer
       item_def_id:
         type: string
       item_id:
@@ -94,11 +137,17 @@ definitions:
     properties:
       account:
         $ref: '#/definitions/github_com_not-platform_internal_module_profile_domain_entity.Account'
+      invoice_url:
+        type: string
       is_possible:
         type: boolean
+      payment_star:
+        type: integer
     type: object
   github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.TransferItemRequest:
     properties:
+      account_from:
+        type: integer
       account_to:
         type: integer
       comment:
@@ -106,6 +155,8 @@ definitions:
     type: object
   github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.UnpackItemRequest:
     properties:
+      account_id:
+        type: integer
       app_id:
         type: integer
       item_id:
@@ -117,21 +168,92 @@ definitions:
     properties:
       app_meta:
         type: string
+      hold_till:
+        type: integer
       rarity:
         type: integer
       tags:
         type: string
     type: object
+  github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.AppMetaResponse:
+    properties:
+      id:
+        type: integer
+      items_count:
+        type: integer
+      name:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.DisplayTypeMetaResponse:
+    properties:
+      display_type:
+        type: string
+      items_count:
+        type: integer
+    type: object
+  github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ListNewAppsResponse:
+    properties:
+      results:
+        items:
+          $ref: '#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.NewAppResponse'
+        type: array
+    type: object
+  github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.NewAppResponse:
+    properties:
+      avatar:
+        type: string
+      background:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      slug:
+        type: string
+      tags:
+        type: string
+      verified:
+        type: boolean
+    type: object
+  github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ProfileAppsItemsResponse:
+    properties:
+      pagination:
+        $ref: '#/definitions/github_com_not-platform_internal_module_shared_valueobject.PaginationResponse'
+      sorted_apps:
+        items:
+          $ref: '#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.AppMetaResponse'
+        type: array
+    type: object
+  github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ProfileDisplayTypeItemsResponse:
+    properties:
+      display_types_items:
+        additionalProperties:
+          items:
+            $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.InventoryItemResponse'
+          type: array
+        type: object
+      pagination:
+        $ref: '#/definitions/github_com_not-platform_internal_module_shared_valueobject.PaginationResponse'
+      sorted_display_types:
+        items:
+          $ref: '#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.DisplayTypeMetaResponse'
+        type: array
+    type: object
   github_com_not-platform_internal_module_profile_domain_entity.Account:
     properties:
       account_id:
-        description: telegram id
+        description: 'account id (positive: Telegram, negative: social providers)'
         type: integer
       allow_pm:
         type: boolean
       avatar:
         type: string
       created_at:
+        type: string
+      external_id:
+        description: provider-specific user ID
         type: string
       first_name:
         type: string
@@ -141,9 +263,14 @@ definitions:
         type: string
       locale:
         type: string
+      provider:
+        description: 'auth provider: telegram, google, twitter'
+        type: string
       squad_id:
         description: telegram group id
         type: integer
+      squad_prefix:
+        type: string
       user_name:
         type: string
     type: object
@@ -179,6 +306,8 @@ definitions:
       squad_id:
         description: telegram group id
         type: integer
+      squad_prefix:
+        type: string
       username:
         type: string
     type: object
@@ -204,6 +333,8 @@ definitions:
         type: boolean
       icon_url:
         type: string
+      issued:
+        type: integer
       item_def_id:
         type: string
       marketable:
@@ -256,46 +387,11 @@ definitions:
       data: {}
       error_code:
         type: string
+      message:
+        type: string
       ok:
         type: boolean
-    type: object
-  http.ListAppResponse:
-    properties:
-      results:
-        items:
-          $ref: '#/definitions/http.appOneResponse'
-        type: array
-    type: object
-  http.appOneResponse:
-    properties:
-      avatar:
-        type: string
-      background:
-        type: string
-      created_at:
-        type: string
-      id:
-        type: integer
-      name:
-        type: string
-      slug:
-        type: string
-      socials:
-        items:
-          $ref: '#/definitions/http.appSocial'
-        type: array
-      updated_at:
-        type: string
-      verified:
-        type: boolean
-    type: object
-  http.appSocial:
-    properties:
-      title:
-        type: string
-      type:
-        type: string
-      url:
+      request_id:
         type: string
     type: object
   internal_module_achievement_presentation_http.CreateAchievementOneResponse:
@@ -325,10 +421,16 @@ definitions:
     type: object
   internal_module_achievement_presentation_http.CreateAchievementsRequest:
     properties:
+      account_id:
+        type: integer
       achievement_def_ids:
         items:
           type: string
         type: array
+      achievement_id:
+        type: string
+      icon_url:
+        type: string
       tags:
         type: string
     type: object
@@ -470,6 +572,49 @@ definitions:
       tags:
         type: string
     type: object
+  internal_module_registry_presentation_app_http.ListAppResponse:
+    properties:
+      results:
+        items:
+          $ref: '#/definitions/internal_module_registry_presentation_app_http.appOneResponse'
+        type: array
+    type: object
+  internal_module_registry_presentation_app_http.appOneResponse:
+    properties:
+      avatar:
+        type: string
+      background:
+        type: string
+      created_at:
+        type: string
+      hidden:
+        type: boolean
+      id:
+        type: integer
+      name:
+        type: string
+      slug:
+        type: string
+      socials:
+        items:
+          $ref: '#/definitions/internal_module_registry_presentation_app_http.appSocial'
+        type: array
+      tags:
+        type: string
+      updated_at:
+        type: string
+      verified:
+        type: boolean
+    type: object
+  internal_module_registry_presentation_app_http.appSocial:
+    properties:
+      title:
+        type: string
+      type:
+        type: string
+      url:
+        type: string
+    type: object
   internal_module_registry_presentation_item_http.createRequest:
     properties:
       app_files:
@@ -572,11 +717,17 @@ definitions:
         type: integer
       name:
         type: string
+      owner_account_id:
+        type: integer
+      prefix:
+        type: string
       slug:
         type: string
     type: object
   internal_module_squads_presentation_squads_http.ListSquadsResponse:
     properties:
+      pagination:
+        $ref: '#/definitions/github_com_not-platform_internal_module_shared_valueobject.PaginationResponse'
       squads:
         items:
           $ref: '#/definitions/internal_module_squads_presentation_squads_http.GetSquadOneResponse'
@@ -597,6 +748,11 @@ paths:
       - description: app id
         in: query
         name: app_id
+        required: true
+        type: string
+      - description: account id
+        in: query
+        name: account_id
         required: true
         type: string
       - description: limit
@@ -684,6 +840,103 @@ paths:
       summary: Get achievement
       tags:
       - Achievements
+  /api/v1/market/apps/new:
+    get:
+      parameters:
+      - description: from date, RFC3339 or YYYY-MM-DD
+        in: query
+        name: from_date
+        type: string
+      - description: limit, max 500
+        in: query
+        name: limit
+        type: integer
+      - description: 'comma separated: created_at|name'
+        in: query
+        name: sort_fields
+        type: string
+      - description: 'comma separated: asc|desc'
+        in: query
+        name: directions
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ListNewAppsResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List new visible apps for external market
+      tags:
+      - Market
+  /api/v1/market/profile/{account_id}/items-by-apps:
+    get:
+      parameters:
+      - description: account id
+        in: path
+        name: account_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ProfileAppsItemsResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: market profile apps items
+      tags:
+      - Market
+  /api/v1/profile/{account_id}/items-by-display-types:
+    get:
+      parameters:
+      - description: account id
+        in: path
+        name: account_id
+        required: true
+        type: string
+      - description: app id
+        in: query
+        name: app_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ProfileDisplayTypeItemsResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: market profile app items
+      tags:
+      - Market
   /auth/generate:
     post:
       consumes:
@@ -748,13 +1001,17 @@ paths:
       - Drops
   /drops/{id}:
     get:
-      description: Check user eligibility for a drop. Account ID must be provided
-        in authorization token. This only used for game to know if user can claim
-        drop.
+      description: Check user eligibility for a drop. This only used for game to know
+        if user can claim drop.
       parameters:
       - description: Drop ID
         in: path
         name: id
+        required: true
+        type: string
+      - description: Account ID
+        in: query
+        name: account_id
         required: true
         type: string
       produces:
@@ -767,7 +1024,7 @@ paths:
             - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
             - properties:
                 data:
-                  type: string
+                  $ref: '#/definitions/github_com_not-platform_internal_module_drops_presentation_drops_http_models.CheckEligibilityResponse'
               type: object
         "500":
           description: Internal Server Error
@@ -804,6 +1061,51 @@ paths:
       summary: Whitelist users for a drop
       tags:
       - Drops
+  /inventory/by_itemdef:
+    get:
+      parameters:
+      - description: limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      - description: item_def_id
+        in: query
+        name: item_def_id
+        required: true
+        type: string
+      - description: comma separated sort fields
+        in: query
+        name: sort_fields
+        type: string
+      - description: comma separated sort directions
+        in: query
+        name: directions
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ListItemsResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List items
+      tags:
+      - Inventory
   /inventory/items:
     get:
       parameters:
@@ -906,6 +1208,46 @@ paths:
         name: item_id
         required: true
         type: string
+      - description: account id (int64)
+        in: query
+        name: account_id
+        required: true
+        type: string
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ConsumeItemRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Consume item
+      tags:
+      - Inventory
+  /inventory/items/{item_id}/increment-quantity:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: item id (uuid)
+        in: path
+        name: item_id
+        required: true
+        type: string
+      - description: account id (int64)
+        in: query
+        name: account_id
+        required: true
+        type: string
       - description: request body
         in: body
         name: request
@@ -989,6 +1331,40 @@ paths:
       summary: Check transfer item possibility to another account
       tags:
       - Inventory
+  /inventory/items/{item_id}/transfer_log:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: item id (uuid)
+        in: path
+        name: item_id
+        required: true
+        type: string
+      - description: limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Get transfer logs
+      tags:
+      - Inventory
   /inventory/items/generate:
     post:
       consumes:
@@ -1041,7 +1417,7 @@ paths:
             - properties:
                 data:
                   items:
-                    type: string
+                    $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ListItemsResponse'
                   type: array
               type: object
         "500":
@@ -1234,7 +1610,7 @@ paths:
             - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
             - properties:
                 data:
-                  $ref: '#/definitions/http.ListAppResponse'
+                  $ref: '#/definitions/internal_module_registry_presentation_app_http.ListAppResponse'
               type: object
         "500":
           description: Internal Server Error
@@ -1256,6 +1632,54 @@ paths:
         name: offset
         required: true
         type: integer
+      - description: Filter by collection
+        in: query
+        name: collection
+        type: string
+      - description: Filter by name
+        in: query
+        name: name
+        type: string
+      - description: Filter by rarity
+        in: query
+        name: rarity
+        type: string
+      - description: Filter by type
+        in: query
+        name: type
+        type: string
+      - description: Filter by display type
+        in: query
+        name: display_type
+        type: string
+      - description: Filter by hidden status
+        in: query
+        name: hidden
+        type: boolean
+      - description: Filter by game only status
+        in: query
+        name: game_only
+        type: boolean
+      - description: Filter by store hidden status
+        in: query
+        name: store_hidden
+        type: boolean
+      - description: Filter by tradable status
+        in: query
+        name: tradable
+        type: boolean
+      - description: Filter by supply
+        in: query
+        name: supply
+        type: integer
+      - description: Comma-separated sort fields
+        in: query
+        name: sort_fields
+        type: string
+      - description: Comma-separated sort directions
+        in: query
+        name: directions
+        type: string
       produces:
       - application/json
       responses:
@@ -1389,18 +1813,50 @@ paths:
         name: offset
         required: true
         type: integer
+      - description: Name
+        in: query
+        name: name
+        type: string
       - description: Slug
         in: query
         name: slug
         type: string
-      - description: Sort
+      - description: Telegram chat ID
         in: query
-        name: sort
-        type: string
-      - description: Min members amount
-        in: query
-        name: min_members_amount
+        name: chat_id
         type: integer
+      - description: Squad prefix
+        in: query
+        name: prefix
+        type: string
+      - description: Members amount
+        in: query
+        name: members_amount
+        type: integer
+      - description: Members amount min
+        in: query
+        name: members_amount_min
+        type: integer
+      - description: Members amount max
+        in: query
+        name: members_amount_max
+        type: integer
+      - description: Created at greater than or equal, RFC3339
+        in: query
+        name: created_at_gte
+        type: string
+      - description: Created at less than or equal, RFC3339
+        in: query
+        name: created_at_lte
+        type: string
+      - description: Sort fields
+        in: query
+        name: sortFields
+        type: string
+      - description: Sort directions
+        in: query
+        name: directions
+        type: string
       produces:
       - application/json
       responses:
@@ -1440,6 +1896,18 @@ paths:
                 data:
                   $ref: '#/definitions/internal_module_squads_presentation_squads_http.GetSquadOneResponse'
               type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
         "500":
           description: Internal Server Error
           schema:
