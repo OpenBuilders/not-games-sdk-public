@@ -20,6 +20,7 @@ var _ MappedNullable = &GithubComNotPlatformInternalModuleInventoryPresentationI
 // GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest struct for GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest
 type GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest struct {
 	AppMeta *string `json:"app_meta,omitempty"`
+	HoldTill *int32 `json:"hold_till,omitempty"`
 	Rarity *int32 `json:"rarity,omitempty"`
 	Tags *string `json:"tags,omitempty"`
 }
@@ -71,6 +72,38 @@ func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHtt
 // SetAppMeta gets a reference to the given string and assigns it to the AppMeta field.
 func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest) SetAppMeta(v string) {
 	o.AppMeta = &v
+}
+
+// GetHoldTill returns the HoldTill field value if set, zero value otherwise.
+func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest) GetHoldTill() int32 {
+	if o == nil || IsNil(o.HoldTill) {
+		var ret int32
+		return ret
+	}
+	return *o.HoldTill
+}
+
+// GetHoldTillOk returns a tuple with the HoldTill field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest) GetHoldTillOk() (*int32, bool) {
+	if o == nil || IsNil(o.HoldTill) {
+		return nil, false
+	}
+	return o.HoldTill, true
+}
+
+// HasHoldTill returns a boolean if a field has been set.
+func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest) HasHoldTill() bool {
+	if o != nil && !IsNil(o.HoldTill) {
+		return true
+	}
+
+	return false
+}
+
+// SetHoldTill gets a reference to the given int32 and assigns it to the HoldTill field.
+func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest) SetHoldTill(v int32) {
+	o.HoldTill = &v
 }
 
 // GetRarity returns the Rarity field value if set, zero value otherwise.
@@ -149,6 +182,9 @@ func (o GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttp
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AppMeta) {
 		toSerialize["app_meta"] = o.AppMeta
+	}
+	if !IsNil(o.HoldTill) {
+		toSerialize["hold_till"] = o.HoldTill
 	}
 	if !IsNil(o.Rarity) {
 		toSerialize["rarity"] = o.Rarity

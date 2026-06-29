@@ -11,7 +11,7 @@ All URIs are relative to *http://localhost:8080/api/v1*
 # **dropsIdGet**
 > DropsIdGet200Response dropsIdGet()
 
-Check user eligibility for a drop. Account ID must be provided in authorization token. This only used for game to know if user can claim drop.
+Check user eligibility for a drop. This only used for game to know if user can claim drop.
 
 ### Example
 
@@ -25,9 +25,11 @@ const configuration = new Configuration();
 const apiInstance = new DropsApi(configuration);
 
 let id: string; //Drop ID (default to undefined)
+let accountId: string; //Account ID (default to undefined)
 
 const { status, data } = await apiInstance.dropsIdGet(
-    id
+    id,
+    accountId
 );
 ```
 
@@ -36,6 +38,7 @@ const { status, data } = await apiInstance.dropsIdGet(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **id** | [**string**] | Drop ID | defaults to undefined|
+| **accountId** | [**string**] | Account ID | defaults to undefined|
 
 
 ### Return type

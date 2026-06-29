@@ -57,6 +57,8 @@ type APIClient struct {
 
 	InventoryAPI *InventoryAPIService
 
+	MarketAPI *MarketAPIService
+
 	ProfileAPI *ProfileAPIService
 
 	RegistryAPI *RegistryAPIService
@@ -84,6 +86,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AuthAPI = (*AuthAPIService)(&c.common)
 	c.DropsAPI = (*DropsAPIService)(&c.common)
 	c.InventoryAPI = (*InventoryAPIService)(&c.common)
+	c.MarketAPI = (*MarketAPIService)(&c.common)
 	c.ProfileAPI = (*ProfileAPIService)(&c.common)
 	c.RegistryAPI = (*RegistryAPIService)(&c.common)
 	c.SquadsAPI = (*SquadsAPIService)(&c.common)

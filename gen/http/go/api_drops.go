@@ -27,6 +27,13 @@ type ApiDropsIdGetRequest struct {
 	ctx context.Context
 	ApiService *DropsAPIService
 	id string
+	accountId *string
+}
+
+// Account ID
+func (r ApiDropsIdGetRequest) AccountId(accountId string) ApiDropsIdGetRequest {
+	r.accountId = &accountId
+	return r
 }
 
 func (r ApiDropsIdGetRequest) Execute() (*DropsIdGet200Response, *http.Response, error) {
@@ -36,7 +43,7 @@ func (r ApiDropsIdGetRequest) Execute() (*DropsIdGet200Response, *http.Response,
 /*
 DropsIdGet Check user eligibility for a drop
 
-Check user eligibility for a drop. Account ID must be provided in authorization token. This only used for game to know if user can claim drop.
+Check user eligibility for a drop. This only used for game to know if user can claim drop.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Drop ID
@@ -71,7 +78,11 @@ func (a *DropsAPIService) DropsIdGetExecute(r ApiDropsIdGetRequest) (*DropsIdGet
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.accountId == nil {
+		return localVarReturnValue, nil, reportError("accountId is required and must be specified")
+	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "account_id", r.accountId, "", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

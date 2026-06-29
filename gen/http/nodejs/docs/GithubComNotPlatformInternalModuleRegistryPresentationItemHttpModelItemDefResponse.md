@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **game_only** | **boolean** |  | [optional] [default to undefined]
 **hidden** | **boolean** |  | [optional] [default to undefined]
 **icon_url** | **string** |  | [optional] [default to undefined]
+**issued** | **number** |  | [optional] [default to undefined]
 **item_def_id** | **string** |  | [optional] [default to undefined]
 **marketable** | **boolean** |  | [optional] [default to undefined]
 **max_supply** | **number** |  | [optional] [default to undefined]
@@ -46,6 +47,7 @@ const instance: GithubComNotPlatformInternalModuleRegistryPresentationItemHttpMo
     game_only,
     hidden,
     icon_url,
+    issued,
     item_def_id,
     marketable,
     max_supply,

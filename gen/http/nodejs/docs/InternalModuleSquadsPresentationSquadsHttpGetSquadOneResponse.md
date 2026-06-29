@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **id** | **number** |  | [optional] [default to undefined]
 **members_amount** | **number** |  | [optional] [default to undefined]
 **name** | **string** |  | [optional] [default to undefined]
+**owner_account_id** | **number** |  | [optional] [default to undefined]
+**prefix** | **string** |  | [optional] [default to undefined]
 **slug** | **string** |  | [optional] [default to undefined]
 
 ## Example
@@ -23,6 +25,8 @@ const instance: InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse = 
     id,
     members_amount,
     name,
+    owner_account_id,
+    prefix,
     slug,
 };
 ```

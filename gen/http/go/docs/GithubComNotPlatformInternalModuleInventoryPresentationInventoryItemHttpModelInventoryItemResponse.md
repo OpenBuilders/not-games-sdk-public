@@ -15,7 +15,9 @@ Name | Type | Description | Notes
 **DisplayType** | Pointer to **string** |  | [optional] 
 **GameOnly** | Pointer to **bool** |  | [optional] 
 **Hidden** | Pointer to **bool** |  | [optional] 
+**HoldTill** | Pointer to **int32** |  | [optional] 
 **IconUrl** | Pointer to **string** |  | [optional] 
+**Issued** | Pointer to **int32** |  | [optional] 
 **ItemDefId** | Pointer to **string** |  | [optional] 
 **ItemId** | Pointer to **string** |  | [optional] 
 **Marketable** | Pointer to **bool** |  | [optional] 
@@ -323,6 +325,31 @@ SetHidden sets Hidden field to given value.
 
 HasHidden returns a boolean if a field has been set.
 
+### GetHoldTill
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse) GetHoldTill() int32`
+
+GetHoldTill returns the HoldTill field if non-nil, zero value otherwise.
+
+### GetHoldTillOk
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse) GetHoldTillOk() (*int32, bool)`
+
+GetHoldTillOk returns a tuple with the HoldTill field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHoldTill
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse) SetHoldTill(v int32)`
+
+SetHoldTill sets HoldTill field to given value.
+
+### HasHoldTill
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse) HasHoldTill() bool`
+
+HasHoldTill returns a boolean if a field has been set.
+
 ### GetIconUrl
 
 `func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse) GetIconUrl() string`
@@ -347,6 +374,31 @@ SetIconUrl sets IconUrl field to given value.
 `func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse) HasIconUrl() bool`
 
 HasIconUrl returns a boolean if a field has been set.
+
+### GetIssued
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse) GetIssued() int32`
+
+GetIssued returns the Issued field if non-nil, zero value otherwise.
+
+### GetIssuedOk
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse) GetIssuedOk() (*int32, bool)`
+
+GetIssuedOk returns a tuple with the Issued field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssued
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse) SetIssued(v int32)`
+
+SetIssued sets Issued field to given value.
+
+### HasIssued
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse) HasIssued() bool`
+
+HasIssued returns a boolean if a field has been set.
 
 ### GetItemDefId
 

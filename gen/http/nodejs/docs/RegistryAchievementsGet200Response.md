@@ -7,7 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse**](InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse.md) |  | [optional] [default to undefined]
 **error_code** | **string** |  | [optional] [default to undefined]
+**message** | **string** |  | [optional] [default to undefined]
 **ok** | **boolean** |  | [optional] [default to undefined]
+**request_id** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -17,7 +19,9 @@ import { RegistryAchievementsGet200Response } from 'not-games-sdk-public';
 const instance: RegistryAchievementsGet200Response = {
     data,
     error_code,
+    message,
     ok,
+    request_id,
 };
 ```
 

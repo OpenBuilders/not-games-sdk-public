@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccountFrom** | Pointer to **int32** |  | [optional] 
 **AccountTo** | Pointer to **int32** |  | [optional] 
 **Comment** | Pointer to **string** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewGithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequestWithDefaults instantiates a new GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccountFrom
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest) GetAccountFrom() int32`
+
+GetAccountFrom returns the AccountFrom field if non-nil, zero value otherwise.
+
+### GetAccountFromOk
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest) GetAccountFromOk() (*int32, bool)`
+
+GetAccountFromOk returns a tuple with the AccountFrom field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountFrom
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest) SetAccountFrom(v int32)`
+
+SetAccountFrom sets AccountFrom field to given value.
+
+### HasAccountFrom
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest) HasAccountFrom() bool`
+
+HasAccountFrom returns a boolean if a field has been set.
 
 ### GetAccountTo
 

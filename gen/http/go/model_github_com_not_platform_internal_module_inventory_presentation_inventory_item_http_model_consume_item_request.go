@@ -19,6 +19,7 @@ var _ MappedNullable = &GithubComNotPlatformInternalModuleInventoryPresentationI
 
 // GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest struct for GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest
 type GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest struct {
+	AccountId *int32 `json:"account_id,omitempty"`
 	ItemId *string `json:"item_id,omitempty"`
 	Quantity *int32 `json:"quantity,omitempty"`
 }
@@ -38,6 +39,38 @@ func NewGithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttp
 func NewGithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequestWithDefaults() *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest {
 	this := GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest{}
 	return &this
+}
+
+// GetAccountId returns the AccountId field value if set, zero value otherwise.
+func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest) GetAccountId() int32 {
+	if o == nil || IsNil(o.AccountId) {
+		var ret int32
+		return ret
+	}
+	return *o.AccountId
+}
+
+// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest) GetAccountIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.AccountId) {
+		return nil, false
+	}
+	return o.AccountId, true
+}
+
+// HasAccountId returns a boolean if a field has been set.
+func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest) HasAccountId() bool {
+	if o != nil && !IsNil(o.AccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountId gets a reference to the given int32 and assigns it to the AccountId field.
+func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest) SetAccountId(v int32) {
+	o.AccountId = &v
 }
 
 // GetItemId returns the ItemId field value if set, zero value otherwise.
@@ -114,6 +147,9 @@ func (o GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttp
 
 func (o GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccountId) {
+		toSerialize["account_id"] = o.AccountId
+	}
 	if !IsNil(o.ItemId) {
 		toSerialize["item_id"] = o.ItemId
 	}

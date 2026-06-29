@@ -4,20 +4,95 @@ All URIs are relative to *http://localhost:8080/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**InventoryByItemdefGet**](InventoryAPI.md#InventoryByItemdefGet) | **Get** /inventory/by_itemdef | List items
 [**InventoryItemsGeneratePost**](InventoryAPI.md#InventoryItemsGeneratePost) | **Post** /inventory/items/generate | Generate item
 [**InventoryItemsGet**](InventoryAPI.md#InventoryItemsGet) | **Get** /inventory/items | List items
 [**InventoryItemsItemIdConsumePost**](InventoryAPI.md#InventoryItemsItemIdConsumePost) | **Post** /inventory/items/{item_id}/consume | Consume item
 [**InventoryItemsItemIdGet**](InventoryAPI.md#InventoryItemsItemIdGet) | **Get** /inventory/items/{item_id} | Get item
+[**InventoryItemsItemIdIncrementQuantityPost**](InventoryAPI.md#InventoryItemsItemIdIncrementQuantityPost) | **Post** /inventory/items/{item_id}/increment-quantity | Consume item
 [**InventoryItemsItemIdPut**](InventoryAPI.md#InventoryItemsItemIdPut) | **Put** /inventory/items/{item_id} | Update item
+[**InventoryItemsItemIdTransferLogPost**](InventoryAPI.md#InventoryItemsItemIdTransferLogPost) | **Post** /inventory/items/{item_id}/transfer_log | Get transfer logs
 [**InventoryItemsItemIdTransferPost**](InventoryAPI.md#InventoryItemsItemIdTransferPost) | **Post** /inventory/items/{item_id}/transfer | Transfer item to another account
 [**InventoryItemsItemIdTransferPreflightPost**](InventoryAPI.md#InventoryItemsItemIdTransferPreflightPost) | **Post** /inventory/items/{item_id}/transfer-preflight | Check transfer item possibility to another account
 [**InventoryItemsUnpackPost**](InventoryAPI.md#InventoryItemsUnpackPost) | **Post** /inventory/items/unpack | Unpack item
 
 
 
+## InventoryByItemdefGet
+
+> InventoryByItemdefGet200Response InventoryByItemdefGet(ctx).Limit(limit).Offset(offset).ItemDefId(itemDefId).SortFields(sortFields).Directions(directions).Execute()
+
+List items
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	limit := int32(56) // int32 | limit
+	offset := int32(56) // int32 | offset
+	itemDefId := "itemDefId_example" // string | item_def_id
+	sortFields := "sortFields_example" // string | comma separated sort fields (optional)
+	directions := "directions_example" // string | comma separated sort directions (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryAPI.InventoryByItemdefGet(context.Background()).Limit(limit).Offset(offset).ItemDefId(itemDefId).SortFields(sortFields).Directions(directions).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryByItemdefGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InventoryByItemdefGet`: InventoryByItemdefGet200Response
+	fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.InventoryByItemdefGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiInventoryByItemdefGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | limit | 
+ **offset** | **int32** | offset | 
+ **itemDefId** | **string** | item_def_id | 
+ **sortFields** | **string** | comma separated sort fields | 
+ **directions** | **string** | comma separated sort directions | 
+
+### Return type
+
+[**InventoryByItemdefGet200Response**](InventoryByItemdefGet200Response.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## InventoryItemsGeneratePost
 
-> DropsIdGet200Response InventoryItemsGeneratePost(ctx).Request(request).Execute()
+> InventoryItemsGeneratePost200Response InventoryItemsGeneratePost(ctx).Request(request).Execute()
 
 Generate item
 
@@ -43,7 +118,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryItemsGeneratePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `InventoryItemsGeneratePost`: DropsIdGet200Response
+	// response from `InventoryItemsGeneratePost`: InventoryItemsGeneratePost200Response
 	fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.InventoryItemsGeneratePost`: %v\n", resp)
 }
 ```
@@ -63,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DropsIdGet200Response**](DropsIdGet200Response.md)
+[**InventoryItemsGeneratePost200Response**](InventoryItemsGeneratePost200Response.md)
 
 ### Authorization
 
@@ -81,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## InventoryItemsGet
 
-> InventoryItemsGet200Response InventoryItemsGet(ctx).Limit(limit).Offset(offset).Execute()
+> InventoryByItemdefGet200Response InventoryItemsGet(ctx).Limit(limit).Offset(offset).Execute()
 
 List items
 
@@ -108,7 +183,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryItemsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `InventoryItemsGet`: InventoryItemsGet200Response
+	// response from `InventoryItemsGet`: InventoryByItemdefGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.InventoryItemsGet`: %v\n", resp)
 }
 ```
@@ -129,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InventoryItemsGet200Response**](InventoryItemsGet200Response.md)
+[**InventoryByItemdefGet200Response**](InventoryByItemdefGet200Response.md)
 
 ### Authorization
 
@@ -147,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## InventoryItemsItemIdConsumePost
 
-> GithubComNotPlatformInternalServerTemplatesResponseTemplate InventoryItemsItemIdConsumePost(ctx, itemId).Request(request).Execute()
+> GithubComNotPlatformInternalServerTemplatesResponseTemplate InventoryItemsItemIdConsumePost(ctx, itemId).AccountId(accountId).Request(request).Execute()
 
 Consume item
 
@@ -165,11 +240,12 @@ import (
 
 func main() {
 	itemId := "itemId_example" // string | item id (uuid)
+	accountId := "accountId_example" // string | account id (int64)
 	request := *openapiclient.NewGithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest() // GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest | request body
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InventoryAPI.InventoryItemsItemIdConsumePost(context.Background(), itemId).Request(request).Execute()
+	resp, r, err := apiClient.InventoryAPI.InventoryItemsItemIdConsumePost(context.Background(), itemId).AccountId(accountId).Request(request).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryItemsItemIdConsumePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -195,6 +271,7 @@ Other parameters are passed through a pointer to a apiInventoryItemsItemIdConsum
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **accountId** | **string** | account id (int64) | 
  **request** | [**GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest**](GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest.md) | request body | 
 
 ### Return type
@@ -285,6 +362,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## InventoryItemsItemIdIncrementQuantityPost
+
+> GithubComNotPlatformInternalServerTemplatesResponseTemplate InventoryItemsItemIdIncrementQuantityPost(ctx, itemId).AccountId(accountId).Request(request).Execute()
+
+Consume item
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	itemId := "itemId_example" // string | item id (uuid)
+	accountId := "accountId_example" // string | account id (int64)
+	request := *openapiclient.NewGithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest() // GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest | request body
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryAPI.InventoryItemsItemIdIncrementQuantityPost(context.Background(), itemId).AccountId(accountId).Request(request).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryItemsItemIdIncrementQuantityPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InventoryItemsItemIdIncrementQuantityPost`: GithubComNotPlatformInternalServerTemplatesResponseTemplate
+	fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.InventoryItemsItemIdIncrementQuantityPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**itemId** | **string** | item id (uuid) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiInventoryItemsItemIdIncrementQuantityPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **accountId** | **string** | account id (int64) | 
+ **request** | [**GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest**](GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest.md) | request body | 
+
+### Return type
+
+[**GithubComNotPlatformInternalServerTemplatesResponseTemplate**](GithubComNotPlatformInternalServerTemplatesResponseTemplate.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## InventoryItemsItemIdPut
 
 > GithubComNotPlatformInternalServerTemplatesResponseTemplate InventoryItemsItemIdPut(ctx, itemId).Request(request).Execute()
@@ -348,6 +497,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## InventoryItemsItemIdTransferLogPost
+
+> GithubComNotPlatformInternalServerTemplatesResponseTemplate InventoryItemsItemIdTransferLogPost(ctx, itemId).Limit(limit).Offset(offset).Execute()
+
+Get transfer logs
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	itemId := "itemId_example" // string | item id (uuid)
+	limit := int32(56) // int32 | limit
+	offset := int32(56) // int32 | offset
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryAPI.InventoryItemsItemIdTransferLogPost(context.Background(), itemId).Limit(limit).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryItemsItemIdTransferLogPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InventoryItemsItemIdTransferLogPost`: GithubComNotPlatformInternalServerTemplatesResponseTemplate
+	fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.InventoryItemsItemIdTransferLogPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**itemId** | **string** | item id (uuid) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiInventoryItemsItemIdTransferLogPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | limit | 
+ **offset** | **int32** | offset | 
+
+### Return type
+
+[**GithubComNotPlatformInternalServerTemplatesResponseTemplate**](GithubComNotPlatformInternalServerTemplatesResponseTemplate.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -21,7 +21,9 @@ var _ MappedNullable = &GithubComNotPlatformInternalServerTemplatesResponseTempl
 type GithubComNotPlatformInternalServerTemplatesResponseTemplate struct {
 	Data map[string]interface{} `json:"data,omitempty"`
 	ErrorCode *string `json:"error_code,omitempty"`
+	Message *string `json:"message,omitempty"`
 	Ok *bool `json:"ok,omitempty"`
+	RequestId *string `json:"request_id,omitempty"`
 }
 
 // NewGithubComNotPlatformInternalServerTemplatesResponseTemplate instantiates a new GithubComNotPlatformInternalServerTemplatesResponseTemplate object
@@ -105,6 +107,38 @@ func (o *GithubComNotPlatformInternalServerTemplatesResponseTemplate) SetErrorCo
 	o.ErrorCode = &v
 }
 
+// GetMessage returns the Message field value if set, zero value otherwise.
+func (o *GithubComNotPlatformInternalServerTemplatesResponseTemplate) GetMessage() string {
+	if o == nil || IsNil(o.Message) {
+		var ret string
+		return ret
+	}
+	return *o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComNotPlatformInternalServerTemplatesResponseTemplate) GetMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.Message) {
+		return nil, false
+	}
+	return o.Message, true
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *GithubComNotPlatformInternalServerTemplatesResponseTemplate) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
+func (o *GithubComNotPlatformInternalServerTemplatesResponseTemplate) SetMessage(v string) {
+	o.Message = &v
+}
+
 // GetOk returns the Ok field value if set, zero value otherwise.
 func (o *GithubComNotPlatformInternalServerTemplatesResponseTemplate) GetOk() bool {
 	if o == nil || IsNil(o.Ok) {
@@ -137,6 +171,38 @@ func (o *GithubComNotPlatformInternalServerTemplatesResponseTemplate) SetOk(v bo
 	o.Ok = &v
 }
 
+// GetRequestId returns the RequestId field value if set, zero value otherwise.
+func (o *GithubComNotPlatformInternalServerTemplatesResponseTemplate) GetRequestId() string {
+	if o == nil || IsNil(o.RequestId) {
+		var ret string
+		return ret
+	}
+	return *o.RequestId
+}
+
+// GetRequestIdOk returns a tuple with the RequestId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComNotPlatformInternalServerTemplatesResponseTemplate) GetRequestIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RequestId) {
+		return nil, false
+	}
+	return o.RequestId, true
+}
+
+// HasRequestId returns a boolean if a field has been set.
+func (o *GithubComNotPlatformInternalServerTemplatesResponseTemplate) HasRequestId() bool {
+	if o != nil && !IsNil(o.RequestId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestId gets a reference to the given string and assigns it to the RequestId field.
+func (o *GithubComNotPlatformInternalServerTemplatesResponseTemplate) SetRequestId(v string) {
+	o.RequestId = &v
+}
+
 func (o GithubComNotPlatformInternalServerTemplatesResponseTemplate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -153,8 +219,14 @@ func (o GithubComNotPlatformInternalServerTemplatesResponseTemplate) ToMap() (ma
 	if !IsNil(o.ErrorCode) {
 		toSerialize["error_code"] = o.ErrorCode
 	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
 	if !IsNil(o.Ok) {
 		toSerialize["ok"] = o.Ok
+	}
+	if !IsNil(o.RequestId) {
+		toSerialize["request_id"] = o.RequestId
 	}
 	return toSerialize, nil
 }

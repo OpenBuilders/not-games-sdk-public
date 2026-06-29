@@ -21,7 +21,9 @@ var _ MappedNullable = &RegistryAchievementsGet200Response{}
 type RegistryAchievementsGet200Response struct {
 	Data *InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse `json:"data,omitempty"`
 	ErrorCode *string `json:"error_code,omitempty"`
+	Message *string `json:"message,omitempty"`
 	Ok *bool `json:"ok,omitempty"`
+	RequestId *string `json:"request_id,omitempty"`
 }
 
 // NewRegistryAchievementsGet200Response instantiates a new RegistryAchievementsGet200Response object
@@ -105,6 +107,38 @@ func (o *RegistryAchievementsGet200Response) SetErrorCode(v string) {
 	o.ErrorCode = &v
 }
 
+// GetMessage returns the Message field value if set, zero value otherwise.
+func (o *RegistryAchievementsGet200Response) GetMessage() string {
+	if o == nil || IsNil(o.Message) {
+		var ret string
+		return ret
+	}
+	return *o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RegistryAchievementsGet200Response) GetMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.Message) {
+		return nil, false
+	}
+	return o.Message, true
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *RegistryAchievementsGet200Response) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
+func (o *RegistryAchievementsGet200Response) SetMessage(v string) {
+	o.Message = &v
+}
+
 // GetOk returns the Ok field value if set, zero value otherwise.
 func (o *RegistryAchievementsGet200Response) GetOk() bool {
 	if o == nil || IsNil(o.Ok) {
@@ -137,6 +171,38 @@ func (o *RegistryAchievementsGet200Response) SetOk(v bool) {
 	o.Ok = &v
 }
 
+// GetRequestId returns the RequestId field value if set, zero value otherwise.
+func (o *RegistryAchievementsGet200Response) GetRequestId() string {
+	if o == nil || IsNil(o.RequestId) {
+		var ret string
+		return ret
+	}
+	return *o.RequestId
+}
+
+// GetRequestIdOk returns a tuple with the RequestId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RegistryAchievementsGet200Response) GetRequestIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RequestId) {
+		return nil, false
+	}
+	return o.RequestId, true
+}
+
+// HasRequestId returns a boolean if a field has been set.
+func (o *RegistryAchievementsGet200Response) HasRequestId() bool {
+	if o != nil && !IsNil(o.RequestId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestId gets a reference to the given string and assigns it to the RequestId field.
+func (o *RegistryAchievementsGet200Response) SetRequestId(v string) {
+	o.RequestId = &v
+}
+
 func (o RegistryAchievementsGet200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -153,8 +219,14 @@ func (o RegistryAchievementsGet200Response) ToMap() (map[string]interface{}, err
 	if !IsNil(o.ErrorCode) {
 		toSerialize["error_code"] = o.ErrorCode
 	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
 	if !IsNil(o.Ok) {
 		toSerialize["ok"] = o.Ok
+	}
+	if !IsNil(o.RequestId) {
+		toSerialize["request_id"] = o.RequestId
 	}
 	return toSerialize, nil
 }

@@ -5,9 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
+**data** | [**Array&lt;GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelListItemsResponse&gt;**](GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelListItemsResponse.md) |  | [optional] [default to undefined]
 **error_code** | **string** |  | [optional] [default to undefined]
+**message** | **string** |  | [optional] [default to undefined]
 **ok** | **boolean** |  | [optional] [default to undefined]
+**request_id** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -17,7 +19,9 @@ import { InventoryItemsUnpackPost200Response } from 'not-games-sdk-public';
 const instance: InventoryItemsUnpackPost200Response = {
     data,
     error_code,
+    message,
     ok,
+    request_id,
 };
 ```
 

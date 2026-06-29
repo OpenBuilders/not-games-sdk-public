@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_meta** | **string** |  | [optional] [default to undefined]
+**hold_till** | **number** |  | [optional] [default to undefined]
 **rarity** | **number** |  | [optional] [default to undefined]
 **tags** | **string** |  | [optional] [default to undefined]
 
@@ -16,6 +17,7 @@ import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHtt
 
 const instance: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest = {
     app_meta,
+    hold_till,
     rarity,
     tags,
 };

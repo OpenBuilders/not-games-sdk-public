@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**pagination** | [**GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse**](GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse.md) |  | [optional] [default to undefined]
 **squads** | [**Array&lt;InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse&gt;**](InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse.md) |  | [optional] [default to undefined]
 
 ## Example
@@ -13,6 +14,7 @@ Name | Type | Description | Notes
 import { InternalModuleSquadsPresentationSquadsHttpListSquadsResponse } from 'not-games-sdk-public';
 
 const instance: InternalModuleSquadsPresentationSquadsHttpListSquadsResponse = {
+    pagination,
     squads,
 };
 ```

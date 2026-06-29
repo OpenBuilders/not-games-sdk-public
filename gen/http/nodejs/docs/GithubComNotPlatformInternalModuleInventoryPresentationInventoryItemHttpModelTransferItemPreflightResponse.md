@@ -6,7 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account** | [**GithubComNotPlatformInternalModuleProfileDomainEntityAccount**](GithubComNotPlatformInternalModuleProfileDomainEntityAccount.md) |  | [optional] [default to undefined]
+**invoice_url** | **string** |  | [optional] [default to undefined]
 **is_possible** | **boolean** |  | [optional] [default to undefined]
+**payment_star** | **number** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -15,7 +17,9 @@ import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHtt
 
 const instance: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse = {
     account,
+    invoice_url,
     is_possible,
+    payment_star,
 };
 ```
 
