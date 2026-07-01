@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InternalModuleRegistryPresentationAppHttpListAppResponse } from 'not-games-sdk-public';
+import { InternalModuleRegistryPresentationAppHttpListAppResponse } from 'notgamessdkpublic';
 
 const instance: InternalModuleRegistryPresentationAppHttpListAppResponse = {
     results,

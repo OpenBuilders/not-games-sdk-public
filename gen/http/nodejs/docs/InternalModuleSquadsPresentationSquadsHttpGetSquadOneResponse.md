@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse } from 'not-games-sdk-public';
+import { InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse } from 'notgamessdkpublic';
 
 const instance: InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse = {
     avatar,

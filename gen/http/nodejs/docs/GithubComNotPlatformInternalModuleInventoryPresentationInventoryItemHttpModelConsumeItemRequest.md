@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest = {
     account_id,

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AchievementsGet200Response } from 'not-games-sdk-public';
+import { AchievementsGet200Response } from 'notgamessdkpublic';
 
 const instance: AchievementsGet200Response = {
     data,

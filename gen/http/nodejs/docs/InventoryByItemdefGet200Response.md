@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InventoryByItemdefGet200Response } from 'not-games-sdk-public';
+import { InventoryByItemdefGet200Response } from 'notgamessdkpublic';
 
 const instance: InventoryByItemdefGet200Response = {
     data,

@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleProfileDomainEntityAccount } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleProfileDomainEntityAccount } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleProfileDomainEntityAccount = {
     account_id,

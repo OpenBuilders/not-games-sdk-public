@@ -26,7 +26,7 @@ All URIs are relative to *http://localhost:8080/api/v1*
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -77,7 +77,7 @@ const { status, data } = await apiInstance.registryAchievementsAchievementDefIdD
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -129,7 +129,7 @@ import {
     RegistryApi,
     Configuration,
     InternalModuleRegistryPresentationAchievementHttpUpdateRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -183,7 +183,7 @@ const { status, data } = await apiInstance.registryAchievementsAchievementDefIdP
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -238,7 +238,7 @@ import {
     RegistryApi,
     Configuration,
     InternalModuleRegistryPresentationAchievementHttpCreateRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -289,7 +289,7 @@ const { status, data } = await apiInstance.registryAchievementsPost(
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -343,7 +343,7 @@ const { status, data } = await apiInstance.registryAppsGet(
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -433,7 +433,7 @@ const { status, data } = await apiInstance.registryItemsGet(
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -484,7 +484,7 @@ const { status, data } = await apiInstance.registryItemsItemDefIdDelete(
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -536,7 +536,7 @@ import {
     RegistryApi,
     Configuration,
     InternalModuleRegistryPresentationItemHttpUpdateRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -591,7 +591,7 @@ import {
     RegistryApi,
     Configuration,
     InternalModuleRegistryPresentationItemHttpCreateRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);

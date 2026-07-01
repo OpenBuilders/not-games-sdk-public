@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest = {
     account_id,

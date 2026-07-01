@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelDisplayTypeMetaResponse } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelDisplayTypeMetaResponse } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelDisplayTypeMetaResponse = {
     display_type,

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalServerTemplatesResponseTemplate } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalServerTemplatesResponseTemplate } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalServerTemplatesResponseTemplate = {
     data,

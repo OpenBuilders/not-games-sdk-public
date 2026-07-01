@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelNewAppResponse } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelNewAppResponse } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelNewAppResponse = {
     avatar,

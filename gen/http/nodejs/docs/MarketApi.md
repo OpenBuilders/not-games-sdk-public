@@ -18,7 +18,7 @@ All URIs are relative to *http://localhost:8080/api/v1*
 import {
     MarketApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new MarketApi(configuration);
@@ -78,7 +78,7 @@ const { status, data } = await apiInstance.apiV1MarketAppsNewGet(
 import {
     MarketApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new MarketApi(configuration);
@@ -129,7 +129,7 @@ const { status, data } = await apiInstance.apiV1MarketProfileAccountIdItemsByApp
 import {
     MarketApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new MarketApi(configuration);

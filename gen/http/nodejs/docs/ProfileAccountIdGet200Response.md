@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ProfileAccountIdGet200Response } from 'not-games-sdk-public';
+import { ProfileAccountIdGet200Response } from 'notgamessdkpublic';
 
 const instance: ProfileAccountIdGet200Response = {
     data,

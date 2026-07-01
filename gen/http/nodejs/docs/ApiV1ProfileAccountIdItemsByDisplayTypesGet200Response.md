@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response } from 'not-games-sdk-public';
+import { ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response } from 'notgamessdkpublic';
 
 const instance: ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response = {
     data,

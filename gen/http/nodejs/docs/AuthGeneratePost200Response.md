@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AuthGeneratePost200Response } from 'not-games-sdk-public';
+import { AuthGeneratePost200Response } from 'notgamessdkpublic';
 
 const instance: AuthGeneratePost200Response = {
     data,

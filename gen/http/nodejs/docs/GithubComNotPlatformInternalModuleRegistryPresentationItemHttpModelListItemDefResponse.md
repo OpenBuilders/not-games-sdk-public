@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelListItemDefResponse } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelListItemDefResponse } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelListItemDefResponse = {
     item_defs,

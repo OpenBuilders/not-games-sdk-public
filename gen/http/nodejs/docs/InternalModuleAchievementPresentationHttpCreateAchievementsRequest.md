@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InternalModuleAchievementPresentationHttpCreateAchievementsRequest } from 'not-games-sdk-public';
+import { InternalModuleAchievementPresentationHttpCreateAchievementsRequest } from 'notgamessdkpublic';
 
 const instance: InternalModuleAchievementPresentationHttpCreateAchievementsRequest = {
     account_id,

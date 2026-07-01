@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InternalModuleRegistryPresentationAppHttpAppOneResponse } from 'not-games-sdk-public';
+import { InternalModuleRegistryPresentationAppHttpAppOneResponse } from 'notgamessdkpublic';
 
 const instance: InternalModuleRegistryPresentationAppHttpAppOneResponse = {
     avatar,

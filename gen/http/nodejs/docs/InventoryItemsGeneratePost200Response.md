@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InventoryItemsGeneratePost200Response } from 'not-games-sdk-public';
+import { InventoryItemsGeneratePost200Response } from 'notgamessdkpublic';
 
 const instance: InventoryItemsGeneratePost200Response = {
     data,

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelAppMetaResponse } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelAppMetaResponse } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelAppMetaResponse = {
     id,

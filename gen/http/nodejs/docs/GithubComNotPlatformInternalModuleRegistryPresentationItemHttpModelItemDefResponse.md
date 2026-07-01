@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse = {
     app_files,

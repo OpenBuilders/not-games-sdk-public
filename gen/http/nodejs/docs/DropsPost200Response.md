@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DropsPost200Response } from 'not-games-sdk-public';
+import { DropsPost200Response } from 'notgamessdkpublic';
 
 const instance: DropsPost200Response = {
     data,

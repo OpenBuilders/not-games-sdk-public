@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InternalModuleSquadsPresentationSquadsHttpListSquadsResponse } from 'not-games-sdk-public';
+import { InternalModuleSquadsPresentationSquadsHttpListSquadsResponse } from 'notgamessdkpublic';
 
 const instance: InternalModuleSquadsPresentationSquadsHttpListSquadsResponse = {
     pagination,

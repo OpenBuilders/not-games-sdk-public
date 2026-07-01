@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InventoryItemsItemIdTransferPreflightPost200Response } from 'not-games-sdk-public';
+import { InventoryItemsItemIdTransferPreflightPost200Response } from 'notgamessdkpublic';
 
 const instance: InventoryItemsItemIdTransferPreflightPost200Response = {
     data,

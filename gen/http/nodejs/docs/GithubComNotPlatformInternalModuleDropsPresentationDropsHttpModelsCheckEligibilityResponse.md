@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse = {
     app_id,

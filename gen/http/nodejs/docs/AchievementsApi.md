@@ -18,7 +18,7 @@ All URIs are relative to *http://localhost:8080/api/v1*
 import {
     AchievementsApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new AchievementsApi(configuration);
@@ -78,7 +78,7 @@ const { status, data } = await apiInstance.achievementsGet(
 import {
     AchievementsApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new AchievementsApi(configuration);
@@ -130,7 +130,7 @@ import {
     AchievementsApi,
     Configuration,
     InternalModuleAchievementPresentationHttpCreateAchievementsRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new AchievementsApi(configuration);

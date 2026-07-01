@@ -19,7 +19,7 @@ Check user eligibility for a drop. This only used for game to know if user can c
 import {
     DropsApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new DropsApi(configuration);
@@ -74,7 +74,7 @@ import {
     DropsApi,
     Configuration,
     InternalModuleDropsPresentationDropsHttpWhitelistDropUserRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new DropsApi(configuration);
@@ -130,7 +130,7 @@ import {
     DropsApi,
     Configuration,
     InternalModuleDropsPresentationDropsHttpCreateDropRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new DropsApi(configuration);

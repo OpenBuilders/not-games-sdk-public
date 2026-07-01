@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse = {
     avatar,

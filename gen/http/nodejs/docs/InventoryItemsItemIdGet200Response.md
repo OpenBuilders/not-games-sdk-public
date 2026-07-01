@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InventoryItemsItemIdGet200Response } from 'not-games-sdk-public';
+import { InventoryItemsItemIdGet200Response } from 'notgamessdkpublic';
 
 const instance: InventoryItemsItemIdGet200Response = {
     data,

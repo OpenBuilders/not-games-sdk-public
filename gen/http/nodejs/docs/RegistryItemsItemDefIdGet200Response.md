@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { RegistryItemsItemDefIdGet200Response } from 'not-games-sdk-public';
+import { RegistryItemsItemDefIdGet200Response } from 'notgamessdkpublic';
 
 const instance: RegistryItemsItemDefIdGet200Response = {
     data,
