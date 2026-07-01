@@ -7,17 +7,21 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse**](InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse.md) |  | [optional] [default to undefined]
 **error_code** | **string** |  | [optional] [default to undefined]
+**message** | **string** |  | [optional] [default to undefined]
 **ok** | **boolean** |  | [optional] [default to undefined]
+**request_id** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { SquadsIdGet200Response } from 'not-games-sdk-public';
+import { SquadsIdGet200Response } from 'notgamessdkpublic';
 
 const instance: SquadsIdGet200Response = {
     data,
     error_code,
+    message,
     ok,
+    request_id,
 };
 ```
 

@@ -5,14 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**pagination** | [**GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse**](GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse.md) |  | [optional] [default to undefined]
 **squads** | [**Array&lt;InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse&gt;**](InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse.md) |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { InternalModuleSquadsPresentationSquadsHttpListSquadsResponse } from 'not-games-sdk-public';
+import { InternalModuleSquadsPresentationSquadsHttpListSquadsResponse } from 'notgamessdkpublic';
 
 const instance: InternalModuleSquadsPresentationSquadsHttpListSquadsResponse = {
+    pagination,
     squads,
 };
 ```

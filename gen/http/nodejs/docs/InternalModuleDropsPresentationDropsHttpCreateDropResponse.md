@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InternalModuleDropsPresentationDropsHttpCreateDropResponse } from 'not-games-sdk-public';
+import { InternalModuleDropsPresentationDropsHttpCreateDropResponse } from 'notgamessdkpublic';
 
 const instance: InternalModuleDropsPresentationDropsHttpCreateDropResponse = {
     drop_id,

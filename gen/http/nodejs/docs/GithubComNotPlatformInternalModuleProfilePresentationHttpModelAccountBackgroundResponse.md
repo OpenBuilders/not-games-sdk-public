@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse = {
     image,

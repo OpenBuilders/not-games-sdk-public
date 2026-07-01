@@ -16,7 +16,9 @@ Name | Type | Description | Notes
 **display_type** | **string** |  | [optional] [default to undefined]
 **game_only** | **boolean** |  | [optional] [default to undefined]
 **hidden** | **boolean** |  | [optional] [default to undefined]
+**hold_till** | **number** |  | [optional] [default to undefined]
 **icon_url** | **string** |  | [optional] [default to undefined]
+**issued** | **number** |  | [optional] [default to undefined]
 **item_def_id** | **string** |  | [optional] [default to undefined]
 **item_id** | **string** |  | [optional] [default to undefined]
 **marketable** | **boolean** |  | [optional] [default to undefined]
@@ -33,7 +35,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse = {
     account_id,
@@ -47,7 +49,9 @@ const instance: GithubComNotPlatformInternalModuleInventoryPresentationInventory
     display_type,
     game_only,
     hidden,
+    hold_till,
     icon_url,
+    issued,
     item_def_id,
     item_id,
     marketable,

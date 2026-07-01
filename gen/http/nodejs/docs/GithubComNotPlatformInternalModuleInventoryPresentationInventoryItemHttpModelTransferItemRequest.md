@@ -5,15 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**account_from** | **number** |  | [optional] [default to undefined]
 **account_to** | **number** |  | [optional] [default to undefined]
 **comment** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest = {
+    account_from,
     account_to,
     comment,
 };

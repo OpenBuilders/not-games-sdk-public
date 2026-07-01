@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InternalModuleRegistryPresentationAchievementHttpCreateRequest } from 'not-games-sdk-public';
+import { InternalModuleRegistryPresentationAchievementHttpCreateRequest } from 'notgamessdkpublic';
 
 const instance: InternalModuleRegistryPresentationAchievementHttpCreateRequest = {
     achievement_def_id,
