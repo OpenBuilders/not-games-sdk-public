@@ -27,6 +27,7 @@ type ApiAchievementsGetRequest struct {
 	ctx context.Context
 	ApiService *AchievementsAPIService
 	appId *string
+	accountId *string
 	limit *int32
 	offset *int32
 }
@@ -34,6 +35,12 @@ type ApiAchievementsGetRequest struct {
 // app id
 func (r ApiAchievementsGetRequest) AppId(appId string) ApiAchievementsGetRequest {
 	r.appId = &appId
+	return r
+}
+
+// account id
+func (r ApiAchievementsGetRequest) AccountId(accountId string) ApiAchievementsGetRequest {
+	r.accountId = &accountId
 	return r
 }
 
@@ -89,6 +96,9 @@ func (a *AchievementsAPIService) AchievementsGetExecute(r ApiAchievementsGetRequ
 	if r.appId == nil {
 		return localVarReturnValue, nil, reportError("appId is required and must be specified")
 	}
+	if r.accountId == nil {
+		return localVarReturnValue, nil, reportError("accountId is required and must be specified")
+	}
 	if r.limit == nil {
 		return localVarReturnValue, nil, reportError("limit is required and must be specified")
 	}
@@ -97,6 +107,7 @@ func (a *AchievementsAPIService) AchievementsGetExecute(r ApiAchievementsGetRequ
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "app_id", r.appId, "", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "account_id", r.accountId, "", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
 	// to determine the Content-Type header

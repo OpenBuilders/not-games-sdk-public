@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**account_from** | **number** |  | [optional] [default to undefined]
 **account_to** | **number** |  | [optional] [default to undefined]
 **comment** | **string** |  | [optional] [default to undefined]
 
@@ -14,6 +15,7 @@ Name | Type | Description | Notes
 import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest } from 'not-games-sdk-public';
 
 const instance: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest = {
+    account_from,
     account_to,
     comment,
 };

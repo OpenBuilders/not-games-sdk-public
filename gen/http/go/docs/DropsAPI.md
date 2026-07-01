@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## DropsIdGet
 
-> DropsIdGet200Response DropsIdGet(ctx, id).Execute()
+> DropsIdGet200Response DropsIdGet(ctx, id).AccountId(accountId).Execute()
 
 Check user eligibility for a drop
 
@@ -32,10 +32,11 @@ import (
 
 func main() {
 	id := "id_example" // string | Drop ID
+	accountId := "accountId_example" // string | Account ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DropsAPI.DropsIdGet(context.Background(), id).Execute()
+	resp, r, err := apiClient.DropsAPI.DropsIdGet(context.Background(), id).AccountId(accountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DropsAPI.DropsIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,6 +62,7 @@ Other parameters are passed through a pointer to a apiDropsIdGetRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **accountId** | **string** | Account ID | 
 
 ### Return type
 

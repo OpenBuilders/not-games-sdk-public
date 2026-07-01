@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**account_id** | **number** |  | [optional] [default to undefined]
 **item_id** | **string** |  | [optional] [default to undefined]
 **quantity** | **number** |  | [optional] [default to undefined]
 
@@ -14,6 +15,7 @@ Name | Type | Description | Notes
 import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest } from 'not-games-sdk-public';
 
 const instance: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest = {
+    account_id,
     item_id,
     quantity,
 };

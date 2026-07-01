@@ -29,6 +29,7 @@ type GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountRespon
 	Locale *string `json:"locale,omitempty"`
 	// telegram group id
 	SquadId *int32 `json:"squad_id,omitempty"`
+	SquadPrefix *string `json:"squad_prefix,omitempty"`
 	Username *string `json:"username,omitempty"`
 }
 
@@ -337,6 +338,38 @@ func (o *GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountRe
 	o.SquadId = &v
 }
 
+// GetSquadPrefix returns the SquadPrefix field value if set, zero value otherwise.
+func (o *GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse) GetSquadPrefix() string {
+	if o == nil || IsNil(o.SquadPrefix) {
+		var ret string
+		return ret
+	}
+	return *o.SquadPrefix
+}
+
+// GetSquadPrefixOk returns a tuple with the SquadPrefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse) GetSquadPrefixOk() (*string, bool) {
+	if o == nil || IsNil(o.SquadPrefix) {
+		return nil, false
+	}
+	return o.SquadPrefix, true
+}
+
+// HasSquadPrefix returns a boolean if a field has been set.
+func (o *GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse) HasSquadPrefix() bool {
+	if o != nil && !IsNil(o.SquadPrefix) {
+		return true
+	}
+
+	return false
+}
+
+// SetSquadPrefix gets a reference to the given string and assigns it to the SquadPrefix field.
+func (o *GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse) SetSquadPrefix(v string) {
+	o.SquadPrefix = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
@@ -405,6 +438,9 @@ func (o GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountRes
 	}
 	if !IsNil(o.SquadId) {
 		toSerialize["squad_id"] = o.SquadId
+	}
+	if !IsNil(o.SquadPrefix) {
+		toSerialize["squad_prefix"] = o.SquadPrefix
 	}
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username

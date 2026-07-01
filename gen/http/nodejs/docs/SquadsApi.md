@@ -24,16 +24,32 @@ const apiInstance = new SquadsApi(configuration);
 
 let limit: number; //Limit (default to undefined)
 let offset: number; //Offset (default to undefined)
+let name: string; //Name (optional) (default to undefined)
 let slug: string; //Slug (optional) (default to undefined)
-let sort: string; //Sort (optional) (default to undefined)
-let minMembersAmount: number; //Min members amount (optional) (default to undefined)
+let chatId: number; //Telegram chat ID (optional) (default to undefined)
+let prefix: string; //Squad prefix (optional) (default to undefined)
+let membersAmount: number; //Members amount (optional) (default to undefined)
+let membersAmountMin: number; //Members amount min (optional) (default to undefined)
+let membersAmountMax: number; //Members amount max (optional) (default to undefined)
+let createdAtGte: string; //Created at greater than or equal, RFC3339 (optional) (default to undefined)
+let createdAtLte: string; //Created at less than or equal, RFC3339 (optional) (default to undefined)
+let sortFields: string; //Sort fields (optional) (default to undefined)
+let directions: string; //Sort directions (optional) (default to undefined)
 
 const { status, data } = await apiInstance.squadsGet(
     limit,
     offset,
+    name,
     slug,
-    sort,
-    minMembersAmount
+    chatId,
+    prefix,
+    membersAmount,
+    membersAmountMin,
+    membersAmountMax,
+    createdAtGte,
+    createdAtLte,
+    sortFields,
+    directions
 );
 ```
 
@@ -43,9 +59,17 @@ const { status, data } = await apiInstance.squadsGet(
 |------------- | ------------- | ------------- | -------------|
 | **limit** | [**number**] | Limit | defaults to undefined|
 | **offset** | [**number**] | Offset | defaults to undefined|
+| **name** | [**string**] | Name | (optional) defaults to undefined|
 | **slug** | [**string**] | Slug | (optional) defaults to undefined|
-| **sort** | [**string**] | Sort | (optional) defaults to undefined|
-| **minMembersAmount** | [**number**] | Min members amount | (optional) defaults to undefined|
+| **chatId** | [**number**] | Telegram chat ID | (optional) defaults to undefined|
+| **prefix** | [**string**] | Squad prefix | (optional) defaults to undefined|
+| **membersAmount** | [**number**] | Members amount | (optional) defaults to undefined|
+| **membersAmountMin** | [**number**] | Members amount min | (optional) defaults to undefined|
+| **membersAmountMax** | [**number**] | Members amount max | (optional) defaults to undefined|
+| **createdAtGte** | [**string**] | Created at greater than or equal, RFC3339 | (optional) defaults to undefined|
+| **createdAtLte** | [**string**] | Created at less than or equal, RFC3339 | (optional) defaults to undefined|
+| **sortFields** | [**string**] | Sort fields | (optional) defaults to undefined|
+| **directions** | [**string**] | Sort directions | (optional) defaults to undefined|
 
 
 ### Return type
@@ -117,6 +141,9 @@ const { status, data } = await apiInstance.squadsIdGet(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | OK |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
 |**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

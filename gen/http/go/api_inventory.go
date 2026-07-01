@@ -23,6 +23,180 @@ import (
 // InventoryAPIService InventoryAPI service
 type InventoryAPIService service
 
+type ApiInventoryByItemdefGetRequest struct {
+	ctx context.Context
+	ApiService *InventoryAPIService
+	limit *int32
+	offset *int32
+	itemDefId *string
+	sortFields *string
+	directions *string
+}
+
+// limit
+func (r ApiInventoryByItemdefGetRequest) Limit(limit int32) ApiInventoryByItemdefGetRequest {
+	r.limit = &limit
+	return r
+}
+
+// offset
+func (r ApiInventoryByItemdefGetRequest) Offset(offset int32) ApiInventoryByItemdefGetRequest {
+	r.offset = &offset
+	return r
+}
+
+// item_def_id
+func (r ApiInventoryByItemdefGetRequest) ItemDefId(itemDefId string) ApiInventoryByItemdefGetRequest {
+	r.itemDefId = &itemDefId
+	return r
+}
+
+// comma separated sort fields
+func (r ApiInventoryByItemdefGetRequest) SortFields(sortFields string) ApiInventoryByItemdefGetRequest {
+	r.sortFields = &sortFields
+	return r
+}
+
+// comma separated sort directions
+func (r ApiInventoryByItemdefGetRequest) Directions(directions string) ApiInventoryByItemdefGetRequest {
+	r.directions = &directions
+	return r
+}
+
+func (r ApiInventoryByItemdefGetRequest) Execute() (*InventoryByItemdefGet200Response, *http.Response, error) {
+	return r.ApiService.InventoryByItemdefGetExecute(r)
+}
+
+/*
+InventoryByItemdefGet List items
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiInventoryByItemdefGetRequest
+*/
+func (a *InventoryAPIService) InventoryByItemdefGet(ctx context.Context) ApiInventoryByItemdefGetRequest {
+	return ApiInventoryByItemdefGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return InventoryByItemdefGet200Response
+func (a *InventoryAPIService) InventoryByItemdefGetExecute(r ApiInventoryByItemdefGetRequest) (*InventoryByItemdefGet200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *InventoryByItemdefGet200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.InventoryByItemdefGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/inventory/by_itemdef"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.limit == nil {
+		return localVarReturnValue, nil, reportError("limit is required and must be specified")
+	}
+	if r.offset == nil {
+		return localVarReturnValue, nil, reportError("offset is required and must be specified")
+	}
+	if r.itemDefId == nil {
+		return localVarReturnValue, nil, reportError("itemDefId is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "item_def_id", r.itemDefId, "", "")
+	if r.sortFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_fields", r.sortFields, "", "")
+	}
+	if r.directions != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "directions", r.directions, "", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["JWT"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v GithubComNotPlatformInternalServerTemplatesResponseTemplate
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiInventoryItemsGeneratePostRequest struct {
 	ctx context.Context
 	ApiService *InventoryAPIService
@@ -35,7 +209,7 @@ func (r ApiInventoryItemsGeneratePostRequest) Request(request GithubComNotPlatfo
 	return r
 }
 
-func (r ApiInventoryItemsGeneratePostRequest) Execute() (*DropsIdGet200Response, *http.Response, error) {
+func (r ApiInventoryItemsGeneratePostRequest) Execute() (*InventoryItemsGeneratePost200Response, *http.Response, error) {
 	return r.ApiService.InventoryItemsGeneratePostExecute(r)
 }
 
@@ -53,13 +227,13 @@ func (a *InventoryAPIService) InventoryItemsGeneratePost(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return DropsIdGet200Response
-func (a *InventoryAPIService) InventoryItemsGeneratePostExecute(r ApiInventoryItemsGeneratePostRequest) (*DropsIdGet200Response, *http.Response, error) {
+//  @return InventoryItemsGeneratePost200Response
+func (a *InventoryAPIService) InventoryItemsGeneratePostExecute(r ApiInventoryItemsGeneratePostRequest) (*InventoryItemsGeneratePost200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DropsIdGet200Response
+		localVarReturnValue  *InventoryItemsGeneratePost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.InventoryItemsGeneratePost")
@@ -175,7 +349,7 @@ func (r ApiInventoryItemsGetRequest) Offset(offset int32) ApiInventoryItemsGetRe
 	return r
 }
 
-func (r ApiInventoryItemsGetRequest) Execute() (*InventoryItemsGet200Response, *http.Response, error) {
+func (r ApiInventoryItemsGetRequest) Execute() (*InventoryByItemdefGet200Response, *http.Response, error) {
 	return r.ApiService.InventoryItemsGetExecute(r)
 }
 
@@ -193,13 +367,13 @@ func (a *InventoryAPIService) InventoryItemsGet(ctx context.Context) ApiInventor
 }
 
 // Execute executes the request
-//  @return InventoryItemsGet200Response
-func (a *InventoryAPIService) InventoryItemsGetExecute(r ApiInventoryItemsGetRequest) (*InventoryItemsGet200Response, *http.Response, error) {
+//  @return InventoryByItemdefGet200Response
+func (a *InventoryAPIService) InventoryItemsGetExecute(r ApiInventoryItemsGetRequest) (*InventoryByItemdefGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InventoryItemsGet200Response
+		localVarReturnValue  *InventoryByItemdefGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.InventoryItemsGet")
@@ -303,7 +477,14 @@ type ApiInventoryItemsItemIdConsumePostRequest struct {
 	ctx context.Context
 	ApiService *InventoryAPIService
 	itemId string
+	accountId *string
 	request *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest
+}
+
+// account id (int64)
+func (r ApiInventoryItemsItemIdConsumePostRequest) AccountId(accountId string) ApiInventoryItemsItemIdConsumePostRequest {
+	r.accountId = &accountId
+	return r
 }
 
 // request body
@@ -352,10 +533,14 @@ func (a *InventoryAPIService) InventoryItemsItemIdConsumePostExecute(r ApiInvent
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.accountId == nil {
+		return localVarReturnValue, nil, reportError("accountId is required and must be specified")
+	}
 	if r.request == nil {
 		return localVarReturnValue, nil, reportError("request is required and must be specified")
 	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "account_id", r.accountId, "", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -571,6 +756,154 @@ func (a *InventoryAPIService) InventoryItemsItemIdGetExecute(r ApiInventoryItems
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiInventoryItemsItemIdIncrementQuantityPostRequest struct {
+	ctx context.Context
+	ApiService *InventoryAPIService
+	itemId string
+	accountId *string
+	request *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest
+}
+
+// account id (int64)
+func (r ApiInventoryItemsItemIdIncrementQuantityPostRequest) AccountId(accountId string) ApiInventoryItemsItemIdIncrementQuantityPostRequest {
+	r.accountId = &accountId
+	return r
+}
+
+// request body
+func (r ApiInventoryItemsItemIdIncrementQuantityPostRequest) Request(request GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest) ApiInventoryItemsItemIdIncrementQuantityPostRequest {
+	r.request = &request
+	return r
+}
+
+func (r ApiInventoryItemsItemIdIncrementQuantityPostRequest) Execute() (*GithubComNotPlatformInternalServerTemplatesResponseTemplate, *http.Response, error) {
+	return r.ApiService.InventoryItemsItemIdIncrementQuantityPostExecute(r)
+}
+
+/*
+InventoryItemsItemIdIncrementQuantityPost Consume item
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param itemId item id (uuid)
+ @return ApiInventoryItemsItemIdIncrementQuantityPostRequest
+*/
+func (a *InventoryAPIService) InventoryItemsItemIdIncrementQuantityPost(ctx context.Context, itemId string) ApiInventoryItemsItemIdIncrementQuantityPostRequest {
+	return ApiInventoryItemsItemIdIncrementQuantityPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		itemId: itemId,
+	}
+}
+
+// Execute executes the request
+//  @return GithubComNotPlatformInternalServerTemplatesResponseTemplate
+func (a *InventoryAPIService) InventoryItemsItemIdIncrementQuantityPostExecute(r ApiInventoryItemsItemIdIncrementQuantityPostRequest) (*GithubComNotPlatformInternalServerTemplatesResponseTemplate, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GithubComNotPlatformInternalServerTemplatesResponseTemplate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.InventoryItemsItemIdIncrementQuantityPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/inventory/items/{item_id}/increment-quantity"
+	localVarPath = strings.Replace(localVarPath, "{"+"item_id"+"}", url.PathEscape(parameterValueToString(r.itemId, "itemId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.accountId == nil {
+		return localVarReturnValue, nil, reportError("accountId is required and must be specified")
+	}
+	if r.request == nil {
+		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "account_id", r.accountId, "", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["JWT"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v GithubComNotPlatformInternalServerTemplatesResponseTemplate
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiInventoryItemsItemIdPutRequest struct {
 	ctx context.Context
 	ApiService *InventoryAPIService
@@ -647,6 +980,153 @@ func (a *InventoryAPIService) InventoryItemsItemIdPutExecute(r ApiInventoryItems
 	}
 	// body params
 	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["JWT"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v GithubComNotPlatformInternalServerTemplatesResponseTemplate
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiInventoryItemsItemIdTransferLogPostRequest struct {
+	ctx context.Context
+	ApiService *InventoryAPIService
+	itemId string
+	limit *int32
+	offset *int32
+}
+
+// limit
+func (r ApiInventoryItemsItemIdTransferLogPostRequest) Limit(limit int32) ApiInventoryItemsItemIdTransferLogPostRequest {
+	r.limit = &limit
+	return r
+}
+
+// offset
+func (r ApiInventoryItemsItemIdTransferLogPostRequest) Offset(offset int32) ApiInventoryItemsItemIdTransferLogPostRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiInventoryItemsItemIdTransferLogPostRequest) Execute() (*GithubComNotPlatformInternalServerTemplatesResponseTemplate, *http.Response, error) {
+	return r.ApiService.InventoryItemsItemIdTransferLogPostExecute(r)
+}
+
+/*
+InventoryItemsItemIdTransferLogPost Get transfer logs
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param itemId item id (uuid)
+ @return ApiInventoryItemsItemIdTransferLogPostRequest
+*/
+func (a *InventoryAPIService) InventoryItemsItemIdTransferLogPost(ctx context.Context, itemId string) ApiInventoryItemsItemIdTransferLogPostRequest {
+	return ApiInventoryItemsItemIdTransferLogPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		itemId: itemId,
+	}
+}
+
+// Execute executes the request
+//  @return GithubComNotPlatformInternalServerTemplatesResponseTemplate
+func (a *InventoryAPIService) InventoryItemsItemIdTransferLogPostExecute(r ApiInventoryItemsItemIdTransferLogPostRequest) (*GithubComNotPlatformInternalServerTemplatesResponseTemplate, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GithubComNotPlatformInternalServerTemplatesResponseTemplate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.InventoryItemsItemIdTransferLogPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/inventory/items/{item_id}/transfer_log"
+	localVarPath = strings.Replace(localVarPath, "{"+"item_id"+"}", url.PathEscape(parameterValueToString(r.itemId, "itemId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.limit == nil {
+		return localVarReturnValue, nil, reportError("limit is required and must be specified")
+	}
+	if r.offset == nil {
+		return localVarReturnValue, nil, reportError("offset is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
