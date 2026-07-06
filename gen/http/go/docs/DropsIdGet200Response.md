@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to **string** |  | [optional] 
+**Data** | Pointer to [**GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse**](GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse.md) |  | [optional] 
 **ErrorCode** | Pointer to **string** |  | [optional] 
+**Message** | Pointer to **string** |  | [optional] 
 **Ok** | Pointer to **bool** |  | [optional] 
+**RequestId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -29,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *DropsIdGet200Response) GetData() string`
+`func (o *DropsIdGet200Response) GetData() GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *DropsIdGet200Response) GetDataOk() (*string, bool)`
+`func (o *DropsIdGet200Response) GetDataOk() (*GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *DropsIdGet200Response) SetData(v string)`
+`func (o *DropsIdGet200Response) SetData(v GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse)`
 
 SetData sets Data field to given value.
 
@@ -77,6 +79,31 @@ SetErrorCode sets ErrorCode field to given value.
 
 HasErrorCode returns a boolean if a field has been set.
 
+### GetMessage
+
+`func (o *DropsIdGet200Response) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *DropsIdGet200Response) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *DropsIdGet200Response) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *DropsIdGet200Response) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
+
 ### GetOk
 
 `func (o *DropsIdGet200Response) GetOk() bool`
@@ -101,6 +128,31 @@ SetOk sets Ok field to given value.
 `func (o *DropsIdGet200Response) HasOk() bool`
 
 HasOk returns a boolean if a field has been set.
+
+### GetRequestId
+
+`func (o *DropsIdGet200Response) GetRequestId() string`
+
+GetRequestId returns the RequestId field if non-nil, zero value otherwise.
+
+### GetRequestIdOk
+
+`func (o *DropsIdGet200Response) GetRequestIdOk() (*string, bool)`
+
+GetRequestIdOk returns a tuple with the RequestId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestId
+
+`func (o *DropsIdGet200Response) SetRequestId(v string)`
+
+SetRequestId sets RequestId field to given value.
+
+### HasRequestId
+
+`func (o *DropsIdGet200Response) HasRequestId() bool`
+
+HasRequestId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -16,7 +16,7 @@ All URIs are relative to *http://localhost:8080/api/v1*
 import {
     ProfileApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new ProfileApi(configuration);

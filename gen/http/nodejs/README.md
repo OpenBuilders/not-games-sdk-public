@@ -1,4 +1,4 @@
-## not-games-sdk-public@3.0
+## notgamessdkpublic@3.0
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install not-games-sdk-public@3.0 --save
+npm install notgamessdkpublic@3.0 --save
 ```
 
 _unPublished (not recommended):_
@@ -58,14 +58,20 @@ Class | Method | HTTP request | Description
 *DropsApi* | [**dropsIdGet**](docs/DropsApi.md#dropsidget) | **GET** /drops/{id} | Check user eligibility for a drop
 *DropsApi* | [**dropsIdWhitelistPost**](docs/DropsApi.md#dropsidwhitelistpost) | **POST** /drops/{id}/whitelist | Whitelist users for a drop
 *DropsApi* | [**dropsPost**](docs/DropsApi.md#dropspost) | **POST** /drops | Create a new drop
+*InventoryApi* | [**inventoryByItemdefGet**](docs/InventoryApi.md#inventorybyitemdefget) | **GET** /inventory/by_itemdef | List items
 *InventoryApi* | [**inventoryItemsGeneratePost**](docs/InventoryApi.md#inventoryitemsgeneratepost) | **POST** /inventory/items/generate | Generate item
 *InventoryApi* | [**inventoryItemsGet**](docs/InventoryApi.md#inventoryitemsget) | **GET** /inventory/items | List items
 *InventoryApi* | [**inventoryItemsItemIdConsumePost**](docs/InventoryApi.md#inventoryitemsitemidconsumepost) | **POST** /inventory/items/{item_id}/consume | Consume item
 *InventoryApi* | [**inventoryItemsItemIdGet**](docs/InventoryApi.md#inventoryitemsitemidget) | **GET** /inventory/items/{item_id} | Get item
+*InventoryApi* | [**inventoryItemsItemIdIncrementQuantityPost**](docs/InventoryApi.md#inventoryitemsitemidincrementquantitypost) | **POST** /inventory/items/{item_id}/increment-quantity | Consume item
 *InventoryApi* | [**inventoryItemsItemIdPut**](docs/InventoryApi.md#inventoryitemsitemidput) | **PUT** /inventory/items/{item_id} | Update item
+*InventoryApi* | [**inventoryItemsItemIdTransferLogPost**](docs/InventoryApi.md#inventoryitemsitemidtransferlogpost) | **POST** /inventory/items/{item_id}/transfer_log | Get transfer logs
 *InventoryApi* | [**inventoryItemsItemIdTransferPost**](docs/InventoryApi.md#inventoryitemsitemidtransferpost) | **POST** /inventory/items/{item_id}/transfer | Transfer item to another account
 *InventoryApi* | [**inventoryItemsItemIdTransferPreflightPost**](docs/InventoryApi.md#inventoryitemsitemidtransferpreflightpost) | **POST** /inventory/items/{item_id}/transfer-preflight | Check transfer item possibility to another account
 *InventoryApi* | [**inventoryItemsUnpackPost**](docs/InventoryApi.md#inventoryitemsunpackpost) | **POST** /inventory/items/unpack | Unpack item
+*MarketApi* | [**apiV1MarketAppsNewGet**](docs/MarketApi.md#apiv1marketappsnewget) | **GET** /api/v1/market/apps/new | List new visible apps for external market
+*MarketApi* | [**apiV1MarketProfileAccountIdItemsByAppsGet**](docs/MarketApi.md#apiv1marketprofileaccountiditemsbyappsget) | **GET** /api/v1/market/profile/{account_id}/items-by-apps | market profile apps items
+*MarketApi* | [**apiV1ProfileAccountIdItemsByDisplayTypesGet**](docs/MarketApi.md#apiv1profileaccountiditemsbydisplaytypesget) | **GET** /api/v1/profile/{account_id}/items-by-display-types | market profile app items
 *ProfileApi* | [**profileAccountIdGet**](docs/ProfileApi.md#profileaccountidget) | **GET** /profile/{account_id} | Get account
 *RegistryApi* | [**registryAchievementsAchievementDefIdDelete**](docs/RegistryApi.md#registryachievementsachievementdefiddelete) | **DELETE** /registry/achievements/{achievement_def_id} | Delete achievement-def
 *RegistryApi* | [**registryAchievementsAchievementDefIdGet**](docs/RegistryApi.md#registryachievementsachievementdefidget) | **GET** /registry/achievements/{achievement_def_id} | Get achievement-def
@@ -87,11 +93,15 @@ Class | Method | HTTP request | Description
  - [AchievementsGet200Response](docs/AchievementsGet200Response.md)
  - [AchievementsIdGet200Response](docs/AchievementsIdGet200Response.md)
  - [AchievementsPost200Response](docs/AchievementsPost200Response.md)
+ - [ApiV1MarketAppsNewGet200Response](docs/ApiV1MarketAppsNewGet200Response.md)
+ - [ApiV1MarketProfileAccountIdItemsByAppsGet200Response](docs/ApiV1MarketProfileAccountIdItemsByAppsGet200Response.md)
+ - [ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response](docs/ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response.md)
  - [AuthGeneratePost200Response](docs/AuthGeneratePost200Response.md)
  - [DropsIdGet200Response](docs/DropsIdGet200Response.md)
  - [DropsPost200Response](docs/DropsPost200Response.md)
  - [GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest](docs/GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest.md)
  - [GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse](docs/GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse.md)
+ - [GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse](docs/GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse.md)
  - [GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest](docs/GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest.md)
  - [GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest](docs/GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest.md)
  - [GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse](docs/GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse.md)
@@ -100,6 +110,12 @@ Class | Method | HTTP request | Description
  - [GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest](docs/GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest.md)
  - [GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest](docs/GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest.md)
  - [GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest](docs/GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest.md)
+ - [GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelAppMetaResponse](docs/GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelAppMetaResponse.md)
+ - [GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelDisplayTypeMetaResponse](docs/GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelDisplayTypeMetaResponse.md)
+ - [GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelListNewAppsResponse](docs/GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelListNewAppsResponse.md)
+ - [GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelNewAppResponse](docs/GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelNewAppResponse.md)
+ - [GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelProfileAppsItemsResponse](docs/GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelProfileAppsItemsResponse.md)
+ - [GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelProfileDisplayTypeItemsResponse](docs/GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelProfileDisplayTypeItemsResponse.md)
  - [GithubComNotPlatformInternalModuleProfileDomainEntityAccount](docs/GithubComNotPlatformInternalModuleProfileDomainEntityAccount.md)
  - [GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse](docs/GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse.md)
  - [GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse](docs/GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse.md)
@@ -107,9 +123,6 @@ Class | Method | HTTP request | Description
  - [GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelListItemDefResponse](docs/GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelListItemDefResponse.md)
  - [GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse](docs/GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse.md)
  - [GithubComNotPlatformInternalServerTemplatesResponseTemplate](docs/GithubComNotPlatformInternalServerTemplatesResponseTemplate.md)
- - [HttpAppOneResponse](docs/HttpAppOneResponse.md)
- - [HttpAppSocial](docs/HttpAppSocial.md)
- - [HttpListAppResponse](docs/HttpListAppResponse.md)
  - [InternalModuleAchievementPresentationHttpCreateAchievementOneResponse](docs/InternalModuleAchievementPresentationHttpCreateAchievementOneResponse.md)
  - [InternalModuleAchievementPresentationHttpCreateAchievementsRequest](docs/InternalModuleAchievementPresentationHttpCreateAchievementsRequest.md)
  - [InternalModuleAchievementPresentationHttpCreateAchievementsResponse](docs/InternalModuleAchievementPresentationHttpCreateAchievementsResponse.md)
@@ -122,11 +135,15 @@ Class | Method | HTTP request | Description
  - [InternalModuleRegistryPresentationAchievementHttpCreateRequest](docs/InternalModuleRegistryPresentationAchievementHttpCreateRequest.md)
  - [InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse](docs/InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse.md)
  - [InternalModuleRegistryPresentationAchievementHttpUpdateRequest](docs/InternalModuleRegistryPresentationAchievementHttpUpdateRequest.md)
+ - [InternalModuleRegistryPresentationAppHttpAppOneResponse](docs/InternalModuleRegistryPresentationAppHttpAppOneResponse.md)
+ - [InternalModuleRegistryPresentationAppHttpAppSocial](docs/InternalModuleRegistryPresentationAppHttpAppSocial.md)
+ - [InternalModuleRegistryPresentationAppHttpListAppResponse](docs/InternalModuleRegistryPresentationAppHttpListAppResponse.md)
  - [InternalModuleRegistryPresentationItemHttpCreateRequest](docs/InternalModuleRegistryPresentationItemHttpCreateRequest.md)
  - [InternalModuleRegistryPresentationItemHttpUpdateRequest](docs/InternalModuleRegistryPresentationItemHttpUpdateRequest.md)
  - [InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse](docs/InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse.md)
  - [InternalModuleSquadsPresentationSquadsHttpListSquadsResponse](docs/InternalModuleSquadsPresentationSquadsHttpListSquadsResponse.md)
- - [InventoryItemsGet200Response](docs/InventoryItemsGet200Response.md)
+ - [InventoryByItemdefGet200Response](docs/InventoryByItemdefGet200Response.md)
+ - [InventoryItemsGeneratePost200Response](docs/InventoryItemsGeneratePost200Response.md)
  - [InventoryItemsItemIdGet200Response](docs/InventoryItemsItemIdGet200Response.md)
  - [InventoryItemsItemIdTransferPreflightPost200Response](docs/InventoryItemsItemIdTransferPreflightPost200Response.md)
  - [InventoryItemsUnpackPost200Response](docs/InventoryItemsUnpackPost200Response.md)

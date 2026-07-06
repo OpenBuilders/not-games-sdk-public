@@ -4,14 +4,6 @@ on:
   repository_dispatch:
     types: [webhook_trigger]
   workflow_dispatch:
-  push:
-    branches:
-      - dev
-      - master
-    paths:
-      - 'proto/**'
-      - 'docs/**'
-      - '.github/**'
   pull_request:
     paths:
       - 'proto/**'
@@ -28,14 +20,6 @@ jobs:
     steps:
       - name: Checkout Сode
         uses: actions/checkout@v4
-
-      - name: Clone Source Repo
-        run: git clone --branch dev https://${{ secrets.SOURCE_REPO_TOKEN }}@github.com/OpenBuilders/not-platform-v2.git source-repo
-
-      - name: Copy Changed Files
-        run: |
-          cp -r source-repo/docs/external docs
-          rm -rf source-repo
 
       - name: Set up Go
         uses: actions/setup-go@v4
@@ -77,7 +61,7 @@ jobs:
             -i docs/swagger.yaml \
             -g go \
             -o ./gen/http/go \
-            --additional-properties=packageName=not-games-sdk-public
+            --additional-properties=packageName=notgamessdkpublic
 
       - name: Generate http-Node.js client
         run: |
@@ -85,7 +69,7 @@ jobs:
             -i docs/swagger.yaml \
             -g typescript-axios \
             -o ./gen/http/nodejs \
-            --additional-properties=supportsES6=true,npmName=not-games-sdk-public
+            --additional-properties=supportsES6=true,npmName=notgamessdkpublic
 
       - name: Commit and push generated SDK
         run: |
