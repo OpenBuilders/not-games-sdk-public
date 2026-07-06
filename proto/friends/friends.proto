@@ -43,7 +43,9 @@ message SendFriendRequestRequest {
   int64 to_account_id = 1;
 }
 
-message SendFriendRequestResponse {}
+message SendFriendRequestResponse {
+  int64 request_id = 1;
+}
 
 message CancelFriendRequestRequest {
   int64 request_id = 1;
