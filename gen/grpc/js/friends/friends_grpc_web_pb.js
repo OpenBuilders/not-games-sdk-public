@@ -204,6 +204,67 @@ proto.ngfriends.v1.FriendsServicePromiseClient.prototype.respondToFriendRequest 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.ngfriends.v1.CancelFriendRequestRequest,
+ *   !proto.ngfriends.v1.CancelFriendRequestResponse>}
+ */
+const methodDescriptor_FriendsService_CancelFriendRequest = new grpc.web.MethodDescriptor(
+  '/ngfriends.v1.FriendsService/CancelFriendRequest',
+  grpc.web.MethodType.UNARY,
+  proto.ngfriends.v1.CancelFriendRequestRequest,
+  proto.ngfriends.v1.CancelFriendRequestResponse,
+  /**
+   * @param {!proto.ngfriends.v1.CancelFriendRequestRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ngfriends.v1.CancelFriendRequestResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ngfriends.v1.CancelFriendRequestRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.ngfriends.v1.CancelFriendRequestResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ngfriends.v1.CancelFriendRequestResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ngfriends.v1.FriendsServiceClient.prototype.cancelFriendRequest =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ngfriends.v1.FriendsService/CancelFriendRequest',
+      request,
+      metadata || {},
+      methodDescriptor_FriendsService_CancelFriendRequest,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ngfriends.v1.CancelFriendRequestRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ngfriends.v1.CancelFriendRequestResponse>}
+ *     Promise that resolves to the response
+ */
+proto.ngfriends.v1.FriendsServicePromiseClient.prototype.cancelFriendRequest =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ngfriends.v1.FriendsService/CancelFriendRequest',
+      request,
+      metadata || {},
+      methodDescriptor_FriendsService_CancelFriendRequest);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.ngfriends.v1.RemoveFriendRequest,
  *   !proto.ngfriends.v1.RemoveFriendResponse>}
  */

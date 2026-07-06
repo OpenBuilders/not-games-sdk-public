@@ -12,6 +12,8 @@ import type { ListFriendsResponse } from "./friends_pb";
 import type { ListFriendsRequest } from "./friends_pb";
 import type { RemoveFriendResponse } from "./friends_pb";
 import type { RemoveFriendRequest } from "./friends_pb";
+import type { CancelFriendRequestResponse } from "./friends_pb";
+import type { CancelFriendRequestRequest } from "./friends_pb";
 import type { RespondToFriendRequestResponse } from "./friends_pb";
 import type { RespondToFriendRequestRequest } from "./friends_pb";
 import { stackIntercept } from "@protobuf-ts/runtime-rpc";
@@ -31,6 +33,10 @@ export interface IFriendsServiceClient {
      * @generated from protobuf rpc: RespondToFriendRequest
      */
     respondToFriendRequest(input: RespondToFriendRequestRequest, options?: RpcOptions): UnaryCall<RespondToFriendRequestRequest, RespondToFriendRequestResponse>;
+    /**
+     * @generated from protobuf rpc: CancelFriendRequest
+     */
+    cancelFriendRequest(input: CancelFriendRequestRequest, options?: RpcOptions): UnaryCall<CancelFriendRequestRequest, CancelFriendRequestResponse>;
     /**
      * @generated from protobuf rpc: RemoveFriend
      */
@@ -76,38 +82,45 @@ export class FriendsServiceClient implements IFriendsServiceClient, ServiceInfo 
         return stackIntercept<RespondToFriendRequestRequest, RespondToFriendRequestResponse>("unary", this._transport, method, opt, input);
     }
     /**
+     * @generated from protobuf rpc: CancelFriendRequest
+     */
+    cancelFriendRequest(input: CancelFriendRequestRequest, options?: RpcOptions): UnaryCall<CancelFriendRequestRequest, CancelFriendRequestResponse> {
+        const method = this.methods[2], opt = this._transport.mergeOptions(options);
+        return stackIntercept<CancelFriendRequestRequest, CancelFriendRequestResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
      * @generated from protobuf rpc: RemoveFriend
      */
     removeFriend(input: RemoveFriendRequest, options?: RpcOptions): UnaryCall<RemoveFriendRequest, RemoveFriendResponse> {
-        const method = this.methods[2], opt = this._transport.mergeOptions(options);
+        const method = this.methods[3], opt = this._transport.mergeOptions(options);
         return stackIntercept<RemoveFriendRequest, RemoveFriendResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: ListFriends
      */
     listFriends(input: ListFriendsRequest, options?: RpcOptions): UnaryCall<ListFriendsRequest, ListFriendsResponse> {
-        const method = this.methods[3], opt = this._transport.mergeOptions(options);
+        const method = this.methods[4], opt = this._transport.mergeOptions(options);
         return stackIntercept<ListFriendsRequest, ListFriendsResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: ListIncomingRequests
      */
     listIncomingRequests(input: ListFriendRequestsRequest, options?: RpcOptions): UnaryCall<ListFriendRequestsRequest, ListFriendRequestsResponse> {
-        const method = this.methods[4], opt = this._transport.mergeOptions(options);
+        const method = this.methods[5], opt = this._transport.mergeOptions(options);
         return stackIntercept<ListFriendRequestsRequest, ListFriendRequestsResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: ListOutgoingRequests
      */
     listOutgoingRequests(input: ListFriendRequestsRequest, options?: RpcOptions): UnaryCall<ListFriendRequestsRequest, ListFriendRequestsResponse> {
-        const method = this.methods[5], opt = this._transport.mergeOptions(options);
+        const method = this.methods[6], opt = this._transport.mergeOptions(options);
         return stackIntercept<ListFriendRequestsRequest, ListFriendRequestsResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: GetFriendsPage
      */
     getFriendsPage(input: GetFriendsPageRequest, options?: RpcOptions): UnaryCall<GetFriendsPageRequest, GetFriendsPageResponse> {
-        const method = this.methods[6], opt = this._transport.mergeOptions(options);
+        const method = this.methods[7], opt = this._transport.mergeOptions(options);
         return stackIntercept<GetFriendsPageRequest, GetFriendsPageResponse>("unary", this._transport, method, opt, input);
     }
 }
