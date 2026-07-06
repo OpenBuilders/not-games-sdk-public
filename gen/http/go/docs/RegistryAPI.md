@@ -422,7 +422,7 @@ Name | Type | Description  | Notes
 
 ## RegistryItemsGet
 
-> RegistryItemsGet200Response RegistryItemsGet(ctx).Limit(limit).Offset(offset).Execute()
+> RegistryItemsGet200Response RegistryItemsGet(ctx).Limit(limit).Offset(offset).Collection(collection).Name(name).Rarity(rarity).Type_(type_).DisplayType(displayType).Hidden(hidden).GameOnly(gameOnly).StoreHidden(storeHidden).Tradable(tradable).Supply(supply).SortFields(sortFields).Directions(directions).Execute()
 
 List item-def
 
@@ -441,10 +441,22 @@ import (
 func main() {
 	limit := int32(56) // int32 | limit
 	offset := int32(56) // int32 | offset
+	collection := "collection_example" // string | Filter by collection (optional)
+	name := "name_example" // string | Filter by name (optional)
+	rarity := "rarity_example" // string | Filter by rarity (optional)
+	type_ := "type__example" // string | Filter by type (optional)
+	displayType := "displayType_example" // string | Filter by display type (optional)
+	hidden := true // bool | Filter by hidden status (optional)
+	gameOnly := true // bool | Filter by game only status (optional)
+	storeHidden := true // bool | Filter by store hidden status (optional)
+	tradable := true // bool | Filter by tradable status (optional)
+	supply := int32(56) // int32 | Filter by supply (optional)
+	sortFields := "sortFields_example" // string | Comma-separated sort fields (optional)
+	directions := "directions_example" // string | Comma-separated sort directions (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RegistryAPI.RegistryItemsGet(context.Background()).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.RegistryAPI.RegistryItemsGet(context.Background()).Limit(limit).Offset(offset).Collection(collection).Name(name).Rarity(rarity).Type_(type_).DisplayType(displayType).Hidden(hidden).GameOnly(gameOnly).StoreHidden(storeHidden).Tradable(tradable).Supply(supply).SortFields(sortFields).Directions(directions).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RegistryAPI.RegistryItemsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -467,6 +479,18 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int32** | limit | 
  **offset** | **int32** | offset | 
+ **collection** | **string** | Filter by collection | 
+ **name** | **string** | Filter by name | 
+ **rarity** | **string** | Filter by rarity | 
+ **type_** | **string** | Filter by type | 
+ **displayType** | **string** | Filter by display type | 
+ **hidden** | **bool** | Filter by hidden status | 
+ **gameOnly** | **bool** | Filter by game only status | 
+ **storeHidden** | **bool** | Filter by store hidden status | 
+ **tradable** | **bool** | Filter by tradable status | 
+ **supply** | **int32** | Filter by supply | 
+ **sortFields** | **string** | Comma-separated sort fields | 
+ **directions** | **string** | Comma-separated sort directions | 
 
 ### Return type
 

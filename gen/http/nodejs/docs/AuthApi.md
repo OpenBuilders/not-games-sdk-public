@@ -17,7 +17,7 @@ import {
     AuthApi,
     Configuration,
     GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new AuthApi(configuration);

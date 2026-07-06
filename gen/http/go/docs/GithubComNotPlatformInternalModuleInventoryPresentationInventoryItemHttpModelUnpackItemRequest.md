@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccountId** | Pointer to **int32** |  | [optional] 
 **AppId** | Pointer to **int32** |  | [optional] 
 **ItemId** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **string** |  | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewGithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequestWithDefaults instantiates a new GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccountId
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest) GetAccountId() int32`
+
+GetAccountId returns the AccountId field if non-nil, zero value otherwise.
+
+### GetAccountIdOk
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest) GetAccountIdOk() (*int32, bool)`
+
+GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountId
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest) SetAccountId(v int32)`
+
+SetAccountId sets AccountId field to given value.
+
+### HasAccountId
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest) HasAccountId() bool`
+
+HasAccountId returns a boolean if a field has been set.
 
 ### GetAppId
 

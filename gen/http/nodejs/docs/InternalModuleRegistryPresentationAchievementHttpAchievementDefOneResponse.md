@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse } from 'not-games-sdk-public';
+import { InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse } from 'notgamessdkpublic';
 
 const instance: InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse = {
     achievement_def_id,

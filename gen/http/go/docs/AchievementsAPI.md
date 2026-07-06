@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## AchievementsGet
 
-> AchievementsGet200Response AchievementsGet(ctx).AppId(appId).Limit(limit).Offset(offset).Execute()
+> AchievementsGet200Response AchievementsGet(ctx).AppId(appId).AccountId(accountId).Limit(limit).Offset(offset).Execute()
 
 List achievements
 
@@ -30,12 +30,13 @@ import (
 
 func main() {
 	appId := "appId_example" // string | app id
+	accountId := "accountId_example" // string | account id
 	limit := int32(56) // int32 | limit
 	offset := int32(56) // int32 | offset
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AchievementsAPI.AchievementsGet(context.Background()).AppId(appId).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.AchievementsAPI.AchievementsGet(context.Background()).AppId(appId).AccountId(accountId).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AchievementsAPI.AchievementsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -57,6 +58,7 @@ Other parameters are passed through a pointer to a apiAchievementsGetRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **string** | app id | 
+ **accountId** | **string** | account id | 
  **limit** | **int32** | limit | 
  **offset** | **int32** | offset | 
 

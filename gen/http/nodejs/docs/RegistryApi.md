@@ -26,7 +26,7 @@ All URIs are relative to *http://localhost:8080/api/v1*
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -77,7 +77,7 @@ const { status, data } = await apiInstance.registryAchievementsAchievementDefIdD
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -129,7 +129,7 @@ import {
     RegistryApi,
     Configuration,
     InternalModuleRegistryPresentationAchievementHttpUpdateRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -183,7 +183,7 @@ const { status, data } = await apiInstance.registryAchievementsAchievementDefIdP
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -238,7 +238,7 @@ import {
     RegistryApi,
     Configuration,
     InternalModuleRegistryPresentationAchievementHttpCreateRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -289,7 +289,7 @@ const { status, data } = await apiInstance.registryAchievementsPost(
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -343,17 +343,41 @@ const { status, data } = await apiInstance.registryAppsGet(
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
 
 let limit: number; //limit (default to undefined)
 let offset: number; //offset (default to undefined)
+let collection: string; //Filter by collection (optional) (default to undefined)
+let name: string; //Filter by name (optional) (default to undefined)
+let rarity: string; //Filter by rarity (optional) (default to undefined)
+let type: string; //Filter by type (optional) (default to undefined)
+let displayType: string; //Filter by display type (optional) (default to undefined)
+let hidden: boolean; //Filter by hidden status (optional) (default to undefined)
+let gameOnly: boolean; //Filter by game only status (optional) (default to undefined)
+let storeHidden: boolean; //Filter by store hidden status (optional) (default to undefined)
+let tradable: boolean; //Filter by tradable status (optional) (default to undefined)
+let supply: number; //Filter by supply (optional) (default to undefined)
+let sortFields: string; //Comma-separated sort fields (optional) (default to undefined)
+let directions: string; //Comma-separated sort directions (optional) (default to undefined)
 
 const { status, data } = await apiInstance.registryItemsGet(
     limit,
-    offset
+    offset,
+    collection,
+    name,
+    rarity,
+    type,
+    displayType,
+    hidden,
+    gameOnly,
+    storeHidden,
+    tradable,
+    supply,
+    sortFields,
+    directions
 );
 ```
 
@@ -363,6 +387,18 @@ const { status, data } = await apiInstance.registryItemsGet(
 |------------- | ------------- | ------------- | -------------|
 | **limit** | [**number**] | limit | defaults to undefined|
 | **offset** | [**number**] | offset | defaults to undefined|
+| **collection** | [**string**] | Filter by collection | (optional) defaults to undefined|
+| **name** | [**string**] | Filter by name | (optional) defaults to undefined|
+| **rarity** | [**string**] | Filter by rarity | (optional) defaults to undefined|
+| **type** | [**string**] | Filter by type | (optional) defaults to undefined|
+| **displayType** | [**string**] | Filter by display type | (optional) defaults to undefined|
+| **hidden** | [**boolean**] | Filter by hidden status | (optional) defaults to undefined|
+| **gameOnly** | [**boolean**] | Filter by game only status | (optional) defaults to undefined|
+| **storeHidden** | [**boolean**] | Filter by store hidden status | (optional) defaults to undefined|
+| **tradable** | [**boolean**] | Filter by tradable status | (optional) defaults to undefined|
+| **supply** | [**number**] | Filter by supply | (optional) defaults to undefined|
+| **sortFields** | [**string**] | Comma-separated sort fields | (optional) defaults to undefined|
+| **directions** | [**string**] | Comma-separated sort directions | (optional) defaults to undefined|
 
 
 ### Return type
@@ -397,7 +433,7 @@ const { status, data } = await apiInstance.registryItemsGet(
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -448,7 +484,7 @@ const { status, data } = await apiInstance.registryItemsItemDefIdDelete(
 import {
     RegistryApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -500,7 +536,7 @@ import {
     RegistryApi,
     Configuration,
     InternalModuleRegistryPresentationItemHttpUpdateRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);
@@ -555,7 +591,7 @@ import {
     RegistryApi,
     Configuration,
     InternalModuleRegistryPresentationItemHttpCreateRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new RegistryApi(configuration);

@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InternalModuleAchievementPresentationHttpCreateAchievementOneResponse } from 'not-games-sdk-public';
+import { InternalModuleAchievementPresentationHttpCreateAchievementOneResponse } from 'notgamessdkpublic';
 
 const instance: InternalModuleAchievementPresentationHttpCreateAchievementOneResponse = {
     account_id,

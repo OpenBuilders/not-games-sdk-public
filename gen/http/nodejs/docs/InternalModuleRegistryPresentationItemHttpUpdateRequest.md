@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InternalModuleRegistryPresentationItemHttpUpdateRequest } from 'not-games-sdk-public';
+import { InternalModuleRegistryPresentationItemHttpUpdateRequest } from 'notgamessdkpublic';
 
 const instance: InternalModuleRegistryPresentationItemHttpUpdateRequest = {
     app_files,

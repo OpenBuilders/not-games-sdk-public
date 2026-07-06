@@ -4,7 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccountId** | Pointer to **int32** |  | [optional] 
 **AchievementDefIds** | Pointer to **[]string** |  | [optional] 
+**AchievementId** | Pointer to **string** |  | [optional] 
+**IconUrl** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -25,6 +28,31 @@ will change when the set of required properties is changed
 NewInternalModuleAchievementPresentationHttpCreateAchievementsRequestWithDefaults instantiates a new InternalModuleAchievementPresentationHttpCreateAchievementsRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccountId
+
+`func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) GetAccountId() int32`
+
+GetAccountId returns the AccountId field if non-nil, zero value otherwise.
+
+### GetAccountIdOk
+
+`func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) GetAccountIdOk() (*int32, bool)`
+
+GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountId
+
+`func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) SetAccountId(v int32)`
+
+SetAccountId sets AccountId field to given value.
+
+### HasAccountId
+
+`func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) HasAccountId() bool`
+
+HasAccountId returns a boolean if a field has been set.
 
 ### GetAchievementDefIds
 
@@ -50,6 +78,56 @@ SetAchievementDefIds sets AchievementDefIds field to given value.
 `func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) HasAchievementDefIds() bool`
 
 HasAchievementDefIds returns a boolean if a field has been set.
+
+### GetAchievementId
+
+`func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) GetAchievementId() string`
+
+GetAchievementId returns the AchievementId field if non-nil, zero value otherwise.
+
+### GetAchievementIdOk
+
+`func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) GetAchievementIdOk() (*string, bool)`
+
+GetAchievementIdOk returns a tuple with the AchievementId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAchievementId
+
+`func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) SetAchievementId(v string)`
+
+SetAchievementId sets AchievementId field to given value.
+
+### HasAchievementId
+
+`func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) HasAchievementId() bool`
+
+HasAchievementId returns a boolean if a field has been set.
+
+### GetIconUrl
+
+`func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) GetIconUrl() string`
+
+GetIconUrl returns the IconUrl field if non-nil, zero value otherwise.
+
+### GetIconUrlOk
+
+`func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) GetIconUrlOk() (*string, bool)`
+
+GetIconUrlOk returns a tuple with the IconUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUrl
+
+`func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) SetIconUrl(v string)`
+
+SetIconUrl sets IconUrl field to given value.
+
+### HasIconUrl
+
+`func (o *InternalModuleAchievementPresentationHttpCreateAchievementsRequest) HasIconUrl() bool`
+
+HasIconUrl returns a boolean if a field has been set.
 
 ### GetTags
 

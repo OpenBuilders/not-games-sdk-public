@@ -7,17 +7,21 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse**](InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse.md) |  | [optional] [default to undefined]
 **error_code** | **string** |  | [optional] [default to undefined]
+**message** | **string** |  | [optional] [default to undefined]
 **ok** | **boolean** |  | [optional] [default to undefined]
+**request_id** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { RegistryAchievementsGet200Response } from 'not-games-sdk-public';
+import { RegistryAchievementsGet200Response } from 'notgamessdkpublic';
 
 const instance: RegistryAchievementsGet200Response = {
     data,
     error_code,
+    message,
     ok,
+    request_id,
 };
 ```
 
