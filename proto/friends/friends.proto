@@ -10,6 +10,7 @@ import "common/account.proto";
 service FriendsService {
   rpc SendFriendRequest(SendFriendRequestRequest) returns (SendFriendRequestResponse) {}
   rpc RespondToFriendRequest(RespondToFriendRequestRequest) returns (RespondToFriendRequestResponse) {}
+  rpc CancelFriendRequest(CancelFriendRequestRequest) returns (CancelFriendRequestResponse) {}
   rpc RemoveFriend(RemoveFriendRequest) returns (RemoveFriendResponse) {}
   rpc ListFriends(ListFriendsRequest) returns (ListFriendsResponse) {}
   rpc ListIncomingRequests(ListFriendRequestsRequest) returns (ListFriendRequestsResponse) {}
@@ -43,6 +44,13 @@ message SendFriendRequestRequest {
 }
 
 message SendFriendRequestResponse {}
+
+message CancelFriendRequestRequest {
+  int64 request_id = 1;
+}
+
+message CancelFriendRequestResponse {
+}
 
 message RespondToFriendRequestRequest {
   int64 request_id = 1;
