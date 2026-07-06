@@ -89,6 +89,10 @@ export interface SendFriendRequestRequest {
  * @generated from protobuf message ngfriends.v1.SendFriendRequestResponse
  */
 export interface SendFriendRequestResponse {
+    /**
+     * @generated from protobuf field: int64 request_id = 1
+     */
+    requestId: bigint;
 }
 /**
  * @generated from protobuf message ngfriends.v1.CancelFriendRequestRequest
@@ -470,10 +474,13 @@ export const SendFriendRequestRequest = new SendFriendRequestRequest$Type();
 // @generated message type with reflection information, may provide speed optimized methods
 class SendFriendRequestResponse$Type extends MessageType<SendFriendRequestResponse> {
     constructor() {
-        super("ngfriends.v1.SendFriendRequestResponse", []);
+        super("ngfriends.v1.SendFriendRequestResponse", [
+            { no: 1, name: "request_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+        ]);
     }
     create(value?: PartialMessage<SendFriendRequestResponse>): SendFriendRequestResponse {
         const message = globalThis.Object.create((this.messagePrototype!));
+        message.requestId = 0n;
         if (value !== undefined)
             reflectionMergePartial<SendFriendRequestResponse>(this, message, value);
         return message;
@@ -483,6 +490,9 @@ class SendFriendRequestResponse$Type extends MessageType<SendFriendRequestRespon
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
+                case /* int64 request_id */ 1:
+                    message.requestId = reader.int64().toBigInt();
+                    break;
                 default:
                     let u = options.readUnknownField;
                     if (u === "throw")
@@ -495,6 +505,9 @@ class SendFriendRequestResponse$Type extends MessageType<SendFriendRequestRespon
         return message;
     }
     internalBinaryWrite(message: SendFriendRequestResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int64 request_id = 1; */
+        if (message.requestId !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.requestId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

@@ -273,6 +273,7 @@ func (x *SendFriendRequestRequest) GetToAccountId() int64 {
 
 type SendFriendRequestResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	RequestId     int64                  `protobuf:"varint,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -305,6 +306,13 @@ func (x *SendFriendRequestResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use SendFriendRequestResponse.ProtoReflect.Descriptor instead.
 func (*SendFriendRequestResponse) Descriptor() ([]byte, []int) {
 	return file_friends_friends_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *SendFriendRequestResponse) GetRequestId() int64 {
+	if x != nil {
+		return x.RequestId
+	}
+	return 0
 }
 
 type CancelFriendRequestRequest struct {
@@ -895,8 +903,10 @@ const file_friends_friends_proto_rawDesc = "" +
 	"\r_from_accountB\r\n" +
 	"\v_to_account\">\n" +
 	"\x18SendFriendRequestRequest\x12\"\n" +
-	"\rto_account_id\x18\x01 \x01(\x03R\vtoAccountId\"\x1b\n" +
-	"\x19SendFriendRequestResponse\";\n" +
+	"\rto_account_id\x18\x01 \x01(\x03R\vtoAccountId\":\n" +
+	"\x19SendFriendRequestResponse\x12\x1d\n" +
+	"\n" +
+	"request_id\x18\x01 \x01(\x03R\trequestId\";\n" +
 	"\x1aCancelFriendRequestRequest\x12\x1d\n" +
 	"\n" +
 	"request_id\x18\x01 \x01(\x03R\trequestId\"\x1d\n" +
