@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	FriendsService_SendFriendRequest_FullMethodName      = "/ngfriends.v1.FriendsService/SendFriendRequest"
 	FriendsService_RespondToFriendRequest_FullMethodName = "/ngfriends.v1.FriendsService/RespondToFriendRequest"
+	FriendsService_CancelFriendRequest_FullMethodName    = "/ngfriends.v1.FriendsService/CancelFriendRequest"
 	FriendsService_RemoveFriend_FullMethodName           = "/ngfriends.v1.FriendsService/RemoveFriend"
 	FriendsService_ListFriends_FullMethodName            = "/ngfriends.v1.FriendsService/ListFriends"
 	FriendsService_ListIncomingRequests_FullMethodName   = "/ngfriends.v1.FriendsService/ListIncomingRequests"
@@ -34,6 +35,7 @@ const (
 type FriendsServiceClient interface {
 	SendFriendRequest(ctx context.Context, in *SendFriendRequestRequest, opts ...grpc.CallOption) (*SendFriendRequestResponse, error)
 	RespondToFriendRequest(ctx context.Context, in *RespondToFriendRequestRequest, opts ...grpc.CallOption) (*RespondToFriendRequestResponse, error)
+	CancelFriendRequest(ctx context.Context, in *CancelFriendRequestRequest, opts ...grpc.CallOption) (*CancelFriendRequestResponse, error)
 	RemoveFriend(ctx context.Context, in *RemoveFriendRequest, opts ...grpc.CallOption) (*RemoveFriendResponse, error)
 	ListFriends(ctx context.Context, in *ListFriendsRequest, opts ...grpc.CallOption) (*ListFriendsResponse, error)
 	ListIncomingRequests(ctx context.Context, in *ListFriendRequestsRequest, opts ...grpc.CallOption) (*ListFriendRequestsResponse, error)
@@ -63,6 +65,16 @@ func (c *friendsServiceClient) RespondToFriendRequest(ctx context.Context, in *R
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RespondToFriendRequestResponse)
 	err := c.cc.Invoke(ctx, FriendsService_RespondToFriendRequest_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *friendsServiceClient) CancelFriendRequest(ctx context.Context, in *CancelFriendRequestRequest, opts ...grpc.CallOption) (*CancelFriendRequestResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CancelFriendRequestResponse)
+	err := c.cc.Invoke(ctx, FriendsService_CancelFriendRequest_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -125,6 +137,7 @@ func (c *friendsServiceClient) GetFriendsPage(ctx context.Context, in *GetFriend
 type FriendsServiceServer interface {
 	SendFriendRequest(context.Context, *SendFriendRequestRequest) (*SendFriendRequestResponse, error)
 	RespondToFriendRequest(context.Context, *RespondToFriendRequestRequest) (*RespondToFriendRequestResponse, error)
+	CancelFriendRequest(context.Context, *CancelFriendRequestRequest) (*CancelFriendRequestResponse, error)
 	RemoveFriend(context.Context, *RemoveFriendRequest) (*RemoveFriendResponse, error)
 	ListFriends(context.Context, *ListFriendsRequest) (*ListFriendsResponse, error)
 	ListIncomingRequests(context.Context, *ListFriendRequestsRequest) (*ListFriendRequestsResponse, error)
@@ -145,6 +158,9 @@ func (UnimplementedFriendsServiceServer) SendFriendRequest(context.Context, *Sen
 }
 func (UnimplementedFriendsServiceServer) RespondToFriendRequest(context.Context, *RespondToFriendRequestRequest) (*RespondToFriendRequestResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method RespondToFriendRequest not implemented")
+}
+func (UnimplementedFriendsServiceServer) CancelFriendRequest(context.Context, *CancelFriendRequestRequest) (*CancelFriendRequestResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CancelFriendRequest not implemented")
 }
 func (UnimplementedFriendsServiceServer) RemoveFriend(context.Context, *RemoveFriendRequest) (*RemoveFriendResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method RemoveFriend not implemented")
@@ -214,6 +230,24 @@ func _FriendsService_RespondToFriendRequest_Handler(srv interface{}, ctx context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(FriendsServiceServer).RespondToFriendRequest(ctx, req.(*RespondToFriendRequestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FriendsService_CancelFriendRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CancelFriendRequestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FriendsServiceServer).CancelFriendRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FriendsService_CancelFriendRequest_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FriendsServiceServer).CancelFriendRequest(ctx, req.(*CancelFriendRequestRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -322,6 +356,10 @@ var FriendsService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RespondToFriendRequest",
 			Handler:    _FriendsService_RespondToFriendRequest_Handler,
+		},
+		{
+			MethodName: "CancelFriendRequest",
+			Handler:    _FriendsService_CancelFriendRequest_Handler,
 		},
 		{
 			MethodName: "RemoveFriend",

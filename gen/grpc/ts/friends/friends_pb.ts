@@ -91,6 +91,20 @@ export interface SendFriendRequestRequest {
 export interface SendFriendRequestResponse {
 }
 /**
+ * @generated from protobuf message ngfriends.v1.CancelFriendRequestRequest
+ */
+export interface CancelFriendRequestRequest {
+    /**
+     * @generated from protobuf field: int64 request_id = 1
+     */
+    requestId: bigint;
+}
+/**
+ * @generated from protobuf message ngfriends.v1.CancelFriendRequestResponse
+ */
+export interface CancelFriendRequestResponse {
+}
+/**
  * @generated from protobuf message ngfriends.v1.RespondToFriendRequestRequest
  */
 export interface RespondToFriendRequestRequest {
@@ -491,6 +505,91 @@ class SendFriendRequestResponse$Type extends MessageType<SendFriendRequestRespon
  * @generated MessageType for protobuf message ngfriends.v1.SendFriendRequestResponse
  */
 export const SendFriendRequestResponse = new SendFriendRequestResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class CancelFriendRequestRequest$Type extends MessageType<CancelFriendRequestRequest> {
+    constructor() {
+        super("ngfriends.v1.CancelFriendRequestRequest", [
+            { no: 1, name: "request_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+        ]);
+    }
+    create(value?: PartialMessage<CancelFriendRequestRequest>): CancelFriendRequestRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.requestId = 0n;
+        if (value !== undefined)
+            reflectionMergePartial<CancelFriendRequestRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: CancelFriendRequestRequest): CancelFriendRequestRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* int64 request_id */ 1:
+                    message.requestId = reader.int64().toBigInt();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: CancelFriendRequestRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int64 request_id = 1; */
+        if (message.requestId !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.requestId);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message ngfriends.v1.CancelFriendRequestRequest
+ */
+export const CancelFriendRequestRequest = new CancelFriendRequestRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class CancelFriendRequestResponse$Type extends MessageType<CancelFriendRequestResponse> {
+    constructor() {
+        super("ngfriends.v1.CancelFriendRequestResponse", []);
+    }
+    create(value?: PartialMessage<CancelFriendRequestResponse>): CancelFriendRequestResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        if (value !== undefined)
+            reflectionMergePartial<CancelFriendRequestResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: CancelFriendRequestResponse): CancelFriendRequestResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: CancelFriendRequestResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message ngfriends.v1.CancelFriendRequestResponse
+ */
+export const CancelFriendRequestResponse = new CancelFriendRequestResponse$Type();
 // @generated message type with reflection information, may provide speed optimized methods
 class RespondToFriendRequestRequest$Type extends MessageType<RespondToFriendRequestRequest> {
     constructor() {
@@ -1000,6 +1099,7 @@ export const GetFriendsPageResponse = new GetFriendsPageResponse$Type();
 export const FriendsService = new ServiceType("ngfriends.v1.FriendsService", [
     { name: "SendFriendRequest", options: {}, I: SendFriendRequestRequest, O: SendFriendRequestResponse },
     { name: "RespondToFriendRequest", options: {}, I: RespondToFriendRequestRequest, O: RespondToFriendRequestResponse },
+    { name: "CancelFriendRequest", options: {}, I: CancelFriendRequestRequest, O: CancelFriendRequestResponse },
     { name: "RemoveFriend", options: {}, I: RemoveFriendRequest, O: RemoveFriendResponse },
     { name: "ListFriends", options: {}, I: ListFriendsRequest, O: ListFriendsResponse },
     { name: "ListIncomingRequests", options: {}, I: ListFriendRequestsRequest, O: ListFriendRequestsResponse },
