@@ -1368,7 +1368,7 @@ proto.ngfriends.v1.SendFriendRequestResponse.prototype.toObject = function(opt_i
  */
 proto.ngfriends.v1.SendFriendRequestResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+requestId: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -1405,6 +1405,10 @@ proto.ngfriends.v1.SendFriendRequestResponse.deserializeBinaryFromReader = funct
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setRequestId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1434,6 +1438,31 @@ proto.ngfriends.v1.SendFriendRequestResponse.prototype.serializeBinary = functio
  */
 proto.ngfriends.v1.SendFriendRequestResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getRequestId();
+  if (f !== 0) {
+    writer.writeInt64(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional int64 request_id = 1;
+ * @return {number}
+ */
+proto.ngfriends.v1.SendFriendRequestResponse.prototype.getRequestId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ngfriends.v1.SendFriendRequestResponse} returns this
+ */
+proto.ngfriends.v1.SendFriendRequestResponse.prototype.setRequestId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
