@@ -7,17 +7,21 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse**](GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse.md) |  | [optional] [default to undefined]
 **error_code** | **string** |  | [optional] [default to undefined]
+**message** | **string** |  | [optional] [default to undefined]
 **ok** | **boolean** |  | [optional] [default to undefined]
+**request_id** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { InventoryItemsItemIdGet200Response } from 'not-games-sdk-public';
+import { InventoryItemsItemIdGet200Response } from 'notgamessdkpublic';
 
 const instance: InventoryItemsItemIdGet200Response = {
     data,
     error_code,
+    message,
     ok,
+    request_id,
 };
 ```
 

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **GameOnly** | Pointer to **bool** |  | [optional] 
 **Hidden** | Pointer to **bool** |  | [optional] 
 **IconUrl** | Pointer to **string** |  | [optional] 
+**Issued** | Pointer to **int32** |  | [optional] 
 **ItemDefId** | Pointer to **string** |  | [optional] 
 **Marketable** | Pointer to **bool** |  | [optional] 
 **MaxSupply** | Pointer to **int32** |  | [optional] 
@@ -297,6 +298,31 @@ SetIconUrl sets IconUrl field to given value.
 `func (o *GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse) HasIconUrl() bool`
 
 HasIconUrl returns a boolean if a field has been set.
+
+### GetIssued
+
+`func (o *GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse) GetIssued() int32`
+
+GetIssued returns the Issued field if non-nil, zero value otherwise.
+
+### GetIssuedOk
+
+`func (o *GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse) GetIssuedOk() (*int32, bool)`
+
+GetIssuedOk returns a tuple with the Issued field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssued
+
+`func (o *GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse) SetIssued(v int32)`
+
+SetIssued sets Issued field to given value.
+
+### HasIssued
+
+`func (o *GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse) HasIssued() bool`
+
+HasIssued returns a boolean if a field has been set.
 
 ### GetItemDefId
 

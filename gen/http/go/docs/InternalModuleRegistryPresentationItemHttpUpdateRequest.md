@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **StoreHidden** | Pointer to **bool** |  | [optional] 
 **StoreImages** | Pointer to **string** |  | [optional] 
 **StoreTags** | Pointer to **string** |  | [optional] 
+**Tags** | Pointer to **string** |  | [optional] 
 **Tradable** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -492,6 +493,31 @@ SetStoreTags sets StoreTags field to given value.
 `func (o *InternalModuleRegistryPresentationItemHttpUpdateRequest) HasStoreTags() bool`
 
 HasStoreTags returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *InternalModuleRegistryPresentationItemHttpUpdateRequest) GetTags() string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *InternalModuleRegistryPresentationItemHttpUpdateRequest) GetTagsOk() (*string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *InternalModuleRegistryPresentationItemHttpUpdateRequest) SetTags(v string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *InternalModuleRegistryPresentationItemHttpUpdateRequest) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetTradable
 

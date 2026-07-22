@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse = {
     _private,

@@ -7,17 +7,21 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | **object** |  | [optional] [default to undefined]
 **error_code** | **string** |  | [optional] [default to undefined]
+**message** | **string** |  | [optional] [default to undefined]
 **ok** | **boolean** |  | [optional] [default to undefined]
+**request_id** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalServerTemplatesResponseTemplate } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalServerTemplatesResponseTemplate } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalServerTemplatesResponseTemplate = {
     data,
     error_code,
+    message,
     ok,
+    request_id,
 };
 ```
 

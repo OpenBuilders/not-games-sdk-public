@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **LastName** | Pointer to **string** |  | [optional] 
 **Locale** | Pointer to **string** |  | [optional] 
 **SquadId** | Pointer to **int32** | telegram group id | [optional] 
+**SquadPrefix** | Pointer to **string** |  | [optional] 
 **Username** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -258,6 +259,31 @@ SetSquadId sets SquadId field to given value.
 `func (o *GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse) HasSquadId() bool`
 
 HasSquadId returns a boolean if a field has been set.
+
+### GetSquadPrefix
+
+`func (o *GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse) GetSquadPrefix() string`
+
+GetSquadPrefix returns the SquadPrefix field if non-nil, zero value otherwise.
+
+### GetSquadPrefixOk
+
+`func (o *GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse) GetSquadPrefixOk() (*string, bool)`
+
+GetSquadPrefixOk returns a tuple with the SquadPrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSquadPrefix
+
+`func (o *GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse) SetSquadPrefix(v string)`
+
+SetSquadPrefix sets SquadPrefix field to given value.
+
+### HasSquadPrefix
+
+`func (o *GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse) HasSquadPrefix() bool`
+
+HasSquadPrefix returns a boolean if a field has been set.
 
 ### GetUsername
 

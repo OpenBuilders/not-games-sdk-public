@@ -4,15 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountId** | Pointer to **int32** | telegram id | [optional] 
+**AccountId** | Pointer to **int32** | account id (positive: Telegram, negative: social providers) | [optional] 
 **AllowPm** | Pointer to **bool** |  | [optional] 
 **Avatar** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
+**ExternalId** | Pointer to **string** | provider-specific user ID | [optional] 
 **FirstName** | Pointer to **string** |  | [optional] 
 **LastLogin** | Pointer to **string** |  | [optional] 
 **LastName** | Pointer to **string** |  | [optional] 
 **Locale** | Pointer to **string** |  | [optional] 
+**Provider** | Pointer to **string** | auth provider: telegram, google, twitter | [optional] 
 **SquadId** | Pointer to **int32** | telegram group id | [optional] 
+**SquadPrefix** | Pointer to **string** |  | [optional] 
 **UserName** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -134,6 +137,31 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
+### GetExternalId
+
+`func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) GetExternalId() string`
+
+GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
+
+### GetExternalIdOk
+
+`func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) GetExternalIdOk() (*string, bool)`
+
+GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalId
+
+`func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) SetExternalId(v string)`
+
+SetExternalId sets ExternalId field to given value.
+
+### HasExternalId
+
+`func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) HasExternalId() bool`
+
+HasExternalId returns a boolean if a field has been set.
+
 ### GetFirstName
 
 `func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) GetFirstName() string`
@@ -234,6 +262,31 @@ SetLocale sets Locale field to given value.
 
 HasLocale returns a boolean if a field has been set.
 
+### GetProvider
+
+`func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) GetProvider() string`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) GetProviderOk() (*string, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) SetProvider(v string)`
+
+SetProvider sets Provider field to given value.
+
+### HasProvider
+
+`func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) HasProvider() bool`
+
+HasProvider returns a boolean if a field has been set.
+
 ### GetSquadId
 
 `func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) GetSquadId() int32`
@@ -258,6 +311,31 @@ SetSquadId sets SquadId field to given value.
 `func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) HasSquadId() bool`
 
 HasSquadId returns a boolean if a field has been set.
+
+### GetSquadPrefix
+
+`func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) GetSquadPrefix() string`
+
+GetSquadPrefix returns the SquadPrefix field if non-nil, zero value otherwise.
+
+### GetSquadPrefixOk
+
+`func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) GetSquadPrefixOk() (*string, bool)`
+
+GetSquadPrefixOk returns a tuple with the SquadPrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSquadPrefix
+
+`func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) SetSquadPrefix(v string)`
+
+SetSquadPrefix sets SquadPrefix field to given value.
+
+### HasSquadPrefix
+
+`func (o *GithubComNotPlatformInternalModuleProfileDomainEntityAccount) HasSquadPrefix() bool`
+
+HasSquadPrefix returns a boolean if a field has been set.
 
 ### GetUserName
 

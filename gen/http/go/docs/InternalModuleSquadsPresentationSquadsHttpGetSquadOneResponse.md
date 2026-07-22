@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **Id** | Pointer to **int32** |  | [optional] 
 **MembersAmount** | Pointer to **int32** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**OwnerAccountId** | Pointer to **int32** |  | [optional] 
+**Prefix** | Pointer to **string** |  | [optional] 
 **Slug** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -154,6 +156,56 @@ SetName sets Name field to given value.
 `func (o *InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetOwnerAccountId
+
+`func (o *InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse) GetOwnerAccountId() int32`
+
+GetOwnerAccountId returns the OwnerAccountId field if non-nil, zero value otherwise.
+
+### GetOwnerAccountIdOk
+
+`func (o *InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse) GetOwnerAccountIdOk() (*int32, bool)`
+
+GetOwnerAccountIdOk returns a tuple with the OwnerAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwnerAccountId
+
+`func (o *InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse) SetOwnerAccountId(v int32)`
+
+SetOwnerAccountId sets OwnerAccountId field to given value.
+
+### HasOwnerAccountId
+
+`func (o *InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse) HasOwnerAccountId() bool`
+
+HasOwnerAccountId returns a boolean if a field has been set.
+
+### GetPrefix
+
+`func (o *InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse) GetPrefix() string`
+
+GetPrefix returns the Prefix field if non-nil, zero value otherwise.
+
+### GetPrefixOk
+
+`func (o *InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse) GetPrefixOk() (*string, bool)`
+
+GetPrefixOk returns a tuple with the Prefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrefix
+
+`func (o *InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse) SetPrefix(v string)`
+
+SetPrefix sets Prefix field to given value.
+
+### HasPrefix
+
+`func (o *InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse) HasPrefix() bool`
+
+HasPrefix returns a boolean if a field has been set.
 
 ### GetSlug
 
