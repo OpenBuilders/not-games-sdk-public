@@ -702,6 +702,8 @@ definitions:
         type: string
       store_tags:
         type: string
+      tags:
+        type: string
       tradable:
         type: boolean
     type: object
