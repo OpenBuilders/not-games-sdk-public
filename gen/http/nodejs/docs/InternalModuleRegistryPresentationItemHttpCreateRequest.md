@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InternalModuleRegistryPresentationItemHttpCreateRequest } from 'not-games-sdk-public';
+import { InternalModuleRegistryPresentationItemHttpCreateRequest } from 'notgamessdkpublic';
 
 const instance: InternalModuleRegistryPresentationItemHttpCreateRequest = {
     app_files,

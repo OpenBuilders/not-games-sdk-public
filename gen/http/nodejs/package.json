@@ -1,7 +1,7 @@
 {
-  "name": "not-games-sdk-public",
+  "name": "notgamessdkpublic",
   "version": "3.0",
-  "description": "OpenAPI client for not-games-sdk-public",
+  "description": "OpenAPI client for notgamessdkpublic",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
     "typescript",
     "openapi-client",
     "openapi-generator",
-    "not-games-sdk-public"
+    "notgamessdkpublic"
   ],
   "license": "Unlicense",
   "main": "./dist/index.js",

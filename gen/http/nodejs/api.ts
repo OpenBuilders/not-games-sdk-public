@@ -26,32 +26,65 @@ import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerM
 export interface AchievementsGet200Response {
     'data'?: InternalModuleAchievementPresentationHttpListAchievementsResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface AchievementsIdGet200Response {
     'data'?: InternalModuleAchievementPresentationHttpGetAchievementOneResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface AchievementsPost200Response {
     'data'?: InternalModuleAchievementPresentationHttpCreateAchievementsResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
+}
+export interface ApiV1MarketAppsNewGet200Response {
+    'data'?: GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelListNewAppsResponse;
+    'error_code'?: string;
+    'message'?: string;
+    'ok'?: boolean;
+    'request_id'?: string;
+}
+export interface ApiV1MarketProfileAccountIdItemsByAppsGet200Response {
+    'data'?: GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelProfileAppsItemsResponse;
+    'error_code'?: string;
+    'message'?: string;
+    'ok'?: boolean;
+    'request_id'?: string;
+}
+export interface ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response {
+    'data'?: GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelProfileDisplayTypeItemsResponse;
+    'error_code'?: string;
+    'message'?: string;
+    'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface AuthGeneratePost200Response {
     'data'?: GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface DropsIdGet200Response {
-    'data'?: string;
+    'data'?: GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface DropsPost200Response {
     'data'?: InternalModuleDropsPresentationDropsHttpCreateDropResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest {
     'app_id'?: number;
@@ -61,13 +94,33 @@ export interface GithubComNotPlatformInternalModuleAuthPresentationAuthorization
     'private'?: string;
     'refresh_token'?: string;
 }
+export interface GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse {
+    'app_id'?: number;
+    'available_at'?: string;
+    'description'?: string;
+    'finished_at'?: string;
+    'id'?: string;
+    'item_def_ids'?: string;
+    'status'?: string;
+}
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest {
+    'account_id'?: number;
     'item_id'?: string;
     'quantity'?: number;
 }
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest {
+    'account_id'?: number;
+    'app_files'?: string;
     'app_id'?: number;
+    'app_meta'?: string;
+    'description'?: string;
+    'hold_till'?: number;
+    'icon_url'?: string;
     'item_def_id'?: string;
+    'item_id'?: string;
+    'name'?: string;
+    'quantity'?: number;
+    'rarity'?: number;
     'tags'?: string;
 }
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse {
@@ -82,7 +135,9 @@ export interface GithubComNotPlatformInternalModuleInventoryPresentationInventor
     'display_type'?: string;
     'game_only'?: boolean;
     'hidden'?: boolean;
+    'hold_till'?: number;
     'icon_url'?: string;
+    'issued'?: number;
     'item_def_id'?: string;
     'item_id'?: string;
     'marketable'?: boolean;
@@ -102,38 +157,83 @@ export interface GithubComNotPlatformInternalModuleInventoryPresentationInventor
 }
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse {
     'account'?: GithubComNotPlatformInternalModuleProfileDomainEntityAccount;
+    'invoice_url'?: string;
     'is_possible'?: boolean;
+    'payment_star'?: number;
 }
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemRequest {
+    'account_from'?: number;
     'account_to'?: number;
     'comment'?: string;
 }
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest {
+    'account_id'?: number;
     'app_id'?: number;
     'item_id'?: string;
     'tags'?: string;
 }
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest {
     'app_meta'?: string;
+    'hold_till'?: number;
     'rarity'?: number;
     'tags'?: string;
 }
+export interface GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelAppMetaResponse {
+    'id'?: number;
+    'items_count'?: number;
+    'name'?: string;
+}
+export interface GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelDisplayTypeMetaResponse {
+    'display_type'?: string;
+    'items_count'?: number;
+}
+export interface GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelListNewAppsResponse {
+    'results'?: Array<GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelNewAppResponse>;
+}
+export interface GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelNewAppResponse {
+    'avatar'?: string;
+    'background'?: string;
+    'created_at'?: string;
+    'id'?: number;
+    'name'?: string;
+    'slug'?: string;
+    'tags'?: string;
+    'verified'?: boolean;
+}
+export interface GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelProfileAppsItemsResponse {
+    'pagination'?: GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse;
+    'sorted_apps'?: Array<GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelAppMetaResponse>;
+}
+export interface GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelProfileDisplayTypeItemsResponse {
+    'display_types_items'?: { [key: string]: Array<GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse>; };
+    'pagination'?: GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse;
+    'sorted_display_types'?: Array<GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelDisplayTypeMetaResponse>;
+}
 export interface GithubComNotPlatformInternalModuleProfileDomainEntityAccount {
     /**
-     * telegram id
+     * account id (positive: Telegram, negative: social providers)
      */
     'account_id'?: number;
     'allow_pm'?: boolean;
     'avatar'?: string;
     'created_at'?: string;
+    /**
+     * provider-specific user ID
+     */
+    'external_id'?: string;
     'first_name'?: string;
     'last_login'?: string;
     'last_name'?: string;
     'locale'?: string;
     /**
+     * auth provider: telegram, google, twitter
+     */
+    'provider'?: string;
+    /**
      * telegram group id
      */
     'squad_id'?: number;
+    'squad_prefix'?: string;
     'user_name'?: string;
 }
 export interface GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse {
@@ -155,6 +255,7 @@ export interface GithubComNotPlatformInternalModuleProfilePresentationHttpModelA
      * telegram group id
      */
     'squad_id'?: number;
+    'squad_prefix'?: string;
     'username'?: string;
 }
 export interface GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse {
@@ -168,6 +269,7 @@ export interface GithubComNotPlatformInternalModuleRegistryPresentationItemHttpM
     'game_only'?: boolean;
     'hidden'?: boolean;
     'icon_url'?: string;
+    'issued'?: number;
     'item_def_id'?: string;
     'marketable'?: boolean;
     'max_supply'?: number;
@@ -195,26 +297,9 @@ export interface GithubComNotPlatformInternalModuleSharedValueobjectPaginationRe
 export interface GithubComNotPlatformInternalServerTemplatesResponseTemplate {
     'data'?: object;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
-}
-export interface HttpAppOneResponse {
-    'avatar'?: string;
-    'background'?: string;
-    'created_at'?: string;
-    'id'?: number;
-    'name'?: string;
-    'slug'?: string;
-    'socials'?: Array<HttpAppSocial>;
-    'updated_at'?: string;
-    'verified'?: boolean;
-}
-export interface HttpAppSocial {
-    'title'?: string;
-    'type'?: string;
-    'url'?: string;
-}
-export interface HttpListAppResponse {
-    'results'?: Array<HttpAppOneResponse>;
+    'request_id'?: string;
 }
 export interface InternalModuleAchievementPresentationHttpCreateAchievementOneResponse {
     'account_id'?: number;
@@ -230,7 +315,10 @@ export interface InternalModuleAchievementPresentationHttpCreateAchievementOneRe
     'tags'?: string;
 }
 export interface InternalModuleAchievementPresentationHttpCreateAchievementsRequest {
+    'account_id'?: number;
     'achievement_def_ids'?: Array<string>;
+    'achievement_id'?: string;
+    'icon_url'?: string;
     'tags'?: string;
 }
 export interface InternalModuleAchievementPresentationHttpCreateAchievementsResponse {
@@ -302,6 +390,27 @@ export interface InternalModuleRegistryPresentationAchievementHttpUpdateRequest 
     'name'?: string;
     'tags'?: string;
 }
+export interface InternalModuleRegistryPresentationAppHttpAppOneResponse {
+    'avatar'?: string;
+    'background'?: string;
+    'created_at'?: string;
+    'hidden'?: boolean;
+    'id'?: number;
+    'name'?: string;
+    'slug'?: string;
+    'socials'?: Array<InternalModuleRegistryPresentationAppHttpAppSocial>;
+    'tags'?: string;
+    'updated_at'?: string;
+    'verified'?: boolean;
+}
+export interface InternalModuleRegistryPresentationAppHttpAppSocial {
+    'title'?: string;
+    'type'?: string;
+    'url'?: string;
+}
+export interface InternalModuleRegistryPresentationAppHttpListAppResponse {
+    'results'?: Array<InternalModuleRegistryPresentationAppHttpAppOneResponse>;
+}
 export interface InternalModuleRegistryPresentationItemHttpCreateRequest {
     'app_files'?: string;
     'app_id'?: number;
@@ -354,70 +463,104 @@ export interface InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse {
     'id'?: number;
     'members_amount'?: number;
     'name'?: string;
+    'owner_account_id'?: number;
+    'prefix'?: string;
     'slug'?: string;
 }
 export interface InternalModuleSquadsPresentationSquadsHttpListSquadsResponse {
+    'pagination'?: GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse;
     'squads'?: Array<InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse>;
 }
-export interface InventoryItemsGet200Response {
+export interface InventoryByItemdefGet200Response {
     'data'?: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelListItemsResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
+}
+export interface InventoryItemsGeneratePost200Response {
+    'data'?: string;
+    'error_code'?: string;
+    'message'?: string;
+    'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface InventoryItemsItemIdGet200Response {
     'data'?: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface InventoryItemsItemIdTransferPreflightPost200Response {
     'data'?: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface InventoryItemsUnpackPost200Response {
-    'data'?: Array<string>;
+    'data'?: Array<GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelListItemsResponse>;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface ProfileAccountIdGet200Response {
     'data'?: GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface RegistryAchievementsAchievementDefIdGet200Response {
     'data'?: InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface RegistryAchievementsGet200Response {
     'data'?: InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface RegistryAppsGet200Response {
-    'data'?: HttpListAppResponse;
+    'data'?: InternalModuleRegistryPresentationAppHttpListAppResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface RegistryItemsGet200Response {
     'data'?: GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelListItemDefResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface RegistryItemsItemDefIdGet200Response {
     'data'?: GithubComNotPlatformInternalModuleRegistryPresentationItemHttpModelItemDefResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface SquadsGet200Response {
     'data'?: InternalModuleSquadsPresentationSquadsHttpListSquadsResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 export interface SquadsIdGet200Response {
     'data'?: InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse;
     'error_code'?: string;
+    'message'?: string;
     'ok'?: boolean;
+    'request_id'?: string;
 }
 
 /**
@@ -429,14 +572,17 @@ export const AchievementsApiAxiosParamCreator = function (configuration?: Config
          * 
          * @summary List achievements
          * @param {string} appId app id
+         * @param {string} accountId account id
          * @param {number} limit limit
          * @param {number} offset offset
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        achievementsGet: async (appId: string, limit: number, offset: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        achievementsGet: async (appId: string, accountId: string, limit: number, offset: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'appId' is not null or undefined
             assertParamExists('achievementsGet', 'appId', appId)
+            // verify required parameter 'accountId' is not null or undefined
+            assertParamExists('achievementsGet', 'accountId', accountId)
             // verify required parameter 'limit' is not null or undefined
             assertParamExists('achievementsGet', 'limit', limit)
             // verify required parameter 'offset' is not null or undefined
@@ -458,6 +604,10 @@ export const AchievementsApiAxiosParamCreator = function (configuration?: Config
 
             if (appId !== undefined) {
                 localVarQueryParameter['app_id'] = appId;
+            }
+
+            if (accountId !== undefined) {
+                localVarQueryParameter['account_id'] = accountId;
             }
 
             if (limit !== undefined) {
@@ -567,13 +717,14 @@ export const AchievementsApiFp = function(configuration?: Configuration) {
          * 
          * @summary List achievements
          * @param {string} appId app id
+         * @param {string} accountId account id
          * @param {number} limit limit
          * @param {number} offset offset
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async achievementsGet(appId: string, limit: number, offset: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AchievementsGet200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.achievementsGet(appId, limit, offset, options);
+        async achievementsGet(appId: string, accountId: string, limit: number, offset: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AchievementsGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.achievementsGet(appId, accountId, limit, offset, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AchievementsApi.achievementsGet']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -617,13 +768,14 @@ export const AchievementsApiFactory = function (configuration?: Configuration, b
          * 
          * @summary List achievements
          * @param {string} appId app id
+         * @param {string} accountId account id
          * @param {number} limit limit
          * @param {number} offset offset
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        achievementsGet(appId: string, limit: number, offset: number, options?: RawAxiosRequestConfig): AxiosPromise<AchievementsGet200Response> {
-            return localVarFp.achievementsGet(appId, limit, offset, options).then((request) => request(axios, basePath));
+        achievementsGet(appId: string, accountId: string, limit: number, offset: number, options?: RawAxiosRequestConfig): AxiosPromise<AchievementsGet200Response> {
+            return localVarFp.achievementsGet(appId, accountId, limit, offset, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -656,13 +808,14 @@ export class AchievementsApi extends BaseAPI {
      * 
      * @summary List achievements
      * @param {string} appId app id
+     * @param {string} accountId account id
      * @param {number} limit limit
      * @param {number} offset offset
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public achievementsGet(appId: string, limit: number, offset: number, options?: RawAxiosRequestConfig) {
-        return AchievementsApiFp(this.configuration).achievementsGet(appId, limit, offset, options).then((request) => request(this.axios, this.basePath));
+    public achievementsGet(appId: string, accountId: string, limit: number, offset: number, options?: RawAxiosRequestConfig) {
+        return AchievementsApiFp(this.configuration).achievementsGet(appId, accountId, limit, offset, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -798,15 +951,18 @@ export class AuthApi extends BaseAPI {
 export const DropsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Check user eligibility for a drop. Account ID must be provided in authorization token. This only used for game to know if user can claim drop.
+         * Check user eligibility for a drop. This only used for game to know if user can claim drop.
          * @summary Check user eligibility for a drop
          * @param {string} id Drop ID
+         * @param {string} accountId Account ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dropsIdGet: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        dropsIdGet: async (id: string, accountId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('dropsIdGet', 'id', id)
+            // verify required parameter 'accountId' is not null or undefined
+            assertParamExists('dropsIdGet', 'accountId', accountId)
             const localVarPath = `/drops/{id}`
                 .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -822,6 +978,10 @@ export const DropsApiAxiosParamCreator = function (configuration?: Configuration
 
             // authentication JWT required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (accountId !== undefined) {
+                localVarQueryParameter['account_id'] = accountId;
+            }
 
             localVarHeaderParameter['Accept'] = 'application/json';
 
@@ -924,14 +1084,15 @@ export const DropsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = DropsApiAxiosParamCreator(configuration)
     return {
         /**
-         * Check user eligibility for a drop. Account ID must be provided in authorization token. This only used for game to know if user can claim drop.
+         * Check user eligibility for a drop. This only used for game to know if user can claim drop.
          * @summary Check user eligibility for a drop
          * @param {string} id Drop ID
+         * @param {string} accountId Account ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async dropsIdGet(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DropsIdGet200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.dropsIdGet(id, options);
+        async dropsIdGet(id: string, accountId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DropsIdGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.dropsIdGet(id, accountId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DropsApi.dropsIdGet']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -973,14 +1134,15 @@ export const DropsApiFactory = function (configuration?: Configuration, basePath
     const localVarFp = DropsApiFp(configuration)
     return {
         /**
-         * Check user eligibility for a drop. Account ID must be provided in authorization token. This only used for game to know if user can claim drop.
+         * Check user eligibility for a drop. This only used for game to know if user can claim drop.
          * @summary Check user eligibility for a drop
          * @param {string} id Drop ID
+         * @param {string} accountId Account ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dropsIdGet(id: string, options?: RawAxiosRequestConfig): AxiosPromise<DropsIdGet200Response> {
-            return localVarFp.dropsIdGet(id, options).then((request) => request(axios, basePath));
+        dropsIdGet(id: string, accountId: string, options?: RawAxiosRequestConfig): AxiosPromise<DropsIdGet200Response> {
+            return localVarFp.dropsIdGet(id, accountId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1011,14 +1173,15 @@ export const DropsApiFactory = function (configuration?: Configuration, basePath
  */
 export class DropsApi extends BaseAPI {
     /**
-     * Check user eligibility for a drop. Account ID must be provided in authorization token. This only used for game to know if user can claim drop.
+     * Check user eligibility for a drop. This only used for game to know if user can claim drop.
      * @summary Check user eligibility for a drop
      * @param {string} id Drop ID
+     * @param {string} accountId Account ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public dropsIdGet(id: string, options?: RawAxiosRequestConfig) {
-        return DropsApiFp(this.configuration).dropsIdGet(id, options).then((request) => request(this.axios, this.basePath));
+    public dropsIdGet(id: string, accountId: string, options?: RawAxiosRequestConfig) {
+        return DropsApiFp(this.configuration).dropsIdGet(id, accountId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1052,6 +1215,70 @@ export class DropsApi extends BaseAPI {
  */
 export const InventoryApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary List items
+         * @param {number} limit limit
+         * @param {number} offset offset
+         * @param {string} itemDefId item_def_id
+         * @param {string} [sortFields] comma separated sort fields
+         * @param {string} [directions] comma separated sort directions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        inventoryByItemdefGet: async (limit: number, offset: number, itemDefId: string, sortFields?: string, directions?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'limit' is not null or undefined
+            assertParamExists('inventoryByItemdefGet', 'limit', limit)
+            // verify required parameter 'offset' is not null or undefined
+            assertParamExists('inventoryByItemdefGet', 'offset', offset)
+            // verify required parameter 'itemDefId' is not null or undefined
+            assertParamExists('inventoryByItemdefGet', 'itemDefId', itemDefId)
+            const localVarPath = `/inventory/by_itemdef`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (itemDefId !== undefined) {
+                localVarQueryParameter['item_def_id'] = itemDefId;
+            }
+
+            if (sortFields !== undefined) {
+                localVarQueryParameter['sort_fields'] = sortFields;
+            }
+
+            if (directions !== undefined) {
+                localVarQueryParameter['directions'] = directions;
+            }
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary Generate item
@@ -1141,13 +1368,16 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
          * 
          * @summary Consume item
          * @param {string} itemId item id (uuid)
+         * @param {string} accountId account id (int64)
          * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest} request request body
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        inventoryItemsItemIdConsumePost: async (itemId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        inventoryItemsItemIdConsumePost: async (itemId: string, accountId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('inventoryItemsItemIdConsumePost', 'itemId', itemId)
+            // verify required parameter 'accountId' is not null or undefined
+            assertParamExists('inventoryItemsItemIdConsumePost', 'accountId', accountId)
             // verify required parameter 'request' is not null or undefined
             assertParamExists('inventoryItemsItemIdConsumePost', 'request', request)
             const localVarPath = `/inventory/items/{item_id}/consume`
@@ -1165,6 +1395,10 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
 
             // authentication JWT required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (accountId !== undefined) {
+                localVarQueryParameter['account_id'] = accountId;
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarHeaderParameter['Accept'] = 'application/json';
@@ -1223,6 +1457,55 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Consume item
+         * @param {string} itemId item id (uuid)
+         * @param {string} accountId account id (int64)
+         * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest} request request body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        inventoryItemsItemIdIncrementQuantityPost: async (itemId: string, accountId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'itemId' is not null or undefined
+            assertParamExists('inventoryItemsItemIdIncrementQuantityPost', 'itemId', itemId)
+            // verify required parameter 'accountId' is not null or undefined
+            assertParamExists('inventoryItemsItemIdIncrementQuantityPost', 'accountId', accountId)
+            // verify required parameter 'request' is not null or undefined
+            assertParamExists('inventoryItemsItemIdIncrementQuantityPost', 'request', request)
+            const localVarPath = `/inventory/items/{item_id}/increment-quantity`
+                .replace('{item_id}', encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (accountId !== undefined) {
+                localVarQueryParameter['account_id'] = accountId;
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update item
          * @param {string} itemId item id (uuid)
          * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest} request request body
@@ -1257,6 +1540,57 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get transfer logs
+         * @param {string} itemId item id (uuid)
+         * @param {number} limit limit
+         * @param {number} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        inventoryItemsItemIdTransferLogPost: async (itemId: string, limit: number, offset: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'itemId' is not null or undefined
+            assertParamExists('inventoryItemsItemIdTransferLogPost', 'itemId', itemId)
+            // verify required parameter 'limit' is not null or undefined
+            assertParamExists('inventoryItemsItemIdTransferLogPost', 'limit', limit)
+            // verify required parameter 'offset' is not null or undefined
+            assertParamExists('inventoryItemsItemIdTransferLogPost', 'offset', offset)
+            const localVarPath = `/inventory/items/{item_id}/transfer_log`
+                .replace('{item_id}', encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1396,12 +1730,29 @@ export const InventoryApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary List items
+         * @param {number} limit limit
+         * @param {number} offset offset
+         * @param {string} itemDefId item_def_id
+         * @param {string} [sortFields] comma separated sort fields
+         * @param {string} [directions] comma separated sort directions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async inventoryByItemdefGet(limit: number, offset: number, itemDefId: string, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InventoryByItemdefGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.inventoryByItemdefGet(limit, offset, itemDefId, sortFields, directions, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['InventoryApi.inventoryByItemdefGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Generate item
          * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest} request request body
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async inventoryItemsGeneratePost(request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DropsIdGet200Response>> {
+        async inventoryItemsGeneratePost(request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InventoryItemsGeneratePost200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.inventoryItemsGeneratePost(request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['InventoryApi.inventoryItemsGeneratePost']?.[localVarOperationServerIndex]?.url;
@@ -1415,7 +1766,7 @@ export const InventoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async inventoryItemsGet(limit: number, offset: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InventoryItemsGet200Response>> {
+        async inventoryItemsGet(limit: number, offset: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InventoryByItemdefGet200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.inventoryItemsGet(limit, offset, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['InventoryApi.inventoryItemsGet']?.[localVarOperationServerIndex]?.url;
@@ -1425,12 +1776,13 @@ export const InventoryApiFp = function(configuration?: Configuration) {
          * 
          * @summary Consume item
          * @param {string} itemId item id (uuid)
+         * @param {string} accountId account id (int64)
          * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest} request request body
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async inventoryItemsItemIdConsumePost(itemId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.inventoryItemsItemIdConsumePost(itemId, request, options);
+        async inventoryItemsItemIdConsumePost(itemId: string, accountId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.inventoryItemsItemIdConsumePost(itemId, accountId, request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['InventoryApi.inventoryItemsItemIdConsumePost']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -1451,6 +1803,21 @@ export const InventoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Consume item
+         * @param {string} itemId item id (uuid)
+         * @param {string} accountId account id (int64)
+         * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest} request request body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async inventoryItemsItemIdIncrementQuantityPost(itemId: string, accountId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.inventoryItemsItemIdIncrementQuantityPost(itemId, accountId, request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['InventoryApi.inventoryItemsItemIdIncrementQuantityPost']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Update item
          * @param {string} itemId item id (uuid)
          * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest} request request body
@@ -1461,6 +1828,21 @@ export const InventoryApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.inventoryItemsItemIdPut(itemId, request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['InventoryApi.inventoryItemsItemIdPut']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get transfer logs
+         * @param {string} itemId item id (uuid)
+         * @param {number} limit limit
+         * @param {number} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async inventoryItemsItemIdTransferLogPost(itemId: string, limit: number, offset: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.inventoryItemsItemIdTransferLogPost(itemId, limit, offset, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['InventoryApi.inventoryItemsItemIdTransferLogPost']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1515,12 +1897,26 @@ export const InventoryApiFactory = function (configuration?: Configuration, base
     return {
         /**
          * 
+         * @summary List items
+         * @param {number} limit limit
+         * @param {number} offset offset
+         * @param {string} itemDefId item_def_id
+         * @param {string} [sortFields] comma separated sort fields
+         * @param {string} [directions] comma separated sort directions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        inventoryByItemdefGet(limit: number, offset: number, itemDefId: string, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig): AxiosPromise<InventoryByItemdefGet200Response> {
+            return localVarFp.inventoryByItemdefGet(limit, offset, itemDefId, sortFields, directions, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Generate item
          * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest} request request body
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        inventoryItemsGeneratePost(request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest, options?: RawAxiosRequestConfig): AxiosPromise<DropsIdGet200Response> {
+        inventoryItemsGeneratePost(request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest, options?: RawAxiosRequestConfig): AxiosPromise<InventoryItemsGeneratePost200Response> {
             return localVarFp.inventoryItemsGeneratePost(request, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1531,19 +1927,20 @@ export const InventoryApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        inventoryItemsGet(limit: number, offset: number, options?: RawAxiosRequestConfig): AxiosPromise<InventoryItemsGet200Response> {
+        inventoryItemsGet(limit: number, offset: number, options?: RawAxiosRequestConfig): AxiosPromise<InventoryByItemdefGet200Response> {
             return localVarFp.inventoryItemsGet(limit, offset, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Consume item
          * @param {string} itemId item id (uuid)
+         * @param {string} accountId account id (int64)
          * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest} request request body
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        inventoryItemsItemIdConsumePost(itemId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options?: RawAxiosRequestConfig): AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate> {
-            return localVarFp.inventoryItemsItemIdConsumePost(itemId, request, options).then((request) => request(axios, basePath));
+        inventoryItemsItemIdConsumePost(itemId: string, accountId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options?: RawAxiosRequestConfig): AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate> {
+            return localVarFp.inventoryItemsItemIdConsumePost(itemId, accountId, request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1558,6 +1955,18 @@ export const InventoryApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary Consume item
+         * @param {string} itemId item id (uuid)
+         * @param {string} accountId account id (int64)
+         * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest} request request body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        inventoryItemsItemIdIncrementQuantityPost(itemId: string, accountId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options?: RawAxiosRequestConfig): AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate> {
+            return localVarFp.inventoryItemsItemIdIncrementQuantityPost(itemId, accountId, request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Update item
          * @param {string} itemId item id (uuid)
          * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest} request request body
@@ -1566,6 +1975,18 @@ export const InventoryApiFactory = function (configuration?: Configuration, base
          */
         inventoryItemsItemIdPut(itemId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest, options?: RawAxiosRequestConfig): AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate> {
             return localVarFp.inventoryItemsItemIdPut(itemId, request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get transfer logs
+         * @param {string} itemId item id (uuid)
+         * @param {number} limit limit
+         * @param {number} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        inventoryItemsItemIdTransferLogPost(itemId: string, limit: number, offset: number, options?: RawAxiosRequestConfig): AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate> {
+            return localVarFp.inventoryItemsItemIdTransferLogPost(itemId, limit, offset, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1608,6 +2029,21 @@ export const InventoryApiFactory = function (configuration?: Configuration, base
 export class InventoryApi extends BaseAPI {
     /**
      * 
+     * @summary List items
+     * @param {number} limit limit
+     * @param {number} offset offset
+     * @param {string} itemDefId item_def_id
+     * @param {string} [sortFields] comma separated sort fields
+     * @param {string} [directions] comma separated sort directions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public inventoryByItemdefGet(limit: number, offset: number, itemDefId: string, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig) {
+        return InventoryApiFp(this.configuration).inventoryByItemdefGet(limit, offset, itemDefId, sortFields, directions, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Generate item
      * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest} request request body
      * @param {*} [options] Override http request option.
@@ -1633,12 +2069,13 @@ export class InventoryApi extends BaseAPI {
      * 
      * @summary Consume item
      * @param {string} itemId item id (uuid)
+     * @param {string} accountId account id (int64)
      * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest} request request body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public inventoryItemsItemIdConsumePost(itemId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options?: RawAxiosRequestConfig) {
-        return InventoryApiFp(this.configuration).inventoryItemsItemIdConsumePost(itemId, request, options).then((request) => request(this.axios, this.basePath));
+    public inventoryItemsItemIdConsumePost(itemId: string, accountId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options?: RawAxiosRequestConfig) {
+        return InventoryApiFp(this.configuration).inventoryItemsItemIdConsumePost(itemId, accountId, request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1655,6 +2092,19 @@ export class InventoryApi extends BaseAPI {
 
     /**
      * 
+     * @summary Consume item
+     * @param {string} itemId item id (uuid)
+     * @param {string} accountId account id (int64)
+     * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest} request request body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public inventoryItemsItemIdIncrementQuantityPost(itemId: string, accountId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest, options?: RawAxiosRequestConfig) {
+        return InventoryApiFp(this.configuration).inventoryItemsItemIdIncrementQuantityPost(itemId, accountId, request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Update item
      * @param {string} itemId item id (uuid)
      * @param {GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest} request request body
@@ -1663,6 +2113,19 @@ export class InventoryApi extends BaseAPI {
      */
     public inventoryItemsItemIdPut(itemId: string, request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest, options?: RawAxiosRequestConfig) {
         return InventoryApiFp(this.configuration).inventoryItemsItemIdPut(itemId, request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get transfer logs
+     * @param {string} itemId item id (uuid)
+     * @param {number} limit limit
+     * @param {number} offset offset
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public inventoryItemsItemIdTransferLogPost(itemId: string, limit: number, offset: number, options?: RawAxiosRequestConfig) {
+        return InventoryApiFp(this.configuration).inventoryItemsItemIdTransferLogPost(itemId, limit, offset, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1698,6 +2161,287 @@ export class InventoryApi extends BaseAPI {
      */
     public inventoryItemsUnpackPost(request: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest, options?: RawAxiosRequestConfig) {
         return InventoryApiFp(this.configuration).inventoryItemsUnpackPost(request, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * MarketApi - axios parameter creator
+ */
+export const MarketApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary List new visible apps for external market
+         * @param {string} [fromDate] from date, RFC3339 or YYYY-MM-DD
+         * @param {number} [limit] limit, max 500
+         * @param {string} [sortFields] comma separated: created_at|name
+         * @param {string} [directions] comma separated: asc|desc
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1MarketAppsNewGet: async (fromDate?: string, limit?: number, sortFields?: string, directions?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/market/apps/new`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['from_date'] = fromDate;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sortFields !== undefined) {
+                localVarQueryParameter['sort_fields'] = sortFields;
+            }
+
+            if (directions !== undefined) {
+                localVarQueryParameter['directions'] = directions;
+            }
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary market profile apps items
+         * @param {string} accountId account id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1MarketProfileAccountIdItemsByAppsGet: async (accountId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'accountId' is not null or undefined
+            assertParamExists('apiV1MarketProfileAccountIdItemsByAppsGet', 'accountId', accountId)
+            const localVarPath = `/api/v1/market/profile/{account_id}/items-by-apps`
+                .replace('{account_id}', encodeURIComponent(String(accountId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary market profile app items
+         * @param {string} accountId account id
+         * @param {string} appId app id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1ProfileAccountIdItemsByDisplayTypesGet: async (accountId: string, appId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'accountId' is not null or undefined
+            assertParamExists('apiV1ProfileAccountIdItemsByDisplayTypesGet', 'accountId', accountId)
+            // verify required parameter 'appId' is not null or undefined
+            assertParamExists('apiV1ProfileAccountIdItemsByDisplayTypesGet', 'appId', appId)
+            const localVarPath = `/api/v1/profile/{account_id}/items-by-display-types`
+                .replace('{account_id}', encodeURIComponent(String(accountId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (appId !== undefined) {
+                localVarQueryParameter['app_id'] = appId;
+            }
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * MarketApi - functional programming interface
+ */
+export const MarketApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = MarketApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary List new visible apps for external market
+         * @param {string} [fromDate] from date, RFC3339 or YYYY-MM-DD
+         * @param {number} [limit] limit, max 500
+         * @param {string} [sortFields] comma separated: created_at|name
+         * @param {string} [directions] comma separated: asc|desc
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiV1MarketAppsNewGet(fromDate?: string, limit?: number, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ApiV1MarketAppsNewGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1MarketAppsNewGet(fromDate, limit, sortFields, directions, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['MarketApi.apiV1MarketAppsNewGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary market profile apps items
+         * @param {string} accountId account id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiV1MarketProfileAccountIdItemsByAppsGet(accountId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ApiV1MarketProfileAccountIdItemsByAppsGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1MarketProfileAccountIdItemsByAppsGet(accountId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['MarketApi.apiV1MarketProfileAccountIdItemsByAppsGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary market profile app items
+         * @param {string} accountId account id
+         * @param {string} appId app id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiV1ProfileAccountIdItemsByDisplayTypesGet(accountId: string, appId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiV1ProfileAccountIdItemsByDisplayTypesGet(accountId, appId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['MarketApi.apiV1ProfileAccountIdItemsByDisplayTypesGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * MarketApi - factory interface
+ */
+export const MarketApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = MarketApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary List new visible apps for external market
+         * @param {string} [fromDate] from date, RFC3339 or YYYY-MM-DD
+         * @param {number} [limit] limit, max 500
+         * @param {string} [sortFields] comma separated: created_at|name
+         * @param {string} [directions] comma separated: asc|desc
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1MarketAppsNewGet(fromDate?: string, limit?: number, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig): AxiosPromise<ApiV1MarketAppsNewGet200Response> {
+            return localVarFp.apiV1MarketAppsNewGet(fromDate, limit, sortFields, directions, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary market profile apps items
+         * @param {string} accountId account id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1MarketProfileAccountIdItemsByAppsGet(accountId: string, options?: RawAxiosRequestConfig): AxiosPromise<ApiV1MarketProfileAccountIdItemsByAppsGet200Response> {
+            return localVarFp.apiV1MarketProfileAccountIdItemsByAppsGet(accountId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary market profile app items
+         * @param {string} accountId account id
+         * @param {string} appId app id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiV1ProfileAccountIdItemsByDisplayTypesGet(accountId: string, appId: string, options?: RawAxiosRequestConfig): AxiosPromise<ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response> {
+            return localVarFp.apiV1ProfileAccountIdItemsByDisplayTypesGet(accountId, appId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * MarketApi - object-oriented interface
+ */
+export class MarketApi extends BaseAPI {
+    /**
+     * 
+     * @summary List new visible apps for external market
+     * @param {string} [fromDate] from date, RFC3339 or YYYY-MM-DD
+     * @param {number} [limit] limit, max 500
+     * @param {string} [sortFields] comma separated: created_at|name
+     * @param {string} [directions] comma separated: asc|desc
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public apiV1MarketAppsNewGet(fromDate?: string, limit?: number, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig) {
+        return MarketApiFp(this.configuration).apiV1MarketAppsNewGet(fromDate, limit, sortFields, directions, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary market profile apps items
+     * @param {string} accountId account id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public apiV1MarketProfileAccountIdItemsByAppsGet(accountId: string, options?: RawAxiosRequestConfig) {
+        return MarketApiFp(this.configuration).apiV1MarketProfileAccountIdItemsByAppsGet(accountId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary market profile app items
+     * @param {string} accountId account id
+     * @param {string} appId app id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public apiV1ProfileAccountIdItemsByDisplayTypesGet(accountId: string, appId: string, options?: RawAxiosRequestConfig) {
+        return MarketApiFp(this.configuration).apiV1ProfileAccountIdItemsByDisplayTypesGet(accountId, appId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -2065,10 +2809,22 @@ export const RegistryApiAxiosParamCreator = function (configuration?: Configurat
          * @summary List item-def
          * @param {number} limit limit
          * @param {number} offset offset
+         * @param {string} [collection] Filter by collection
+         * @param {string} [name] Filter by name
+         * @param {string} [rarity] Filter by rarity
+         * @param {string} [type] Filter by type
+         * @param {string} [displayType] Filter by display type
+         * @param {boolean} [hidden] Filter by hidden status
+         * @param {boolean} [gameOnly] Filter by game only status
+         * @param {boolean} [storeHidden] Filter by store hidden status
+         * @param {boolean} [tradable] Filter by tradable status
+         * @param {number} [supply] Filter by supply
+         * @param {string} [sortFields] Comma-separated sort fields
+         * @param {string} [directions] Comma-separated sort directions
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        registryItemsGet: async (limit: number, offset: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        registryItemsGet: async (limit: number, offset: number, collection?: string, name?: string, rarity?: string, type?: string, displayType?: string, hidden?: boolean, gameOnly?: boolean, storeHidden?: boolean, tradable?: boolean, supply?: number, sortFields?: string, directions?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'limit' is not null or undefined
             assertParamExists('registryItemsGet', 'limit', limit)
             // verify required parameter 'offset' is not null or undefined
@@ -2094,6 +2850,54 @@ export const RegistryApiAxiosParamCreator = function (configuration?: Configurat
 
             if (offset !== undefined) {
                 localVarQueryParameter['offset'] = offset;
+            }
+
+            if (collection !== undefined) {
+                localVarQueryParameter['collection'] = collection;
+            }
+
+            if (name !== undefined) {
+                localVarQueryParameter['name'] = name;
+            }
+
+            if (rarity !== undefined) {
+                localVarQueryParameter['rarity'] = rarity;
+            }
+
+            if (type !== undefined) {
+                localVarQueryParameter['type'] = type;
+            }
+
+            if (displayType !== undefined) {
+                localVarQueryParameter['display_type'] = displayType;
+            }
+
+            if (hidden !== undefined) {
+                localVarQueryParameter['hidden'] = hidden;
+            }
+
+            if (gameOnly !== undefined) {
+                localVarQueryParameter['game_only'] = gameOnly;
+            }
+
+            if (storeHidden !== undefined) {
+                localVarQueryParameter['store_hidden'] = storeHidden;
+            }
+
+            if (tradable !== undefined) {
+                localVarQueryParameter['tradable'] = tradable;
+            }
+
+            if (supply !== undefined) {
+                localVarQueryParameter['supply'] = supply;
+            }
+
+            if (sortFields !== undefined) {
+                localVarQueryParameter['sort_fields'] = sortFields;
+            }
+
+            if (directions !== undefined) {
+                localVarQueryParameter['directions'] = directions;
             }
 
             localVarHeaderParameter['Accept'] = 'application/json';
@@ -2356,11 +3160,23 @@ export const RegistryApiFp = function(configuration?: Configuration) {
          * @summary List item-def
          * @param {number} limit limit
          * @param {number} offset offset
+         * @param {string} [collection] Filter by collection
+         * @param {string} [name] Filter by name
+         * @param {string} [rarity] Filter by rarity
+         * @param {string} [type] Filter by type
+         * @param {string} [displayType] Filter by display type
+         * @param {boolean} [hidden] Filter by hidden status
+         * @param {boolean} [gameOnly] Filter by game only status
+         * @param {boolean} [storeHidden] Filter by store hidden status
+         * @param {boolean} [tradable] Filter by tradable status
+         * @param {number} [supply] Filter by supply
+         * @param {string} [sortFields] Comma-separated sort fields
+         * @param {string} [directions] Comma-separated sort directions
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async registryItemsGet(limit: number, offset: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RegistryItemsGet200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.registryItemsGet(limit, offset, options);
+        async registryItemsGet(limit: number, offset: number, collection?: string, name?: string, rarity?: string, type?: string, displayType?: string, hidden?: boolean, gameOnly?: boolean, storeHidden?: boolean, tradable?: boolean, supply?: number, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RegistryItemsGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.registryItemsGet(limit, offset, collection, name, rarity, type, displayType, hidden, gameOnly, storeHidden, tradable, supply, sortFields, directions, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RegistryApi.registryItemsGet']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -2495,11 +3311,23 @@ export const RegistryApiFactory = function (configuration?: Configuration, baseP
          * @summary List item-def
          * @param {number} limit limit
          * @param {number} offset offset
+         * @param {string} [collection] Filter by collection
+         * @param {string} [name] Filter by name
+         * @param {string} [rarity] Filter by rarity
+         * @param {string} [type] Filter by type
+         * @param {string} [displayType] Filter by display type
+         * @param {boolean} [hidden] Filter by hidden status
+         * @param {boolean} [gameOnly] Filter by game only status
+         * @param {boolean} [storeHidden] Filter by store hidden status
+         * @param {boolean} [tradable] Filter by tradable status
+         * @param {number} [supply] Filter by supply
+         * @param {string} [sortFields] Comma-separated sort fields
+         * @param {string} [directions] Comma-separated sort directions
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        registryItemsGet(limit: number, offset: number, options?: RawAxiosRequestConfig): AxiosPromise<RegistryItemsGet200Response> {
-            return localVarFp.registryItemsGet(limit, offset, options).then((request) => request(axios, basePath));
+        registryItemsGet(limit: number, offset: number, collection?: string, name?: string, rarity?: string, type?: string, displayType?: string, hidden?: boolean, gameOnly?: boolean, storeHidden?: boolean, tradable?: boolean, supply?: number, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig): AxiosPromise<RegistryItemsGet200Response> {
+            return localVarFp.registryItemsGet(limit, offset, collection, name, rarity, type, displayType, hidden, gameOnly, storeHidden, tradable, supply, sortFields, directions, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2623,11 +3451,23 @@ export class RegistryApi extends BaseAPI {
      * @summary List item-def
      * @param {number} limit limit
      * @param {number} offset offset
+     * @param {string} [collection] Filter by collection
+     * @param {string} [name] Filter by name
+     * @param {string} [rarity] Filter by rarity
+     * @param {string} [type] Filter by type
+     * @param {string} [displayType] Filter by display type
+     * @param {boolean} [hidden] Filter by hidden status
+     * @param {boolean} [gameOnly] Filter by game only status
+     * @param {boolean} [storeHidden] Filter by store hidden status
+     * @param {boolean} [tradable] Filter by tradable status
+     * @param {number} [supply] Filter by supply
+     * @param {string} [sortFields] Comma-separated sort fields
+     * @param {string} [directions] Comma-separated sort directions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public registryItemsGet(limit: number, offset: number, options?: RawAxiosRequestConfig) {
-        return RegistryApiFp(this.configuration).registryItemsGet(limit, offset, options).then((request) => request(this.axios, this.basePath));
+    public registryItemsGet(limit: number, offset: number, collection?: string, name?: string, rarity?: string, type?: string, displayType?: string, hidden?: boolean, gameOnly?: boolean, storeHidden?: boolean, tradable?: boolean, supply?: number, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig) {
+        return RegistryApiFp(this.configuration).registryItemsGet(limit, offset, collection, name, rarity, type, displayType, hidden, gameOnly, storeHidden, tradable, supply, sortFields, directions, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2688,13 +3528,21 @@ export const SquadsApiAxiosParamCreator = function (configuration?: Configuratio
          * @summary List squads
          * @param {number} limit Limit
          * @param {number} offset Offset
+         * @param {string} [name] Name
          * @param {string} [slug] Slug
-         * @param {string} [sort] Sort
-         * @param {number} [minMembersAmount] Min members amount
+         * @param {number} [chatId] Telegram chat ID
+         * @param {string} [prefix] Squad prefix
+         * @param {number} [membersAmount] Members amount
+         * @param {number} [membersAmountMin] Members amount min
+         * @param {number} [membersAmountMax] Members amount max
+         * @param {string} [createdAtGte] Created at greater than or equal, RFC3339
+         * @param {string} [createdAtLte] Created at less than or equal, RFC3339
+         * @param {string} [sortFields] Sort fields
+         * @param {string} [directions] Sort directions
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        squadsGet: async (limit: number, offset: number, slug?: string, sort?: string, minMembersAmount?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        squadsGet: async (limit: number, offset: number, name?: string, slug?: string, chatId?: number, prefix?: string, membersAmount?: number, membersAmountMin?: number, membersAmountMax?: number, createdAtGte?: string, createdAtLte?: string, sortFields?: string, directions?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'limit' is not null or undefined
             assertParamExists('squadsGet', 'limit', limit)
             // verify required parameter 'offset' is not null or undefined
@@ -2722,16 +3570,48 @@ export const SquadsApiAxiosParamCreator = function (configuration?: Configuratio
                 localVarQueryParameter['offset'] = offset;
             }
 
+            if (name !== undefined) {
+                localVarQueryParameter['name'] = name;
+            }
+
             if (slug !== undefined) {
                 localVarQueryParameter['slug'] = slug;
             }
 
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
+            if (chatId !== undefined) {
+                localVarQueryParameter['chat_id'] = chatId;
             }
 
-            if (minMembersAmount !== undefined) {
-                localVarQueryParameter['min_members_amount'] = minMembersAmount;
+            if (prefix !== undefined) {
+                localVarQueryParameter['prefix'] = prefix;
+            }
+
+            if (membersAmount !== undefined) {
+                localVarQueryParameter['members_amount'] = membersAmount;
+            }
+
+            if (membersAmountMin !== undefined) {
+                localVarQueryParameter['members_amount_min'] = membersAmountMin;
+            }
+
+            if (membersAmountMax !== undefined) {
+                localVarQueryParameter['members_amount_max'] = membersAmountMax;
+            }
+
+            if (createdAtGte !== undefined) {
+                localVarQueryParameter['created_at_gte'] = createdAtGte;
+            }
+
+            if (createdAtLte !== undefined) {
+                localVarQueryParameter['created_at_lte'] = createdAtLte;
+            }
+
+            if (sortFields !== undefined) {
+                localVarQueryParameter['sortFields'] = sortFields;
+            }
+
+            if (directions !== undefined) {
+                localVarQueryParameter['directions'] = directions;
             }
 
             localVarHeaderParameter['Accept'] = 'application/json';
@@ -2796,14 +3676,22 @@ export const SquadsApiFp = function(configuration?: Configuration) {
          * @summary List squads
          * @param {number} limit Limit
          * @param {number} offset Offset
+         * @param {string} [name] Name
          * @param {string} [slug] Slug
-         * @param {string} [sort] Sort
-         * @param {number} [minMembersAmount] Min members amount
+         * @param {number} [chatId] Telegram chat ID
+         * @param {string} [prefix] Squad prefix
+         * @param {number} [membersAmount] Members amount
+         * @param {number} [membersAmountMin] Members amount min
+         * @param {number} [membersAmountMax] Members amount max
+         * @param {string} [createdAtGte] Created at greater than or equal, RFC3339
+         * @param {string} [createdAtLte] Created at less than or equal, RFC3339
+         * @param {string} [sortFields] Sort fields
+         * @param {string} [directions] Sort directions
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async squadsGet(limit: number, offset: number, slug?: string, sort?: string, minMembersAmount?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SquadsGet200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.squadsGet(limit, offset, slug, sort, minMembersAmount, options);
+        async squadsGet(limit: number, offset: number, name?: string, slug?: string, chatId?: number, prefix?: string, membersAmount?: number, membersAmountMin?: number, membersAmountMax?: number, createdAtGte?: string, createdAtLte?: string, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SquadsGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.squadsGet(limit, offset, name, slug, chatId, prefix, membersAmount, membersAmountMin, membersAmountMax, createdAtGte, createdAtLte, sortFields, directions, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['SquadsApi.squadsGet']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -2835,14 +3723,22 @@ export const SquadsApiFactory = function (configuration?: Configuration, basePat
          * @summary List squads
          * @param {number} limit Limit
          * @param {number} offset Offset
+         * @param {string} [name] Name
          * @param {string} [slug] Slug
-         * @param {string} [sort] Sort
-         * @param {number} [minMembersAmount] Min members amount
+         * @param {number} [chatId] Telegram chat ID
+         * @param {string} [prefix] Squad prefix
+         * @param {number} [membersAmount] Members amount
+         * @param {number} [membersAmountMin] Members amount min
+         * @param {number} [membersAmountMax] Members amount max
+         * @param {string} [createdAtGte] Created at greater than or equal, RFC3339
+         * @param {string} [createdAtLte] Created at less than or equal, RFC3339
+         * @param {string} [sortFields] Sort fields
+         * @param {string} [directions] Sort directions
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        squadsGet(limit: number, offset: number, slug?: string, sort?: string, minMembersAmount?: number, options?: RawAxiosRequestConfig): AxiosPromise<SquadsGet200Response> {
-            return localVarFp.squadsGet(limit, offset, slug, sort, minMembersAmount, options).then((request) => request(axios, basePath));
+        squadsGet(limit: number, offset: number, name?: string, slug?: string, chatId?: number, prefix?: string, membersAmount?: number, membersAmountMin?: number, membersAmountMax?: number, createdAtGte?: string, createdAtLte?: string, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig): AxiosPromise<SquadsGet200Response> {
+            return localVarFp.squadsGet(limit, offset, name, slug, chatId, prefix, membersAmount, membersAmountMin, membersAmountMax, createdAtGte, createdAtLte, sortFields, directions, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2866,14 +3762,22 @@ export class SquadsApi extends BaseAPI {
      * @summary List squads
      * @param {number} limit Limit
      * @param {number} offset Offset
+     * @param {string} [name] Name
      * @param {string} [slug] Slug
-     * @param {string} [sort] Sort
-     * @param {number} [minMembersAmount] Min members amount
+     * @param {number} [chatId] Telegram chat ID
+     * @param {string} [prefix] Squad prefix
+     * @param {number} [membersAmount] Members amount
+     * @param {number} [membersAmountMin] Members amount min
+     * @param {number} [membersAmountMax] Members amount max
+     * @param {string} [createdAtGte] Created at greater than or equal, RFC3339
+     * @param {string} [createdAtLte] Created at less than or equal, RFC3339
+     * @param {string} [sortFields] Sort fields
+     * @param {string} [directions] Sort directions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public squadsGet(limit: number, offset: number, slug?: string, sort?: string, minMembersAmount?: number, options?: RawAxiosRequestConfig) {
-        return SquadsApiFp(this.configuration).squadsGet(limit, offset, slug, sort, minMembersAmount, options).then((request) => request(this.axios, this.basePath));
+    public squadsGet(limit: number, offset: number, name?: string, slug?: string, chatId?: number, prefix?: string, membersAmount?: number, membersAmountMin?: number, membersAmountMax?: number, createdAtGte?: string, createdAtLte?: string, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig) {
+        return SquadsApiFp(this.configuration).squadsGet(limit, offset, name, slug, chatId, prefix, membersAmount, membersAmountMin, membersAmountMax, createdAtGte, createdAtLte, sortFields, directions, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

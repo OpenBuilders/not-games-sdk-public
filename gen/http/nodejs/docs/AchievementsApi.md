@@ -18,17 +18,19 @@ All URIs are relative to *http://localhost:8080/api/v1*
 import {
     AchievementsApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new AchievementsApi(configuration);
 
 let appId: string; //app id (default to undefined)
+let accountId: string; //account id (default to undefined)
 let limit: number; //limit (default to undefined)
 let offset: number; //offset (default to undefined)
 
 const { status, data } = await apiInstance.achievementsGet(
     appId,
+    accountId,
     limit,
     offset
 );
@@ -39,6 +41,7 @@ const { status, data } = await apiInstance.achievementsGet(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **appId** | [**string**] | app id | defaults to undefined|
+| **accountId** | [**string**] | account id | defaults to undefined|
 | **limit** | [**number**] | limit | defaults to undefined|
 | **offset** | [**number**] | offset | defaults to undefined|
 
@@ -75,7 +78,7 @@ const { status, data } = await apiInstance.achievementsGet(
 import {
     AchievementsApi,
     Configuration
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new AchievementsApi(configuration);
@@ -127,7 +130,7 @@ import {
     AchievementsApi,
     Configuration,
     InternalModuleAchievementPresentationHttpCreateAchievementsRequest
-} from 'not-games-sdk-public';
+} from 'notgamessdkpublic';
 
 const configuration = new Configuration();
 const apiInstance = new AchievementsApi(configuration);

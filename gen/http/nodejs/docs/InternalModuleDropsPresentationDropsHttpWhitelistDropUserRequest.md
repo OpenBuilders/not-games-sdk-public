@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InternalModuleDropsPresentationDropsHttpWhitelistDropUserRequest } from 'not-games-sdk-public';
+import { InternalModuleDropsPresentationDropsHttpWhitelistDropUserRequest } from 'notgamessdkpublic';
 
 const instance: InternalModuleDropsPresentationDropsHttpWhitelistDropUserRequest = {
     user_ids,

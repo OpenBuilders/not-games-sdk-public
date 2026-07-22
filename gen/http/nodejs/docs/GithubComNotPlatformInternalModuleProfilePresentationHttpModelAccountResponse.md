@@ -14,12 +14,13 @@ Name | Type | Description | Notes
 **last_name** | **string** |  | [optional] [default to undefined]
 **locale** | **string** |  | [optional] [default to undefined]
 **squad_id** | **number** | telegram group id | [optional] [default to undefined]
+**squad_prefix** | **string** |  | [optional] [default to undefined]
 **username** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse = {
     avatar,
@@ -31,6 +32,7 @@ const instance: GithubComNotPlatformInternalModuleProfilePresentationHttpModelAc
     last_name,
     locale,
     squad_id,
+    squad_prefix,
     username,
 };
 ```

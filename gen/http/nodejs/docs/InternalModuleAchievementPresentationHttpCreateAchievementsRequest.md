@@ -5,16 +5,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**account_id** | **number** |  | [optional] [default to undefined]
 **achievement_def_ids** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
+**achievement_id** | **string** |  | [optional] [default to undefined]
+**icon_url** | **string** |  | [optional] [default to undefined]
 **tags** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { InternalModuleAchievementPresentationHttpCreateAchievementsRequest } from 'not-games-sdk-public';
+import { InternalModuleAchievementPresentationHttpCreateAchievementsRequest } from 'notgamessdkpublic';
 
 const instance: InternalModuleAchievementPresentationHttpCreateAchievementsRequest = {
+    account_id,
     achievement_def_ids,
+    achievement_id,
+    icon_url,
     tags,
 };
 ```

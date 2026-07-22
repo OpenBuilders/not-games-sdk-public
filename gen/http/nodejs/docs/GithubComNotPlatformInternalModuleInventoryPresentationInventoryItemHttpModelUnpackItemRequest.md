@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**account_id** | **number** |  | [optional] [default to undefined]
 **app_id** | **number** |  | [optional] [default to undefined]
 **item_id** | **string** |  | [optional] [default to undefined]
 **tags** | **string** |  | [optional] [default to undefined]
@@ -12,9 +13,10 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUnpackItemRequest = {
+    account_id,
     app_id,
     item_id,
     tags,
