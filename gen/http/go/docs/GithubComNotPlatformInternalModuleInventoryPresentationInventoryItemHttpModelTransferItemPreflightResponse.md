@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Account** | Pointer to [**GithubComNotPlatformInternalModuleProfileDomainEntityAccount**](GithubComNotPlatformInternalModuleProfileDomainEntityAccount.md) |  | [optional] 
+**InvoiceUrl** | Pointer to **string** |  | [optional] 
 **IsPossible** | Pointer to **bool** |  | [optional] 
+**PaymentStar** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -51,6 +53,31 @@ SetAccount sets Account field to given value.
 
 HasAccount returns a boolean if a field has been set.
 
+### GetInvoiceUrl
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse) GetInvoiceUrl() string`
+
+GetInvoiceUrl returns the InvoiceUrl field if non-nil, zero value otherwise.
+
+### GetInvoiceUrlOk
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse) GetInvoiceUrlOk() (*string, bool)`
+
+GetInvoiceUrlOk returns a tuple with the InvoiceUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvoiceUrl
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse) SetInvoiceUrl(v string)`
+
+SetInvoiceUrl sets InvoiceUrl field to given value.
+
+### HasInvoiceUrl
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse) HasInvoiceUrl() bool`
+
+HasInvoiceUrl returns a boolean if a field has been set.
+
 ### GetIsPossible
 
 `func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse) GetIsPossible() bool`
@@ -75,6 +102,31 @@ SetIsPossible sets IsPossible field to given value.
 `func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse) HasIsPossible() bool`
 
 HasIsPossible returns a boolean if a field has been set.
+
+### GetPaymentStar
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse) GetPaymentStar() int32`
+
+GetPaymentStar returns the PaymentStar field if non-nil, zero value otherwise.
+
+### GetPaymentStarOk
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse) GetPaymentStarOk() (*int32, bool)`
+
+GetPaymentStarOk returns a tuple with the PaymentStar field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaymentStar
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse) SetPaymentStar(v int32)`
+
+SetPaymentStar sets PaymentStar field to given value.
+
+### HasPaymentStar
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelTransferItemPreflightResponse) HasPaymentStar() bool`
+
+HasPaymentStar returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

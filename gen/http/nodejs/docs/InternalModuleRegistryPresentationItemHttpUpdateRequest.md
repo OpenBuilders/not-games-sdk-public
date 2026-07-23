@@ -23,12 +23,13 @@ Name | Type | Description | Notes
 **store_hidden** | **boolean** |  | [optional] [default to undefined]
 **store_images** | **string** |  | [optional] [default to undefined]
 **store_tags** | **string** |  | [optional] [default to undefined]
+**tags** | **string** |  | [optional] [default to undefined]
 **tradable** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { InternalModuleRegistryPresentationItemHttpUpdateRequest } from 'not-games-sdk-public';
+import { InternalModuleRegistryPresentationItemHttpUpdateRequest } from 'notgamessdkpublic';
 
 const instance: InternalModuleRegistryPresentationItemHttpUpdateRequest = {
     app_files,
@@ -49,6 +50,7 @@ const instance: InternalModuleRegistryPresentationItemHttpUpdateRequest = {
     store_hidden,
     store_images,
     store_tags,
+    tags,
     tradable,
 };
 ```

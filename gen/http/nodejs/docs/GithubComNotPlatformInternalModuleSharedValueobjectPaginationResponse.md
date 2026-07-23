@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse } from 'not-games-sdk-public';
+import { GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse } from 'notgamessdkpublic';
 
 const instance: GithubComNotPlatformInternalModuleSharedValueobjectPaginationResponse = {
     count,

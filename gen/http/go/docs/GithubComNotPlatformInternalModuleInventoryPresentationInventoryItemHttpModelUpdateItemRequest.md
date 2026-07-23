@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppMeta** | Pointer to **string** |  | [optional] 
+**HoldTill** | Pointer to **int32** |  | [optional] 
 **Rarity** | Pointer to **int32** |  | [optional] 
 **Tags** | Pointer to **string** |  | [optional] 
 
@@ -51,6 +52,31 @@ SetAppMeta sets AppMeta field to given value.
 `func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest) HasAppMeta() bool`
 
 HasAppMeta returns a boolean if a field has been set.
+
+### GetHoldTill
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest) GetHoldTill() int32`
+
+GetHoldTill returns the HoldTill field if non-nil, zero value otherwise.
+
+### GetHoldTillOk
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest) GetHoldTillOk() (*int32, bool)`
+
+GetHoldTillOk returns a tuple with the HoldTill field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHoldTill
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest) SetHoldTill(v int32)`
+
+SetHoldTill sets HoldTill field to given value.
+
+### HasHoldTill
+
+`func (o *GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelUpdateItemRequest) HasHoldTill() bool`
+
+HasHoldTill returns a boolean if a field has been set.
 
 ### GetRarity
 
