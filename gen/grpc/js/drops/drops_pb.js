@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global =
-    (typeof globalThis !== 'undefined' && globalThis) ||
-    (typeof window !== 'undefined' && window) ||
-    (typeof global !== 'undefined' && global) ||
-    (typeof self !== 'undefined' && self) ||
-    (function () { return this; }).call(null) ||
-    Function('return this')();
+var global = globalThis;
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -213,7 +207,7 @@ whitelistUserIdsList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? unde
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.drops.v1.CreateDropRequest}
  */
 proto.drops.v1.CreateDropRequest.deserializeBinary = function(bytes) {
@@ -238,11 +232,11 @@ proto.drops.v1.CreateDropRequest.deserializeBinaryFromReader = function(msg, rea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDescription(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setItemDefIds(value);
       break;
     case 3:
@@ -264,10 +258,7 @@ proto.drops.v1.CreateDropRequest.deserializeBinaryFromReader = function(msg, rea
       msg.setFinishedAt(value);
       break;
     case 7:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedInt64() : [reader.readInt64()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addWhitelistUserIds(values[i]);
-      }
+      reader.readPackableInt64Into(msg.getWhitelistUserIdsList());
       break;
     default:
       reader.skipField();
@@ -580,7 +571,7 @@ dropId: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.drops.v1.CreateDropResponse}
  */
 proto.drops.v1.CreateDropResponse.deserializeBinary = function(bytes) {
@@ -605,7 +596,7 @@ proto.drops.v1.CreateDropResponse.deserializeBinaryFromReader = function(msg, re
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDropId(value);
       break;
     default:
@@ -711,7 +702,7 @@ accountId: jspb.Message.getFieldWithDefault(msg, 2, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.drops.v1.CheckEligibilityRequest}
  */
 proto.drops.v1.CheckEligibilityRequest.deserializeBinary = function(bytes) {
@@ -736,7 +727,7 @@ proto.drops.v1.CheckEligibilityRequest.deserializeBinaryFromReader = function(ms
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDropId(value);
       break;
     case 2:
@@ -876,7 +867,7 @@ finishedAt: (f = msg.getFinishedAt()) && google_protobuf_timestamp_pb.Timestamp.
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.drops.v1.CheckEligibilityResponse}
  */
 proto.drops.v1.CheckEligibilityResponse.deserializeBinary = function(bytes) {
@@ -901,11 +892,11 @@ proto.drops.v1.CheckEligibilityResponse.deserializeBinaryFromReader = function(m
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStatus(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDropId(value);
       break;
     case 3:
@@ -913,11 +904,11 @@ proto.drops.v1.CheckEligibilityResponse.deserializeBinaryFromReader = function(m
       msg.setAppId(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDescription(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setItemDefIds(value);
       break;
     case 6:
@@ -1230,7 +1221,7 @@ userIdsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.drops.v1.WhitelistDropUserRequest}
  */
 proto.drops.v1.WhitelistDropUserRequest.deserializeBinary = function(bytes) {
@@ -1255,14 +1246,11 @@ proto.drops.v1.WhitelistDropUserRequest.deserializeBinaryFromReader = function(m
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDropId(value);
       break;
     case 2:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedInt64() : [reader.readInt64()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addUserIds(values[i]);
-      }
+      reader.readPackableInt64Into(msg.getUserIdsList());
       break;
     default:
       reader.skipField();
@@ -1410,7 +1398,7 @@ status: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.drops.v1.WhitelistDropUserResponse}
  */
 proto.drops.v1.WhitelistDropUserResponse.deserializeBinary = function(bytes) {
@@ -1435,7 +1423,7 @@ proto.drops.v1.WhitelistDropUserResponse.deserializeBinaryFromReader = function(
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStatus(value);
       break;
     default:

@@ -203,6 +203,10 @@ export interface UpdateItemDefRequest {
      * @generated from protobuf field: optional int64 max_supply = 20
      */
     maxSupply?: bigint;
+    /**
+     * @generated from protobuf field: optional string tags = 21
+     */
+    tags?: string;
 }
 /**
  * @generated from protobuf message registry.v1.AchievementDef
@@ -240,6 +244,43 @@ export interface AchievementDef {
      * @generated from protobuf field: string display_type = 8
      */
     displayType: string;
+}
+/**
+ * @generated from protobuf message registry.v1.UpdateAchievementDef
+ */
+export interface UpdateAchievementDef {
+    /**
+     * @generated from protobuf field: string achievement_def_id = 1
+     */
+    achievementDefId: string;
+    /**
+     * @generated from protobuf field: int64 app_id = 2
+     */
+    appId: bigint;
+    /**
+     * @generated from protobuf field: optional string name = 3
+     */
+    name?: string;
+    /**
+     * @generated from protobuf field: optional string description = 4
+     */
+    description?: string;
+    /**
+     * @generated from protobuf field: optional string icon_url = 5
+     */
+    iconUrl?: string;
+    /**
+     * @generated from protobuf field: optional string tags = 6
+     */
+    tags?: string;
+    /**
+     * @generated from protobuf field: optional bool hidden = 7
+     */
+    hidden?: boolean;
+    /**
+     * @generated from protobuf field: optional string display_type = 8
+     */
+    displayType?: string;
 }
 /**
  * @generated from protobuf message registry.v1.GetItemDefRequest
@@ -309,9 +350,9 @@ export interface CreateAchievementDefResponse {
  */
 export interface UpdateAchievementDefRequest {
     /**
-     * @generated from protobuf field: registry.v1.AchievementDef achievement_def = 1
+     * @generated from protobuf field: registry.v1.UpdateAchievementDef achievement_def = 1
      */
-    achievementDef?: AchievementDef;
+    achievementDef?: UpdateAchievementDef;
 }
 /**
  * @generated from protobuf message registry.v1.UpdateAchievementDefResponse
@@ -690,7 +731,8 @@ class UpdateItemDefRequest$Type extends MessageType<UpdateItemDefRequest> {
             { no: 17, name: "promo", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 18, name: "tradable", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 19, name: "exchange", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 20, name: "max_supply", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 20, name: "max_supply", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 21, name: "tags", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<UpdateItemDefRequest>): UpdateItemDefRequest {
@@ -766,6 +808,9 @@ class UpdateItemDefRequest$Type extends MessageType<UpdateItemDefRequest> {
                 case /* optional int64 max_supply */ 20:
                     message.maxSupply = reader.int64().toBigInt();
                     break;
+                case /* optional string tags */ 21:
+                    message.tags = reader.string();
+                    break;
                 default:
                     let u = options.readUnknownField;
                     if (u === "throw")
@@ -838,6 +883,9 @@ class UpdateItemDefRequest$Type extends MessageType<UpdateItemDefRequest> {
         /* optional int64 max_supply = 20; */
         if (message.maxSupply !== undefined)
             writer.tag(20, WireType.Varint).int64(message.maxSupply);
+        /* optional string tags = 21; */
+        if (message.tags !== undefined)
+            writer.tag(21, WireType.LengthDelimited).string(message.tags);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -951,6 +999,103 @@ class AchievementDef$Type extends MessageType<AchievementDef> {
  * @generated MessageType for protobuf message registry.v1.AchievementDef
  */
 export const AchievementDef = new AchievementDef$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class UpdateAchievementDef$Type extends MessageType<UpdateAchievementDef> {
+    constructor() {
+        super("registry.v1.UpdateAchievementDef", [
+            { no: 1, name: "achievement_def_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "app_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 3, name: "name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "description", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "icon_url", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 6, name: "tags", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 7, name: "hidden", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
+            { no: 8, name: "display_type", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<UpdateAchievementDef>): UpdateAchievementDef {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.achievementDefId = "";
+        message.appId = 0n;
+        if (value !== undefined)
+            reflectionMergePartial<UpdateAchievementDef>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: UpdateAchievementDef): UpdateAchievementDef {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string achievement_def_id */ 1:
+                    message.achievementDefId = reader.string();
+                    break;
+                case /* int64 app_id */ 2:
+                    message.appId = reader.int64().toBigInt();
+                    break;
+                case /* optional string name */ 3:
+                    message.name = reader.string();
+                    break;
+                case /* optional string description */ 4:
+                    message.description = reader.string();
+                    break;
+                case /* optional string icon_url */ 5:
+                    message.iconUrl = reader.string();
+                    break;
+                case /* optional string tags */ 6:
+                    message.tags = reader.string();
+                    break;
+                case /* optional bool hidden */ 7:
+                    message.hidden = reader.bool();
+                    break;
+                case /* optional string display_type */ 8:
+                    message.displayType = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: UpdateAchievementDef, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string achievement_def_id = 1; */
+        if (message.achievementDefId !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.achievementDefId);
+        /* int64 app_id = 2; */
+        if (message.appId !== 0n)
+            writer.tag(2, WireType.Varint).int64(message.appId);
+        /* optional string name = 3; */
+        if (message.name !== undefined)
+            writer.tag(3, WireType.LengthDelimited).string(message.name);
+        /* optional string description = 4; */
+        if (message.description !== undefined)
+            writer.tag(4, WireType.LengthDelimited).string(message.description);
+        /* optional string icon_url = 5; */
+        if (message.iconUrl !== undefined)
+            writer.tag(5, WireType.LengthDelimited).string(message.iconUrl);
+        /* optional string tags = 6; */
+        if (message.tags !== undefined)
+            writer.tag(6, WireType.LengthDelimited).string(message.tags);
+        /* optional bool hidden = 7; */
+        if (message.hidden !== undefined)
+            writer.tag(7, WireType.Varint).bool(message.hidden);
+        /* optional string display_type = 8; */
+        if (message.displayType !== undefined)
+            writer.tag(8, WireType.LengthDelimited).string(message.displayType);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message registry.v1.UpdateAchievementDef
+ */
+export const UpdateAchievementDef = new UpdateAchievementDef$Type();
 // @generated message type with reflection information, may provide speed optimized methods
 class GetItemDefRequest$Type extends MessageType<GetItemDefRequest> {
     constructor() {
@@ -1282,7 +1427,7 @@ export const CreateAchievementDefResponse = new CreateAchievementDefResponse$Typ
 class UpdateAchievementDefRequest$Type extends MessageType<UpdateAchievementDefRequest> {
     constructor() {
         super("registry.v1.UpdateAchievementDefRequest", [
-            { no: 1, name: "achievement_def", kind: "message", T: () => AchievementDef }
+            { no: 1, name: "achievement_def", kind: "message", T: () => UpdateAchievementDef }
         ]);
     }
     create(value?: PartialMessage<UpdateAchievementDefRequest>): UpdateAchievementDefRequest {
@@ -1296,8 +1441,8 @@ class UpdateAchievementDefRequest$Type extends MessageType<UpdateAchievementDefR
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* registry.v1.AchievementDef achievement_def */ 1:
-                    message.achievementDef = AchievementDef.internalBinaryRead(reader, reader.uint32(), options, message.achievementDef);
+                case /* registry.v1.UpdateAchievementDef achievement_def */ 1:
+                    message.achievementDef = UpdateAchievementDef.internalBinaryRead(reader, reader.uint32(), options, message.achievementDef);
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1311,9 +1456,9 @@ class UpdateAchievementDefRequest$Type extends MessageType<UpdateAchievementDefR
         return message;
     }
     internalBinaryWrite(message: UpdateAchievementDefRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* registry.v1.AchievementDef achievement_def = 1; */
+        /* registry.v1.UpdateAchievementDef achievement_def = 1; */
         if (message.achievementDef)
-            AchievementDef.internalBinaryWrite(message.achievementDef, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+            UpdateAchievementDef.internalBinaryWrite(message.achievementDef, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

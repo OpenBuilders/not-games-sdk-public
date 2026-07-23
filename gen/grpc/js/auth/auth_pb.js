@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global =
-    (typeof globalThis !== 'undefined' && globalThis) ||
-    (typeof window !== 'undefined' && window) ||
-    (typeof global !== 'undefined' && global) ||
-    (typeof self !== 'undefined' && self) ||
-    (function () { return this; }).call(null) ||
-    Function('return this')();
+var global = globalThis;
 
 goog.exportSymbol('proto.auth.v1.NewAuthRequest', null, global);
 goog.exportSymbol('proto.auth.v1.NewAuthResponse', null, global);
@@ -111,7 +105,7 @@ refreshToken: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.auth.v1.NewAuthRequest}
  */
 proto.auth.v1.NewAuthRequest.deserializeBinary = function(bytes) {
@@ -140,7 +134,7 @@ proto.auth.v1.NewAuthRequest.deserializeBinaryFromReader = function(msg, reader)
       msg.setAppId(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setRefreshToken(value);
       break;
     default:
@@ -271,7 +265,7 @@ refreshToken: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.auth.v1.NewAuthResponse}
  */
 proto.auth.v1.NewAuthResponse.deserializeBinary = function(bytes) {
@@ -296,11 +290,11 @@ proto.auth.v1.NewAuthResponse.deserializeBinaryFromReader = function(msg, reader
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setPrivateKey(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setRefreshToken(value);
       break;
     default:
