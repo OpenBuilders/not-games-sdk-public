@@ -280,6 +280,7 @@ type UpdateItemDefRequest struct {
 	Tradable      *bool                  `protobuf:"varint,18,opt,name=tradable,proto3,oneof" json:"tradable,omitempty"`
 	Exchange      *string                `protobuf:"bytes,19,opt,name=exchange,proto3,oneof" json:"exchange,omitempty"`
 	MaxSupply     *int64                 `protobuf:"varint,20,opt,name=max_supply,json=maxSupply,proto3,oneof" json:"max_supply,omitempty"`
+	Tags          *string                `protobuf:"bytes,21,opt,name=tags,proto3,oneof" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -454,6 +455,13 @@ func (x *UpdateItemDefRequest) GetMaxSupply() int64 {
 	return 0
 }
 
+func (x *UpdateItemDefRequest) GetTags() string {
+	if x != nil && x.Tags != nil {
+		return *x.Tags
+	}
+	return ""
+}
+
 type AchievementDef struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	AchievementDefId string                 `protobuf:"bytes,1,opt,name=achievement_def_id,json=achievementDefId,proto3" json:"achievement_def_id,omitempty"`
@@ -554,6 +562,106 @@ func (x *AchievementDef) GetDisplayType() string {
 	return ""
 }
 
+type UpdateAchievementDef struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	AchievementDefId string                 `protobuf:"bytes,1,opt,name=achievement_def_id,json=achievementDefId,proto3" json:"achievement_def_id,omitempty"`
+	AppId            int64                  `protobuf:"varint,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	Name             *string                `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	Description      *string                `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	IconUrl          *string                `protobuf:"bytes,5,opt,name=icon_url,json=iconUrl,proto3,oneof" json:"icon_url,omitempty"`
+	Tags             *string                `protobuf:"bytes,6,opt,name=tags,proto3,oneof" json:"tags,omitempty"`
+	Hidden           *bool                  `protobuf:"varint,7,opt,name=hidden,proto3,oneof" json:"hidden,omitempty"`
+	DisplayType      *string                `protobuf:"bytes,8,opt,name=display_type,json=displayType,proto3,oneof" json:"display_type,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *UpdateAchievementDef) Reset() {
+	*x = UpdateAchievementDef{}
+	mi := &file_registry_registry_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateAchievementDef) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateAchievementDef) ProtoMessage() {}
+
+func (x *UpdateAchievementDef) ProtoReflect() protoreflect.Message {
+	mi := &file_registry_registry_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateAchievementDef.ProtoReflect.Descriptor instead.
+func (*UpdateAchievementDef) Descriptor() ([]byte, []int) {
+	return file_registry_registry_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *UpdateAchievementDef) GetAchievementDefId() string {
+	if x != nil {
+		return x.AchievementDefId
+	}
+	return ""
+}
+
+func (x *UpdateAchievementDef) GetAppId() int64 {
+	if x != nil {
+		return x.AppId
+	}
+	return 0
+}
+
+func (x *UpdateAchievementDef) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UpdateAchievementDef) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *UpdateAchievementDef) GetIconUrl() string {
+	if x != nil && x.IconUrl != nil {
+		return *x.IconUrl
+	}
+	return ""
+}
+
+func (x *UpdateAchievementDef) GetTags() string {
+	if x != nil && x.Tags != nil {
+		return *x.Tags
+	}
+	return ""
+}
+
+func (x *UpdateAchievementDef) GetHidden() bool {
+	if x != nil && x.Hidden != nil {
+		return *x.Hidden
+	}
+	return false
+}
+
+func (x *UpdateAchievementDef) GetDisplayType() string {
+	if x != nil && x.DisplayType != nil {
+		return *x.DisplayType
+	}
+	return ""
+}
+
 type GetItemDefRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ItemDefId     string                 `protobuf:"bytes,1,opt,name=item_def_id,json=itemDefId,proto3" json:"item_def_id,omitempty"`
@@ -563,7 +671,7 @@ type GetItemDefRequest struct {
 
 func (x *GetItemDefRequest) Reset() {
 	*x = GetItemDefRequest{}
-	mi := &file_registry_registry_proto_msgTypes[3]
+	mi := &file_registry_registry_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -575,7 +683,7 @@ func (x *GetItemDefRequest) String() string {
 func (*GetItemDefRequest) ProtoMessage() {}
 
 func (x *GetItemDefRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[3]
+	mi := &file_registry_registry_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -588,7 +696,7 @@ func (x *GetItemDefRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetItemDefRequest.ProtoReflect.Descriptor instead.
 func (*GetItemDefRequest) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{3}
+	return file_registry_registry_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetItemDefRequest) GetItemDefId() string {
@@ -607,7 +715,7 @@ type CreateItemDefRequest struct {
 
 func (x *CreateItemDefRequest) Reset() {
 	*x = CreateItemDefRequest{}
-	mi := &file_registry_registry_proto_msgTypes[4]
+	mi := &file_registry_registry_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -619,7 +727,7 @@ func (x *CreateItemDefRequest) String() string {
 func (*CreateItemDefRequest) ProtoMessage() {}
 
 func (x *CreateItemDefRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[4]
+	mi := &file_registry_registry_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -632,7 +740,7 @@ func (x *CreateItemDefRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateItemDefRequest.ProtoReflect.Descriptor instead.
 func (*CreateItemDefRequest) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{4}
+	return file_registry_registry_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreateItemDefRequest) GetItemDef() *ItemDef {
@@ -651,7 +759,7 @@ type CreateItemDefResponse struct {
 
 func (x *CreateItemDefResponse) Reset() {
 	*x = CreateItemDefResponse{}
-	mi := &file_registry_registry_proto_msgTypes[5]
+	mi := &file_registry_registry_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -663,7 +771,7 @@ func (x *CreateItemDefResponse) String() string {
 func (*CreateItemDefResponse) ProtoMessage() {}
 
 func (x *CreateItemDefResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[5]
+	mi := &file_registry_registry_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -676,7 +784,7 @@ func (x *CreateItemDefResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateItemDefResponse.ProtoReflect.Descriptor instead.
 func (*CreateItemDefResponse) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{5}
+	return file_registry_registry_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreateItemDefResponse) GetStatus() string {
@@ -695,7 +803,7 @@ type UpdateItemDefResponse struct {
 
 func (x *UpdateItemDefResponse) Reset() {
 	*x = UpdateItemDefResponse{}
-	mi := &file_registry_registry_proto_msgTypes[6]
+	mi := &file_registry_registry_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -707,7 +815,7 @@ func (x *UpdateItemDefResponse) String() string {
 func (*UpdateItemDefResponse) ProtoMessage() {}
 
 func (x *UpdateItemDefResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[6]
+	mi := &file_registry_registry_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -720,7 +828,7 @@ func (x *UpdateItemDefResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateItemDefResponse.ProtoReflect.Descriptor instead.
 func (*UpdateItemDefResponse) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{6}
+	return file_registry_registry_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UpdateItemDefResponse) GetStatus() string {
@@ -739,7 +847,7 @@ type GetAchievementDefRequest struct {
 
 func (x *GetAchievementDefRequest) Reset() {
 	*x = GetAchievementDefRequest{}
-	mi := &file_registry_registry_proto_msgTypes[7]
+	mi := &file_registry_registry_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -751,7 +859,7 @@ func (x *GetAchievementDefRequest) String() string {
 func (*GetAchievementDefRequest) ProtoMessage() {}
 
 func (x *GetAchievementDefRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[7]
+	mi := &file_registry_registry_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -764,7 +872,7 @@ func (x *GetAchievementDefRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAchievementDefRequest.ProtoReflect.Descriptor instead.
 func (*GetAchievementDefRequest) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{7}
+	return file_registry_registry_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetAchievementDefRequest) GetAchievementDefId() string {
@@ -783,7 +891,7 @@ type CreateAchievementDefRequest struct {
 
 func (x *CreateAchievementDefRequest) Reset() {
 	*x = CreateAchievementDefRequest{}
-	mi := &file_registry_registry_proto_msgTypes[8]
+	mi := &file_registry_registry_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -795,7 +903,7 @@ func (x *CreateAchievementDefRequest) String() string {
 func (*CreateAchievementDefRequest) ProtoMessage() {}
 
 func (x *CreateAchievementDefRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[8]
+	mi := &file_registry_registry_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -808,7 +916,7 @@ func (x *CreateAchievementDefRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateAchievementDefRequest.ProtoReflect.Descriptor instead.
 func (*CreateAchievementDefRequest) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{8}
+	return file_registry_registry_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *CreateAchievementDefRequest) GetAchievementDef() *AchievementDef {
@@ -827,7 +935,7 @@ type CreateAchievementDefResponse struct {
 
 func (x *CreateAchievementDefResponse) Reset() {
 	*x = CreateAchievementDefResponse{}
-	mi := &file_registry_registry_proto_msgTypes[9]
+	mi := &file_registry_registry_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -839,7 +947,7 @@ func (x *CreateAchievementDefResponse) String() string {
 func (*CreateAchievementDefResponse) ProtoMessage() {}
 
 func (x *CreateAchievementDefResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[9]
+	mi := &file_registry_registry_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -852,7 +960,7 @@ func (x *CreateAchievementDefResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateAchievementDefResponse.ProtoReflect.Descriptor instead.
 func (*CreateAchievementDefResponse) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{9}
+	return file_registry_registry_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CreateAchievementDefResponse) GetStatus() string {
@@ -864,14 +972,14 @@ func (x *CreateAchievementDefResponse) GetStatus() string {
 
 type UpdateAchievementDefRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	AchievementDef *AchievementDef        `protobuf:"bytes,1,opt,name=achievement_def,json=achievementDef,proto3" json:"achievement_def,omitempty"`
+	AchievementDef *UpdateAchievementDef  `protobuf:"bytes,1,opt,name=achievement_def,json=achievementDef,proto3" json:"achievement_def,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
 func (x *UpdateAchievementDefRequest) Reset() {
 	*x = UpdateAchievementDefRequest{}
-	mi := &file_registry_registry_proto_msgTypes[10]
+	mi := &file_registry_registry_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -883,7 +991,7 @@ func (x *UpdateAchievementDefRequest) String() string {
 func (*UpdateAchievementDefRequest) ProtoMessage() {}
 
 func (x *UpdateAchievementDefRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[10]
+	mi := &file_registry_registry_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -896,10 +1004,10 @@ func (x *UpdateAchievementDefRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAchievementDefRequest.ProtoReflect.Descriptor instead.
 func (*UpdateAchievementDefRequest) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{10}
+	return file_registry_registry_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *UpdateAchievementDefRequest) GetAchievementDef() *AchievementDef {
+func (x *UpdateAchievementDefRequest) GetAchievementDef() *UpdateAchievementDef {
 	if x != nil {
 		return x.AchievementDef
 	}
@@ -915,7 +1023,7 @@ type UpdateAchievementDefResponse struct {
 
 func (x *UpdateAchievementDefResponse) Reset() {
 	*x = UpdateAchievementDefResponse{}
-	mi := &file_registry_registry_proto_msgTypes[11]
+	mi := &file_registry_registry_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -927,7 +1035,7 @@ func (x *UpdateAchievementDefResponse) String() string {
 func (*UpdateAchievementDefResponse) ProtoMessage() {}
 
 func (x *UpdateAchievementDefResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[11]
+	mi := &file_registry_registry_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -940,7 +1048,7 @@ func (x *UpdateAchievementDefResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAchievementDefResponse.ProtoReflect.Descriptor instead.
 func (*UpdateAchievementDefResponse) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{11}
+	return file_registry_registry_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *UpdateAchievementDefResponse) GetStatus() string {
@@ -974,7 +1082,7 @@ type ListItemDefsRequest struct {
 
 func (x *ListItemDefsRequest) Reset() {
 	*x = ListItemDefsRequest{}
-	mi := &file_registry_registry_proto_msgTypes[12]
+	mi := &file_registry_registry_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -986,7 +1094,7 @@ func (x *ListItemDefsRequest) String() string {
 func (*ListItemDefsRequest) ProtoMessage() {}
 
 func (x *ListItemDefsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[12]
+	mi := &file_registry_registry_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -999,7 +1107,7 @@ func (x *ListItemDefsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListItemDefsRequest.ProtoReflect.Descriptor instead.
 func (*ListItemDefsRequest) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{12}
+	return file_registry_registry_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListItemDefsRequest) GetLimit() int32 {
@@ -1124,7 +1232,7 @@ type ListItemDefsResponse struct {
 
 func (x *ListItemDefsResponse) Reset() {
 	*x = ListItemDefsResponse{}
-	mi := &file_registry_registry_proto_msgTypes[13]
+	mi := &file_registry_registry_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1136,7 +1244,7 @@ func (x *ListItemDefsResponse) String() string {
 func (*ListItemDefsResponse) ProtoMessage() {}
 
 func (x *ListItemDefsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[13]
+	mi := &file_registry_registry_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1149,7 +1257,7 @@ func (x *ListItemDefsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListItemDefsResponse.ProtoReflect.Descriptor instead.
 func (*ListItemDefsResponse) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{13}
+	return file_registry_registry_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ListItemDefsResponse) GetItems() []*ItemDef {
@@ -1176,7 +1284,7 @@ type ListAchievementsDefsRequest struct {
 
 func (x *ListAchievementsDefsRequest) Reset() {
 	*x = ListAchievementsDefsRequest{}
-	mi := &file_registry_registry_proto_msgTypes[14]
+	mi := &file_registry_registry_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1188,7 +1296,7 @@ func (x *ListAchievementsDefsRequest) String() string {
 func (*ListAchievementsDefsRequest) ProtoMessage() {}
 
 func (x *ListAchievementsDefsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[14]
+	mi := &file_registry_registry_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1201,7 +1309,7 @@ func (x *ListAchievementsDefsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAchievementsDefsRequest.ProtoReflect.Descriptor instead.
 func (*ListAchievementsDefsRequest) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{14}
+	return file_registry_registry_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ListAchievementsDefsRequest) GetLimit() int32 {
@@ -1228,7 +1336,7 @@ type ListAchievementsDefsResponse struct {
 
 func (x *ListAchievementsDefsResponse) Reset() {
 	*x = ListAchievementsDefsResponse{}
-	mi := &file_registry_registry_proto_msgTypes[15]
+	mi := &file_registry_registry_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1240,7 +1348,7 @@ func (x *ListAchievementsDefsResponse) String() string {
 func (*ListAchievementsDefsResponse) ProtoMessage() {}
 
 func (x *ListAchievementsDefsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_registry_registry_proto_msgTypes[15]
+	mi := &file_registry_registry_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1253,7 +1361,7 @@ func (x *ListAchievementsDefsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAchievementsDefsResponse.ProtoReflect.Descriptor instead.
 func (*ListAchievementsDefsResponse) Descriptor() ([]byte, []int) {
-	return file_registry_registry_proto_rawDescGZIP(), []int{15}
+	return file_registry_registry_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ListAchievementsDefsResponse) GetItems() []*AchievementDef {
@@ -1309,7 +1417,7 @@ const file_registry_registry_proto_rawDesc = "" +
 	"max_supply\x18\x18 \x01(\x03H\x00R\tmaxSupply\x88\x01\x01\x12\x1b\n" +
 	"\x06issued\x18\x19 \x01(\x03H\x01R\x06issued\x88\x01\x01B\r\n" +
 	"\v_max_supplyB\t\n" +
-	"\a_issued\"\xa2\a\n" +
+	"\a_issued\"\xc4\a\n" +
 	"\x14UpdateItemDefRequest\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\x12\x15\n" +
 	"\x06app_id\x18\x02 \x01(\x03R\x05appId\x12\x17\n" +
@@ -1338,7 +1446,8 @@ const file_registry_registry_proto_rawDesc = "" +
 	"\btradable\x18\x12 \x01(\bH\x0fR\btradable\x88\x01\x01\x12\x1f\n" +
 	"\bexchange\x18\x13 \x01(\tH\x10R\bexchange\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"max_supply\x18\x14 \x01(\x03H\x11R\tmaxSupply\x88\x01\x01B\a\n" +
+	"max_supply\x18\x14 \x01(\x03H\x11R\tmaxSupply\x88\x01\x01\x12\x17\n" +
+	"\x04tags\x18\x15 \x01(\tH\x12R\x04tags\x88\x01\x01B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\x0f\n" +
 	"\r_display_typeB\t\n" +
@@ -1358,7 +1467,8 @@ const file_registry_registry_proto_rawDesc = "" +
 	"\x06_promoB\v\n" +
 	"\t_tradableB\v\n" +
 	"\t_exchangeB\r\n" +
-	"\v_max_supply\"\xf5\x01\n" +
+	"\v_max_supplyB\a\n" +
+	"\x05_tags\"\xf5\x01\n" +
 	"\x0eAchievementDef\x12,\n" +
 	"\x12achievement_def_id\x18\x01 \x01(\tR\x10achievementDefId\x12\x15\n" +
 	"\x06app_id\x18\x02 \x01(\x03R\x05appId\x12\x12\n" +
@@ -1367,7 +1477,22 @@ const file_registry_registry_proto_rawDesc = "" +
 	"\bicon_url\x18\x05 \x01(\tR\aiconUrl\x12\x12\n" +
 	"\x04tags\x18\x06 \x01(\tR\x04tags\x12\x16\n" +
 	"\x06hidden\x18\a \x01(\bR\x06hidden\x12!\n" +
-	"\fdisplay_type\x18\b \x01(\tR\vdisplayType\"3\n" +
+	"\fdisplay_type\x18\b \x01(\tR\vdisplayType\"\xe4\x02\n" +
+	"\x14UpdateAchievementDef\x12,\n" +
+	"\x12achievement_def_id\x18\x01 \x01(\tR\x10achievementDefId\x12\x15\n" +
+	"\x06app_id\x18\x02 \x01(\x03R\x05appId\x12\x17\n" +
+	"\x04name\x18\x03 \x01(\tH\x00R\x04name\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\x04 \x01(\tH\x01R\vdescription\x88\x01\x01\x12\x1e\n" +
+	"\bicon_url\x18\x05 \x01(\tH\x02R\aiconUrl\x88\x01\x01\x12\x17\n" +
+	"\x04tags\x18\x06 \x01(\tH\x03R\x04tags\x88\x01\x01\x12\x1b\n" +
+	"\x06hidden\x18\a \x01(\bH\x04R\x06hidden\x88\x01\x01\x12&\n" +
+	"\fdisplay_type\x18\b \x01(\tH\x05R\vdisplayType\x88\x01\x01B\a\n" +
+	"\x05_nameB\x0e\n" +
+	"\f_descriptionB\v\n" +
+	"\t_icon_urlB\a\n" +
+	"\x05_tagsB\t\n" +
+	"\a_hiddenB\x0f\n" +
+	"\r_display_type\"3\n" +
 	"\x11GetItemDefRequest\x12\x1e\n" +
 	"\vitem_def_id\x18\x01 \x01(\tR\titemDefId\"G\n" +
 	"\x14CreateItemDefRequest\x12/\n" +
@@ -1381,9 +1506,9 @@ const file_registry_registry_proto_rawDesc = "" +
 	"\x1bCreateAchievementDefRequest\x12D\n" +
 	"\x0fachievement_def\x18\x01 \x01(\v2\x1b.registry.v1.AchievementDefR\x0eachievementDef\"6\n" +
 	"\x1cCreateAchievementDefResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status\"c\n" +
-	"\x1bUpdateAchievementDefRequest\x12D\n" +
-	"\x0fachievement_def\x18\x01 \x01(\v2\x1b.registry.v1.AchievementDefR\x0eachievementDef\"6\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"i\n" +
+	"\x1bUpdateAchievementDefRequest\x12J\n" +
+	"\x0fachievement_def\x18\x01 \x01(\v2!.registry.v1.UpdateAchievementDefR\x0eachievementDef\"6\n" +
 	"\x1cUpdateAchievementDefResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"\xb5\x05\n" +
 	"\x13ListItemDefsRequest\x12\x14\n" +
@@ -1459,55 +1584,56 @@ func file_registry_registry_proto_rawDescGZIP() []byte {
 	return file_registry_registry_proto_rawDescData
 }
 
-var file_registry_registry_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_registry_registry_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_registry_registry_proto_goTypes = []any{
 	(*ItemDef)(nil),                      // 0: registry.v1.ItemDef
 	(*UpdateItemDefRequest)(nil),         // 1: registry.v1.UpdateItemDefRequest
 	(*AchievementDef)(nil),               // 2: registry.v1.AchievementDef
-	(*GetItemDefRequest)(nil),            // 3: registry.v1.GetItemDefRequest
-	(*CreateItemDefRequest)(nil),         // 4: registry.v1.CreateItemDefRequest
-	(*CreateItemDefResponse)(nil),        // 5: registry.v1.CreateItemDefResponse
-	(*UpdateItemDefResponse)(nil),        // 6: registry.v1.UpdateItemDefResponse
-	(*GetAchievementDefRequest)(nil),     // 7: registry.v1.GetAchievementDefRequest
-	(*CreateAchievementDefRequest)(nil),  // 8: registry.v1.CreateAchievementDefRequest
-	(*CreateAchievementDefResponse)(nil), // 9: registry.v1.CreateAchievementDefResponse
-	(*UpdateAchievementDefRequest)(nil),  // 10: registry.v1.UpdateAchievementDefRequest
-	(*UpdateAchievementDefResponse)(nil), // 11: registry.v1.UpdateAchievementDefResponse
-	(*ListItemDefsRequest)(nil),          // 12: registry.v1.ListItemDefsRequest
-	(*ListItemDefsResponse)(nil),         // 13: registry.v1.ListItemDefsResponse
-	(*ListAchievementsDefsRequest)(nil),  // 14: registry.v1.ListAchievementsDefsRequest
-	(*ListAchievementsDefsResponse)(nil), // 15: registry.v1.ListAchievementsDefsResponse
-	(common.Rarity)(0),                   // 16: common.v1.Rarity
-	(*common.FilterTagList)(nil),         // 17: common.v1.FilterTagList
-	(*common.Pagination)(nil),            // 18: common.v1.Pagination
+	(*UpdateAchievementDef)(nil),         // 3: registry.v1.UpdateAchievementDef
+	(*GetItemDefRequest)(nil),            // 4: registry.v1.GetItemDefRequest
+	(*CreateItemDefRequest)(nil),         // 5: registry.v1.CreateItemDefRequest
+	(*CreateItemDefResponse)(nil),        // 6: registry.v1.CreateItemDefResponse
+	(*UpdateItemDefResponse)(nil),        // 7: registry.v1.UpdateItemDefResponse
+	(*GetAchievementDefRequest)(nil),     // 8: registry.v1.GetAchievementDefRequest
+	(*CreateAchievementDefRequest)(nil),  // 9: registry.v1.CreateAchievementDefRequest
+	(*CreateAchievementDefResponse)(nil), // 10: registry.v1.CreateAchievementDefResponse
+	(*UpdateAchievementDefRequest)(nil),  // 11: registry.v1.UpdateAchievementDefRequest
+	(*UpdateAchievementDefResponse)(nil), // 12: registry.v1.UpdateAchievementDefResponse
+	(*ListItemDefsRequest)(nil),          // 13: registry.v1.ListItemDefsRequest
+	(*ListItemDefsResponse)(nil),         // 14: registry.v1.ListItemDefsResponse
+	(*ListAchievementsDefsRequest)(nil),  // 15: registry.v1.ListAchievementsDefsRequest
+	(*ListAchievementsDefsResponse)(nil), // 16: registry.v1.ListAchievementsDefsResponse
+	(common.Rarity)(0),                   // 17: common.v1.Rarity
+	(*common.FilterTagList)(nil),         // 18: common.v1.FilterTagList
+	(*common.Pagination)(nil),            // 19: common.v1.Pagination
 }
 var file_registry_registry_proto_depIdxs = []int32{
-	16, // 0: registry.v1.ItemDef.rarity:type_name -> common.v1.Rarity
+	17, // 0: registry.v1.ItemDef.rarity:type_name -> common.v1.Rarity
 	0,  // 1: registry.v1.CreateItemDefRequest.item_def:type_name -> registry.v1.ItemDef
 	2,  // 2: registry.v1.CreateAchievementDefRequest.achievement_def:type_name -> registry.v1.AchievementDef
-	2,  // 3: registry.v1.UpdateAchievementDefRequest.achievement_def:type_name -> registry.v1.AchievementDef
-	16, // 4: registry.v1.ListItemDefsRequest.rarity:type_name -> common.v1.Rarity
-	17, // 5: registry.v1.ListItemDefsRequest.tags:type_name -> common.v1.FilterTagList
+	3,  // 3: registry.v1.UpdateAchievementDefRequest.achievement_def:type_name -> registry.v1.UpdateAchievementDef
+	17, // 4: registry.v1.ListItemDefsRequest.rarity:type_name -> common.v1.Rarity
+	18, // 5: registry.v1.ListItemDefsRequest.tags:type_name -> common.v1.FilterTagList
 	0,  // 6: registry.v1.ListItemDefsResponse.items:type_name -> registry.v1.ItemDef
-	18, // 7: registry.v1.ListItemDefsResponse.pagination:type_name -> common.v1.Pagination
+	19, // 7: registry.v1.ListItemDefsResponse.pagination:type_name -> common.v1.Pagination
 	2,  // 8: registry.v1.ListAchievementsDefsResponse.items:type_name -> registry.v1.AchievementDef
-	18, // 9: registry.v1.ListAchievementsDefsResponse.pagination:type_name -> common.v1.Pagination
-	3,  // 10: registry.v1.RegistryService.GetItemDef:input_type -> registry.v1.GetItemDefRequest
-	4,  // 11: registry.v1.RegistryService.CreateItemDef:input_type -> registry.v1.CreateItemDefRequest
+	19, // 9: registry.v1.ListAchievementsDefsResponse.pagination:type_name -> common.v1.Pagination
+	4,  // 10: registry.v1.RegistryService.GetItemDef:input_type -> registry.v1.GetItemDefRequest
+	5,  // 11: registry.v1.RegistryService.CreateItemDef:input_type -> registry.v1.CreateItemDefRequest
 	1,  // 12: registry.v1.RegistryService.UpdateItemDef:input_type -> registry.v1.UpdateItemDefRequest
-	7,  // 13: registry.v1.RegistryService.GetAchievementDef:input_type -> registry.v1.GetAchievementDefRequest
-	8,  // 14: registry.v1.RegistryService.CreateAchievementDef:input_type -> registry.v1.CreateAchievementDefRequest
-	10, // 15: registry.v1.RegistryService.UpdateAchievementDef:input_type -> registry.v1.UpdateAchievementDefRequest
-	12, // 16: registry.v1.RegistryService.ListItemDefs:input_type -> registry.v1.ListItemDefsRequest
-	14, // 17: registry.v1.RegistryService.ListAchievementsDefs:input_type -> registry.v1.ListAchievementsDefsRequest
+	8,  // 13: registry.v1.RegistryService.GetAchievementDef:input_type -> registry.v1.GetAchievementDefRequest
+	9,  // 14: registry.v1.RegistryService.CreateAchievementDef:input_type -> registry.v1.CreateAchievementDefRequest
+	11, // 15: registry.v1.RegistryService.UpdateAchievementDef:input_type -> registry.v1.UpdateAchievementDefRequest
+	13, // 16: registry.v1.RegistryService.ListItemDefs:input_type -> registry.v1.ListItemDefsRequest
+	15, // 17: registry.v1.RegistryService.ListAchievementsDefs:input_type -> registry.v1.ListAchievementsDefsRequest
 	0,  // 18: registry.v1.RegistryService.GetItemDef:output_type -> registry.v1.ItemDef
-	5,  // 19: registry.v1.RegistryService.CreateItemDef:output_type -> registry.v1.CreateItemDefResponse
-	6,  // 20: registry.v1.RegistryService.UpdateItemDef:output_type -> registry.v1.UpdateItemDefResponse
+	6,  // 19: registry.v1.RegistryService.CreateItemDef:output_type -> registry.v1.CreateItemDefResponse
+	7,  // 20: registry.v1.RegistryService.UpdateItemDef:output_type -> registry.v1.UpdateItemDefResponse
 	2,  // 21: registry.v1.RegistryService.GetAchievementDef:output_type -> registry.v1.AchievementDef
-	9,  // 22: registry.v1.RegistryService.CreateAchievementDef:output_type -> registry.v1.CreateAchievementDefResponse
-	11, // 23: registry.v1.RegistryService.UpdateAchievementDef:output_type -> registry.v1.UpdateAchievementDefResponse
-	13, // 24: registry.v1.RegistryService.ListItemDefs:output_type -> registry.v1.ListItemDefsResponse
-	15, // 25: registry.v1.RegistryService.ListAchievementsDefs:output_type -> registry.v1.ListAchievementsDefsResponse
+	10, // 22: registry.v1.RegistryService.CreateAchievementDef:output_type -> registry.v1.CreateAchievementDefResponse
+	12, // 23: registry.v1.RegistryService.UpdateAchievementDef:output_type -> registry.v1.UpdateAchievementDefResponse
+	14, // 24: registry.v1.RegistryService.ListItemDefs:output_type -> registry.v1.ListItemDefsResponse
+	16, // 25: registry.v1.RegistryService.ListAchievementsDefs:output_type -> registry.v1.ListAchievementsDefsResponse
 	18, // [18:26] is the sub-list for method output_type
 	10, // [10:18] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name
@@ -1522,14 +1648,15 @@ func file_registry_registry_proto_init() {
 	}
 	file_registry_registry_proto_msgTypes[0].OneofWrappers = []any{}
 	file_registry_registry_proto_msgTypes[1].OneofWrappers = []any{}
-	file_registry_registry_proto_msgTypes[12].OneofWrappers = []any{}
+	file_registry_registry_proto_msgTypes[3].OneofWrappers = []any{}
+	file_registry_registry_proto_msgTypes[13].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_registry_registry_proto_rawDesc), len(file_registry_registry_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
