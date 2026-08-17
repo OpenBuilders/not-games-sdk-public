@@ -471,6 +471,24 @@ export interface ListAchievementsDefsResponse {
      */
     pagination?: Pagination;
 }
+/**
+ * @generated from protobuf message registry.v1.DeleteItemDefRequest
+ */
+export interface DeleteItemDefRequest {
+    /**
+     * @generated from protobuf field: string item_def_id = 1
+     */
+    itemDefId: string;
+}
+/**
+ * @generated from protobuf message registry.v1.DeleteItemDefResponse
+ */
+export interface DeleteItemDefResponse {
+    /**
+     * @generated from protobuf field: string status = 1
+     */
+    status: string;
+}
 // @generated message type with reflection information, may provide speed optimized methods
 class ItemDef$Type extends MessageType<ItemDef> {
     constructor() {
@@ -1835,6 +1853,100 @@ class ListAchievementsDefsResponse$Type extends MessageType<ListAchievementsDefs
  * @generated MessageType for protobuf message registry.v1.ListAchievementsDefsResponse
  */
 export const ListAchievementsDefsResponse = new ListAchievementsDefsResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class DeleteItemDefRequest$Type extends MessageType<DeleteItemDefRequest> {
+    constructor() {
+        super("registry.v1.DeleteItemDefRequest", [
+            { no: 1, name: "item_def_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<DeleteItemDefRequest>): DeleteItemDefRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.itemDefId = "";
+        if (value !== undefined)
+            reflectionMergePartial<DeleteItemDefRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: DeleteItemDefRequest): DeleteItemDefRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string item_def_id */ 1:
+                    message.itemDefId = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: DeleteItemDefRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string item_def_id = 1; */
+        if (message.itemDefId !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.itemDefId);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message registry.v1.DeleteItemDefRequest
+ */
+export const DeleteItemDefRequest = new DeleteItemDefRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class DeleteItemDefResponse$Type extends MessageType<DeleteItemDefResponse> {
+    constructor() {
+        super("registry.v1.DeleteItemDefResponse", [
+            { no: 1, name: "status", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<DeleteItemDefResponse>): DeleteItemDefResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.status = "";
+        if (value !== undefined)
+            reflectionMergePartial<DeleteItemDefResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: DeleteItemDefResponse): DeleteItemDefResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string status */ 1:
+                    message.status = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: DeleteItemDefResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string status = 1; */
+        if (message.status !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.status);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message registry.v1.DeleteItemDefResponse
+ */
+export const DeleteItemDefResponse = new DeleteItemDefResponse$Type();
 /**
  * @generated ServiceType for protobuf service registry.v1.RegistryService
  */
@@ -1845,6 +1957,7 @@ export const RegistryService = new ServiceType("registry.v1.RegistryService", [
     { name: "GetAchievementDef", options: {}, I: GetAchievementDefRequest, O: AchievementDef },
     { name: "CreateAchievementDef", options: {}, I: CreateAchievementDefRequest, O: CreateAchievementDefResponse },
     { name: "UpdateAchievementDef", options: {}, I: UpdateAchievementDefRequest, O: UpdateAchievementDefResponse },
+    { name: "DeleteItemDef", options: {}, I: DeleteItemDefRequest, O: DeleteItemDefResponse },
     { name: "ListItemDefs", options: {}, I: ListItemDefsRequest, O: ListItemDefsResponse },
     { name: "ListAchievementsDefs", options: {}, I: ListAchievementsDefsRequest, O: ListAchievementsDefsResponse }
 ]);
