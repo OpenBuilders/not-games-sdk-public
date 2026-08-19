@@ -599,6 +599,8 @@ definitions:
         items:
           $ref: '#/definitions/internal_module_registry_presentation_app_http.appSocial'
         type: array
+      sort_order:
+        type: integer
       tags:
         type: string
       updated_at:
@@ -1815,45 +1817,17 @@ paths:
         name: offset
         required: true
         type: integer
-      - description: Name
-        in: query
-        name: name
-        type: string
       - description: Slug
         in: query
         name: slug
         type: string
-      - description: Telegram chat ID
-        in: query
-        name: chat_id
-        type: integer
-      - description: Squad prefix
-        in: query
-        name: prefix
-        type: string
-      - description: Members amount
-        in: query
-        name: members_amount
-        type: integer
       - description: Members amount min
         in: query
         name: members_amount_min
         type: integer
-      - description: Members amount max
-        in: query
-        name: members_amount_max
-        type: integer
-      - description: Created at greater than or equal, RFC3339
-        in: query
-        name: created_at_gte
-        type: string
-      - description: Created at less than or equal, RFC3339
-        in: query
-        name: created_at_lte
-        type: string
       - description: Sort fields
         in: query
-        name: sortFields
+        name: sort_fields
         type: string
       - description: Sort directions
         in: query
