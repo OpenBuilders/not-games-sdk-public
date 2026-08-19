@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package ngprofile.v1;
+
+option go_package = "github.com/OpenBuilders/not-games-sdk-public/gen/grpc/go/profile";
+
+import "google/protobuf/timestamp.proto";
+
+enum ActivityEventType {
+  ACTIVITY_EVENT_TYPE_UNSPECIFIED = 0;
+  ACTIVITY_EVENT_TYPE_START = 1;
+  ACTIVITY_EVENT_TYPE_STOP = 2;
+}
+
+message ActivityMeta {
+  repeated string item_ids = 1;
+  map<string, string> extra = 2;
+}
+
+message ActivityEvent {
+  int64 account_id = 1;
+  int64 app_id = 2;
+  ActivityEventType event_type = 3;
+  optional google.protobuf.Timestamp timestamp = 4;
+  optional ActivityMeta meta = 5;
+}
+
+message ActivityAck {
+  bool accepted = 1;
+  string event_id = 2;
+}
+
+service ProfileActivityService {
+  rpc StreamActivity(stream ActivityEvent) returns (stream ActivityAck) {}
+}
