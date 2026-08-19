@@ -1097,54 +1097,19 @@ paths:
         required: true
         schema:
           type: integer
-      - description: Name
-        in: query
-        name: name
-        schema:
-          type: string
       - description: Slug
         in: query
         name: slug
         schema:
           type: string
-      - description: Telegram chat ID
-        in: query
-        name: chat_id
-        schema:
-          type: integer
-      - description: Squad prefix
-        in: query
-        name: prefix
-        schema:
-          type: string
-      - description: Members amount
-        in: query
-        name: members_amount
-        schema:
-          type: integer
       - description: Members amount min
         in: query
         name: members_amount_min
         schema:
           type: integer
-      - description: Members amount max
-        in: query
-        name: members_amount_max
-        schema:
-          type: integer
-      - description: "Created at greater than or equal, RFC3339"
-        in: query
-        name: created_at_gte
-        schema:
-          type: string
-      - description: "Created at less than or equal, RFC3339"
-        in: query
-        name: created_at_lte
-        schema:
-          type: string
       - description: Sort fields
         in: query
-        name: sortFields
+        name: sort_fields
         schema:
           type: string
       - description: Sort directions
@@ -2264,6 +2229,7 @@ components:
           - title: title
             type: type
             url: url
+          sort_order: 6
           slug: slug
           tags: tags
         - hidden: true
@@ -2281,6 +2247,7 @@ components:
           - title: title
             type: type
             url: url
+          sort_order: 6
           slug: slug
           tags: tags
       properties:
@@ -2306,6 +2273,7 @@ components:
         - title: title
           type: type
           url: url
+        sort_order: 6
         slug: slug
         tags: tags
       properties:
@@ -2327,6 +2295,8 @@ components:
           items:
             $ref: "#/components/schemas/internal_module_registry_presentation_app_http.appSocial"
           type: array
+        sort_order:
+          type: integer
         tags:
           type: string
         updated_at:
@@ -3166,6 +3136,7 @@ components:
             - title: title
               type: type
               url: url
+            sort_order: 6
             slug: slug
             tags: tags
           - hidden: true
@@ -3183,6 +3154,7 @@ components:
             - title: title
               type: type
               url: url
+            sort_order: 6
             slug: slug
             tags: tags
         error_code: error_code

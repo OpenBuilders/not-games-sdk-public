@@ -27,6 +27,7 @@ type InternalModuleRegistryPresentationAppHttpAppOneResponse struct {
 	Name *string `json:"name,omitempty"`
 	Slug *string `json:"slug,omitempty"`
 	Socials []InternalModuleRegistryPresentationAppHttpAppSocial `json:"socials,omitempty"`
+	SortOrder *int32 `json:"sort_order,omitempty"`
 	Tags *string `json:"tags,omitempty"`
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	Verified *bool `json:"verified,omitempty"`
@@ -305,6 +306,38 @@ func (o *InternalModuleRegistryPresentationAppHttpAppOneResponse) SetSocials(v [
 	o.Socials = v
 }
 
+// GetSortOrder returns the SortOrder field value if set, zero value otherwise.
+func (o *InternalModuleRegistryPresentationAppHttpAppOneResponse) GetSortOrder() int32 {
+	if o == nil || IsNil(o.SortOrder) {
+		var ret int32
+		return ret
+	}
+	return *o.SortOrder
+}
+
+// GetSortOrderOk returns a tuple with the SortOrder field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InternalModuleRegistryPresentationAppHttpAppOneResponse) GetSortOrderOk() (*int32, bool) {
+	if o == nil || IsNil(o.SortOrder) {
+		return nil, false
+	}
+	return o.SortOrder, true
+}
+
+// HasSortOrder returns a boolean if a field has been set.
+func (o *InternalModuleRegistryPresentationAppHttpAppOneResponse) HasSortOrder() bool {
+	if o != nil && !IsNil(o.SortOrder) {
+		return true
+	}
+
+	return false
+}
+
+// SetSortOrder gets a reference to the given int32 and assigns it to the SortOrder field.
+func (o *InternalModuleRegistryPresentationAppHttpAppOneResponse) SetSortOrder(v int32) {
+	o.SortOrder = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *InternalModuleRegistryPresentationAppHttpAppOneResponse) GetTags() string {
 	if o == nil || IsNil(o.Tags) {
@@ -434,6 +467,9 @@ func (o InternalModuleRegistryPresentationAppHttpAppOneResponse) ToMap() (map[st
 	}
 	if !IsNil(o.Socials) {
 		toSerialize["socials"] = o.Socials
+	}
+	if !IsNil(o.SortOrder) {
+		toSerialize["sort_order"] = o.SortOrder
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
