@@ -8,6 +8,8 @@ import type { ListAchievementsDefsResponse } from "./registry_pb";
 import type { ListAchievementsDefsRequest } from "./registry_pb";
 import type { ListItemDefsResponse } from "./registry_pb";
 import type { ListItemDefsRequest } from "./registry_pb";
+import type { DeleteItemDefResponse } from "./registry_pb";
+import type { DeleteItemDefRequest } from "./registry_pb";
 import type { UpdateAchievementDefResponse } from "./registry_pb";
 import type { UpdateAchievementDefRequest } from "./registry_pb";
 import type { CreateAchievementDefResponse } from "./registry_pb";
@@ -51,6 +53,10 @@ export interface IRegistryServiceClient {
      * @generated from protobuf rpc: UpdateAchievementDef
      */
     updateAchievementDef(input: UpdateAchievementDefRequest, options?: RpcOptions): UnaryCall<UpdateAchievementDefRequest, UpdateAchievementDefResponse>;
+    /**
+     * @generated from protobuf rpc: DeleteItemDef
+     */
+    deleteItemDef(input: DeleteItemDefRequest, options?: RpcOptions): UnaryCall<DeleteItemDefRequest, DeleteItemDefResponse>;
     /**
      * @generated from protobuf rpc: ListItemDefs
      */
@@ -112,17 +118,24 @@ export class RegistryServiceClient implements IRegistryServiceClient, ServiceInf
         return stackIntercept<UpdateAchievementDefRequest, UpdateAchievementDefResponse>("unary", this._transport, method, opt, input);
     }
     /**
+     * @generated from protobuf rpc: DeleteItemDef
+     */
+    deleteItemDef(input: DeleteItemDefRequest, options?: RpcOptions): UnaryCall<DeleteItemDefRequest, DeleteItemDefResponse> {
+        const method = this.methods[6], opt = this._transport.mergeOptions(options);
+        return stackIntercept<DeleteItemDefRequest, DeleteItemDefResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
      * @generated from protobuf rpc: ListItemDefs
      */
     listItemDefs(input: ListItemDefsRequest, options?: RpcOptions): UnaryCall<ListItemDefsRequest, ListItemDefsResponse> {
-        const method = this.methods[6], opt = this._transport.mergeOptions(options);
+        const method = this.methods[7], opt = this._transport.mergeOptions(options);
         return stackIntercept<ListItemDefsRequest, ListItemDefsResponse>("unary", this._transport, method, opt, input);
     }
     /**
      * @generated from protobuf rpc: ListAchievementsDefs
      */
     listAchievementsDefs(input: ListAchievementsDefsRequest, options?: RpcOptions): UnaryCall<ListAchievementsDefsRequest, ListAchievementsDefsResponse> {
-        const method = this.methods[7], opt = this._transport.mergeOptions(options);
+        const method = this.methods[8], opt = this._transport.mergeOptions(options);
         return stackIntercept<ListAchievementsDefsRequest, ListAchievementsDefsResponse>("unary", this._transport, method, opt, input);
     }
 }
