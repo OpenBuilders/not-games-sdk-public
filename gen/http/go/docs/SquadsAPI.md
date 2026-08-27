@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## SquadsGet
 
-> SquadsGet200Response SquadsGet(ctx).Limit(limit).Offset(offset).Name(name).Slug(slug).ChatId(chatId).Prefix(prefix).MembersAmount(membersAmount).MembersAmountMin(membersAmountMin).MembersAmountMax(membersAmountMax).CreatedAtGte(createdAtGte).CreatedAtLte(createdAtLte).SortFields(sortFields).Directions(directions).Execute()
+> SquadsGet200Response SquadsGet(ctx).Limit(limit).Offset(offset).Slug(slug).MembersAmountMin(membersAmountMin).SortFields(sortFields).Directions(directions).Execute()
 
 List squads
 
@@ -30,21 +30,14 @@ import (
 func main() {
 	limit := int32(56) // int32 | Limit
 	offset := int32(56) // int32 | Offset
-	name := "name_example" // string | Name (optional)
 	slug := "slug_example" // string | Slug (optional)
-	chatId := int32(56) // int32 | Telegram chat ID (optional)
-	prefix := "prefix_example" // string | Squad prefix (optional)
-	membersAmount := int32(56) // int32 | Members amount (optional)
 	membersAmountMin := int32(56) // int32 | Members amount min (optional)
-	membersAmountMax := int32(56) // int32 | Members amount max (optional)
-	createdAtGte := "createdAtGte_example" // string | Created at greater than or equal, RFC3339 (optional)
-	createdAtLte := "createdAtLte_example" // string | Created at less than or equal, RFC3339 (optional)
 	sortFields := "sortFields_example" // string | Sort fields (optional)
 	directions := "directions_example" // string | Sort directions (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SquadsAPI.SquadsGet(context.Background()).Limit(limit).Offset(offset).Name(name).Slug(slug).ChatId(chatId).Prefix(prefix).MembersAmount(membersAmount).MembersAmountMin(membersAmountMin).MembersAmountMax(membersAmountMax).CreatedAtGte(createdAtGte).CreatedAtLte(createdAtLte).SortFields(sortFields).Directions(directions).Execute()
+	resp, r, err := apiClient.SquadsAPI.SquadsGet(context.Background()).Limit(limit).Offset(offset).Slug(slug).MembersAmountMin(membersAmountMin).SortFields(sortFields).Directions(directions).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SquadsAPI.SquadsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -67,15 +60,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int32** | Limit | 
  **offset** | **int32** | Offset | 
- **name** | **string** | Name | 
  **slug** | **string** | Slug | 
- **chatId** | **int32** | Telegram chat ID | 
- **prefix** | **string** | Squad prefix | 
- **membersAmount** | **int32** | Members amount | 
  **membersAmountMin** | **int32** | Members amount min | 
- **membersAmountMax** | **int32** | Members amount max | 
- **createdAtGte** | **string** | Created at greater than or equal, RFC3339 | 
- **createdAtLte** | **string** | Created at less than or equal, RFC3339 | 
  **sortFields** | **string** | Sort fields | 
  **directions** | **string** | Sort directions | 
 
