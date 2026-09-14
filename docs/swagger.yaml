@@ -241,6 +241,15 @@ definitions:
           $ref: '#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.DisplayTypeMetaResponse'
         type: array
     type: object
+  github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.TransferItemRequest:
+    properties:
+      account_from:
+        type: integer
+      account_to:
+        type: integer
+      comment:
+        type: string
+    type: object
   github_com_not-platform_internal_module_profile_domain_entity.Account:
     properties:
       account_id:
@@ -882,6 +891,155 @@ paths:
       summary: List new visible apps for external market
       tags:
       - Market
+  /api/v1/market/item:
+    get:
+      parameters:
+      - description: limit
+        in: query
+        name: limit
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        type: integer
+      - description: comma separated sort fields
+        in: query
+        name: sort_fields
+        type: string
+      - description: 'comma separated: asc|desc'
+        in: query
+        name: directions
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ListItemsResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List items for external market
+      tags:
+      - Market
+  /api/v1/market/item/{item_id}:
+    get:
+      parameters:
+      - description: Item ID
+        in: path
+        name: item_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.InventoryItemResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Get any user item by id for external market
+      tags:
+      - Market
+  /api/v1/market/item/{item_id}/transfer:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Item ID
+        in: path
+        name: item_id
+        required: true
+        type: string
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.TransferItemRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Transfer an item to a user from external market
+      tags:
+      - Market
+  /api/v1/market/item_def:
+    get:
+      parameters:
+      - description: limit
+        in: query
+        name: limit
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        type: integer
+      - description: comma separated sort fields
+        in: query
+        name: sort_fields
+        type: string
+      - description: 'comma separated: asc|desc'
+        in: query
+        name: directions
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_registry_presentation_item_http_model.ListItemDefResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List item defs for external market
+      tags:
+      - Market
   /api/v1/market/profile/{account_id}/items-by-apps:
     get:
       parameters:
@@ -909,7 +1067,7 @@ paths:
       summary: market profile apps items
       tags:
       - Market
-  /api/v1/profile/{account_id}/items-by-display-types:
+  /api/v1/market/profile/{account_id}/items-by-display-types:
     get:
       parameters:
       - description: account id
@@ -1336,7 +1494,7 @@ paths:
       tags:
       - Inventory
   /inventory/items/{item_id}/transfer_log:
-    post:
+    get:
       consumes:
       - application/json
       parameters:
@@ -1589,6 +1747,33 @@ paths:
           schema:
             $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
       summary: Update achievement-def
+      tags:
+      - Registry
+  /registry/app:
+    get:
+      parameters:
+      - description: app_id
+        in: query
+        name: app_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/internal_module_registry_presentation_app_http.appOneResponse'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Get app
       tags:
       - Registry
   /registry/apps:
