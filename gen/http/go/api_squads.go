@@ -28,15 +28,8 @@ type ApiSquadsGetRequest struct {
 	ApiService *SquadsAPIService
 	limit *int32
 	offset *int32
-	name *string
 	slug *string
-	chatId *int32
-	prefix *string
-	membersAmount *int32
 	membersAmountMin *int32
-	membersAmountMax *int32
-	createdAtGte *string
-	createdAtLte *string
 	sortFields *string
 	directions *string
 }
@@ -53,57 +46,15 @@ func (r ApiSquadsGetRequest) Offset(offset int32) ApiSquadsGetRequest {
 	return r
 }
 
-// Name
-func (r ApiSquadsGetRequest) Name(name string) ApiSquadsGetRequest {
-	r.name = &name
-	return r
-}
-
 // Slug
 func (r ApiSquadsGetRequest) Slug(slug string) ApiSquadsGetRequest {
 	r.slug = &slug
 	return r
 }
 
-// Telegram chat ID
-func (r ApiSquadsGetRequest) ChatId(chatId int32) ApiSquadsGetRequest {
-	r.chatId = &chatId
-	return r
-}
-
-// Squad prefix
-func (r ApiSquadsGetRequest) Prefix(prefix string) ApiSquadsGetRequest {
-	r.prefix = &prefix
-	return r
-}
-
-// Members amount
-func (r ApiSquadsGetRequest) MembersAmount(membersAmount int32) ApiSquadsGetRequest {
-	r.membersAmount = &membersAmount
-	return r
-}
-
 // Members amount min
 func (r ApiSquadsGetRequest) MembersAmountMin(membersAmountMin int32) ApiSquadsGetRequest {
 	r.membersAmountMin = &membersAmountMin
-	return r
-}
-
-// Members amount max
-func (r ApiSquadsGetRequest) MembersAmountMax(membersAmountMax int32) ApiSquadsGetRequest {
-	r.membersAmountMax = &membersAmountMax
-	return r
-}
-
-// Created at greater than or equal, RFC3339
-func (r ApiSquadsGetRequest) CreatedAtGte(createdAtGte string) ApiSquadsGetRequest {
-	r.createdAtGte = &createdAtGte
-	return r
-}
-
-// Created at less than or equal, RFC3339
-func (r ApiSquadsGetRequest) CreatedAtLte(createdAtLte string) ApiSquadsGetRequest {
-	r.createdAtLte = &createdAtLte
 	return r
 }
 
@@ -165,35 +116,14 @@ func (a *SquadsAPIService) SquadsGetExecute(r ApiSquadsGetRequest) (*SquadsGet20
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
-	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "", "")
-	}
 	if r.slug != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "", "")
-	}
-	if r.chatId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "chat_id", r.chatId, "", "")
-	}
-	if r.prefix != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "prefix", r.prefix, "", "")
-	}
-	if r.membersAmount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "members_amount", r.membersAmount, "", "")
 	}
 	if r.membersAmountMin != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "members_amount_min", r.membersAmountMin, "", "")
 	}
-	if r.membersAmountMax != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "members_amount_max", r.membersAmountMax, "", "")
-	}
-	if r.createdAtGte != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_at_gte", r.createdAtGte, "", "")
-	}
-	if r.createdAtLte != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_at_lte", r.createdAtLte, "", "")
-	}
 	if r.sortFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sortFields", r.sortFields, "", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_fields", r.sortFields, "", "")
 	}
 	if r.directions != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "directions", r.directions, "", "")
