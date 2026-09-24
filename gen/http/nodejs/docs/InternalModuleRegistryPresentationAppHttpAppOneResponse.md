@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **name** | **string** |  | [optional] [default to undefined]
 **slug** | **string** |  | [optional] [default to undefined]
 **socials** | [**Array&lt;InternalModuleRegistryPresentationAppHttpAppSocial&gt;**](InternalModuleRegistryPresentationAppHttpAppSocial.md) |  | [optional] [default to undefined]
+**sort_order** | **number** |  | [optional] [default to undefined]
 **tags** | **string** |  | [optional] [default to undefined]
 **updated_at** | **string** |  | [optional] [default to undefined]
 **verified** | **boolean** |  | [optional] [default to undefined]
@@ -31,6 +32,7 @@ const instance: InternalModuleRegistryPresentationAppHttpAppOneResponse = {
     name,
     slug,
     socials,
+    sort_order,
     tags,
     updated_at,
     verified,

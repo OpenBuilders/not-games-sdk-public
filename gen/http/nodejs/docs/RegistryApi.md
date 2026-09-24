@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost:8080/api/v1*
 |[**registryAchievementsAchievementDefIdPut**](#registryachievementsachievementdefidput) | **PUT** /registry/achievements/{achievement_def_id} | Update achievement-def|
 |[**registryAchievementsGet**](#registryachievementsget) | **GET** /registry/achievements | List achievement-def|
 |[**registryAchievementsPost**](#registryachievementspost) | **POST** /registry/achievements | Create achievement-def|
+|[**registryAppGet**](#registryappget) | **GET** /registry/app | Get app|
 |[**registryAppsGet**](#registryappsget) | **GET** /registry/apps | List apps|
 |[**registryItemsGet**](#registryitemsget) | **GET** /registry/items | List item-def|
 |[**registryItemsItemDefIdDelete**](#registryitemsitemdefiddelete) | **DELETE** /registry/items/{item_def_id} | Delete item-def|
@@ -279,6 +280,57 @@ const { status, data } = await apiInstance.registryAchievementsPost(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **registryAppGet**
+> RegistryAppGet200Response registryAppGet()
+
+
+### Example
+
+```typescript
+import {
+    RegistryApi,
+    Configuration
+} from 'notgamessdkpublic';
+
+const configuration = new Configuration();
+const apiInstance = new RegistryApi(configuration);
+
+let appId: string; //app_id (default to undefined)
+
+const { status, data } = await apiInstance.registryAppGet(
+    appId
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **appId** | [**string**] | app_id | defaults to undefined|
+
+
+### Return type
+
+**RegistryAppGet200Response**
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | OK |  -  |
+|**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **registryAppsGet**
 > RegistryAppsGet200Response registryAppsGet()
 
@@ -334,7 +386,7 @@ const { status, data } = await apiInstance.registryAppsGet(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **registryItemsGet**
-> RegistryItemsGet200Response registryItemsGet()
+> ApiV1MarketItemDefGet200Response registryItemsGet()
 
 
 ### Example
@@ -403,7 +455,7 @@ const { status, data } = await apiInstance.registryItemsGet(
 
 ### Return type
 
-**RegistryItemsGet200Response**
+**ApiV1MarketItemDefGet200Response**
 
 ### Authorization
 

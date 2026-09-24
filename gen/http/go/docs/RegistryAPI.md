@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**RegistryAchievementsAchievementDefIdPut**](RegistryAPI.md#RegistryAchievementsAchievementDefIdPut) | **Put** /registry/achievements/{achievement_def_id} | Update achievement-def
 [**RegistryAchievementsGet**](RegistryAPI.md#RegistryAchievementsGet) | **Get** /registry/achievements | List achievement-def
 [**RegistryAchievementsPost**](RegistryAPI.md#RegistryAchievementsPost) | **Post** /registry/achievements | Create achievement-def
+[**RegistryAppGet**](RegistryAPI.md#RegistryAppGet) | **Get** /registry/app | Get app
 [**RegistryAppsGet**](RegistryAPI.md#RegistryAppsGet) | **Get** /registry/apps | List apps
 [**RegistryItemsGet**](RegistryAPI.md#RegistryItemsGet) | **Get** /registry/items | List item-def
 [**RegistryItemsItemDefIdDelete**](RegistryAPI.md#RegistryItemsItemDefIdDelete) | **Delete** /registry/items/{item_def_id} | Delete item-def
@@ -354,6 +355,70 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## RegistryAppGet
+
+> RegistryAppGet200Response RegistryAppGet(ctx).AppId(appId).Execute()
+
+Get app
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	appId := "appId_example" // string | app_id
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RegistryAPI.RegistryAppGet(context.Background()).AppId(appId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RegistryAPI.RegistryAppGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RegistryAppGet`: RegistryAppGet200Response
+	fmt.Fprintf(os.Stdout, "Response from `RegistryAPI.RegistryAppGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRegistryAppGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **string** | app_id | 
+
+### Return type
+
+[**RegistryAppGet200Response**](RegistryAppGet200Response.md)
+
+### Authorization
+
+[JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RegistryAppsGet
 
 > RegistryAppsGet200Response RegistryAppsGet(ctx).Limit(limit).Offset(offset).Execute()
@@ -422,7 +487,7 @@ Name | Type | Description  | Notes
 
 ## RegistryItemsGet
 
-> RegistryItemsGet200Response RegistryItemsGet(ctx).Limit(limit).Offset(offset).Collection(collection).Name(name).Rarity(rarity).Type_(type_).DisplayType(displayType).Hidden(hidden).GameOnly(gameOnly).StoreHidden(storeHidden).Tradable(tradable).Supply(supply).SortFields(sortFields).Directions(directions).Execute()
+> ApiV1MarketItemDefGet200Response RegistryItemsGet(ctx).Limit(limit).Offset(offset).Collection(collection).Name(name).Rarity(rarity).Type_(type_).DisplayType(displayType).Hidden(hidden).GameOnly(gameOnly).StoreHidden(storeHidden).Tradable(tradable).Supply(supply).SortFields(sortFields).Directions(directions).Execute()
 
 List item-def
 
@@ -461,7 +526,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `RegistryAPI.RegistryItemsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RegistryItemsGet`: RegistryItemsGet200Response
+	// response from `RegistryItemsGet`: ApiV1MarketItemDefGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `RegistryAPI.RegistryItemsGet`: %v\n", resp)
 }
 ```
@@ -494,7 +559,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RegistryItemsGet200Response**](RegistryItemsGet200Response.md)
+[**ApiV1MarketItemDefGet200Response**](ApiV1MarketItemDefGet200Response.md)
 
 ### Authorization
 

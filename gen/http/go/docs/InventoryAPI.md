@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**InventoryItemsItemIdGet**](InventoryAPI.md#InventoryItemsItemIdGet) | **Get** /inventory/items/{item_id} | Get item
 [**InventoryItemsItemIdIncrementQuantityPost**](InventoryAPI.md#InventoryItemsItemIdIncrementQuantityPost) | **Post** /inventory/items/{item_id}/increment-quantity | Consume item
 [**InventoryItemsItemIdPut**](InventoryAPI.md#InventoryItemsItemIdPut) | **Put** /inventory/items/{item_id} | Update item
-[**InventoryItemsItemIdTransferLogPost**](InventoryAPI.md#InventoryItemsItemIdTransferLogPost) | **Post** /inventory/items/{item_id}/transfer_log | Get transfer logs
+[**InventoryItemsItemIdTransferLogGet**](InventoryAPI.md#InventoryItemsItemIdTransferLogGet) | **Get** /inventory/items/{item_id}/transfer_log | Get transfer logs
 [**InventoryItemsItemIdTransferPost**](InventoryAPI.md#InventoryItemsItemIdTransferPost) | **Post** /inventory/items/{item_id}/transfer | Transfer item to another account
 [**InventoryItemsItemIdTransferPreflightPost**](InventoryAPI.md#InventoryItemsItemIdTransferPreflightPost) | **Post** /inventory/items/{item_id}/transfer-preflight | Check transfer item possibility to another account
 [**InventoryItemsUnpackPost**](InventoryAPI.md#InventoryItemsUnpackPost) | **Post** /inventory/items/unpack | Unpack item
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## InventoryByItemdefGet
 
-> InventoryByItemdefGet200Response InventoryByItemdefGet(ctx).Limit(limit).Offset(offset).ItemDefId(itemDefId).SortFields(sortFields).Directions(directions).Execute()
+> ApiV1MarketItemGet200Response InventoryByItemdefGet(ctx).Limit(limit).Offset(offset).ItemDefId(itemDefId).SortFields(sortFields).Directions(directions).Execute()
 
 List items
 
@@ -50,7 +50,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryByItemdefGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `InventoryByItemdefGet`: InventoryByItemdefGet200Response
+	// response from `InventoryByItemdefGet`: ApiV1MarketItemGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.InventoryByItemdefGet`: %v\n", resp)
 }
 ```
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InventoryByItemdefGet200Response**](InventoryByItemdefGet200Response.md)
+[**ApiV1MarketItemGet200Response**](ApiV1MarketItemGet200Response.md)
 
 ### Authorization
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## InventoryItemsGet
 
-> InventoryByItemdefGet200Response InventoryItemsGet(ctx).Limit(limit).Offset(offset).Execute()
+> ApiV1MarketItemGet200Response InventoryItemsGet(ctx).Limit(limit).Offset(offset).Execute()
 
 List items
 
@@ -183,7 +183,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryItemsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `InventoryItemsGet`: InventoryByItemdefGet200Response
+	// response from `InventoryItemsGet`: ApiV1MarketItemGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.InventoryItemsGet`: %v\n", resp)
 }
 ```
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InventoryByItemdefGet200Response**](InventoryByItemdefGet200Response.md)
+[**ApiV1MarketItemGet200Response**](ApiV1MarketItemGet200Response.md)
 
 ### Authorization
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 ## InventoryItemsItemIdGet
 
-> InventoryItemsItemIdGet200Response InventoryItemsItemIdGet(ctx, itemId).AppId(appId).Execute()
+> ApiV1MarketItemItemIdGet200Response InventoryItemsItemIdGet(ctx, itemId).AppId(appId).Execute()
 
 Get item
 
@@ -321,7 +321,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryItemsItemIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `InventoryItemsItemIdGet`: InventoryItemsItemIdGet200Response
+	// response from `InventoryItemsItemIdGet`: ApiV1MarketItemItemIdGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.InventoryItemsItemIdGet`: %v\n", resp)
 }
 ```
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InventoryItemsItemIdGet200Response**](InventoryItemsItemIdGet200Response.md)
+[**ApiV1MarketItemItemIdGet200Response**](ApiV1MarketItemItemIdGet200Response.md)
 
 ### Authorization
 
@@ -504,9 +504,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## InventoryItemsItemIdTransferLogPost
+## InventoryItemsItemIdTransferLogGet
 
-> GithubComNotPlatformInternalServerTemplatesResponseTemplate InventoryItemsItemIdTransferLogPost(ctx, itemId).Limit(limit).Offset(offset).Execute()
+> GithubComNotPlatformInternalServerTemplatesResponseTemplate InventoryItemsItemIdTransferLogGet(ctx, itemId).Limit(limit).Offset(offset).Execute()
 
 Get transfer logs
 
@@ -529,13 +529,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InventoryAPI.InventoryItemsItemIdTransferLogPost(context.Background(), itemId).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.InventoryAPI.InventoryItemsItemIdTransferLogGet(context.Background(), itemId).Limit(limit).Offset(offset).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryItemsItemIdTransferLogPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.InventoryItemsItemIdTransferLogGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `InventoryItemsItemIdTransferLogPost`: GithubComNotPlatformInternalServerTemplatesResponseTemplate
-	fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.InventoryItemsItemIdTransferLogPost`: %v\n", resp)
+	// response from `InventoryItemsItemIdTransferLogGet`: GithubComNotPlatformInternalServerTemplatesResponseTemplate
+	fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.InventoryItemsItemIdTransferLogGet`: %v\n", resp)
 }
 ```
 
@@ -549,7 +549,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInventoryItemsItemIdTransferLogPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiInventoryItemsItemIdTransferLogGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

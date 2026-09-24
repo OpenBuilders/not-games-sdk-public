@@ -85,19 +85,24 @@ Class | Method | HTTP request | Description
 *InventoryAPI* | [**InventoryItemsItemIdGet**](docs/InventoryAPI.md#inventoryitemsitemidget) | **Get** /inventory/items/{item_id} | Get item
 *InventoryAPI* | [**InventoryItemsItemIdIncrementQuantityPost**](docs/InventoryAPI.md#inventoryitemsitemidincrementquantitypost) | **Post** /inventory/items/{item_id}/increment-quantity | Consume item
 *InventoryAPI* | [**InventoryItemsItemIdPut**](docs/InventoryAPI.md#inventoryitemsitemidput) | **Put** /inventory/items/{item_id} | Update item
-*InventoryAPI* | [**InventoryItemsItemIdTransferLogPost**](docs/InventoryAPI.md#inventoryitemsitemidtransferlogpost) | **Post** /inventory/items/{item_id}/transfer_log | Get transfer logs
+*InventoryAPI* | [**InventoryItemsItemIdTransferLogGet**](docs/InventoryAPI.md#inventoryitemsitemidtransferlogget) | **Get** /inventory/items/{item_id}/transfer_log | Get transfer logs
 *InventoryAPI* | [**InventoryItemsItemIdTransferPost**](docs/InventoryAPI.md#inventoryitemsitemidtransferpost) | **Post** /inventory/items/{item_id}/transfer | Transfer item to another account
 *InventoryAPI* | [**InventoryItemsItemIdTransferPreflightPost**](docs/InventoryAPI.md#inventoryitemsitemidtransferpreflightpost) | **Post** /inventory/items/{item_id}/transfer-preflight | Check transfer item possibility to another account
 *InventoryAPI* | [**InventoryItemsUnpackPost**](docs/InventoryAPI.md#inventoryitemsunpackpost) | **Post** /inventory/items/unpack | Unpack item
 *MarketAPI* | [**ApiV1MarketAppsNewGet**](docs/MarketAPI.md#apiv1marketappsnewget) | **Get** /api/v1/market/apps/new | List new visible apps for external market
+*MarketAPI* | [**ApiV1MarketItemDefGet**](docs/MarketAPI.md#apiv1marketitemdefget) | **Get** /api/v1/market/item_def | List item defs for external market
+*MarketAPI* | [**ApiV1MarketItemGet**](docs/MarketAPI.md#apiv1marketitemget) | **Get** /api/v1/market/item | List items for external market
+*MarketAPI* | [**ApiV1MarketItemItemIdGet**](docs/MarketAPI.md#apiv1marketitemitemidget) | **Get** /api/v1/market/item/{item_id} | Get any user item by id for external market
+*MarketAPI* | [**ApiV1MarketItemItemIdTransferPost**](docs/MarketAPI.md#apiv1marketitemitemidtransferpost) | **Post** /api/v1/market/item/{item_id}/transfer | Transfer an item to a user from external market
 *MarketAPI* | [**ApiV1MarketProfileAccountIdItemsByAppsGet**](docs/MarketAPI.md#apiv1marketprofileaccountiditemsbyappsget) | **Get** /api/v1/market/profile/{account_id}/items-by-apps | market profile apps items
-*MarketAPI* | [**ApiV1ProfileAccountIdItemsByDisplayTypesGet**](docs/MarketAPI.md#apiv1profileaccountiditemsbydisplaytypesget) | **Get** /api/v1/profile/{account_id}/items-by-display-types | market profile app items
+*MarketAPI* | [**ApiV1MarketProfileAccountIdItemsByDisplayTypesGet**](docs/MarketAPI.md#apiv1marketprofileaccountiditemsbydisplaytypesget) | **Get** /api/v1/market/profile/{account_id}/items-by-display-types | market profile app items
 *ProfileAPI* | [**ProfileAccountIdGet**](docs/ProfileAPI.md#profileaccountidget) | **Get** /profile/{account_id} | Get account
 *RegistryAPI* | [**RegistryAchievementsAchievementDefIdDelete**](docs/RegistryAPI.md#registryachievementsachievementdefiddelete) | **Delete** /registry/achievements/{achievement_def_id} | Delete achievement-def
 *RegistryAPI* | [**RegistryAchievementsAchievementDefIdGet**](docs/RegistryAPI.md#registryachievementsachievementdefidget) | **Get** /registry/achievements/{achievement_def_id} | Get achievement-def
 *RegistryAPI* | [**RegistryAchievementsAchievementDefIdPut**](docs/RegistryAPI.md#registryachievementsachievementdefidput) | **Put** /registry/achievements/{achievement_def_id} | Update achievement-def
 *RegistryAPI* | [**RegistryAchievementsGet**](docs/RegistryAPI.md#registryachievementsget) | **Get** /registry/achievements | List achievement-def
 *RegistryAPI* | [**RegistryAchievementsPost**](docs/RegistryAPI.md#registryachievementspost) | **Post** /registry/achievements | Create achievement-def
+*RegistryAPI* | [**RegistryAppGet**](docs/RegistryAPI.md#registryappget) | **Get** /registry/app | Get app
 *RegistryAPI* | [**RegistryAppsGet**](docs/RegistryAPI.md#registryappsget) | **Get** /registry/apps | List apps
 *RegistryAPI* | [**RegistryItemsGet**](docs/RegistryAPI.md#registryitemsget) | **Get** /registry/items | List item-def
 *RegistryAPI* | [**RegistryItemsItemDefIdDelete**](docs/RegistryAPI.md#registryitemsitemdefiddelete) | **Delete** /registry/items/{item_def_id} | Delete item-def
@@ -114,8 +119,11 @@ Class | Method | HTTP request | Description
  - [AchievementsIdGet200Response](docs/AchievementsIdGet200Response.md)
  - [AchievementsPost200Response](docs/AchievementsPost200Response.md)
  - [ApiV1MarketAppsNewGet200Response](docs/ApiV1MarketAppsNewGet200Response.md)
+ - [ApiV1MarketItemDefGet200Response](docs/ApiV1MarketItemDefGet200Response.md)
+ - [ApiV1MarketItemGet200Response](docs/ApiV1MarketItemGet200Response.md)
+ - [ApiV1MarketItemItemIdGet200Response](docs/ApiV1MarketItemItemIdGet200Response.md)
  - [ApiV1MarketProfileAccountIdItemsByAppsGet200Response](docs/ApiV1MarketProfileAccountIdItemsByAppsGet200Response.md)
- - [ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response](docs/ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response.md)
+ - [ApiV1MarketProfileAccountIdItemsByDisplayTypesGet200Response](docs/ApiV1MarketProfileAccountIdItemsByDisplayTypesGet200Response.md)
  - [AuthGeneratePost200Response](docs/AuthGeneratePost200Response.md)
  - [DropsIdGet200Response](docs/DropsIdGet200Response.md)
  - [DropsPost200Response](docs/DropsPost200Response.md)
@@ -136,6 +144,7 @@ Class | Method | HTTP request | Description
  - [GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelNewAppResponse](docs/GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelNewAppResponse.md)
  - [GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelProfileAppsItemsResponse](docs/GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelProfileAppsItemsResponse.md)
  - [GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelProfileDisplayTypeItemsResponse](docs/GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelProfileDisplayTypeItemsResponse.md)
+ - [GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelTransferItemRequest](docs/GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelTransferItemRequest.md)
  - [GithubComNotPlatformInternalModuleProfileDomainEntityAccount](docs/GithubComNotPlatformInternalModuleProfileDomainEntityAccount.md)
  - [GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse](docs/GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountBackgroundResponse.md)
  - [GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse](docs/GithubComNotPlatformInternalModuleProfilePresentationHttpModelAccountResponse.md)
@@ -162,16 +171,14 @@ Class | Method | HTTP request | Description
  - [InternalModuleRegistryPresentationItemHttpUpdateRequest](docs/InternalModuleRegistryPresentationItemHttpUpdateRequest.md)
  - [InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse](docs/InternalModuleSquadsPresentationSquadsHttpGetSquadOneResponse.md)
  - [InternalModuleSquadsPresentationSquadsHttpListSquadsResponse](docs/InternalModuleSquadsPresentationSquadsHttpListSquadsResponse.md)
- - [InventoryByItemdefGet200Response](docs/InventoryByItemdefGet200Response.md)
  - [InventoryItemsGeneratePost200Response](docs/InventoryItemsGeneratePost200Response.md)
- - [InventoryItemsItemIdGet200Response](docs/InventoryItemsItemIdGet200Response.md)
  - [InventoryItemsItemIdTransferPreflightPost200Response](docs/InventoryItemsItemIdTransferPreflightPost200Response.md)
  - [InventoryItemsUnpackPost200Response](docs/InventoryItemsUnpackPost200Response.md)
  - [ProfileAccountIdGet200Response](docs/ProfileAccountIdGet200Response.md)
  - [RegistryAchievementsAchievementDefIdGet200Response](docs/RegistryAchievementsAchievementDefIdGet200Response.md)
  - [RegistryAchievementsGet200Response](docs/RegistryAchievementsGet200Response.md)
+ - [RegistryAppGet200Response](docs/RegistryAppGet200Response.md)
  - [RegistryAppsGet200Response](docs/RegistryAppsGet200Response.md)
- - [RegistryItemsGet200Response](docs/RegistryItemsGet200Response.md)
  - [RegistryItemsItemDefIdGet200Response](docs/RegistryItemsItemDefIdGet200Response.md)
  - [SquadsGet200Response](docs/SquadsGet200Response.md)
  - [SquadsIdGet200Response](docs/SquadsIdGet200Response.md)
