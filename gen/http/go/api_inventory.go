@@ -63,7 +63,7 @@ func (r ApiInventoryByItemdefGetRequest) Directions(directions string) ApiInvent
 	return r
 }
 
-func (r ApiInventoryByItemdefGetRequest) Execute() (*InventoryByItemdefGet200Response, *http.Response, error) {
+func (r ApiInventoryByItemdefGetRequest) Execute() (*ApiV1MarketItemGet200Response, *http.Response, error) {
 	return r.ApiService.InventoryByItemdefGetExecute(r)
 }
 
@@ -81,13 +81,13 @@ func (a *InventoryAPIService) InventoryByItemdefGet(ctx context.Context) ApiInve
 }
 
 // Execute executes the request
-//  @return InventoryByItemdefGet200Response
-func (a *InventoryAPIService) InventoryByItemdefGetExecute(r ApiInventoryByItemdefGetRequest) (*InventoryByItemdefGet200Response, *http.Response, error) {
+//  @return ApiV1MarketItemGet200Response
+func (a *InventoryAPIService) InventoryByItemdefGetExecute(r ApiInventoryByItemdefGetRequest) (*ApiV1MarketItemGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InventoryByItemdefGet200Response
+		localVarReturnValue  *ApiV1MarketItemGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.InventoryByItemdefGet")
@@ -349,7 +349,7 @@ func (r ApiInventoryItemsGetRequest) Offset(offset int32) ApiInventoryItemsGetRe
 	return r
 }
 
-func (r ApiInventoryItemsGetRequest) Execute() (*InventoryByItemdefGet200Response, *http.Response, error) {
+func (r ApiInventoryItemsGetRequest) Execute() (*ApiV1MarketItemGet200Response, *http.Response, error) {
 	return r.ApiService.InventoryItemsGetExecute(r)
 }
 
@@ -367,13 +367,13 @@ func (a *InventoryAPIService) InventoryItemsGet(ctx context.Context) ApiInventor
 }
 
 // Execute executes the request
-//  @return InventoryByItemdefGet200Response
-func (a *InventoryAPIService) InventoryItemsGetExecute(r ApiInventoryItemsGetRequest) (*InventoryByItemdefGet200Response, *http.Response, error) {
+//  @return ApiV1MarketItemGet200Response
+func (a *InventoryAPIService) InventoryItemsGetExecute(r ApiInventoryItemsGetRequest) (*ApiV1MarketItemGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InventoryByItemdefGet200Response
+		localVarReturnValue  *ApiV1MarketItemGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.InventoryItemsGet")
@@ -634,7 +634,7 @@ func (r ApiInventoryItemsItemIdGetRequest) AppId(appId int32) ApiInventoryItemsI
 	return r
 }
 
-func (r ApiInventoryItemsItemIdGetRequest) Execute() (*InventoryItemsItemIdGet200Response, *http.Response, error) {
+func (r ApiInventoryItemsItemIdGetRequest) Execute() (*ApiV1MarketItemItemIdGet200Response, *http.Response, error) {
 	return r.ApiService.InventoryItemsItemIdGetExecute(r)
 }
 
@@ -654,13 +654,13 @@ func (a *InventoryAPIService) InventoryItemsItemIdGet(ctx context.Context, itemI
 }
 
 // Execute executes the request
-//  @return InventoryItemsItemIdGet200Response
-func (a *InventoryAPIService) InventoryItemsItemIdGetExecute(r ApiInventoryItemsItemIdGetRequest) (*InventoryItemsItemIdGet200Response, *http.Response, error) {
+//  @return ApiV1MarketItemItemIdGet200Response
+func (a *InventoryAPIService) InventoryItemsItemIdGetExecute(r ApiInventoryItemsItemIdGetRequest) (*ApiV1MarketItemItemIdGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InventoryItemsItemIdGet200Response
+		localVarReturnValue  *ApiV1MarketItemItemIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.InventoryItemsItemIdGet")
@@ -1041,7 +1041,7 @@ func (a *InventoryAPIService) InventoryItemsItemIdPutExecute(r ApiInventoryItems
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInventoryItemsItemIdTransferLogPostRequest struct {
+type ApiInventoryItemsItemIdTransferLogGetRequest struct {
 	ctx context.Context
 	ApiService *InventoryAPIService
 	itemId string
@@ -1050,30 +1050,30 @@ type ApiInventoryItemsItemIdTransferLogPostRequest struct {
 }
 
 // limit
-func (r ApiInventoryItemsItemIdTransferLogPostRequest) Limit(limit int32) ApiInventoryItemsItemIdTransferLogPostRequest {
+func (r ApiInventoryItemsItemIdTransferLogGetRequest) Limit(limit int32) ApiInventoryItemsItemIdTransferLogGetRequest {
 	r.limit = &limit
 	return r
 }
 
 // offset
-func (r ApiInventoryItemsItemIdTransferLogPostRequest) Offset(offset int32) ApiInventoryItemsItemIdTransferLogPostRequest {
+func (r ApiInventoryItemsItemIdTransferLogGetRequest) Offset(offset int32) ApiInventoryItemsItemIdTransferLogGetRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiInventoryItemsItemIdTransferLogPostRequest) Execute() (*GithubComNotPlatformInternalServerTemplatesResponseTemplate, *http.Response, error) {
-	return r.ApiService.InventoryItemsItemIdTransferLogPostExecute(r)
+func (r ApiInventoryItemsItemIdTransferLogGetRequest) Execute() (*GithubComNotPlatformInternalServerTemplatesResponseTemplate, *http.Response, error) {
+	return r.ApiService.InventoryItemsItemIdTransferLogGetExecute(r)
 }
 
 /*
-InventoryItemsItemIdTransferLogPost Get transfer logs
+InventoryItemsItemIdTransferLogGet Get transfer logs
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param itemId item id (uuid)
- @return ApiInventoryItemsItemIdTransferLogPostRequest
+ @return ApiInventoryItemsItemIdTransferLogGetRequest
 */
-func (a *InventoryAPIService) InventoryItemsItemIdTransferLogPost(ctx context.Context, itemId string) ApiInventoryItemsItemIdTransferLogPostRequest {
-	return ApiInventoryItemsItemIdTransferLogPostRequest{
+func (a *InventoryAPIService) InventoryItemsItemIdTransferLogGet(ctx context.Context, itemId string) ApiInventoryItemsItemIdTransferLogGetRequest {
+	return ApiInventoryItemsItemIdTransferLogGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		itemId: itemId,
@@ -1082,15 +1082,15 @@ func (a *InventoryAPIService) InventoryItemsItemIdTransferLogPost(ctx context.Co
 
 // Execute executes the request
 //  @return GithubComNotPlatformInternalServerTemplatesResponseTemplate
-func (a *InventoryAPIService) InventoryItemsItemIdTransferLogPostExecute(r ApiInventoryItemsItemIdTransferLogPostRequest) (*GithubComNotPlatformInternalServerTemplatesResponseTemplate, *http.Response, error) {
+func (a *InventoryAPIService) InventoryItemsItemIdTransferLogGetExecute(r ApiInventoryItemsItemIdTransferLogGetRequest) (*GithubComNotPlatformInternalServerTemplatesResponseTemplate, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 		localVarReturnValue  *GithubComNotPlatformInternalServerTemplatesResponseTemplate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.InventoryItemsItemIdTransferLogPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.InventoryItemsItemIdTransferLogGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

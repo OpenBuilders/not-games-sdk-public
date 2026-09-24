@@ -209,7 +209,7 @@ func (a *SquadsAPIService) SquadsGetExecute(r ApiSquadsGetRequest) (*SquadsGet20
 type ApiSquadsIdGetRequest struct {
 	ctx context.Context
 	ApiService *SquadsAPIService
-	id int32
+	id int64
 }
 
 func (r ApiSquadsIdGetRequest) Execute() (*SquadsIdGet200Response, *http.Response, error) {
@@ -223,7 +223,7 @@ SquadsIdGet Get squad by id
  @param id Squad ID
  @return ApiSquadsIdGetRequest
 */
-func (a *SquadsAPIService) SquadsIdGet(ctx context.Context, id int32) ApiSquadsIdGetRequest {
+func (a *SquadsAPIService) SquadsIdGet(ctx context.Context, id int64) ApiSquadsIdGetRequest {
 	return ApiSquadsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,

@@ -686,6 +686,138 @@ func (a *RegistryAPIService) RegistryAchievementsPostExecute(r ApiRegistryAchiev
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiRegistryAppGetRequest struct {
+	ctx context.Context
+	ApiService *RegistryAPIService
+	appId *string
+}
+
+// app_id
+func (r ApiRegistryAppGetRequest) AppId(appId string) ApiRegistryAppGetRequest {
+	r.appId = &appId
+	return r
+}
+
+func (r ApiRegistryAppGetRequest) Execute() (*RegistryAppGet200Response, *http.Response, error) {
+	return r.ApiService.RegistryAppGetExecute(r)
+}
+
+/*
+RegistryAppGet Get app
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRegistryAppGetRequest
+*/
+func (a *RegistryAPIService) RegistryAppGet(ctx context.Context) ApiRegistryAppGetRequest {
+	return ApiRegistryAppGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return RegistryAppGet200Response
+func (a *RegistryAPIService) RegistryAppGetExecute(r ApiRegistryAppGetRequest) (*RegistryAppGet200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RegistryAppGet200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegistryAPIService.RegistryAppGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/registry/app"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.appId == nil {
+		return localVarReturnValue, nil, reportError("appId is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "app_id", r.appId, "", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["JWT"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v GithubComNotPlatformInternalServerTemplatesResponseTemplate
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiRegistryAppsGetRequest struct {
 	ctx context.Context
 	ApiService *RegistryAPIService
@@ -932,7 +1064,7 @@ func (r ApiRegistryItemsGetRequest) Directions(directions string) ApiRegistryIte
 	return r
 }
 
-func (r ApiRegistryItemsGetRequest) Execute() (*RegistryItemsGet200Response, *http.Response, error) {
+func (r ApiRegistryItemsGetRequest) Execute() (*ApiV1MarketItemDefGet200Response, *http.Response, error) {
 	return r.ApiService.RegistryItemsGetExecute(r)
 }
 
@@ -950,13 +1082,13 @@ func (a *RegistryAPIService) RegistryItemsGet(ctx context.Context) ApiRegistryIt
 }
 
 // Execute executes the request
-//  @return RegistryItemsGet200Response
-func (a *RegistryAPIService) RegistryItemsGetExecute(r ApiRegistryItemsGetRequest) (*RegistryItemsGet200Response, *http.Response, error) {
+//  @return ApiV1MarketItemDefGet200Response
+func (a *RegistryAPIService) RegistryItemsGetExecute(r ApiRegistryItemsGetRequest) (*ApiV1MarketItemDefGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *RegistryItemsGet200Response
+		localVarReturnValue  *ApiV1MarketItemDefGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegistryAPIService.RegistryItemsGet")

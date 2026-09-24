@@ -143,6 +143,166 @@ paths:
       summary: List new visible apps for external market
       tags:
       - Market
+  /api/v1/market/item:
+    get:
+      parameters:
+      - description: limit
+        in: query
+        name: limit
+        schema:
+          type: integer
+      - description: offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: comma separated sort fields
+        in: query
+        name: sort_fields
+        schema:
+          type: string
+      - description: "comma separated: asc|desc"
+        in: query
+        name: directions
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_api_v1_market_item_get_200_response"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+          description: Internal Server Error
+      summary: List items for external market
+      tags:
+      - Market
+  /api/v1/market/item/{item_id}:
+    get:
+      parameters:
+      - description: Item ID
+        in: path
+        name: item_id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_api_v1_market_item__item_id__get_200_response"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+          description: Not Found
+      summary: Get any user item by id for external market
+      tags:
+      - Market
+  /api/v1/market/item/{item_id}/transfer:
+    post:
+      parameters:
+      - description: Item ID
+        in: path
+        name: item_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.TransferItemRequest"
+        description: request body
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+          description: Not Found
+      summary: Transfer an item to a user from external market
+      tags:
+      - Market
+      x-codegen-request-body-name: request
+  /api/v1/market/item_def:
+    get:
+      parameters:
+      - description: limit
+        in: query
+        name: limit
+        schema:
+          type: integer
+      - description: offset
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: comma separated sort fields
+        in: query
+        name: sort_fields
+        schema:
+          type: string
+      - description: "comma separated: asc|desc"
+        in: query
+        name: directions
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_api_v1_market_item_def_get_200_response"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+          description: Internal Server Error
+      summary: List item defs for external market
+      tags:
+      - Market
   /api/v1/market/profile/{account_id}/items-by-apps:
     get:
       parameters:
@@ -168,7 +328,7 @@ paths:
       summary: market profile apps items
       tags:
       - Market
-  /api/v1/profile/{account_id}/items-by-display-types:
+  /api/v1/market/profile/{account_id}/items-by-display-types:
     get:
       parameters:
       - description: account id
@@ -188,7 +348,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_api_v1_profile__account_id__items_by_display_types_get_200_response"
+                $ref: "#/components/schemas/_api_v1_market_profile__account_id__items_by_display_types_get_200_response"
           description: OK
         "500":
           content:
@@ -355,7 +515,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_inventory_by_itemdef_get_200_response"
+                $ref: "#/components/schemas/_api_v1_market_item_get_200_response"
           description: OK
         "500":
           content:
@@ -386,7 +546,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_inventory_by_itemdef_get_200_response"
+                $ref: "#/components/schemas/_api_v1_market_item_get_200_response"
           description: OK
         "500":
           content:
@@ -416,7 +576,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_inventory_items__item_id__get_200_response"
+                $ref: "#/components/schemas/_api_v1_market_item__item_id__get_200_response"
           description: OK
         "500":
           content:
@@ -604,7 +764,7 @@ paths:
       - Inventory
       x-codegen-request-body-name: request
   /inventory/items/{item_id}/transfer_log:
-    post:
+    get:
       parameters:
       - description: item id (uuid)
         in: path
@@ -854,6 +1014,31 @@ paths:
       tags:
       - Registry
       x-codegen-request-body-name: request
+  /registry/app:
+    get:
+      parameters:
+      - description: app_id
+        in: query
+        name: app_id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_registry_app_get_200_response"
+          description: OK
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+          description: Internal Server Error
+      summary: Get app
+      tags:
+      - Registry
   /registry/apps:
     get:
       parameters:
@@ -965,7 +1150,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_registry_items_get_200_response"
+                $ref: "#/components/schemas/_api_v1_market_item_def_get_200_response"
           description: OK
         "500":
           content:
@@ -1141,6 +1326,7 @@ paths:
         name: id
         required: true
         schema:
+          format: int64
           type: integer
       responses:
         "200":
@@ -1483,7 +1669,7 @@ components:
     github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.DisplayTypeMetaResponse:
       example:
         display_type: display_type
-        items_count: 3
+        items_count: 0
       properties:
         display_type:
           type: string
@@ -1626,9 +1812,9 @@ components:
           count: 1
         sorted_display_types:
         - display_type: display_type
-          items_count: 3
+          items_count: 0
         - display_type: display_type
-          items_count: 3
+          items_count: 0
       properties:
         display_types_items:
           additionalProperties:
@@ -1642,6 +1828,15 @@ components:
           items:
             $ref: "#/components/schemas/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.DisplayTypeMetaResponse"
           type: array
+      type: object
+    github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.TransferItemRequest:
+      properties:
+        account_from:
+          type: integer
+        account_to:
+          type: integer
+        comment:
+          type: string
       type: object
     github_com_not-platform_internal_module_profile_domain_entity.Account:
       example:
@@ -2598,156 +2793,7 @@ components:
         message: message
         ok: true
         request_id: request_id
-    _api_v1_market_profile__account_id__items_by_apps_get_200_response:
-      allOf:
-      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
-      - properties:
-          data:
-            $ref: "#/components/schemas/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ProfileAppsItemsResponse"
-        type: object
-      example:
-        data:
-          pagination:
-            total: 5
-            offset: 5
-            count: 1
-          sorted_apps:
-          - items_count: 6
-            name: name
-            id: 0
-          - items_count: 6
-            name: name
-            id: 0
-        error_code: error_code
-        message: message
-        ok: true
-        request_id: request_id
-    _api_v1_profile__account_id__items_by_display_types_get_200_response:
-      allOf:
-      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
-      - properties:
-          data:
-            $ref: "#/components/schemas/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ProfileDisplayTypeItemsResponse"
-        type: object
-      example:
-        data:
-          display_types_items:
-            key:
-            - hidden: true
-              created_at: created_at
-              description: description
-              item_def_id: item_def_id
-              marketable: true
-              type: type
-              supply: 9
-              app_files: app_files
-              display_type: display_type
-              hold_till: 1
-              updated_at: updated_at
-              issued: 5
-              app_id: 6
-              icon_url: icon_url
-              quantity: 5
-              item_id: item_id
-              default_tags: default_tags
-              collection: collection
-              tags: tags
-              account_id: 0
-              game_only: true
-              serial: 7
-              name: name
-              tradable: true
-              app_meta: app_meta
-              rarity: 2
-            - hidden: true
-              created_at: created_at
-              description: description
-              item_def_id: item_def_id
-              marketable: true
-              type: type
-              supply: 9
-              app_files: app_files
-              display_type: display_type
-              hold_till: 1
-              updated_at: updated_at
-              issued: 5
-              app_id: 6
-              icon_url: icon_url
-              quantity: 5
-              item_id: item_id
-              default_tags: default_tags
-              collection: collection
-              tags: tags
-              account_id: 0
-              game_only: true
-              serial: 7
-              name: name
-              tradable: true
-              app_meta: app_meta
-              rarity: 2
-          pagination:
-            total: 5
-            offset: 5
-            count: 1
-          sorted_display_types:
-          - display_type: display_type
-            items_count: 3
-          - display_type: display_type
-            items_count: 3
-        error_code: error_code
-        message: message
-        ok: true
-        request_id: request_id
-    _auth_generate_post_200_response:
-      allOf:
-      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
-      - properties:
-          data:
-            $ref: "#/components/schemas/github_com_not-platform_internal_module_auth_presentation_authorization_http_model.AuthGenerateResponse"
-        type: object
-      example:
-        data:
-          refresh_token: refresh_token
-          private: private
-        error_code: error_code
-        message: message
-        ok: true
-        request_id: request_id
-    _drops_post_200_response:
-      allOf:
-      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
-      - properties:
-          data:
-            $ref: "#/components/schemas/internal_module_drops_presentation_drops_http.CreateDropResponse"
-        type: object
-      example:
-        data:
-          drop_id: drop_id
-        error_code: error_code
-        message: message
-        ok: true
-        request_id: request_id
-    _drops__id__get_200_response:
-      allOf:
-      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
-      - properties:
-          data:
-            $ref: "#/components/schemas/github_com_not-platform_internal_module_drops_presentation_drops_http_models.CheckEligibilityResponse"
-        type: object
-      example:
-        data:
-          finished_at: finished_at
-          description: description
-          id: id
-          app_id: 0
-          available_at: available_at
-          item_def_ids: item_def_ids
-          status: status
-        error_code: error_code
-        message: message
-        ok: true
-        request_id: request_id
-    _inventory_by_itemdef_get_200_response:
+    _api_v1_market_item_get_200_response:
       allOf:
       - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
       - properties:
@@ -2817,7 +2863,7 @@ components:
         message: message
         ok: true
         request_id: request_id
-    _inventory_items__item_id__get_200_response:
+    _api_v1_market_item__item_id__get_200_response:
       allOf:
       - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
       - properties:
@@ -2852,6 +2898,223 @@ components:
           tradable: true
           app_meta: app_meta
           rarity: 2
+        error_code: error_code
+        message: message
+        ok: true
+        request_id: request_id
+    _api_v1_market_item_def_get_200_response:
+      allOf:
+      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+      - properties:
+          data:
+            $ref: "#/components/schemas/github_com_not-platform_internal_module_registry_presentation_item_http_model.ListItemDefResponse"
+        type: object
+      example:
+        data:
+          item_defs:
+          - hidden: true
+            store_tags: store_tags
+            description: description
+            item_def_id: item_def_id
+            marketable: true
+            type: type
+            supply: 5
+            app_files: app_files
+            display_type: display_type
+            promo: promo
+            price: price
+            issued: 6
+            app_id: 0
+            bundle: bundle
+            icon_url: icon_url
+            collection: collection
+            tags: tags
+            game_only: true
+            store_images: store_images
+            max_supply: 1
+            name: name
+            tradable: true
+            exchange: exchange
+            store_hidden: true
+            rarity: 5
+          - hidden: true
+            store_tags: store_tags
+            description: description
+            item_def_id: item_def_id
+            marketable: true
+            type: type
+            supply: 5
+            app_files: app_files
+            display_type: display_type
+            promo: promo
+            price: price
+            issued: 6
+            app_id: 0
+            bundle: bundle
+            icon_url: icon_url
+            collection: collection
+            tags: tags
+            game_only: true
+            store_images: store_images
+            max_supply: 1
+            name: name
+            tradable: true
+            exchange: exchange
+            store_hidden: true
+            rarity: 5
+          pagination:
+            total: 5
+            offset: 5
+            count: 1
+        error_code: error_code
+        message: message
+        ok: true
+        request_id: request_id
+    _api_v1_market_profile__account_id__items_by_apps_get_200_response:
+      allOf:
+      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+      - properties:
+          data:
+            $ref: "#/components/schemas/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ProfileAppsItemsResponse"
+        type: object
+      example:
+        data:
+          pagination:
+            total: 5
+            offset: 5
+            count: 1
+          sorted_apps:
+          - items_count: 6
+            name: name
+            id: 0
+          - items_count: 6
+            name: name
+            id: 0
+        error_code: error_code
+        message: message
+        ok: true
+        request_id: request_id
+    _api_v1_market_profile__account_id__items_by_display_types_get_200_response:
+      allOf:
+      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+      - properties:
+          data:
+            $ref: "#/components/schemas/github_com_not-platform_internal_module_markets_presentation_externalmarkets_model.ProfileDisplayTypeItemsResponse"
+        type: object
+      example:
+        data:
+          display_types_items:
+            key:
+            - hidden: true
+              created_at: created_at
+              description: description
+              item_def_id: item_def_id
+              marketable: true
+              type: type
+              supply: 9
+              app_files: app_files
+              display_type: display_type
+              hold_till: 1
+              updated_at: updated_at
+              issued: 5
+              app_id: 6
+              icon_url: icon_url
+              quantity: 5
+              item_id: item_id
+              default_tags: default_tags
+              collection: collection
+              tags: tags
+              account_id: 0
+              game_only: true
+              serial: 7
+              name: name
+              tradable: true
+              app_meta: app_meta
+              rarity: 2
+            - hidden: true
+              created_at: created_at
+              description: description
+              item_def_id: item_def_id
+              marketable: true
+              type: type
+              supply: 9
+              app_files: app_files
+              display_type: display_type
+              hold_till: 1
+              updated_at: updated_at
+              issued: 5
+              app_id: 6
+              icon_url: icon_url
+              quantity: 5
+              item_id: item_id
+              default_tags: default_tags
+              collection: collection
+              tags: tags
+              account_id: 0
+              game_only: true
+              serial: 7
+              name: name
+              tradable: true
+              app_meta: app_meta
+              rarity: 2
+          pagination:
+            total: 5
+            offset: 5
+            count: 1
+          sorted_display_types:
+          - display_type: display_type
+            items_count: 0
+          - display_type: display_type
+            items_count: 0
+        error_code: error_code
+        message: message
+        ok: true
+        request_id: request_id
+    _auth_generate_post_200_response:
+      allOf:
+      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+      - properties:
+          data:
+            $ref: "#/components/schemas/github_com_not-platform_internal_module_auth_presentation_authorization_http_model.AuthGenerateResponse"
+        type: object
+      example:
+        data:
+          refresh_token: refresh_token
+          private: private
+        error_code: error_code
+        message: message
+        ok: true
+        request_id: request_id
+    _drops_post_200_response:
+      allOf:
+      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+      - properties:
+          data:
+            $ref: "#/components/schemas/internal_module_drops_presentation_drops_http.CreateDropResponse"
+        type: object
+      example:
+        data:
+          drop_id: drop_id
+        error_code: error_code
+        message: message
+        ok: true
+        request_id: request_id
+    _drops__id__get_200_response:
+      allOf:
+      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+      - properties:
+          data:
+            $ref: "#/components/schemas/github_com_not-platform_internal_module_drops_presentation_drops_http_models.CheckEligibilityResponse"
+        type: object
+      example:
+        data:
+          finished_at: finished_at
+          description: description
+          id: id
+          app_id: 0
+          available_at: available_at
+          item_def_ids: item_def_ids
+          status: status
         error_code: error_code
         message: message
         ok: true
@@ -3111,6 +3374,37 @@ components:
         message: message
         ok: true
         request_id: request_id
+    _registry_app_get_200_response:
+      allOf:
+      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
+      - properties:
+          data:
+            $ref: "#/components/schemas/internal_module_registry_presentation_app_http.appOneResponse"
+        type: object
+      example:
+        data:
+          hidden: true
+          updated_at: updated_at
+          background: background
+          name: name
+          verified: true
+          created_at: created_at
+          avatar: avatar
+          id: 0
+          socials:
+          - title: title
+            type: type
+            url: url
+          - title: title
+            type: type
+            url: url
+          sort_order: 6
+          slug: slug
+          tags: tags
+        error_code: error_code
+        message: message
+        ok: true
+        request_id: request_id
     _registry_apps_get_200_response:
       allOf:
       - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
@@ -3157,74 +3451,6 @@ components:
             sort_order: 6
             slug: slug
             tags: tags
-        error_code: error_code
-        message: message
-        ok: true
-        request_id: request_id
-    _registry_items_get_200_response:
-      allOf:
-      - $ref: "#/components/schemas/github_com_not-platform_internal_server_templates_response.Template"
-      - properties:
-          data:
-            $ref: "#/components/schemas/github_com_not-platform_internal_module_registry_presentation_item_http_model.ListItemDefResponse"
-        type: object
-      example:
-        data:
-          item_defs:
-          - hidden: true
-            store_tags: store_tags
-            description: description
-            item_def_id: item_def_id
-            marketable: true
-            type: type
-            supply: 5
-            app_files: app_files
-            display_type: display_type
-            promo: promo
-            price: price
-            issued: 6
-            app_id: 0
-            bundle: bundle
-            icon_url: icon_url
-            collection: collection
-            tags: tags
-            game_only: true
-            store_images: store_images
-            max_supply: 1
-            name: name
-            tradable: true
-            exchange: exchange
-            store_hidden: true
-            rarity: 5
-          - hidden: true
-            store_tags: store_tags
-            description: description
-            item_def_id: item_def_id
-            marketable: true
-            type: type
-            supply: 5
-            app_files: app_files
-            display_type: display_type
-            promo: promo
-            price: price
-            issued: 6
-            app_id: 0
-            bundle: bundle
-            icon_url: icon_url
-            collection: collection
-            tags: tags
-            game_only: true
-            store_images: store_images
-            max_supply: 1
-            name: name
-            tradable: true
-            exchange: exchange
-            store_hidden: true
-            rarity: 5
-          pagination:
-            total: 5
-            offset: 5
-            count: 1
         error_code: error_code
         message: message
         ok: true

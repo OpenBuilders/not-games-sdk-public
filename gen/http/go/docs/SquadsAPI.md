@@ -102,7 +102,7 @@ import (
 )
 
 func main() {
-	id := int32(56) // int32 | Squad ID
+	id := int64(789) // int64 | Squad ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -122,7 +122,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Squad ID | 
+**id** | **int64** | Squad ID | 
 
 ### Other Parameters
 

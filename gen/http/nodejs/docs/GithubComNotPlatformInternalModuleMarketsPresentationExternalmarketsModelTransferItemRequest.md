@@ -1,0 +1,24 @@
+# GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelTransferItemRequest
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**account_from** | **number** |  | [optional] [default to undefined]
+**account_to** | **number** |  | [optional] [default to undefined]
+**comment** | **string** |  | [optional] [default to undefined]
+
+## Example
+
+```typescript
+import { GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelTransferItemRequest } from 'notgamessdkpublic';
+
+const instance: GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelTransferItemRequest = {
+    account_from,
+    account_to,
+    comment,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -11,13 +11,13 @@ All URIs are relative to *http://localhost:8080/api/v1*
 |[**inventoryItemsItemIdGet**](#inventoryitemsitemidget) | **GET** /inventory/items/{item_id} | Get item|
 |[**inventoryItemsItemIdIncrementQuantityPost**](#inventoryitemsitemidincrementquantitypost) | **POST** /inventory/items/{item_id}/increment-quantity | Consume item|
 |[**inventoryItemsItemIdPut**](#inventoryitemsitemidput) | **PUT** /inventory/items/{item_id} | Update item|
-|[**inventoryItemsItemIdTransferLogPost**](#inventoryitemsitemidtransferlogpost) | **POST** /inventory/items/{item_id}/transfer_log | Get transfer logs|
+|[**inventoryItemsItemIdTransferLogGet**](#inventoryitemsitemidtransferlogget) | **GET** /inventory/items/{item_id}/transfer_log | Get transfer logs|
 |[**inventoryItemsItemIdTransferPost**](#inventoryitemsitemidtransferpost) | **POST** /inventory/items/{item_id}/transfer | Transfer item to another account|
 |[**inventoryItemsItemIdTransferPreflightPost**](#inventoryitemsitemidtransferpreflightpost) | **POST** /inventory/items/{item_id}/transfer-preflight | Check transfer item possibility to another account|
 |[**inventoryItemsUnpackPost**](#inventoryitemsunpackpost) | **POST** /inventory/items/unpack | Unpack item|
 
 # **inventoryByItemdefGet**
-> InventoryByItemdefGet200Response inventoryByItemdefGet()
+> ApiV1MarketItemGet200Response inventoryByItemdefGet()
 
 
 ### Example
@@ -59,7 +59,7 @@ const { status, data } = await apiInstance.inventoryByItemdefGet(
 
 ### Return type
 
-**InventoryByItemdefGet200Response**
+**ApiV1MarketItemGet200Response**
 
 ### Authorization
 
@@ -132,7 +132,7 @@ const { status, data } = await apiInstance.inventoryItemsGeneratePost(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **inventoryItemsGet**
-> InventoryByItemdefGet200Response inventoryItemsGet()
+> ApiV1MarketItemGet200Response inventoryItemsGet()
 
 
 ### Example
@@ -165,7 +165,7 @@ const { status, data } = await apiInstance.inventoryItemsGet(
 
 ### Return type
 
-**InventoryByItemdefGet200Response**
+**ApiV1MarketItemGet200Response**
 
 ### Authorization
 
@@ -244,7 +244,7 @@ const { status, data } = await apiInstance.inventoryItemsItemIdConsumePost(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **inventoryItemsItemIdGet**
-> InventoryItemsItemIdGet200Response inventoryItemsItemIdGet()
+> ApiV1MarketItemItemIdGet200Response inventoryItemsItemIdGet()
 
 
 ### Example
@@ -277,7 +277,7 @@ const { status, data } = await apiInstance.inventoryItemsItemIdGet(
 
 ### Return type
 
-**InventoryItemsItemIdGet200Response**
+**ApiV1MarketItemItemIdGet200Response**
 
 ### Authorization
 
@@ -410,8 +410,8 @@ const { status, data } = await apiInstance.inventoryItemsItemIdPut(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **inventoryItemsItemIdTransferLogPost**
-> GithubComNotPlatformInternalServerTemplatesResponseTemplate inventoryItemsItemIdTransferLogPost()
+# **inventoryItemsItemIdTransferLogGet**
+> GithubComNotPlatformInternalServerTemplatesResponseTemplate inventoryItemsItemIdTransferLogGet()
 
 
 ### Example
@@ -429,7 +429,7 @@ let itemId: string; //item id (uuid) (default to undefined)
 let limit: number; //limit (default to undefined)
 let offset: number; //offset (default to undefined)
 
-const { status, data } = await apiInstance.inventoryItemsItemIdTransferLogPost(
+const { status, data } = await apiInstance.inventoryItemsItemIdTransferLogGet(
     itemId,
     limit,
     offset

@@ -184,6 +184,634 @@ func (a *MarketAPIService) ApiV1MarketAppsNewGetExecute(r ApiApiV1MarketAppsNewG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiApiV1MarketItemDefGetRequest struct {
+	ctx context.Context
+	ApiService *MarketAPIService
+	limit *int32
+	offset *int32
+	sortFields *string
+	directions *string
+}
+
+// limit
+func (r ApiApiV1MarketItemDefGetRequest) Limit(limit int32) ApiApiV1MarketItemDefGetRequest {
+	r.limit = &limit
+	return r
+}
+
+// offset
+func (r ApiApiV1MarketItemDefGetRequest) Offset(offset int32) ApiApiV1MarketItemDefGetRequest {
+	r.offset = &offset
+	return r
+}
+
+// comma separated sort fields
+func (r ApiApiV1MarketItemDefGetRequest) SortFields(sortFields string) ApiApiV1MarketItemDefGetRequest {
+	r.sortFields = &sortFields
+	return r
+}
+
+// comma separated: asc|desc
+func (r ApiApiV1MarketItemDefGetRequest) Directions(directions string) ApiApiV1MarketItemDefGetRequest {
+	r.directions = &directions
+	return r
+}
+
+func (r ApiApiV1MarketItemDefGetRequest) Execute() (*ApiV1MarketItemDefGet200Response, *http.Response, error) {
+	return r.ApiService.ApiV1MarketItemDefGetExecute(r)
+}
+
+/*
+ApiV1MarketItemDefGet List item defs for external market
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiV1MarketItemDefGetRequest
+*/
+func (a *MarketAPIService) ApiV1MarketItemDefGet(ctx context.Context) ApiApiV1MarketItemDefGetRequest {
+	return ApiApiV1MarketItemDefGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ApiV1MarketItemDefGet200Response
+func (a *MarketAPIService) ApiV1MarketItemDefGetExecute(r ApiApiV1MarketItemDefGetRequest) (*ApiV1MarketItemDefGet200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiV1MarketItemDefGet200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MarketAPIService.ApiV1MarketItemDefGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/market/item_def"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	}
+	if r.sortFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_fields", r.sortFields, "", "")
+	}
+	if r.directions != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "directions", r.directions, "", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["JWT"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v GithubComNotPlatformInternalServerTemplatesResponseTemplate
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v GithubComNotPlatformInternalServerTemplatesResponseTemplate
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiV1MarketItemGetRequest struct {
+	ctx context.Context
+	ApiService *MarketAPIService
+	limit *int32
+	offset *int32
+	sortFields *string
+	directions *string
+}
+
+// limit
+func (r ApiApiV1MarketItemGetRequest) Limit(limit int32) ApiApiV1MarketItemGetRequest {
+	r.limit = &limit
+	return r
+}
+
+// offset
+func (r ApiApiV1MarketItemGetRequest) Offset(offset int32) ApiApiV1MarketItemGetRequest {
+	r.offset = &offset
+	return r
+}
+
+// comma separated sort fields
+func (r ApiApiV1MarketItemGetRequest) SortFields(sortFields string) ApiApiV1MarketItemGetRequest {
+	r.sortFields = &sortFields
+	return r
+}
+
+// comma separated: asc|desc
+func (r ApiApiV1MarketItemGetRequest) Directions(directions string) ApiApiV1MarketItemGetRequest {
+	r.directions = &directions
+	return r
+}
+
+func (r ApiApiV1MarketItemGetRequest) Execute() (*ApiV1MarketItemGet200Response, *http.Response, error) {
+	return r.ApiService.ApiV1MarketItemGetExecute(r)
+}
+
+/*
+ApiV1MarketItemGet List items for external market
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiV1MarketItemGetRequest
+*/
+func (a *MarketAPIService) ApiV1MarketItemGet(ctx context.Context) ApiApiV1MarketItemGetRequest {
+	return ApiApiV1MarketItemGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ApiV1MarketItemGet200Response
+func (a *MarketAPIService) ApiV1MarketItemGetExecute(r ApiApiV1MarketItemGetRequest) (*ApiV1MarketItemGet200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiV1MarketItemGet200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MarketAPIService.ApiV1MarketItemGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/market/item"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "", "")
+	}
+	if r.sortFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_fields", r.sortFields, "", "")
+	}
+	if r.directions != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "directions", r.directions, "", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["JWT"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v GithubComNotPlatformInternalServerTemplatesResponseTemplate
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v GithubComNotPlatformInternalServerTemplatesResponseTemplate
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiV1MarketItemItemIdGetRequest struct {
+	ctx context.Context
+	ApiService *MarketAPIService
+	itemId string
+}
+
+func (r ApiApiV1MarketItemItemIdGetRequest) Execute() (*ApiV1MarketItemItemIdGet200Response, *http.Response, error) {
+	return r.ApiService.ApiV1MarketItemItemIdGetExecute(r)
+}
+
+/*
+ApiV1MarketItemItemIdGet Get any user item by id for external market
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param itemId Item ID
+ @return ApiApiV1MarketItemItemIdGetRequest
+*/
+func (a *MarketAPIService) ApiV1MarketItemItemIdGet(ctx context.Context, itemId string) ApiApiV1MarketItemItemIdGetRequest {
+	return ApiApiV1MarketItemItemIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		itemId: itemId,
+	}
+}
+
+// Execute executes the request
+//  @return ApiV1MarketItemItemIdGet200Response
+func (a *MarketAPIService) ApiV1MarketItemItemIdGetExecute(r ApiApiV1MarketItemItemIdGetRequest) (*ApiV1MarketItemItemIdGet200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiV1MarketItemItemIdGet200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MarketAPIService.ApiV1MarketItemItemIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/market/item/{item_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"item_id"+"}", url.PathEscape(parameterValueToString(r.itemId, "itemId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["JWT"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v GithubComNotPlatformInternalServerTemplatesResponseTemplate
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v GithubComNotPlatformInternalServerTemplatesResponseTemplate
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiV1MarketItemItemIdTransferPostRequest struct {
+	ctx context.Context
+	ApiService *MarketAPIService
+	itemId string
+	request *GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelTransferItemRequest
+}
+
+// request body
+func (r ApiApiV1MarketItemItemIdTransferPostRequest) Request(request GithubComNotPlatformInternalModuleMarketsPresentationExternalmarketsModelTransferItemRequest) ApiApiV1MarketItemItemIdTransferPostRequest {
+	r.request = &request
+	return r
+}
+
+func (r ApiApiV1MarketItemItemIdTransferPostRequest) Execute() (*GithubComNotPlatformInternalServerTemplatesResponseTemplate, *http.Response, error) {
+	return r.ApiService.ApiV1MarketItemItemIdTransferPostExecute(r)
+}
+
+/*
+ApiV1MarketItemItemIdTransferPost Transfer an item to a user from external market
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param itemId Item ID
+ @return ApiApiV1MarketItemItemIdTransferPostRequest
+*/
+func (a *MarketAPIService) ApiV1MarketItemItemIdTransferPost(ctx context.Context, itemId string) ApiApiV1MarketItemItemIdTransferPostRequest {
+	return ApiApiV1MarketItemItemIdTransferPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		itemId: itemId,
+	}
+}
+
+// Execute executes the request
+//  @return GithubComNotPlatformInternalServerTemplatesResponseTemplate
+func (a *MarketAPIService) ApiV1MarketItemItemIdTransferPostExecute(r ApiApiV1MarketItemItemIdTransferPostRequest) (*GithubComNotPlatformInternalServerTemplatesResponseTemplate, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GithubComNotPlatformInternalServerTemplatesResponseTemplate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MarketAPIService.ApiV1MarketItemItemIdTransferPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/market/item/{item_id}/transfer"
+	localVarPath = strings.Replace(localVarPath, "{"+"item_id"+"}", url.PathEscape(parameterValueToString(r.itemId, "itemId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.request == nil {
+		return localVarReturnValue, nil, reportError("request is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.request
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["JWT"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v GithubComNotPlatformInternalServerTemplatesResponseTemplate
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v GithubComNotPlatformInternalServerTemplatesResponseTemplate
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiApiV1MarketProfileAccountIdItemsByAppsGetRequest struct {
 	ctx context.Context
 	ApiService *MarketAPIService
@@ -309,7 +937,7 @@ func (a *MarketAPIService) ApiV1MarketProfileAccountIdItemsByAppsGetExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1ProfileAccountIdItemsByDisplayTypesGetRequest struct {
+type ApiApiV1MarketProfileAccountIdItemsByDisplayTypesGetRequest struct {
 	ctx context.Context
 	ApiService *MarketAPIService
 	accountId string
@@ -317,24 +945,24 @@ type ApiApiV1ProfileAccountIdItemsByDisplayTypesGetRequest struct {
 }
 
 // app id
-func (r ApiApiV1ProfileAccountIdItemsByDisplayTypesGetRequest) AppId(appId string) ApiApiV1ProfileAccountIdItemsByDisplayTypesGetRequest {
+func (r ApiApiV1MarketProfileAccountIdItemsByDisplayTypesGetRequest) AppId(appId string) ApiApiV1MarketProfileAccountIdItemsByDisplayTypesGetRequest {
 	r.appId = &appId
 	return r
 }
 
-func (r ApiApiV1ProfileAccountIdItemsByDisplayTypesGetRequest) Execute() (*ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response, *http.Response, error) {
-	return r.ApiService.ApiV1ProfileAccountIdItemsByDisplayTypesGetExecute(r)
+func (r ApiApiV1MarketProfileAccountIdItemsByDisplayTypesGetRequest) Execute() (*ApiV1MarketProfileAccountIdItemsByDisplayTypesGet200Response, *http.Response, error) {
+	return r.ApiService.ApiV1MarketProfileAccountIdItemsByDisplayTypesGetExecute(r)
 }
 
 /*
-ApiV1ProfileAccountIdItemsByDisplayTypesGet market profile app items
+ApiV1MarketProfileAccountIdItemsByDisplayTypesGet market profile app items
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId account id
- @return ApiApiV1ProfileAccountIdItemsByDisplayTypesGetRequest
+ @return ApiApiV1MarketProfileAccountIdItemsByDisplayTypesGetRequest
 */
-func (a *MarketAPIService) ApiV1ProfileAccountIdItemsByDisplayTypesGet(ctx context.Context, accountId string) ApiApiV1ProfileAccountIdItemsByDisplayTypesGetRequest {
-	return ApiApiV1ProfileAccountIdItemsByDisplayTypesGetRequest{
+func (a *MarketAPIService) ApiV1MarketProfileAccountIdItemsByDisplayTypesGet(ctx context.Context, accountId string) ApiApiV1MarketProfileAccountIdItemsByDisplayTypesGetRequest {
+	return ApiApiV1MarketProfileAccountIdItemsByDisplayTypesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -342,21 +970,21 @@ func (a *MarketAPIService) ApiV1ProfileAccountIdItemsByDisplayTypesGet(ctx conte
 }
 
 // Execute executes the request
-//  @return ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response
-func (a *MarketAPIService) ApiV1ProfileAccountIdItemsByDisplayTypesGetExecute(r ApiApiV1ProfileAccountIdItemsByDisplayTypesGetRequest) (*ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response, *http.Response, error) {
+//  @return ApiV1MarketProfileAccountIdItemsByDisplayTypesGet200Response
+func (a *MarketAPIService) ApiV1MarketProfileAccountIdItemsByDisplayTypesGetExecute(r ApiApiV1MarketProfileAccountIdItemsByDisplayTypesGetRequest) (*ApiV1MarketProfileAccountIdItemsByDisplayTypesGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ApiV1ProfileAccountIdItemsByDisplayTypesGet200Response
+		localVarReturnValue  *ApiV1MarketProfileAccountIdItemsByDisplayTypesGet200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MarketAPIService.ApiV1ProfileAccountIdItemsByDisplayTypesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MarketAPIService.ApiV1MarketProfileAccountIdItemsByDisplayTypesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/profile/{account_id}/items-by-display-types"
+	localVarPath := localBasePath + "/api/v1/market/profile/{account_id}/items-by-display-types"
 	localVarPath = strings.Replace(localVarPath, "{"+"account_id"+"}", url.PathEscape(parameterValueToString(r.accountId, "accountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
