@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global =
-    (typeof globalThis !== 'undefined' && globalThis) ||
-    (typeof window !== 'undefined' && window) ||
-    (typeof global !== 'undefined' && global) ||
-    (typeof self !== 'undefined' && self) ||
-    (function () { return this; }).call(null) ||
-    Function('return this')();
+var global = globalThis;
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -143,7 +137,7 @@ extraMap: (f = msg.getExtraMap()) ? f.toObject(includeInstance, undefined) : []
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngprofile.v1.ActivityMeta}
  */
 proto.ngprofile.v1.ActivityMeta.deserializeBinary = function(bytes) {
@@ -168,13 +162,13 @@ proto.ngprofile.v1.ActivityMeta.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addItemIds(value);
       break;
     case 2:
       var value = msg.getExtraMap();
       reader.readMessage(value, function(message, reader) {
-        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString, null, "", "");
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readStringRequireUtf8, jspb.BinaryReader.prototype.readStringRequireUtf8, null, "", "");
          });
       break;
     default:
@@ -215,7 +209,12 @@ proto.ngprofile.v1.ActivityMeta.serializeBinaryToWriter = function(message, writ
   }
   f = message.getExtraMap(true);
   if (f && f.getLength() > 0) {
-    f.serializeBinary(2, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
+jspb.internal.public_for_gencode.serializeMapToBinary(
+    message.getExtraMap(true),
+    2,
+    writer,
+    jspb.BinaryWriter.prototype.writeString,
+    jspb.BinaryWriter.prototype.writeString);
   }
 };
 
@@ -329,7 +328,7 @@ meta: (f = msg.getMeta()) && proto.ngprofile.v1.ActivityMeta.toObject(includeIns
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngprofile.v1.ActivityEvent}
  */
 proto.ngprofile.v1.ActivityEvent.deserializeBinary = function(bytes) {
@@ -618,7 +617,7 @@ eventId: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngprofile.v1.ActivityAck}
  */
 proto.ngprofile.v1.ActivityAck.deserializeBinary = function(bytes) {
@@ -647,7 +646,7 @@ proto.ngprofile.v1.ActivityAck.deserializeBinaryFromReader = function(msg, reade
       msg.setAccepted(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setEventId(value);
       break;
     default:

@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global =
-    (typeof globalThis !== 'undefined' && globalThis) ||
-    (typeof window !== 'undefined' && window) ||
-    (typeof global !== 'undefined' && global) ||
-    (typeof self !== 'undefined' && self) ||
-    (function () { return this; }).call(null) ||
-    Function('return this')();
+var global = globalThis;
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
@@ -445,7 +439,7 @@ startedAt: (f = msg.getStartedAt()) && google_protobuf_timestamp_pb.Timestamp.to
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.FriendActivity}
  */
 proto.ngfriends.v1.FriendActivity.deserializeBinary = function(bytes) {
@@ -626,7 +620,7 @@ activity: (f = msg.getActivity()) && proto.ngfriends.v1.FriendActivity.toObject(
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.FriendAccount}
  */
 proto.ngfriends.v1.FriendAccount.deserializeBinary = function(bytes) {
@@ -834,7 +828,7 @@ updatedAt: (f = msg.getUpdatedAt()) && google_protobuf_timestamp_pb.Timestamp.to
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.FriendRequest}
  */
 proto.ngfriends.v1.FriendRequest.deserializeBinary = function(bytes) {
@@ -871,7 +865,7 @@ proto.ngfriends.v1.FriendRequest.deserializeBinaryFromReader = function(msg, rea
       msg.setToAccountId(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStatus(value);
       break;
     case 5:
@@ -1251,7 +1245,7 @@ toAccountId: jspb.Message.getFieldWithDefault(msg, 1, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.SendFriendRequestRequest}
  */
 proto.ngfriends.v1.SendFriendRequestRequest.deserializeBinary = function(bytes) {
@@ -1381,7 +1375,7 @@ requestId: jspb.Message.getFieldWithDefault(msg, 1, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.SendFriendRequestResponse}
  */
 proto.ngfriends.v1.SendFriendRequestResponse.deserializeBinary = function(bytes) {
@@ -1511,7 +1505,7 @@ requestId: jspb.Message.getFieldWithDefault(msg, 1, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.CancelFriendRequestRequest}
  */
 proto.ngfriends.v1.CancelFriendRequestRequest.deserializeBinary = function(bytes) {
@@ -1641,7 +1635,7 @@ proto.ngfriends.v1.CancelFriendRequestResponse.toObject = function(includeInstan
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.CancelFriendRequestResponse}
  */
 proto.ngfriends.v1.CancelFriendRequestResponse.deserializeBinary = function(bytes) {
@@ -1743,7 +1737,7 @@ accept: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.RespondToFriendRequestRequest}
  */
 proto.ngfriends.v1.RespondToFriendRequestRequest.deserializeBinary = function(bytes) {
@@ -1902,7 +1896,7 @@ proto.ngfriends.v1.RespondToFriendRequestResponse.toObject = function(includeIns
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.RespondToFriendRequestResponse}
  */
 proto.ngfriends.v1.RespondToFriendRequestResponse.deserializeBinary = function(bytes) {
@@ -2003,7 +1997,7 @@ friendId: jspb.Message.getFieldWithDefault(msg, 1, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.RemoveFriendRequest}
  */
 proto.ngfriends.v1.RemoveFriendRequest.deserializeBinary = function(bytes) {
@@ -2133,7 +2127,7 @@ proto.ngfriends.v1.RemoveFriendResponse.toObject = function(includeInstance, msg
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.RemoveFriendResponse}
  */
 proto.ngfriends.v1.RemoveFriendResponse.deserializeBinary = function(bytes) {
@@ -2236,7 +2230,7 @@ offset: jspb.Message.getFieldWithDefault(msg, 3, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.ListFriendsRequest}
  */
 proto.ngfriends.v1.ListFriendsRequest.deserializeBinary = function(bytes) {
@@ -2261,7 +2255,7 @@ proto.ngfriends.v1.ListFriendsRequest.deserializeBinaryFromReader = function(msg
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setSearch(value);
       break;
     case 2:
@@ -2451,7 +2445,7 @@ total: jspb.Message.getFieldWithDefault(msg, 2, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.ListFriendsResponse}
  */
 proto.ngfriends.v1.ListFriendsResponse.deserializeBinary = function(bytes) {
@@ -2633,7 +2627,7 @@ offset: jspb.Message.getFieldWithDefault(msg, 2, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.ListFriendRequestsRequest}
  */
 proto.ngfriends.v1.ListFriendRequestsRequest.deserializeBinary = function(bytes) {
@@ -2801,7 +2795,7 @@ total: jspb.Message.getFieldWithDefault(msg, 2, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.ListFriendRequestsResponse}
  */
 proto.ngfriends.v1.ListFriendRequestsResponse.deserializeBinary = function(bytes) {
@@ -2982,7 +2976,7 @@ proto.ngfriends.v1.GetFriendsPageRequest.toObject = function(includeInstance, ms
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.GetFriendsPageRequest}
  */
 proto.ngfriends.v1.GetFriendsPageRequest.deserializeBinary = function(bytes) {
@@ -3085,7 +3079,7 @@ outgoingRequests: (f = msg.getOutgoingRequests()) && proto.ngfriends.v1.ListFrie
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.ngfriends.v1.GetFriendsPageResponse}
  */
 proto.ngfriends.v1.GetFriendsPageResponse.deserializeBinary = function(bytes) {
