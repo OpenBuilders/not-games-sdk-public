@@ -399,6 +399,7 @@ export interface InternalModuleRegistryPresentationAppHttpAppOneResponse {
     'name'?: string;
     'slug'?: string;
     'socials'?: Array<InternalModuleRegistryPresentationAppHttpAppSocial>;
+    'sort_order'?: number;
     'tags'?: string;
     'updated_at'?: string;
     'verified'?: boolean;
@@ -3529,21 +3530,14 @@ export const SquadsApiAxiosParamCreator = function (configuration?: Configuratio
          * @summary List squads
          * @param {number} limit Limit
          * @param {number} offset Offset
-         * @param {string} [name] Name
          * @param {string} [slug] Slug
-         * @param {number} [chatId] Telegram chat ID
-         * @param {string} [prefix] Squad prefix
-         * @param {number} [membersAmount] Members amount
          * @param {number} [membersAmountMin] Members amount min
-         * @param {number} [membersAmountMax] Members amount max
-         * @param {string} [createdAtGte] Created at greater than or equal, RFC3339
-         * @param {string} [createdAtLte] Created at less than or equal, RFC3339
          * @param {string} [sortFields] Sort fields
          * @param {string} [directions] Sort directions
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        squadsGet: async (limit: number, offset: number, name?: string, slug?: string, chatId?: number, prefix?: string, membersAmount?: number, membersAmountMin?: number, membersAmountMax?: number, createdAtGte?: string, createdAtLte?: string, sortFields?: string, directions?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        squadsGet: async (limit: number, offset: number, slug?: string, membersAmountMin?: number, sortFields?: string, directions?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'limit' is not null or undefined
             assertParamExists('squadsGet', 'limit', limit)
             // verify required parameter 'offset' is not null or undefined
@@ -3571,44 +3565,16 @@ export const SquadsApiAxiosParamCreator = function (configuration?: Configuratio
                 localVarQueryParameter['offset'] = offset;
             }
 
-            if (name !== undefined) {
-                localVarQueryParameter['name'] = name;
-            }
-
             if (slug !== undefined) {
                 localVarQueryParameter['slug'] = slug;
-            }
-
-            if (chatId !== undefined) {
-                localVarQueryParameter['chat_id'] = chatId;
-            }
-
-            if (prefix !== undefined) {
-                localVarQueryParameter['prefix'] = prefix;
-            }
-
-            if (membersAmount !== undefined) {
-                localVarQueryParameter['members_amount'] = membersAmount;
             }
 
             if (membersAmountMin !== undefined) {
                 localVarQueryParameter['members_amount_min'] = membersAmountMin;
             }
 
-            if (membersAmountMax !== undefined) {
-                localVarQueryParameter['members_amount_max'] = membersAmountMax;
-            }
-
-            if (createdAtGte !== undefined) {
-                localVarQueryParameter['created_at_gte'] = createdAtGte;
-            }
-
-            if (createdAtLte !== undefined) {
-                localVarQueryParameter['created_at_lte'] = createdAtLte;
-            }
-
             if (sortFields !== undefined) {
-                localVarQueryParameter['sortFields'] = sortFields;
+                localVarQueryParameter['sort_fields'] = sortFields;
             }
 
             if (directions !== undefined) {
@@ -3677,22 +3643,15 @@ export const SquadsApiFp = function(configuration?: Configuration) {
          * @summary List squads
          * @param {number} limit Limit
          * @param {number} offset Offset
-         * @param {string} [name] Name
          * @param {string} [slug] Slug
-         * @param {number} [chatId] Telegram chat ID
-         * @param {string} [prefix] Squad prefix
-         * @param {number} [membersAmount] Members amount
          * @param {number} [membersAmountMin] Members amount min
-         * @param {number} [membersAmountMax] Members amount max
-         * @param {string} [createdAtGte] Created at greater than or equal, RFC3339
-         * @param {string} [createdAtLte] Created at less than or equal, RFC3339
          * @param {string} [sortFields] Sort fields
          * @param {string} [directions] Sort directions
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async squadsGet(limit: number, offset: number, name?: string, slug?: string, chatId?: number, prefix?: string, membersAmount?: number, membersAmountMin?: number, membersAmountMax?: number, createdAtGte?: string, createdAtLte?: string, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SquadsGet200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.squadsGet(limit, offset, name, slug, chatId, prefix, membersAmount, membersAmountMin, membersAmountMax, createdAtGte, createdAtLte, sortFields, directions, options);
+        async squadsGet(limit: number, offset: number, slug?: string, membersAmountMin?: number, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SquadsGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.squadsGet(limit, offset, slug, membersAmountMin, sortFields, directions, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['SquadsApi.squadsGet']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -3724,22 +3683,15 @@ export const SquadsApiFactory = function (configuration?: Configuration, basePat
          * @summary List squads
          * @param {number} limit Limit
          * @param {number} offset Offset
-         * @param {string} [name] Name
          * @param {string} [slug] Slug
-         * @param {number} [chatId] Telegram chat ID
-         * @param {string} [prefix] Squad prefix
-         * @param {number} [membersAmount] Members amount
          * @param {number} [membersAmountMin] Members amount min
-         * @param {number} [membersAmountMax] Members amount max
-         * @param {string} [createdAtGte] Created at greater than or equal, RFC3339
-         * @param {string} [createdAtLte] Created at less than or equal, RFC3339
          * @param {string} [sortFields] Sort fields
          * @param {string} [directions] Sort directions
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        squadsGet(limit: number, offset: number, name?: string, slug?: string, chatId?: number, prefix?: string, membersAmount?: number, membersAmountMin?: number, membersAmountMax?: number, createdAtGte?: string, createdAtLte?: string, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig): AxiosPromise<SquadsGet200Response> {
-            return localVarFp.squadsGet(limit, offset, name, slug, chatId, prefix, membersAmount, membersAmountMin, membersAmountMax, createdAtGte, createdAtLte, sortFields, directions, options).then((request) => request(axios, basePath));
+        squadsGet(limit: number, offset: number, slug?: string, membersAmountMin?: number, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig): AxiosPromise<SquadsGet200Response> {
+            return localVarFp.squadsGet(limit, offset, slug, membersAmountMin, sortFields, directions, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3763,22 +3715,15 @@ export class SquadsApi extends BaseAPI {
      * @summary List squads
      * @param {number} limit Limit
      * @param {number} offset Offset
-     * @param {string} [name] Name
      * @param {string} [slug] Slug
-     * @param {number} [chatId] Telegram chat ID
-     * @param {string} [prefix] Squad prefix
-     * @param {number} [membersAmount] Members amount
      * @param {number} [membersAmountMin] Members amount min
-     * @param {number} [membersAmountMax] Members amount max
-     * @param {string} [createdAtGte] Created at greater than or equal, RFC3339
-     * @param {string} [createdAtLte] Created at less than or equal, RFC3339
      * @param {string} [sortFields] Sort fields
      * @param {string} [directions] Sort directions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public squadsGet(limit: number, offset: number, name?: string, slug?: string, chatId?: number, prefix?: string, membersAmount?: number, membersAmountMin?: number, membersAmountMax?: number, createdAtGte?: string, createdAtLte?: string, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig) {
-        return SquadsApiFp(this.configuration).squadsGet(limit, offset, name, slug, chatId, prefix, membersAmount, membersAmountMin, membersAmountMax, createdAtGte, createdAtLte, sortFields, directions, options).then((request) => request(this.axios, this.basePath));
+    public squadsGet(limit: number, offset: number, slug?: string, membersAmountMin?: number, sortFields?: string, directions?: string, options?: RawAxiosRequestConfig) {
+        return SquadsApiFp(this.configuration).squadsGet(limit, offset, slug, membersAmountMin, sortFields, directions, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

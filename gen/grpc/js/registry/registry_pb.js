@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global =
-    (typeof globalThis !== 'undefined' && globalThis) ||
-    (typeof window !== 'undefined' && window) ||
-    (typeof global !== 'undefined' && global) ||
-    (typeof self !== 'undefined' && self) ||
-    (function () { return this; }).call(null) ||
-    Function('return this')();
+var global = globalThis;
 
 var common_rarity_pb = require('../common/rarity_pb.js');
 goog.object.extend(proto, common_rarity_pb);
@@ -514,7 +508,7 @@ issued: (f = jspb.Message.getField(msg, 25)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.ItemDef}
  */
 proto.registry.v1.ItemDef.deserializeBinary = function(bytes) {
@@ -539,7 +533,7 @@ proto.registry.v1.ItemDef.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setItemDefId(value);
       break;
     case 2:
@@ -547,31 +541,31 @@ proto.registry.v1.ItemDef.deserializeBinaryFromReader = function(msg, reader) {
       msg.setAppId(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDescription(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setType(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDisplayType(value);
       break;
     case 7:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setBundle(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setPrice(value);
       break;
     case 9:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setIconUrl(value);
       break;
     case 10:
@@ -579,23 +573,23 @@ proto.registry.v1.ItemDef.deserializeBinaryFromReader = function(msg, reader) {
       msg.setMarketable(value);
       break;
     case 11:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTags(value);
       break;
     case 12:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStoreTags(value);
       break;
     case 13:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStoreImages(value);
       break;
     case 14:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setAppFiles(value);
       break;
     case 15:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setCollection(value);
       break;
     case 16:
@@ -611,7 +605,7 @@ proto.registry.v1.ItemDef.deserializeBinaryFromReader = function(msg, reader) {
       msg.setGameOnly(value);
       break;
     case 19:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setPromo(value);
       break;
     case 20:
@@ -623,7 +617,7 @@ proto.registry.v1.ItemDef.deserializeBinaryFromReader = function(msg, reader) {
       msg.setRarity(value);
       break;
     case 22:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setExchange(value);
       break;
     case 23:
@@ -1396,7 +1390,7 @@ tags: (f = jspb.Message.getField(msg, 21)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.UpdateItemDefRequest}
  */
 proto.registry.v1.UpdateItemDefRequest.deserializeBinary = function(bytes) {
@@ -1421,7 +1415,7 @@ proto.registry.v1.UpdateItemDefRequest.deserializeBinaryFromReader = function(ms
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setItemDefId(value);
       break;
     case 2:
@@ -1429,27 +1423,27 @@ proto.registry.v1.UpdateItemDefRequest.deserializeBinaryFromReader = function(ms
       msg.setAppId(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDescription(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDisplayType(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setBundle(value);
       break;
     case 7:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setPrice(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setIconUrl(value);
       break;
     case 9:
@@ -1457,19 +1451,19 @@ proto.registry.v1.UpdateItemDefRequest.deserializeBinaryFromReader = function(ms
       msg.setMarketable(value);
       break;
     case 10:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStoreTags(value);
       break;
     case 11:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStoreImages(value);
       break;
     case 12:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setAppFiles(value);
       break;
     case 13:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setCollection(value);
       break;
     case 14:
@@ -1485,7 +1479,7 @@ proto.registry.v1.UpdateItemDefRequest.deserializeBinaryFromReader = function(ms
       msg.setGameOnly(value);
       break;
     case 17:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setPromo(value);
       break;
     case 18:
@@ -1493,7 +1487,7 @@ proto.registry.v1.UpdateItemDefRequest.deserializeBinaryFromReader = function(ms
       msg.setTradable(value);
       break;
     case 19:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setExchange(value);
       break;
     case 20:
@@ -1501,7 +1495,7 @@ proto.registry.v1.UpdateItemDefRequest.deserializeBinaryFromReader = function(ms
       msg.setMaxSupply(value);
       break;
     case 21:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTags(value);
       break;
     default:
@@ -2455,7 +2449,7 @@ displayType: jspb.Message.getFieldWithDefault(msg, 8, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.AchievementDef}
  */
 proto.registry.v1.AchievementDef.deserializeBinary = function(bytes) {
@@ -2480,7 +2474,7 @@ proto.registry.v1.AchievementDef.deserializeBinaryFromReader = function(msg, rea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setAchievementDefId(value);
       break;
     case 2:
@@ -2488,19 +2482,19 @@ proto.registry.v1.AchievementDef.deserializeBinaryFromReader = function(msg, rea
       msg.setAppId(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDescription(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setIconUrl(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTags(value);
       break;
     case 7:
@@ -2508,7 +2502,7 @@ proto.registry.v1.AchievementDef.deserializeBinaryFromReader = function(msg, rea
       msg.setHidden(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDisplayType(value);
       break;
     default:
@@ -2795,7 +2789,7 @@ displayType: (f = jspb.Message.getField(msg, 8)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.UpdateAchievementDef}
  */
 proto.registry.v1.UpdateAchievementDef.deserializeBinary = function(bytes) {
@@ -2820,7 +2814,7 @@ proto.registry.v1.UpdateAchievementDef.deserializeBinaryFromReader = function(ms
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setAchievementDefId(value);
       break;
     case 2:
@@ -2828,19 +2822,19 @@ proto.registry.v1.UpdateAchievementDef.deserializeBinaryFromReader = function(ms
       msg.setAppId(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDescription(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setIconUrl(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTags(value);
       break;
     case 7:
@@ -2848,7 +2842,7 @@ proto.registry.v1.UpdateAchievementDef.deserializeBinaryFromReader = function(ms
       msg.setHidden(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDisplayType(value);
       break;
     default:
@@ -3236,7 +3230,7 @@ itemDefId: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.GetItemDefRequest}
  */
 proto.registry.v1.GetItemDefRequest.deserializeBinary = function(bytes) {
@@ -3261,7 +3255,7 @@ proto.registry.v1.GetItemDefRequest.deserializeBinaryFromReader = function(msg, 
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setItemDefId(value);
       break;
     default:
@@ -3366,7 +3360,7 @@ itemDef: (f = msg.getItemDef()) && proto.registry.v1.ItemDef.toObject(includeIns
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.CreateItemDefRequest}
  */
 proto.registry.v1.CreateItemDefRequest.deserializeBinary = function(bytes) {
@@ -3517,7 +3511,7 @@ status: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.CreateItemDefResponse}
  */
 proto.registry.v1.CreateItemDefResponse.deserializeBinary = function(bytes) {
@@ -3542,7 +3536,7 @@ proto.registry.v1.CreateItemDefResponse.deserializeBinaryFromReader = function(m
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStatus(value);
       break;
     default:
@@ -3647,7 +3641,7 @@ status: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.UpdateItemDefResponse}
  */
 proto.registry.v1.UpdateItemDefResponse.deserializeBinary = function(bytes) {
@@ -3672,7 +3666,7 @@ proto.registry.v1.UpdateItemDefResponse.deserializeBinaryFromReader = function(m
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStatus(value);
       break;
     default:
@@ -3777,7 +3771,7 @@ achievementDefId: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.GetAchievementDefRequest}
  */
 proto.registry.v1.GetAchievementDefRequest.deserializeBinary = function(bytes) {
@@ -3802,7 +3796,7 @@ proto.registry.v1.GetAchievementDefRequest.deserializeBinaryFromReader = functio
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setAchievementDefId(value);
       break;
     default:
@@ -3907,7 +3901,7 @@ achievementDef: (f = msg.getAchievementDef()) && proto.registry.v1.AchievementDe
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.CreateAchievementDefRequest}
  */
 proto.registry.v1.CreateAchievementDefRequest.deserializeBinary = function(bytes) {
@@ -4058,7 +4052,7 @@ status: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.CreateAchievementDefResponse}
  */
 proto.registry.v1.CreateAchievementDefResponse.deserializeBinary = function(bytes) {
@@ -4083,7 +4077,7 @@ proto.registry.v1.CreateAchievementDefResponse.deserializeBinaryFromReader = fun
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStatus(value);
       break;
     default:
@@ -4188,7 +4182,7 @@ achievementDef: (f = msg.getAchievementDef()) && proto.registry.v1.UpdateAchieve
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.UpdateAchievementDefRequest}
  */
 proto.registry.v1.UpdateAchievementDefRequest.deserializeBinary = function(bytes) {
@@ -4339,7 +4333,7 @@ status: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.UpdateAchievementDefResponse}
  */
 proto.registry.v1.UpdateAchievementDefResponse.deserializeBinary = function(bytes) {
@@ -4364,7 +4358,7 @@ proto.registry.v1.UpdateAchievementDefResponse.deserializeBinaryFromReader = fun
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStatus(value);
       break;
     default:
@@ -4491,7 +4485,7 @@ itemDefIdsList: (f = jspb.Message.getRepeatedField(msg, 16)) == null ? undefined
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.ListItemDefsRequest}
  */
 proto.registry.v1.ListItemDefsRequest.deserializeBinary = function(bytes) {
@@ -4524,11 +4518,11 @@ proto.registry.v1.ListItemDefsRequest.deserializeBinaryFromReader = function(msg
       msg.setOffset(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setCollection(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 5:
@@ -4536,27 +4530,27 @@ proto.registry.v1.ListItemDefsRequest.deserializeBinaryFromReader = function(msg
       msg.setRarity(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setType(value);
       break;
     case 7:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDisplayType(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setHidden(value);
       break;
     case 9:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setGameOnly(value);
       break;
     case 10:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStoreHidden(value);
       break;
     case 11:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTradable(value);
       break;
     case 12:
@@ -4564,11 +4558,11 @@ proto.registry.v1.ListItemDefsRequest.deserializeBinaryFromReader = function(msg
       msg.setSupply(value);
       break;
     case 13:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addSortFields(value);
       break;
     case 14:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addDirections(value);
       break;
     case 15:
@@ -4577,7 +4571,7 @@ proto.registry.v1.ListItemDefsRequest.deserializeBinaryFromReader = function(msg
       msg.setTags(value);
       break;
     case 16:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addItemDefIds(value);
       break;
     default:
@@ -5323,7 +5317,7 @@ pagination: (f = msg.getPagination()) && common_pagination_pb.Pagination.toObjec
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.ListItemDefsResponse}
  */
 proto.registry.v1.ListItemDefsResponse.deserializeBinary = function(bytes) {
@@ -5526,7 +5520,7 @@ offset: jspb.Message.getFieldWithDefault(msg, 2, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.ListAchievementsDefsRequest}
  */
 proto.registry.v1.ListAchievementsDefsRequest.deserializeBinary = function(bytes) {
@@ -5694,7 +5688,7 @@ pagination: (f = msg.getPagination()) && common_pagination_pb.Pagination.toObjec
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.ListAchievementsDefsResponse}
  */
 proto.registry.v1.ListAchievementsDefsResponse.deserializeBinary = function(bytes) {
@@ -5896,7 +5890,7 @@ itemDefId: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.DeleteItemDefRequest}
  */
 proto.registry.v1.DeleteItemDefRequest.deserializeBinary = function(bytes) {
@@ -5921,7 +5915,7 @@ proto.registry.v1.DeleteItemDefRequest.deserializeBinaryFromReader = function(ms
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setItemDefId(value);
       break;
     default:
@@ -6026,7 +6020,7 @@ status: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.registry.v1.DeleteItemDefResponse}
  */
 proto.registry.v1.DeleteItemDefResponse.deserializeBinary = function(bytes) {
@@ -6051,7 +6045,7 @@ proto.registry.v1.DeleteItemDefResponse.deserializeBinaryFromReader = function(m
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setStatus(value);
       break;
     default:

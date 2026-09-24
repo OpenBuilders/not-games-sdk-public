@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Slug** | Pointer to **string** |  | [optional] 
 **Socials** | Pointer to [**[]InternalModuleRegistryPresentationAppHttpAppSocial**](InternalModuleRegistryPresentationAppHttpAppSocial.md) |  | [optional] 
+**SortOrder** | Pointer to **int32** |  | [optional] 
 **Tags** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** |  | [optional] 
 **Verified** | Pointer to **bool** |  | [optional] 
@@ -234,6 +235,31 @@ SetSocials sets Socials field to given value.
 `func (o *InternalModuleRegistryPresentationAppHttpAppOneResponse) HasSocials() bool`
 
 HasSocials returns a boolean if a field has been set.
+
+### GetSortOrder
+
+`func (o *InternalModuleRegistryPresentationAppHttpAppOneResponse) GetSortOrder() int32`
+
+GetSortOrder returns the SortOrder field if non-nil, zero value otherwise.
+
+### GetSortOrderOk
+
+`func (o *InternalModuleRegistryPresentationAppHttpAppOneResponse) GetSortOrderOk() (*int32, bool)`
+
+GetSortOrderOk returns a tuple with the SortOrder field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSortOrder
+
+`func (o *InternalModuleRegistryPresentationAppHttpAppOneResponse) SetSortOrder(v int32)`
+
+SetSortOrder sets SortOrder field to given value.
+
+### HasSortOrder
+
+`func (o *InternalModuleRegistryPresentationAppHttpAppOneResponse) HasSortOrder() bool`
+
+HasSortOrder returns a boolean if a field has been set.
 
 ### GetTags
 

@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global =
-    (typeof globalThis !== 'undefined' && globalThis) ||
-    (typeof window !== 'undefined' && window) ||
-    (typeof global !== 'undefined' && global) ||
-    (typeof self !== 'undefined' && self) ||
-    (function () { return this; }).call(null) ||
-    Function('return this')();
+var global = globalThis;
 
 var common_pagination_pb = require('../common/pagination_pb.js');
 goog.object.extend(proto, common_pagination_pb);
@@ -212,7 +206,7 @@ defaultTags: jspb.Message.getFieldWithDefault(msg, 13, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.achievement.v1.Achievement}
  */
 proto.achievement.v1.Achievement.deserializeBinary = function(bytes) {
@@ -237,11 +231,11 @@ proto.achievement.v1.Achievement.deserializeBinaryFromReader = function(msg, rea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setAchievementDefId(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setAchievementId(value);
       break;
     case 3:
@@ -253,19 +247,19 @@ proto.achievement.v1.Achievement.deserializeBinaryFromReader = function(msg, rea
       msg.setAppId(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setName(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDescription(value);
       break;
     case 7:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setIconUrl(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTags(value);
       break;
     case 9:
@@ -273,19 +267,19 @@ proto.achievement.v1.Achievement.deserializeBinaryFromReader = function(msg, rea
       msg.setHidden(value);
       break;
     case 10:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDisplayType(value);
       break;
     case 11:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setCreatedAt(value);
       break;
     case 12:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setUpdatedAt(value);
       break;
     case 13:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setDefaultTags(value);
       break;
     default:
@@ -693,7 +687,7 @@ accountId: jspb.Message.getFieldWithDefault(msg, 4, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.achievement.v1.ListAchievementsRequest}
  */
 proto.achievement.v1.ListAchievementsRequest.deserializeBinary = function(bytes) {
@@ -937,7 +931,7 @@ pagination: (f = msg.getPagination()) && common_pagination_pb.Pagination.toObjec
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.achievement.v1.ListAchievementsResponse}
  */
 proto.achievement.v1.ListAchievementsResponse.deserializeBinary = function(bytes) {
@@ -1139,7 +1133,7 @@ achievementId: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.achievement.v1.GetAchievementRequest}
  */
 proto.achievement.v1.GetAchievementRequest.deserializeBinary = function(bytes) {
@@ -1164,7 +1158,7 @@ proto.achievement.v1.GetAchievementRequest.deserializeBinaryFromReader = functio
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setAchievementId(value);
       break;
     default:
@@ -1280,7 +1274,7 @@ iconUrl: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.achievement.v1.CreateAchievementsRequest}
  */
 proto.achievement.v1.CreateAchievementsRequest.deserializeBinary = function(bytes) {
@@ -1305,11 +1299,11 @@ proto.achievement.v1.CreateAchievementsRequest.deserializeBinaryFromReader = fun
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.addAchievementDefIds(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setTags(value);
       break;
     case 3:
@@ -1317,11 +1311,11 @@ proto.achievement.v1.CreateAchievementsRequest.deserializeBinaryFromReader = fun
       msg.setAccountId(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setAchievementId(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setIconUrl(value);
       break;
     default:
@@ -1589,7 +1583,7 @@ achievementsList: jspb.Message.toObjectList(msg.getAchievementsList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.achievement.v1.CreateAchievementsResponse}
  */
 proto.achievement.v1.CreateAchievementsResponse.deserializeBinary = function(bytes) {
