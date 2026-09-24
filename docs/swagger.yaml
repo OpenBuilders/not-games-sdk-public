@@ -31,6 +31,79 @@ definitions:
       status:
         type: string
     type: object
+  github_com_not-platform_internal_module_friends_presentation_http_model.FriendAccountResponse:
+    properties:
+      account_id:
+        type: integer
+      activity:
+        $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.FriendActivityResponse'
+      avatar:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      username:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_friends_presentation_http_model.FriendActivityResponse:
+    properties:
+      app_id:
+        type: integer
+      started_at:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_friends_presentation_http_model.FriendRequestResponse:
+    properties:
+      created_at:
+        type: string
+      from_account:
+        $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.FriendAccountResponse'
+      from_account_id:
+        type: integer
+      id:
+        type: integer
+      status:
+        type: string
+      to_account:
+        $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.FriendAccountResponse'
+      to_account_id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  github_com_not-platform_internal_module_friends_presentation_http_model.FriendsPageResponse:
+    properties:
+      friends:
+        $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.ListFriendsResponse'
+      incoming_requests:
+        $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.ListRequestsResponse'
+      outgoing_requests:
+        $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.ListRequestsResponse'
+    type: object
+  github_com_not-platform_internal_module_friends_presentation_http_model.ListFriendsResponse:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.FriendAccountResponse'
+        type: array
+      total:
+        type: integer
+    type: object
+  github_com_not-platform_internal_module_friends_presentation_http_model.ListRequestsResponse:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.FriendRequestResponse'
+        type: array
+      total:
+        type: integer
+    type: object
+  github_com_not-platform_internal_module_friends_presentation_http_model.SendRequestResponse:
+    properties:
+      request_id:
+        type: integer
+    type: object
   github_com_not-platform_internal_module_inventory_presentation_inventory_item_http_model.ConsumeItemRequest:
     properties:
       account_id:
@@ -516,6 +589,16 @@ definitions:
         items:
           type: integer
         type: array
+    type: object
+  internal_module_friends_presentation_http.respondRequestBody:
+    properties:
+      accept:
+        type: boolean
+    type: object
+  internal_module_friends_presentation_http.sendRequestBody:
+    properties:
+      to_account_id:
+        type: integer
     type: object
   internal_module_registry_presentation_achievement_http.ListAchievementDefResponse:
     properties:
@@ -1223,6 +1306,241 @@ paths:
       summary: Whitelist users for a drop
       tags:
       - Drops
+  /friends:
+    get:
+      parameters:
+      - description: search by username or name
+        in: query
+        name: search
+        type: string
+      - description: limit (default 20, max 100)
+        in: query
+        name: limit
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.ListFriendsResponse'
+              type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List friends
+      tags:
+      - Friends
+  /friends/{friend_id}:
+    delete:
+      parameters:
+      - description: friend account id
+        in: path
+        name: friend_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Remove friend
+      tags:
+      - Friends
+  /friends/page:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.FriendsPageResponse'
+              type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Get friends page
+      tags:
+      - Friends
+  /friends/request:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_module_friends_presentation_http.sendRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.SendRequestResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Send friend request
+      tags:
+      - Friends
+  /friends/request/{request_id}/cancel:
+    put:
+      parameters:
+      - description: request id
+        in: path
+        name: request_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Cancel outgoing friend request
+      tags:
+      - Friends
+  /friends/request/{request_id}/respond:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: request id
+        in: path
+        name: request_id
+        required: true
+        type: integer
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_module_friends_presentation_http.respondRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: Respond to friend request
+      tags:
+      - Friends
+  /friends/requests/incoming:
+    get:
+      parameters:
+      - description: limit (default 20, max 100)
+        in: query
+        name: limit
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.ListRequestsResponse'
+              type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List incoming friend requests
+      tags:
+      - Friends
+  /friends/requests/outgoing:
+    get:
+      parameters:
+      - description: limit (default 20, max 100)
+        in: query
+        name: limit
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_not-platform_internal_module_friends_presentation_http_model.ListRequestsResponse'
+              type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/github_com_not-platform_internal_server_templates_response.Template'
+      summary: List outgoing friend requests
+      tags:
+      - Friends
   /inventory/by_itemdef:
     get:
       parameters:
