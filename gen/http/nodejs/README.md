@@ -58,6 +58,14 @@ Class | Method | HTTP request | Description
 *DropsApi* | [**dropsIdGet**](docs/DropsApi.md#dropsidget) | **GET** /drops/{id} | Check user eligibility for a drop
 *DropsApi* | [**dropsIdWhitelistPost**](docs/DropsApi.md#dropsidwhitelistpost) | **POST** /drops/{id}/whitelist | Whitelist users for a drop
 *DropsApi* | [**dropsPost**](docs/DropsApi.md#dropspost) | **POST** /drops | Create a new drop
+*FriendsApi* | [**friendsFriendIdDelete**](docs/FriendsApi.md#friendsfriendiddelete) | **DELETE** /friends/{friend_id} | Remove friend
+*FriendsApi* | [**friendsGet**](docs/FriendsApi.md#friendsget) | **GET** /friends | List friends
+*FriendsApi* | [**friendsPageGet**](docs/FriendsApi.md#friendspageget) | **GET** /friends/page | Get friends page
+*FriendsApi* | [**friendsRequestPost**](docs/FriendsApi.md#friendsrequestpost) | **POST** /friends/request | Send friend request
+*FriendsApi* | [**friendsRequestRequestIdCancelPut**](docs/FriendsApi.md#friendsrequestrequestidcancelput) | **PUT** /friends/request/{request_id}/cancel | Cancel outgoing friend request
+*FriendsApi* | [**friendsRequestRequestIdRespondPut**](docs/FriendsApi.md#friendsrequestrequestidrespondput) | **PUT** /friends/request/{request_id}/respond | Respond to friend request
+*FriendsApi* | [**friendsRequestsIncomingGet**](docs/FriendsApi.md#friendsrequestsincomingget) | **GET** /friends/requests/incoming | List incoming friend requests
+*FriendsApi* | [**friendsRequestsOutgoingGet**](docs/FriendsApi.md#friendsrequestsoutgoingget) | **GET** /friends/requests/outgoing | List outgoing friend requests
 *InventoryApi* | [**inventoryByItemdefGet**](docs/InventoryApi.md#inventorybyitemdefget) | **GET** /inventory/by_itemdef | List items
 *InventoryApi* | [**inventoryItemsGeneratePost**](docs/InventoryApi.md#inventoryitemsgeneratepost) | **POST** /inventory/items/generate | Generate item
 *InventoryApi* | [**inventoryItemsGet**](docs/InventoryApi.md#inventoryitemsget) | **GET** /inventory/items | List items
@@ -107,9 +115,20 @@ Class | Method | HTTP request | Description
  - [AuthGeneratePost200Response](docs/AuthGeneratePost200Response.md)
  - [DropsIdGet200Response](docs/DropsIdGet200Response.md)
  - [DropsPost200Response](docs/DropsPost200Response.md)
+ - [FriendsGet200Response](docs/FriendsGet200Response.md)
+ - [FriendsPageGet200Response](docs/FriendsPageGet200Response.md)
+ - [FriendsRequestPost200Response](docs/FriendsRequestPost200Response.md)
+ - [FriendsRequestsIncomingGet200Response](docs/FriendsRequestsIncomingGet200Response.md)
  - [GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest](docs/GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest.md)
  - [GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse](docs/GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateResponse.md)
  - [GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse](docs/GithubComNotPlatformInternalModuleDropsPresentationDropsHttpModelsCheckEligibilityResponse.md)
+ - [GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendAccountResponse](docs/GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendAccountResponse.md)
+ - [GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendActivityResponse](docs/GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendActivityResponse.md)
+ - [GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendRequestResponse](docs/GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendRequestResponse.md)
+ - [GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendsPageResponse](docs/GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendsPageResponse.md)
+ - [GithubComNotPlatformInternalModuleFriendsPresentationHttpModelListFriendsResponse](docs/GithubComNotPlatformInternalModuleFriendsPresentationHttpModelListFriendsResponse.md)
+ - [GithubComNotPlatformInternalModuleFriendsPresentationHttpModelListRequestsResponse](docs/GithubComNotPlatformInternalModuleFriendsPresentationHttpModelListRequestsResponse.md)
+ - [GithubComNotPlatformInternalModuleFriendsPresentationHttpModelSendRequestResponse](docs/GithubComNotPlatformInternalModuleFriendsPresentationHttpModelSendRequestResponse.md)
  - [GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest](docs/GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest.md)
  - [GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest](docs/GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelGenerateItemRequest.md)
  - [GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse](docs/GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelInventoryItemResponse.md)
@@ -140,6 +159,8 @@ Class | Method | HTTP request | Description
  - [InternalModuleDropsPresentationDropsHttpCreateDropRequest](docs/InternalModuleDropsPresentationDropsHttpCreateDropRequest.md)
  - [InternalModuleDropsPresentationDropsHttpCreateDropResponse](docs/InternalModuleDropsPresentationDropsHttpCreateDropResponse.md)
  - [InternalModuleDropsPresentationDropsHttpWhitelistDropUserRequest](docs/InternalModuleDropsPresentationDropsHttpWhitelistDropUserRequest.md)
+ - [InternalModuleFriendsPresentationHttpRespondRequestBody](docs/InternalModuleFriendsPresentationHttpRespondRequestBody.md)
+ - [InternalModuleFriendsPresentationHttpSendRequestBody](docs/InternalModuleFriendsPresentationHttpSendRequestBody.md)
  - [InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse](docs/InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse.md)
  - [InternalModuleRegistryPresentationAchievementHttpCreateRequest](docs/InternalModuleRegistryPresentationAchievementHttpCreateRequest.md)
  - [InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse](docs/InternalModuleRegistryPresentationAchievementHttpListAchievementDefResponse.md)

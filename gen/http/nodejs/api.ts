@@ -107,6 +107,34 @@ export interface DropsPost200Response {
     'ok'?: boolean;
     'request_id'?: string;
 }
+export interface FriendsGet200Response {
+    'data'?: GithubComNotPlatformInternalModuleFriendsPresentationHttpModelListFriendsResponse;
+    'error_code'?: string;
+    'message'?: string;
+    'ok'?: boolean;
+    'request_id'?: string;
+}
+export interface FriendsPageGet200Response {
+    'data'?: GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendsPageResponse;
+    'error_code'?: string;
+    'message'?: string;
+    'ok'?: boolean;
+    'request_id'?: string;
+}
+export interface FriendsRequestPost200Response {
+    'data'?: GithubComNotPlatformInternalModuleFriendsPresentationHttpModelSendRequestResponse;
+    'error_code'?: string;
+    'message'?: string;
+    'ok'?: boolean;
+    'request_id'?: string;
+}
+export interface FriendsRequestsIncomingGet200Response {
+    'data'?: GithubComNotPlatformInternalModuleFriendsPresentationHttpModelListRequestsResponse;
+    'error_code'?: string;
+    'message'?: string;
+    'ok'?: boolean;
+    'request_id'?: string;
+}
 export interface GithubComNotPlatformInternalModuleAuthPresentationAuthorizationHttpModelAuthGenerateRequest {
     'app_id'?: number;
     'refresh_token'?: string;
@@ -123,6 +151,44 @@ export interface GithubComNotPlatformInternalModuleDropsPresentationDropsHttpMod
     'id'?: string;
     'item_def_ids'?: string;
     'status'?: string;
+}
+export interface GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendAccountResponse {
+    'account_id'?: number;
+    'activity'?: GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendActivityResponse;
+    'avatar'?: string;
+    'first_name'?: string;
+    'last_name'?: string;
+    'username'?: string;
+}
+export interface GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendActivityResponse {
+    'app_id'?: number;
+    'started_at'?: string;
+}
+export interface GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendRequestResponse {
+    'created_at'?: string;
+    'from_account'?: GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendAccountResponse;
+    'from_account_id'?: number;
+    'id'?: number;
+    'status'?: string;
+    'to_account'?: GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendAccountResponse;
+    'to_account_id'?: number;
+    'updated_at'?: string;
+}
+export interface GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendsPageResponse {
+    'friends'?: GithubComNotPlatformInternalModuleFriendsPresentationHttpModelListFriendsResponse;
+    'incoming_requests'?: GithubComNotPlatformInternalModuleFriendsPresentationHttpModelListRequestsResponse;
+    'outgoing_requests'?: GithubComNotPlatformInternalModuleFriendsPresentationHttpModelListRequestsResponse;
+}
+export interface GithubComNotPlatformInternalModuleFriendsPresentationHttpModelListFriendsResponse {
+    'items'?: Array<GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendAccountResponse>;
+    'total'?: number;
+}
+export interface GithubComNotPlatformInternalModuleFriendsPresentationHttpModelListRequestsResponse {
+    'items'?: Array<GithubComNotPlatformInternalModuleFriendsPresentationHttpModelFriendRequestResponse>;
+    'total'?: number;
+}
+export interface GithubComNotPlatformInternalModuleFriendsPresentationHttpModelSendRequestResponse {
+    'request_id'?: number;
 }
 export interface GithubComNotPlatformInternalModuleInventoryPresentationInventoryItemHttpModelConsumeItemRequest {
     'account_id'?: number;
@@ -382,6 +448,12 @@ export interface InternalModuleDropsPresentationDropsHttpCreateDropResponse {
 }
 export interface InternalModuleDropsPresentationDropsHttpWhitelistDropUserRequest {
     'user_ids'?: Array<number>;
+}
+export interface InternalModuleFriendsPresentationHttpRespondRequestBody {
+    'accept'?: boolean;
+}
+export interface InternalModuleFriendsPresentationHttpSendRequestBody {
+    'to_account_id'?: number;
 }
 export interface InternalModuleRegistryPresentationAchievementHttpAchievementDefOneResponse {
     'achievement_def_id'?: string;
@@ -1219,6 +1291,644 @@ export class DropsApi extends BaseAPI {
      */
     public dropsPost(request: InternalModuleDropsPresentationDropsHttpCreateDropRequest, options?: RawAxiosRequestConfig) {
         return DropsApiFp(this.configuration).dropsPost(request, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * FriendsApi - axios parameter creator
+ */
+export const FriendsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Remove friend
+         * @param {number} friendId friend account id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsFriendIdDelete: async (friendId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'friendId' is not null or undefined
+            assertParamExists('friendsFriendIdDelete', 'friendId', friendId)
+            const localVarPath = `/friends/{friend_id}`
+                .replace('{friend_id}', encodeURIComponent(String(friendId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary List friends
+         * @param {string} [search] search by username or name
+         * @param {number} [limit] limit (default 20, max 100)
+         * @param {number} [offset] offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsGet: async (search?: string, limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/friends`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get friends page
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsPageGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/friends/page`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Send friend request
+         * @param {InternalModuleFriendsPresentationHttpSendRequestBody} request request body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsRequestPost: async (request: InternalModuleFriendsPresentationHttpSendRequestBody, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'request' is not null or undefined
+            assertParamExists('friendsRequestPost', 'request', request)
+            const localVarPath = `/friends/request`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Cancel outgoing friend request
+         * @param {number} requestId request id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsRequestRequestIdCancelPut: async (requestId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'requestId' is not null or undefined
+            assertParamExists('friendsRequestRequestIdCancelPut', 'requestId', requestId)
+            const localVarPath = `/friends/request/{request_id}/cancel`
+                .replace('{request_id}', encodeURIComponent(String(requestId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Respond to friend request
+         * @param {number} requestId request id
+         * @param {InternalModuleFriendsPresentationHttpRespondRequestBody} request request body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsRequestRequestIdRespondPut: async (requestId: number, request: InternalModuleFriendsPresentationHttpRespondRequestBody, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'requestId' is not null or undefined
+            assertParamExists('friendsRequestRequestIdRespondPut', 'requestId', requestId)
+            // verify required parameter 'request' is not null or undefined
+            assertParamExists('friendsRequestRequestIdRespondPut', 'request', request)
+            const localVarPath = `/friends/request/{request_id}/respond`
+                .replace('{request_id}', encodeURIComponent(String(requestId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary List incoming friend requests
+         * @param {number} [limit] limit (default 20, max 100)
+         * @param {number} [offset] offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsRequestsIncomingGet: async (limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/friends/requests/incoming`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary List outgoing friend requests
+         * @param {number} [limit] limit (default 20, max 100)
+         * @param {number} [offset] offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsRequestsOutgoingGet: async (limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/friends/requests/outgoing`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication JWT required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * FriendsApi - functional programming interface
+ */
+export const FriendsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = FriendsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Remove friend
+         * @param {number} friendId friend account id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async friendsFriendIdDelete(friendId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.friendsFriendIdDelete(friendId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FriendsApi.friendsFriendIdDelete']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary List friends
+         * @param {string} [search] search by username or name
+         * @param {number} [limit] limit (default 20, max 100)
+         * @param {number} [offset] offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async friendsGet(search?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FriendsGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.friendsGet(search, limit, offset, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FriendsApi.friendsGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get friends page
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async friendsPageGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FriendsPageGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.friendsPageGet(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FriendsApi.friendsPageGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Send friend request
+         * @param {InternalModuleFriendsPresentationHttpSendRequestBody} request request body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async friendsRequestPost(request: InternalModuleFriendsPresentationHttpSendRequestBody, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FriendsRequestPost200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.friendsRequestPost(request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FriendsApi.friendsRequestPost']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Cancel outgoing friend request
+         * @param {number} requestId request id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async friendsRequestRequestIdCancelPut(requestId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.friendsRequestRequestIdCancelPut(requestId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FriendsApi.friendsRequestRequestIdCancelPut']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Respond to friend request
+         * @param {number} requestId request id
+         * @param {InternalModuleFriendsPresentationHttpRespondRequestBody} request request body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async friendsRequestRequestIdRespondPut(requestId: number, request: InternalModuleFriendsPresentationHttpRespondRequestBody, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.friendsRequestRequestIdRespondPut(requestId, request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FriendsApi.friendsRequestRequestIdRespondPut']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary List incoming friend requests
+         * @param {number} [limit] limit (default 20, max 100)
+         * @param {number} [offset] offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async friendsRequestsIncomingGet(limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FriendsRequestsIncomingGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.friendsRequestsIncomingGet(limit, offset, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FriendsApi.friendsRequestsIncomingGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary List outgoing friend requests
+         * @param {number} [limit] limit (default 20, max 100)
+         * @param {number} [offset] offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async friendsRequestsOutgoingGet(limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FriendsRequestsIncomingGet200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.friendsRequestsOutgoingGet(limit, offset, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FriendsApi.friendsRequestsOutgoingGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * FriendsApi - factory interface
+ */
+export const FriendsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = FriendsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Remove friend
+         * @param {number} friendId friend account id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsFriendIdDelete(friendId: number, options?: RawAxiosRequestConfig): AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate> {
+            return localVarFp.friendsFriendIdDelete(friendId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary List friends
+         * @param {string} [search] search by username or name
+         * @param {number} [limit] limit (default 20, max 100)
+         * @param {number} [offset] offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsGet(search?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): AxiosPromise<FriendsGet200Response> {
+            return localVarFp.friendsGet(search, limit, offset, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get friends page
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsPageGet(options?: RawAxiosRequestConfig): AxiosPromise<FriendsPageGet200Response> {
+            return localVarFp.friendsPageGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Send friend request
+         * @param {InternalModuleFriendsPresentationHttpSendRequestBody} request request body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsRequestPost(request: InternalModuleFriendsPresentationHttpSendRequestBody, options?: RawAxiosRequestConfig): AxiosPromise<FriendsRequestPost200Response> {
+            return localVarFp.friendsRequestPost(request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Cancel outgoing friend request
+         * @param {number} requestId request id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsRequestRequestIdCancelPut(requestId: number, options?: RawAxiosRequestConfig): AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate> {
+            return localVarFp.friendsRequestRequestIdCancelPut(requestId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Respond to friend request
+         * @param {number} requestId request id
+         * @param {InternalModuleFriendsPresentationHttpRespondRequestBody} request request body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsRequestRequestIdRespondPut(requestId: number, request: InternalModuleFriendsPresentationHttpRespondRequestBody, options?: RawAxiosRequestConfig): AxiosPromise<GithubComNotPlatformInternalServerTemplatesResponseTemplate> {
+            return localVarFp.friendsRequestRequestIdRespondPut(requestId, request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary List incoming friend requests
+         * @param {number} [limit] limit (default 20, max 100)
+         * @param {number} [offset] offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsRequestsIncomingGet(limit?: number, offset?: number, options?: RawAxiosRequestConfig): AxiosPromise<FriendsRequestsIncomingGet200Response> {
+            return localVarFp.friendsRequestsIncomingGet(limit, offset, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary List outgoing friend requests
+         * @param {number} [limit] limit (default 20, max 100)
+         * @param {number} [offset] offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        friendsRequestsOutgoingGet(limit?: number, offset?: number, options?: RawAxiosRequestConfig): AxiosPromise<FriendsRequestsIncomingGet200Response> {
+            return localVarFp.friendsRequestsOutgoingGet(limit, offset, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * FriendsApi - object-oriented interface
+ */
+export class FriendsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Remove friend
+     * @param {number} friendId friend account id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public friendsFriendIdDelete(friendId: number, options?: RawAxiosRequestConfig) {
+        return FriendsApiFp(this.configuration).friendsFriendIdDelete(friendId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary List friends
+     * @param {string} [search] search by username or name
+     * @param {number} [limit] limit (default 20, max 100)
+     * @param {number} [offset] offset
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public friendsGet(search?: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig) {
+        return FriendsApiFp(this.configuration).friendsGet(search, limit, offset, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get friends page
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public friendsPageGet(options?: RawAxiosRequestConfig) {
+        return FriendsApiFp(this.configuration).friendsPageGet(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Send friend request
+     * @param {InternalModuleFriendsPresentationHttpSendRequestBody} request request body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public friendsRequestPost(request: InternalModuleFriendsPresentationHttpSendRequestBody, options?: RawAxiosRequestConfig) {
+        return FriendsApiFp(this.configuration).friendsRequestPost(request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Cancel outgoing friend request
+     * @param {number} requestId request id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public friendsRequestRequestIdCancelPut(requestId: number, options?: RawAxiosRequestConfig) {
+        return FriendsApiFp(this.configuration).friendsRequestRequestIdCancelPut(requestId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Respond to friend request
+     * @param {number} requestId request id
+     * @param {InternalModuleFriendsPresentationHttpRespondRequestBody} request request body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public friendsRequestRequestIdRespondPut(requestId: number, request: InternalModuleFriendsPresentationHttpRespondRequestBody, options?: RawAxiosRequestConfig) {
+        return FriendsApiFp(this.configuration).friendsRequestRequestIdRespondPut(requestId, request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary List incoming friend requests
+     * @param {number} [limit] limit (default 20, max 100)
+     * @param {number} [offset] offset
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public friendsRequestsIncomingGet(limit?: number, offset?: number, options?: RawAxiosRequestConfig) {
+        return FriendsApiFp(this.configuration).friendsRequestsIncomingGet(limit, offset, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary List outgoing friend requests
+     * @param {number} [limit] limit (default 20, max 100)
+     * @param {number} [offset] offset
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public friendsRequestsOutgoingGet(limit?: number, offset?: number, options?: RawAxiosRequestConfig) {
+        return FriendsApiFp(this.configuration).friendsRequestsOutgoingGet(limit, offset, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
