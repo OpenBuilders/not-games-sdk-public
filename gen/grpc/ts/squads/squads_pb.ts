@@ -212,6 +212,28 @@ export interface ListSquadsResponse {
      */
     pagination?: Pagination;
 }
+/**
+ * @generated from protobuf message squad.v1.GetAccountSquadRequest
+ */
+export interface GetAccountSquadRequest {
+    /**
+     * Positive Not Games account ID.
+     *
+     * @generated from protobuf field: int64 account_id = 1
+     */
+    accountId: bigint;
+}
+/**
+ * @generated from protobuf message squad.v1.GetAccountSquadResponse
+ */
+export interface GetAccountSquadResponse {
+    /**
+     * Unset when the account is not a squad member.
+     *
+     * @generated from protobuf field: squad.v1.Squad squad = 1
+     */
+    squad?: Squad;
+}
 // @generated message type with reflection information, may provide speed optimized methods
 class StreamEventsRequest$Type extends MessageType<StreamEventsRequest> {
     constructor() {
@@ -917,6 +939,99 @@ class ListSquadsResponse$Type extends MessageType<ListSquadsResponse> {
  * @generated MessageType for protobuf message squad.v1.ListSquadsResponse
  */
 export const ListSquadsResponse = new ListSquadsResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class GetAccountSquadRequest$Type extends MessageType<GetAccountSquadRequest> {
+    constructor() {
+        super("squad.v1.GetAccountSquadRequest", [
+            { no: 1, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+        ]);
+    }
+    create(value?: PartialMessage<GetAccountSquadRequest>): GetAccountSquadRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.accountId = 0n;
+        if (value !== undefined)
+            reflectionMergePartial<GetAccountSquadRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: GetAccountSquadRequest): GetAccountSquadRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* int64 account_id */ 1:
+                    message.accountId = reader.int64().toBigInt();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: GetAccountSquadRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int64 account_id = 1; */
+        if (message.accountId !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.accountId);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message squad.v1.GetAccountSquadRequest
+ */
+export const GetAccountSquadRequest = new GetAccountSquadRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class GetAccountSquadResponse$Type extends MessageType<GetAccountSquadResponse> {
+    constructor() {
+        super("squad.v1.GetAccountSquadResponse", [
+            { no: 1, name: "squad", kind: "message", T: () => Squad }
+        ]);
+    }
+    create(value?: PartialMessage<GetAccountSquadResponse>): GetAccountSquadResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        if (value !== undefined)
+            reflectionMergePartial<GetAccountSquadResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: GetAccountSquadResponse): GetAccountSquadResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* squad.v1.Squad squad */ 1:
+                    message.squad = Squad.internalBinaryRead(reader, reader.uint32(), options, message.squad);
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: GetAccountSquadResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* squad.v1.Squad squad = 1; */
+        if (message.squad)
+            Squad.internalBinaryWrite(message.squad, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message squad.v1.GetAccountSquadResponse
+ */
+export const GetAccountSquadResponse = new GetAccountSquadResponse$Type();
 /**
  * @generated ServiceType for protobuf service squad.v1.SquadsService
  */
@@ -925,5 +1040,6 @@ export const SquadsService = new ServiceType("squad.v1.SquadsService", [
     { name: "AddGroup", options: {}, I: AddGroupRequest, O: AddGroupResponse },
     { name: "StreamAckMessages", options: {}, I: StreamEventAckRequest, O: StreamEventAckResponse },
     { name: "GetSquad", options: {}, I: GetSquadRequest, O: GetSquadResponse },
-    { name: "ListSquads", options: {}, I: ListSquadsRequest, O: ListSquadsResponse }
+    { name: "ListSquads", options: {}, I: ListSquadsRequest, O: ListSquadsResponse },
+    { name: "GetAccountSquad", options: {}, I: GetAccountSquadRequest, O: GetAccountSquadResponse }
 ]);

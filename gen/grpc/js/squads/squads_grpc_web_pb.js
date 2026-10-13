@@ -379,5 +379,66 @@ proto.squad.v1.SquadsServicePromiseClient.prototype.listSquads =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.squad.v1.GetAccountSquadRequest,
+ *   !proto.squad.v1.GetAccountSquadResponse>}
+ */
+const methodDescriptor_SquadsService_GetAccountSquad = new grpc.web.MethodDescriptor(
+  '/squad.v1.SquadsService/GetAccountSquad',
+  grpc.web.MethodType.UNARY,
+  proto.squad.v1.GetAccountSquadRequest,
+  proto.squad.v1.GetAccountSquadResponse,
+  /**
+   * @param {!proto.squad.v1.GetAccountSquadRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.squad.v1.GetAccountSquadResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.squad.v1.GetAccountSquadRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.squad.v1.GetAccountSquadResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.squad.v1.GetAccountSquadResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.squad.v1.SquadsServiceClient.prototype.getAccountSquad =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/squad.v1.SquadsService/GetAccountSquad',
+      request,
+      metadata || {},
+      methodDescriptor_SquadsService_GetAccountSquad,
+      callback);
+};
+
+
+/**
+ * @param {!proto.squad.v1.GetAccountSquadRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.squad.v1.GetAccountSquadResponse>}
+ *     Promise that resolves to the response
+ */
+proto.squad.v1.SquadsServicePromiseClient.prototype.getAccountSquad =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/squad.v1.SquadsService/GetAccountSquad',
+      request,
+      metadata || {},
+      methodDescriptor_SquadsService_GetAccountSquad);
+};
+
+
 module.exports = proto.squad.v1;
 
