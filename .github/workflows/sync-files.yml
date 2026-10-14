@@ -20,6 +20,21 @@ jobs:
     steps:
       - name: Checkout Сode
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+          fetch-depth: 0
+
+      - name: Check HTTP specification changes
+        id: http
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [[ "$EVENT_NAME" != "pull_request" ]] || ! git diff --quiet "$BASE_SHA"...HEAD -- docs/swagger.yaml; then
+            echo "generate=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "generate=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Set up Go
         uses: actions/setup-go@v4
@@ -49,6 +64,7 @@ jobs:
           sudo rm -rf node_modules
 
       - name: Install OpenAPI Generator
+        if: steps.http.outputs.generate == 'true'
         run: npm install -g @openapitools/openapi-generator-cli@2.34.0
 
       - name: Generate proto-SDK
@@ -56,6 +72,7 @@ jobs:
           buf generate
 
       - name: Generate http-Go client
+        if: steps.http.outputs.generate == 'true'
         run: |
           openapi-generator-cli generate \
             -i docs/swagger.yaml \
@@ -64,6 +81,7 @@ jobs:
             --additional-properties=packageName=notgamessdkpublic
 
       - name: Generate http-Node.js client
+        if: steps.http.outputs.generate == 'true'
         run: |
           openapi-generator-cli generate \
             -i docs/swagger.yaml \

@@ -13,6 +13,9 @@ service SquadsService {
   rpc StreamAckMessages(StreamEventAckRequest) returns (StreamEventAckResponse) {}
   rpc GetSquad(GetSquadRequest) returns (GetSquadResponse) {}
   rpc ListSquads(ListSquadsRequest) returns (ListSquadsResponse) {}
+  // Returns the current squad of an existing, visible account.
+  // An account without a squad returns an empty response.
+  rpc GetAccountSquad(GetAccountSquadRequest) returns (GetAccountSquadResponse) {}
 }
 
 message StreamEventsRequest {
@@ -82,4 +85,14 @@ message ListSquadsRequest {
 message ListSquadsResponse {
   repeated Squad squads = 1;
   common.v1.Pagination pagination = 2;
+}
+
+message GetAccountSquadRequest {
+  // Positive Not Games account ID.
+  int64 account_id = 1;
+}
+
+message GetAccountSquadResponse {
+  // Unset when the account is not a squad member.
+  Squad squad = 1;
 }

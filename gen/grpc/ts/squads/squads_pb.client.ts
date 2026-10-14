@@ -4,6 +4,8 @@
 import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
 import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
 import { SquadsService } from "./squads_pb";
+import type { GetAccountSquadResponse } from "./squads_pb";
+import type { GetAccountSquadRequest } from "./squads_pb";
 import type { ListSquadsResponse } from "./squads_pb";
 import type { ListSquadsRequest } from "./squads_pb";
 import type { GetSquadResponse } from "./squads_pb";
@@ -42,6 +44,13 @@ export interface ISquadsServiceClient {
      * @generated from protobuf rpc: ListSquads
      */
     listSquads(input: ListSquadsRequest, options?: RpcOptions): UnaryCall<ListSquadsRequest, ListSquadsResponse>;
+    /**
+     * Returns the current squad of an existing, visible account.
+     * An account without a squad returns an empty response.
+     *
+     * @generated from protobuf rpc: GetAccountSquad
+     */
+    getAccountSquad(input: GetAccountSquadRequest, options?: RpcOptions): UnaryCall<GetAccountSquadRequest, GetAccountSquadResponse>;
 }
 /**
  * @generated from protobuf service squad.v1.SquadsService
@@ -86,5 +95,15 @@ export class SquadsServiceClient implements ISquadsServiceClient, ServiceInfo {
     listSquads(input: ListSquadsRequest, options?: RpcOptions): UnaryCall<ListSquadsRequest, ListSquadsResponse> {
         const method = this.methods[4], opt = this._transport.mergeOptions(options);
         return stackIntercept<ListSquadsRequest, ListSquadsResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
+     * Returns the current squad of an existing, visible account.
+     * An account without a squad returns an empty response.
+     *
+     * @generated from protobuf rpc: GetAccountSquad
+     */
+    getAccountSquad(input: GetAccountSquadRequest, options?: RpcOptions): UnaryCall<GetAccountSquadRequest, GetAccountSquadResponse> {
+        const method = this.methods[5], opt = this._transport.mergeOptions(options);
+        return stackIntercept<GetAccountSquadRequest, GetAccountSquadResponse>("unary", this._transport, method, opt, input);
     }
 }
