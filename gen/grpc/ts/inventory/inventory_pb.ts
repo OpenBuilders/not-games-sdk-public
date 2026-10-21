@@ -711,6 +711,100 @@ export interface TransferLogResponse_Transfer {
     accountLastname?: string;
 }
 /**
+ * @generated from protobuf message inventory.v1.GetInventoryValuesRequest
+ */
+export interface GetInventoryValuesRequest {
+    /**
+     * @generated from protobuf field: repeated int64 account_ids = 1
+     */
+    accountIds: bigint[];
+}
+/**
+ * @generated from protobuf message inventory.v1.InventoryValue
+ */
+export interface InventoryValue {
+    /**
+     * @generated from protobuf field: int64 account_id = 1
+     */
+    accountId: bigint;
+    /**
+     * @generated from protobuf field: int64 total = 2
+     */
+    total: bigint;
+    /**
+     * @generated from protobuf field: bool hidden = 3
+     */
+    hidden: boolean;
+}
+/**
+ * @generated from protobuf message inventory.v1.GetInventoryValuesResponse
+ */
+export interface GetInventoryValuesResponse {
+    /**
+     * @generated from protobuf field: repeated inventory.v1.InventoryValue values = 1
+     */
+    values: InventoryValue[];
+}
+/**
+ * @generated from protobuf message inventory.v1.GetInventoryValueLeaderboardRequest
+ */
+export interface GetInventoryValueLeaderboardRequest {
+    /**
+     * @generated from protobuf field: int64 app_id = 1
+     */
+    appId: bigint;
+    /**
+     * @generated from protobuf field: int32 limit = 2
+     */
+    limit: number;
+}
+/**
+ * @generated from protobuf message inventory.v1.InventoryValueLeader
+ */
+export interface InventoryValueLeader {
+    /**
+     * @generated from protobuf field: int32 rank = 1
+     */
+    rank: number;
+    /**
+     * @generated from protobuf field: int64 account_id = 2
+     */
+    accountId: bigint;
+    /**
+     * @generated from protobuf field: string username = 3
+     */
+    username: string;
+    /**
+     * @generated from protobuf field: string first_name = 4
+     */
+    firstName: string;
+    /**
+     * @generated from protobuf field: string avatar = 5
+     */
+    avatar: string;
+    /**
+     * @generated from protobuf field: int64 total = 6
+     */
+    total: bigint;
+}
+/**
+ * @generated from protobuf message inventory.v1.GetInventoryValueLeaderboardResponse
+ */
+export interface GetInventoryValueLeaderboardResponse {
+    /**
+     * @generated from protobuf field: int64 app_id = 1
+     */
+    appId: bigint;
+    /**
+     * @generated from protobuf field: repeated inventory.v1.InventoryValueLeader leaders = 2
+     */
+    leaders: InventoryValueLeader[];
+    /**
+     * @generated from protobuf field: optional string computed_at = 3
+     */
+    computedAt?: string;
+}
+/**
  * @generated from protobuf enum inventory.v1.StreamItemOpType
  */
 export enum StreamItemOpType {
@@ -3026,6 +3120,375 @@ class TransferLogResponse_Transfer$Type extends MessageType<TransferLogResponse_
  * @generated MessageType for protobuf message inventory.v1.TransferLogResponse.Transfer
  */
 export const TransferLogResponse_Transfer = new TransferLogResponse_Transfer$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class GetInventoryValuesRequest$Type extends MessageType<GetInventoryValuesRequest> {
+    constructor() {
+        super("inventory.v1.GetInventoryValuesRequest", [
+            { no: 1, name: "account_ids", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+        ]);
+    }
+    create(value?: PartialMessage<GetInventoryValuesRequest>): GetInventoryValuesRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.accountIds = [];
+        if (value !== undefined)
+            reflectionMergePartial<GetInventoryValuesRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: GetInventoryValuesRequest): GetInventoryValuesRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* repeated int64 account_ids */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.accountIds.push(reader.int64().toBigInt());
+                    else
+                        message.accountIds.push(reader.int64().toBigInt());
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: GetInventoryValuesRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* repeated int64 account_ids = 1; */
+        if (message.accountIds.length) {
+            writer.tag(1, WireType.LengthDelimited).fork();
+            for (let i = 0; i < message.accountIds.length; i++)
+                writer.int64(message.accountIds[i]);
+            writer.join();
+        }
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.GetInventoryValuesRequest
+ */
+export const GetInventoryValuesRequest = new GetInventoryValuesRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class InventoryValue$Type extends MessageType<InventoryValue> {
+    constructor() {
+        super("inventory.v1.InventoryValue", [
+            { no: 1, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 2, name: "total", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 3, name: "hidden", kind: "scalar", T: 8 /*ScalarType.BOOL*/ }
+        ]);
+    }
+    create(value?: PartialMessage<InventoryValue>): InventoryValue {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.accountId = 0n;
+        message.total = 0n;
+        message.hidden = false;
+        if (value !== undefined)
+            reflectionMergePartial<InventoryValue>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: InventoryValue): InventoryValue {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* int64 account_id */ 1:
+                    message.accountId = reader.int64().toBigInt();
+                    break;
+                case /* int64 total */ 2:
+                    message.total = reader.int64().toBigInt();
+                    break;
+                case /* bool hidden */ 3:
+                    message.hidden = reader.bool();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: InventoryValue, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int64 account_id = 1; */
+        if (message.accountId !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.accountId);
+        /* int64 total = 2; */
+        if (message.total !== 0n)
+            writer.tag(2, WireType.Varint).int64(message.total);
+        /* bool hidden = 3; */
+        if (message.hidden !== false)
+            writer.tag(3, WireType.Varint).bool(message.hidden);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.InventoryValue
+ */
+export const InventoryValue = new InventoryValue$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class GetInventoryValuesResponse$Type extends MessageType<GetInventoryValuesResponse> {
+    constructor() {
+        super("inventory.v1.GetInventoryValuesResponse", [
+            { no: 1, name: "values", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => InventoryValue }
+        ]);
+    }
+    create(value?: PartialMessage<GetInventoryValuesResponse>): GetInventoryValuesResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.values = [];
+        if (value !== undefined)
+            reflectionMergePartial<GetInventoryValuesResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: GetInventoryValuesResponse): GetInventoryValuesResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* repeated inventory.v1.InventoryValue values */ 1:
+                    message.values.push(InventoryValue.internalBinaryRead(reader, reader.uint32(), options));
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: GetInventoryValuesResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* repeated inventory.v1.InventoryValue values = 1; */
+        for (let i = 0; i < message.values.length; i++)
+            InventoryValue.internalBinaryWrite(message.values[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.GetInventoryValuesResponse
+ */
+export const GetInventoryValuesResponse = new GetInventoryValuesResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class GetInventoryValueLeaderboardRequest$Type extends MessageType<GetInventoryValueLeaderboardRequest> {
+    constructor() {
+        super("inventory.v1.GetInventoryValueLeaderboardRequest", [
+            { no: 1, name: "app_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 2, name: "limit", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+        ]);
+    }
+    create(value?: PartialMessage<GetInventoryValueLeaderboardRequest>): GetInventoryValueLeaderboardRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.appId = 0n;
+        message.limit = 0;
+        if (value !== undefined)
+            reflectionMergePartial<GetInventoryValueLeaderboardRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: GetInventoryValueLeaderboardRequest): GetInventoryValueLeaderboardRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* int64 app_id */ 1:
+                    message.appId = reader.int64().toBigInt();
+                    break;
+                case /* int32 limit */ 2:
+                    message.limit = reader.int32();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: GetInventoryValueLeaderboardRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int64 app_id = 1; */
+        if (message.appId !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.appId);
+        /* int32 limit = 2; */
+        if (message.limit !== 0)
+            writer.tag(2, WireType.Varint).int32(message.limit);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.GetInventoryValueLeaderboardRequest
+ */
+export const GetInventoryValueLeaderboardRequest = new GetInventoryValueLeaderboardRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class InventoryValueLeader$Type extends MessageType<InventoryValueLeader> {
+    constructor() {
+        super("inventory.v1.InventoryValueLeader", [
+            { no: 1, name: "rank", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "account_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 3, name: "username", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "first_name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "avatar", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 6, name: "total", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+        ]);
+    }
+    create(value?: PartialMessage<InventoryValueLeader>): InventoryValueLeader {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.rank = 0;
+        message.accountId = 0n;
+        message.username = "";
+        message.firstName = "";
+        message.avatar = "";
+        message.total = 0n;
+        if (value !== undefined)
+            reflectionMergePartial<InventoryValueLeader>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: InventoryValueLeader): InventoryValueLeader {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* int32 rank */ 1:
+                    message.rank = reader.int32();
+                    break;
+                case /* int64 account_id */ 2:
+                    message.accountId = reader.int64().toBigInt();
+                    break;
+                case /* string username */ 3:
+                    message.username = reader.string();
+                    break;
+                case /* string first_name */ 4:
+                    message.firstName = reader.string();
+                    break;
+                case /* string avatar */ 5:
+                    message.avatar = reader.string();
+                    break;
+                case /* int64 total */ 6:
+                    message.total = reader.int64().toBigInt();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: InventoryValueLeader, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int32 rank = 1; */
+        if (message.rank !== 0)
+            writer.tag(1, WireType.Varint).int32(message.rank);
+        /* int64 account_id = 2; */
+        if (message.accountId !== 0n)
+            writer.tag(2, WireType.Varint).int64(message.accountId);
+        /* string username = 3; */
+        if (message.username !== "")
+            writer.tag(3, WireType.LengthDelimited).string(message.username);
+        /* string first_name = 4; */
+        if (message.firstName !== "")
+            writer.tag(4, WireType.LengthDelimited).string(message.firstName);
+        /* string avatar = 5; */
+        if (message.avatar !== "")
+            writer.tag(5, WireType.LengthDelimited).string(message.avatar);
+        /* int64 total = 6; */
+        if (message.total !== 0n)
+            writer.tag(6, WireType.Varint).int64(message.total);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.InventoryValueLeader
+ */
+export const InventoryValueLeader = new InventoryValueLeader$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class GetInventoryValueLeaderboardResponse$Type extends MessageType<GetInventoryValueLeaderboardResponse> {
+    constructor() {
+        super("inventory.v1.GetInventoryValueLeaderboardResponse", [
+            { no: 1, name: "app_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 2, name: "leaders", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => InventoryValueLeader },
+            { no: 3, name: "computed_at", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<GetInventoryValueLeaderboardResponse>): GetInventoryValueLeaderboardResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.appId = 0n;
+        message.leaders = [];
+        if (value !== undefined)
+            reflectionMergePartial<GetInventoryValueLeaderboardResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: GetInventoryValueLeaderboardResponse): GetInventoryValueLeaderboardResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* int64 app_id */ 1:
+                    message.appId = reader.int64().toBigInt();
+                    break;
+                case /* repeated inventory.v1.InventoryValueLeader leaders */ 2:
+                    message.leaders.push(InventoryValueLeader.internalBinaryRead(reader, reader.uint32(), options));
+                    break;
+                case /* optional string computed_at */ 3:
+                    message.computedAt = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: GetInventoryValueLeaderboardResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* int64 app_id = 1; */
+        if (message.appId !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.appId);
+        /* repeated inventory.v1.InventoryValueLeader leaders = 2; */
+        for (let i = 0; i < message.leaders.length; i++)
+            InventoryValueLeader.internalBinaryWrite(message.leaders[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* optional string computed_at = 3; */
+        if (message.computedAt !== undefined)
+            writer.tag(3, WireType.LengthDelimited).string(message.computedAt);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message inventory.v1.GetInventoryValueLeaderboardResponse
+ */
+export const GetInventoryValueLeaderboardResponse = new GetInventoryValueLeaderboardResponse$Type();
 /**
  * @generated ServiceType for protobuf service inventory.v1.InventoryService
  */
@@ -3045,5 +3508,7 @@ export const InventoryService = new ServiceType("inventory.v1.InventoryService",
     { name: "StreamAckMessages", options: {}, I: StreamItemTransfersAckRequest, O: StreamItemTransfersAckResponse },
     { name: "AckStreamMessages", options: {}, I: AckStreamMessagesRequest, O: AckStreamMessagesResponse },
     { name: "ListItemsByItemDef", options: {}, I: ListItemsByItemDefRequest, O: ListItemsResponse },
-    { name: "TransferLog", options: {}, I: TransferLogRequest, O: TransferLogResponse }
+    { name: "TransferLog", options: {}, I: TransferLogRequest, O: TransferLogResponse },
+    { name: "GetInventoryValues", options: {}, I: GetInventoryValuesRequest, O: GetInventoryValuesResponse },
+    { name: "GetInventoryValueLeaderboard", options: {}, I: GetInventoryValueLeaderboardRequest, O: GetInventoryValueLeaderboardResponse }
 ]);

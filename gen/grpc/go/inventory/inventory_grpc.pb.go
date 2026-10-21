@@ -19,22 +19,24 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	InventoryService_ListItems_FullMethodName             = "/inventory.v1.InventoryService/ListItems"
-	InventoryService_GetItem_FullMethodName               = "/inventory.v1.InventoryService/GetItem"
-	InventoryService_ConsumeItem_FullMethodName           = "/inventory.v1.InventoryService/ConsumeItem"
-	InventoryService_IncrementItemQuantity_FullMethodName = "/inventory.v1.InventoryService/IncrementItemQuantity"
-	InventoryService_Unpack_FullMethodName                = "/inventory.v1.InventoryService/Unpack"
-	InventoryService_Generate_FullMethodName              = "/inventory.v1.InventoryService/Generate"
-	InventoryService_GenerateMany_FullMethodName          = "/inventory.v1.InventoryService/GenerateMany"
-	InventoryService_UpdateItem_FullMethodName            = "/inventory.v1.InventoryService/UpdateItem"
-	InventoryService_TransferItem_FullMethodName          = "/inventory.v1.InventoryService/TransferItem"
-	InventoryService_StreamItemTransfer_FullMethodName    = "/inventory.v1.InventoryService/StreamItemTransfer"
-	InventoryService_StreamItem_FullMethodName            = "/inventory.v1.InventoryService/StreamItem"
-	InventoryService_AddGroup_FullMethodName              = "/inventory.v1.InventoryService/AddGroup"
-	InventoryService_StreamAckMessages_FullMethodName     = "/inventory.v1.InventoryService/StreamAckMessages"
-	InventoryService_AckStreamMessages_FullMethodName     = "/inventory.v1.InventoryService/AckStreamMessages"
-	InventoryService_ListItemsByItemDef_FullMethodName    = "/inventory.v1.InventoryService/ListItemsByItemDef"
-	InventoryService_TransferLog_FullMethodName           = "/inventory.v1.InventoryService/TransferLog"
+	InventoryService_ListItems_FullMethodName                    = "/inventory.v1.InventoryService/ListItems"
+	InventoryService_GetItem_FullMethodName                      = "/inventory.v1.InventoryService/GetItem"
+	InventoryService_ConsumeItem_FullMethodName                  = "/inventory.v1.InventoryService/ConsumeItem"
+	InventoryService_IncrementItemQuantity_FullMethodName        = "/inventory.v1.InventoryService/IncrementItemQuantity"
+	InventoryService_Unpack_FullMethodName                       = "/inventory.v1.InventoryService/Unpack"
+	InventoryService_Generate_FullMethodName                     = "/inventory.v1.InventoryService/Generate"
+	InventoryService_GenerateMany_FullMethodName                 = "/inventory.v1.InventoryService/GenerateMany"
+	InventoryService_UpdateItem_FullMethodName                   = "/inventory.v1.InventoryService/UpdateItem"
+	InventoryService_TransferItem_FullMethodName                 = "/inventory.v1.InventoryService/TransferItem"
+	InventoryService_StreamItemTransfer_FullMethodName           = "/inventory.v1.InventoryService/StreamItemTransfer"
+	InventoryService_StreamItem_FullMethodName                   = "/inventory.v1.InventoryService/StreamItem"
+	InventoryService_AddGroup_FullMethodName                     = "/inventory.v1.InventoryService/AddGroup"
+	InventoryService_StreamAckMessages_FullMethodName            = "/inventory.v1.InventoryService/StreamAckMessages"
+	InventoryService_AckStreamMessages_FullMethodName            = "/inventory.v1.InventoryService/AckStreamMessages"
+	InventoryService_ListItemsByItemDef_FullMethodName           = "/inventory.v1.InventoryService/ListItemsByItemDef"
+	InventoryService_TransferLog_FullMethodName                  = "/inventory.v1.InventoryService/TransferLog"
+	InventoryService_GetInventoryValues_FullMethodName           = "/inventory.v1.InventoryService/GetInventoryValues"
+	InventoryService_GetInventoryValueLeaderboard_FullMethodName = "/inventory.v1.InventoryService/GetInventoryValueLeaderboard"
 )
 
 // InventoryServiceClient is the client API for InventoryService service.
@@ -57,6 +59,8 @@ type InventoryServiceClient interface {
 	AckStreamMessages(ctx context.Context, in *AckStreamMessagesRequest, opts ...grpc.CallOption) (*AckStreamMessagesResponse, error)
 	ListItemsByItemDef(ctx context.Context, in *ListItemsByItemDefRequest, opts ...grpc.CallOption) (*ListItemsResponse, error)
 	TransferLog(ctx context.Context, in *TransferLogRequest, opts ...grpc.CallOption) (*TransferLogResponse, error)
+	GetInventoryValues(ctx context.Context, in *GetInventoryValuesRequest, opts ...grpc.CallOption) (*GetInventoryValuesResponse, error)
+	GetInventoryValueLeaderboard(ctx context.Context, in *GetInventoryValueLeaderboardRequest, opts ...grpc.CallOption) (*GetInventoryValueLeaderboardResponse, error)
 }
 
 type inventoryServiceClient struct {
@@ -245,6 +249,26 @@ func (c *inventoryServiceClient) TransferLog(ctx context.Context, in *TransferLo
 	return out, nil
 }
 
+func (c *inventoryServiceClient) GetInventoryValues(ctx context.Context, in *GetInventoryValuesRequest, opts ...grpc.CallOption) (*GetInventoryValuesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetInventoryValuesResponse)
+	err := c.cc.Invoke(ctx, InventoryService_GetInventoryValues_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *inventoryServiceClient) GetInventoryValueLeaderboard(ctx context.Context, in *GetInventoryValueLeaderboardRequest, opts ...grpc.CallOption) (*GetInventoryValueLeaderboardResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetInventoryValueLeaderboardResponse)
+	err := c.cc.Invoke(ctx, InventoryService_GetInventoryValueLeaderboard_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // InventoryServiceServer is the server API for InventoryService service.
 // All implementations must embed UnimplementedInventoryServiceServer
 // for forward compatibility.
@@ -265,6 +289,8 @@ type InventoryServiceServer interface {
 	AckStreamMessages(context.Context, *AckStreamMessagesRequest) (*AckStreamMessagesResponse, error)
 	ListItemsByItemDef(context.Context, *ListItemsByItemDefRequest) (*ListItemsResponse, error)
 	TransferLog(context.Context, *TransferLogRequest) (*TransferLogResponse, error)
+	GetInventoryValues(context.Context, *GetInventoryValuesRequest) (*GetInventoryValuesResponse, error)
+	GetInventoryValueLeaderboard(context.Context, *GetInventoryValueLeaderboardRequest) (*GetInventoryValueLeaderboardResponse, error)
 	mustEmbedUnimplementedInventoryServiceServer()
 }
 
@@ -322,6 +348,12 @@ func (UnimplementedInventoryServiceServer) ListItemsByItemDef(context.Context, *
 }
 func (UnimplementedInventoryServiceServer) TransferLog(context.Context, *TransferLogRequest) (*TransferLogResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method TransferLog not implemented")
+}
+func (UnimplementedInventoryServiceServer) GetInventoryValues(context.Context, *GetInventoryValuesRequest) (*GetInventoryValuesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetInventoryValues not implemented")
+}
+func (UnimplementedInventoryServiceServer) GetInventoryValueLeaderboard(context.Context, *GetInventoryValueLeaderboardRequest) (*GetInventoryValueLeaderboardResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetInventoryValueLeaderboard not implemented")
 }
 func (UnimplementedInventoryServiceServer) mustEmbedUnimplementedInventoryServiceServer() {}
 func (UnimplementedInventoryServiceServer) testEmbeddedByValue()                          {}
@@ -618,6 +650,42 @@ func _InventoryService_TransferLog_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _InventoryService_GetInventoryValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetInventoryValuesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServiceServer).GetInventoryValues(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InventoryService_GetInventoryValues_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServiceServer).GetInventoryValues(ctx, req.(*GetInventoryValuesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _InventoryService_GetInventoryValueLeaderboard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetInventoryValueLeaderboardRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServiceServer).GetInventoryValueLeaderboard(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InventoryService_GetInventoryValueLeaderboard_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServiceServer).GetInventoryValueLeaderboard(ctx, req.(*GetInventoryValueLeaderboardRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // InventoryService_ServiceDesc is the grpc.ServiceDesc for InventoryService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -680,6 +748,14 @@ var InventoryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TransferLog",
 			Handler:    _InventoryService_TransferLog_Handler,
+		},
+		{
+			MethodName: "GetInventoryValues",
+			Handler:    _InventoryService_GetInventoryValues_Handler,
+		},
+		{
+			MethodName: "GetInventoryValueLeaderboard",
+			Handler:    _InventoryService_GetInventoryValueLeaderboard_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

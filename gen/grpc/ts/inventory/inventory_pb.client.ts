@@ -4,6 +4,10 @@
 import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
 import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
 import { InventoryService } from "./inventory_pb";
+import type { GetInventoryValueLeaderboardResponse } from "./inventory_pb";
+import type { GetInventoryValueLeaderboardRequest } from "./inventory_pb";
+import type { GetInventoryValuesResponse } from "./inventory_pb";
+import type { GetInventoryValuesRequest } from "./inventory_pb";
 import type { TransferLogResponse } from "./inventory_pb";
 import type { TransferLogRequest } from "./inventory_pb";
 import type { ListItemsByItemDefRequest } from "./inventory_pb";
@@ -107,6 +111,14 @@ export interface IInventoryServiceClient {
      * @generated from protobuf rpc: TransferLog
      */
     transferLog(input: TransferLogRequest, options?: RpcOptions): UnaryCall<TransferLogRequest, TransferLogResponse>;
+    /**
+     * @generated from protobuf rpc: GetInventoryValues
+     */
+    getInventoryValues(input: GetInventoryValuesRequest, options?: RpcOptions): UnaryCall<GetInventoryValuesRequest, GetInventoryValuesResponse>;
+    /**
+     * @generated from protobuf rpc: GetInventoryValueLeaderboard
+     */
+    getInventoryValueLeaderboard(input: GetInventoryValueLeaderboardRequest, options?: RpcOptions): UnaryCall<GetInventoryValueLeaderboardRequest, GetInventoryValueLeaderboardResponse>;
 }
 /**
  * @generated from protobuf service inventory.v1.InventoryService
@@ -228,5 +240,19 @@ export class InventoryServiceClient implements IInventoryServiceClient, ServiceI
     transferLog(input: TransferLogRequest, options?: RpcOptions): UnaryCall<TransferLogRequest, TransferLogResponse> {
         const method = this.methods[15], opt = this._transport.mergeOptions(options);
         return stackIntercept<TransferLogRequest, TransferLogResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
+     * @generated from protobuf rpc: GetInventoryValues
+     */
+    getInventoryValues(input: GetInventoryValuesRequest, options?: RpcOptions): UnaryCall<GetInventoryValuesRequest, GetInventoryValuesResponse> {
+        const method = this.methods[16], opt = this._transport.mergeOptions(options);
+        return stackIntercept<GetInventoryValuesRequest, GetInventoryValuesResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
+     * @generated from protobuf rpc: GetInventoryValueLeaderboard
+     */
+    getInventoryValueLeaderboard(input: GetInventoryValueLeaderboardRequest, options?: RpcOptions): UnaryCall<GetInventoryValueLeaderboardRequest, GetInventoryValueLeaderboardResponse> {
+        const method = this.methods[17], opt = this._transport.mergeOptions(options);
+        return stackIntercept<GetInventoryValueLeaderboardRequest, GetInventoryValueLeaderboardResponse>("unary", this._transport, method, opt, input);
     }
 }
