@@ -1047,5 +1047,127 @@ proto.inventory.v1.InventoryServicePromiseClient.prototype.transferLog =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.inventory.v1.GetInventoryValuesRequest,
+ *   !proto.inventory.v1.GetInventoryValuesResponse>}
+ */
+const methodDescriptor_InventoryService_GetInventoryValues = new grpc.web.MethodDescriptor(
+  '/inventory.v1.InventoryService/GetInventoryValues',
+  grpc.web.MethodType.UNARY,
+  proto.inventory.v1.GetInventoryValuesRequest,
+  proto.inventory.v1.GetInventoryValuesResponse,
+  /**
+   * @param {!proto.inventory.v1.GetInventoryValuesRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.inventory.v1.GetInventoryValuesResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.inventory.v1.GetInventoryValuesRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.inventory.v1.GetInventoryValuesResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.inventory.v1.GetInventoryValuesResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.inventory.v1.InventoryServiceClient.prototype.getInventoryValues =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/inventory.v1.InventoryService/GetInventoryValues',
+      request,
+      metadata || {},
+      methodDescriptor_InventoryService_GetInventoryValues,
+      callback);
+};
+
+
+/**
+ * @param {!proto.inventory.v1.GetInventoryValuesRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.inventory.v1.GetInventoryValuesResponse>}
+ *     Promise that resolves to the response
+ */
+proto.inventory.v1.InventoryServicePromiseClient.prototype.getInventoryValues =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/inventory.v1.InventoryService/GetInventoryValues',
+      request,
+      metadata || {},
+      methodDescriptor_InventoryService_GetInventoryValues);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.inventory.v1.GetInventoryValueLeaderboardRequest,
+ *   !proto.inventory.v1.GetInventoryValueLeaderboardResponse>}
+ */
+const methodDescriptor_InventoryService_GetInventoryValueLeaderboard = new grpc.web.MethodDescriptor(
+  '/inventory.v1.InventoryService/GetInventoryValueLeaderboard',
+  grpc.web.MethodType.UNARY,
+  proto.inventory.v1.GetInventoryValueLeaderboardRequest,
+  proto.inventory.v1.GetInventoryValueLeaderboardResponse,
+  /**
+   * @param {!proto.inventory.v1.GetInventoryValueLeaderboardRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.inventory.v1.GetInventoryValueLeaderboardResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.inventory.v1.GetInventoryValueLeaderboardRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.inventory.v1.GetInventoryValueLeaderboardResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.inventory.v1.GetInventoryValueLeaderboardResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.inventory.v1.InventoryServiceClient.prototype.getInventoryValueLeaderboard =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/inventory.v1.InventoryService/GetInventoryValueLeaderboard',
+      request,
+      metadata || {},
+      methodDescriptor_InventoryService_GetInventoryValueLeaderboard,
+      callback);
+};
+
+
+/**
+ * @param {!proto.inventory.v1.GetInventoryValueLeaderboardRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.inventory.v1.GetInventoryValueLeaderboardResponse>}
+ *     Promise that resolves to the response
+ */
+proto.inventory.v1.InventoryServicePromiseClient.prototype.getInventoryValueLeaderboard =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/inventory.v1.InventoryService/GetInventoryValueLeaderboard',
+      request,
+      metadata || {},
+      methodDescriptor_InventoryService_GetInventoryValueLeaderboard);
+};
+
+
 module.exports = proto.inventory.v1;
 
